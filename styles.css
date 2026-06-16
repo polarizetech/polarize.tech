@@ -12,8 +12,8 @@
   --ink-soft:  #9aa3b2;
   --ink-faint: #5a6373;
 
-  --gold:      #f5c542;   /* documentary banner gold */
-  --gold-deep: #c9912a;
+  --gold:      #ffffff;
+  --gold-deep: #e0e0e0;
   --cyan:      #3fe0ff;   /* polarized / resting */
   --cyan-deep: #1aa6c9;
   --warm:      #ff7a3c;   /* depolarized */
@@ -31,18 +31,18 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--ink);
-  font-family: "Spectral", Georgia, serif;
+  font-family: "Familjen Grotesk", sans-serif;
   font-size: 18px;
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
 
-::selection { background: var(--gold); color: #1a1205; }
+::selection { background: var(--gold); color: var(--bg); }
 
 /* ---------- Type ---------- */
 .kicker {
-  font-family: "Oswald", sans-serif;
+  font-family: "Familjen Grotesk", sans-serif;
   text-transform: uppercase;
   letter-spacing: .32em;
   font-size: .72rem;
@@ -52,7 +52,7 @@ body {
 }
 
 .h2 {
-  font-family: "Archivo", sans-serif;
+  font-family: "Familjen Grotesk", sans-serif;
   font-weight: 800;
   font-size: clamp(2rem, 5vw, 3.4rem);
   line-height: 1.02;
@@ -74,7 +74,7 @@ p em { color: var(--cyan); font-style: italic; }
   display: inline-flex;
   align-items: center;
   gap: .5em;
-  font-family: "Oswald", sans-serif;
+  font-family: "Familjen Grotesk", sans-serif;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: .12em;
@@ -88,12 +88,12 @@ p em { color: var(--cyan); font-style: italic; }
 }
 .btn--gold {
   background: var(--gold);
-  color: #160f02;
-  box-shadow: 0 0 0 rgba(245,197,66,0);
+  color: var(--bg);
+  box-shadow: 0 0 0 rgba(255,255,255,0);
 }
 .btn--gold:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 34px -8px rgba(245,197,66,.55);
+  box-shadow: 0 10px 34px -8px rgba(255,255,255,.25);
 }
 .btn--ghost {
   background: transparent;
@@ -122,7 +122,7 @@ p em { color: var(--cyan); font-style: italic; }
   box-shadow: 0 0 18px -2px rgba(245,197,66,.7);
 }
 .brand__word {
-  font-family: "Archivo", sans-serif;
+  font-family: "Familjen Grotesk", sans-serif;
   font-weight: 800;
   letter-spacing: .18em;
   font-size: 1.05rem;
@@ -130,7 +130,7 @@ p em { color: var(--cyan); font-style: italic; }
 }
 .nav__links { display: flex; gap: 2rem; }
 .nav__links a {
-  font-family: "Oswald", sans-serif;
+  font-family: "Familjen Grotesk", sans-serif;
   text-transform: uppercase;
   letter-spacing: .14em;
   font-size: .74rem;
@@ -168,7 +168,7 @@ p em { color: var(--cyan); font-style: italic; }
   padding: 0 clamp(1.2rem, 4vw, 3rem);
 }
 .hero__title {
-  font-family: "Archivo", sans-serif;
+  font-family: "Familjen Grotesk", sans-serif;
   font-weight: 800;
   font-size: clamp(3.2rem, 11vw, 8.5rem);
   line-height: .92;
@@ -189,7 +189,7 @@ p em { color: var(--cyan); font-style: italic; }
   bottom: 1.7rem; left: 50%;
   transform: translateX(-50%);
   z-index: 2;
-  font-family: "Oswald", sans-serif;
+  font-family: "Familjen Grotesk", sans-serif;
   text-transform: uppercase;
   letter-spacing: .3em;
   font-size: .66rem;
@@ -206,7 +206,7 @@ p em { color: var(--cyan); font-style: italic; }
   padding: clamp(5rem, 11vw, 9rem) clamp(1.2rem, 4vw, 3rem);
 }
 .section__rail {
-  font-family: "Oswald", sans-serif;
+  font-family: "Familjen Grotesk", sans-serif;
   text-transform: uppercase;
   letter-spacing: .3em;
   font-size: .72rem;
@@ -235,7 +235,7 @@ p em { color: var(--cyan); font-style: italic; }
 }
 .stat-card__num {
   display: block;
-  font-family: "Archivo", sans-serif;
+  font-family: "Familjen Grotesk", sans-serif;
   font-weight: 800;
   font-size: 2.6rem;
   line-height: 1;
@@ -246,7 +246,7 @@ p em { color: var(--cyan); font-style: italic; }
 .stat-card__label {
   display: block;
   margin-top: .5rem;
-  font-family: "Oswald", sans-serif;
+  font-family: "Familjen Grotesk", sans-serif;
   text-transform: uppercase;
   letter-spacing: .08em;
   font-size: .72rem;
@@ -262,7 +262,7 @@ p em { color: var(--cyan); font-style: italic; }
   display: inline-flex;
   align-items: center;
   gap: .4em;
-  font-family: "Oswald", sans-serif;
+  font-family: "Familjen Grotesk", sans-serif;
   text-transform: uppercase;
   letter-spacing: .08em;
   font-size: .72rem;
@@ -306,14 +306,14 @@ p em { color: var(--cyan); font-style: italic; }
 }
 .stage__voltlabel {
   display: block;
-  font-family: "Oswald", sans-serif;
+  font-family: "Familjen Grotesk", sans-serif;
   text-transform: uppercase;
   letter-spacing: .14em;
   font-size: .58rem;
   color: var(--ink-faint);
 }
 .stage__voltval {
-  font-family: "Archivo", sans-serif;
+  font-family: "Familjen Grotesk", sans-serif;
   font-weight: 800;
   font-size: 1.5rem;
   color: var(--cyan);
@@ -332,7 +332,7 @@ p em { color: var(--cyan); font-style: italic; }
 
 .trace { margin: 2.2rem 0 0; }
 .trace__cap {
-  font-family: "Oswald", sans-serif;
+  font-family: "Familjen Grotesk", sans-serif;
   text-transform: uppercase;
   letter-spacing: .18em;
   font-size: .68rem;
@@ -360,7 +360,7 @@ p em { color: var(--cyan); font-style: italic; }
   margin: 2rem 0 0;
   padding-left: 1.3rem;
   border-left: 3px solid var(--gold);
-  font-family: "Spectral", serif;
+  font-family: "Familjen Grotesk", sans-serif;
   font-style: italic;
   font-size: 1.3rem;
   line-height: 1.5;
@@ -388,7 +388,7 @@ p em { color: var(--cyan); font-style: italic; }
   padding-top: 1.2rem;
 }
 .domain h3 {
-  font-family: "Oswald", sans-serif;
+  font-family: "Familjen Grotesk", sans-serif;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: .06em;
@@ -409,14 +409,14 @@ p em { color: var(--cyan); font-style: italic; }
 }
 .footer__brand { display: inline-flex; align-items: center; gap: .6rem; margin-bottom: 1rem; }
 .footer__tag {
-  font-family: "Spectral", serif;
+  font-family: "Familjen Grotesk", sans-serif;
   font-style: italic;
   font-size: 1.25rem;
   color: var(--ink);
   margin: 0 0 .8rem;
 }
 .footer__fine {
-  font-family: "Oswald", sans-serif;
+  font-family: "Familjen Grotesk", sans-serif;
   text-transform: uppercase;
   letter-spacing: .14em;
   font-size: .68rem;
