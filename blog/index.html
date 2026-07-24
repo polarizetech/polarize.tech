@@ -1,0 +1,46 @@
+---
+layout: default
+title: Research
+description: >-
+  Working notes on audio-evoked potentials, bioelectricity, neuroscience and
+  neuromedicine — published under a falsification-first citation protocol.
+---
+
+<header class="doc__head">
+  <p class="kicker">Research Notes</p>
+  <h1 class="doc__title">Written down so it can be <em>wrong</em>.</h1>
+  <p class="doc__lede">
+    These are working notes from an ongoing research program on audio-evoked
+    potentials and the bioelectric substrate they act on. Every source here was
+    resolved against Crossref or PubMed by machine before publication, every
+    claim carries a computed confidence tier, and every claim states the
+    conditions under which it would be false.
+  </p>
+</header>
+
+<ul class="postlist">
+  {%- for post in site.posts %}
+  <li class="postlist__item">
+    <a class="postlist__link" href="{{ post.url | relative_url }}">
+      <span class="postlist__date">{{ post.date | date: "%Y-%m-%d" }}</span>
+      <span class="postlist__body">
+        <span class="postlist__title">{{ post.title }}</span>
+        {%- if post.description %}
+        <span class="postlist__desc">{{ post.description }}</span>
+        {%- endif %}
+      </span>
+      <span class="postlist__meta">
+        <span class="badge badge--tier badge--tier-{{ post.tier | downcase }}">Tier {{ post.tier }}</span>
+        {%- if post.citations %}<span class="badge">{{ post.citations | size }} src</span>{% endif %}
+      </span>
+    </a>
+  </li>
+  {%- else %}
+  <li class="postlist__item postlist__item--empty">Nothing published yet.</li>
+  {%- endfor %}
+</ul>
+
+<p class="doc__note">
+  <a href="{{ '/blog/feed.xml' | relative_url }}">RSS</a> ·
+  Protocol: sources are cited by ledger key, never by hand-typed author or DOI.
+</p>

@@ -8,3 +8,14 @@ Thumbs.db
 # Dependencies / build output (none yet — static site)
 node_modules/
 dist/
+
+# Jekyll
+_site/
+.jekyll-cache/
+.jekyll-metadata
+vendor/
+.bundle/
+
+# Python
+__pycache__/
+*.pyc

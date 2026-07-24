@@ -1,0 +1,66 @@
+---
+layout: default
+---
+<article class="post">
+
+  <header class="post__head">
+    <p class="kicker">
+      {{ page.date | date: "%B %-d, %Y" }}
+      {%- if page.project %} · {{ page.project }}{% endif %}
+    </p>
+    <h1 class="post__title">{{ page.title }}</h1>
+    {%- if page.description %}
+    <p class="post__lede">{{ page.description }}</p>
+    {%- endif %}
+
+    <ul class="post__badges">
+      <li class="badge badge--tier badge--tier-{{ page.tier | downcase }}"
+          title="Confidence tier — computed in polarizetech/research, never asserted here">
+        Tier {{ page.tier }}
+      </li>
+      {%- if page.citations %}
+      <li class="badge" title="Citations, all resolved against Crossref or PubMed">
+        {{ page.citations | size }} resolved source{% if page.citations.size != 1 %}s{% endif %}
+      </li>
+      {%- endif %}
+      {%- for c in page.claims %}
+      <li class="badge badge--claim" title="Formal claim in polarizetech/research">{{ c }}</li>
+      {%- endfor %}
+    </ul>
+  </header>
+
+  <div class="prose">
+    {{ content }}
+  </div>
+
+  {%- if page.claims and page.claims.size > 0 %}
+  <section class="claims">
+    <h2 class="refs__title">Claims this post rests on</h2>
+    <ul class="claims__list">
+      {%- for id in page.claims -%}
+      {%- assign c = site.data.claims[id] -%}
+      <li class="claims__item">
+        <span class="claims__id">{{ id }}</span>
+        {%- if c -%}
+        <span class="claims__tier">Tier {{ c.tier }}</span>
+        <span class="claims__stmt">{{ c.statement }}</span>
+        {%- else -%}
+        <span class="claims__stmt claims__stmt--broken">NOT IN CLAIM INDEX — this post must not be published.</span>
+        {%- endif -%}
+      </li>
+      {%- endfor -%}
+    </ul>
+    <p class="refs__note">
+      Each claim is maintained in <code>polarizetech/research</code> with recorded
+      disproof conditions and disconfirming evidence. A tier is computed, never asserted.
+    </p>
+  </section>
+  {%- endif %}
+
+  {% include references.html %}
+
+  <nav class="post__foot">
+    <a class="btn btn--ghost" href="{{ '/blog/' | relative_url }}">← All research</a>
+  </nav>
+
+</article>

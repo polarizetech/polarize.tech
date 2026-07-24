@@ -1,0 +1,20 @@
+{%- comment -%}
+  Inline citation marker. Usage inside a post body:
+
+      {% include cite.html key="levin2018" %}
+
+  `key` MUST also appear in the post's front-matter `citations:` list — that list
+  is the ordered bibliography and the source of the superscript number.
+  An unlisted or unknown key renders a loud [?key] marker AND fails
+  scripts/validate_posts.py, so it can never reach production silently.
+{%- endcomment -%}
+{%- assign k = include.key -%}
+{%- assign num = nil -%}
+{%- for c in page.citations -%}
+  {%- if c == k -%}{%- assign num = forloop.index -%}{%- endif -%}
+{%- endfor -%}
+{%- if num -%}
+<sup class="cite"><a href="#ref-{{ k }}" id="cite-{{ k }}-{{ num }}" title="{{ site.data.citations[k].title | escape }}">{{ num }}</a></sup>
+{%- else -%}
+<sup class="cite cite--broken" title="Citation key not declared in front matter">[?{{ k }}]</sup>
+{%- endif -%}

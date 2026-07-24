@@ -3,8 +3,8 @@
   "configurations": [
     {
       "name": "polarize",
-      "runtimeExecutable": "python3",
-      "runtimeArgs": ["-m", "http.server", "4321"],
+      "runtimeExecutable": "bundle",
+      "runtimeArgs": ["exec", "jekyll", "serve", "--drafts", "--port", "4321"],
       "port": 4321
     }
   ]

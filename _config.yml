@@ -1,0 +1,46 @@
+title: POLARIZE
+tagline: The hidden electricity of life.
+description: >-
+  Research notes on audio-evoked potentials, bioelectricity, neuroscience and
+  neuromedicine. Falsification-first, citation-gated.
+url: https://polarize.tech
+baseurl: ""
+
+permalink: /blog/:title/
+timezone: America/Denver
+
+# No theme. GitHub Pages defaults to minima, which would inject its own
+# stylesheet and layouts over the hand-built POLARIZE design.
+theme: null
+encoding: utf-8
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+  syntax_highlighter: rouge
+  math_engine: null
+
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+
+feed:
+  path: /blog/feed.xml
+
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+
+exclude:
+  - README.md
+  - CLAUDE.md
+  - Gemfile
+  - Gemfile.lock
+  - scripts/
+  - .claude/
+  - .github/
+  - vendor/

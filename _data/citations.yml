@@ -1,0 +1,32 @@
+# GENERATED — DO NOT HAND-EDIT.
+# Source: polarizetech/research (machine-verified against Crossref/PubMed).
+# Regenerate: python3 scripts/sync_research.py
+
+levin2014:
+  doi: "10.1091/mbc.e13-12-0708"
+  first_author: "Levin"
+  year: "2014"
+  title: "Molecular bioelectricity: how endogenous voltage potentials control cell behavior and instruct pattern regulation in vivo"
+  journal: "Molecular Biology of the Cell"
+  volume: "25"
+  pages: "3835-3850"
+  registry: "crossref"
+  verified_on: "2026-07-24"
+  full_text_read: false
+  authors:
+    - "Levin Michael"
+
+levin2018:
+  doi: "10.1016/j.biosystems.2017.08.009"
+  first_author: "Levin"
+  year: "2018"
+  title: "The bioelectric code: An ancient computational medium for dynamic control of growth and form"
+  journal: "Biosystems"
+  volume: "164"
+  pages: "76-93"
+  registry: "crossref"
+  verified_on: "2026-07-24"
+  full_text_read: false
+  authors:
+    - "Levin Michael"
+    - "Martyniuk Christopher J."

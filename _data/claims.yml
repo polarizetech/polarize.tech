@@ -1,0 +1,14 @@
+# GENERATED — DO NOT HAND-EDIT.
+# Source: polarizetech/research (machine-verified against Crossref/PubMed).
+# Regenerate: python3 scripts/sync_research.py
+
+BIO-0001:
+  tier: "C"
+  statement: "Endogenous bioelectric state (spatial Vmem patterns across cell collectives) is an instructive, causally-sufficient control layer for large-scale morphogenesis and pattern regulation, not merely a downstream readout of genetic/biochemical signaling."
+  path: "projects/audio-evoked-potentials/claims/BIO-0001-bioelectric-instructive-morphogenesis.md"
+  has_disconfirming: true
+  sources:
+    - "levin2014"
+    - "levin2018"
+    - "manicka2019"
+    - "lukowiczbedford2023"

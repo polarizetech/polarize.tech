@@ -1,0 +1,28 @@
+name: publication gate
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      # No pip install: the gate is stdlib-only on purpose. It validates posts
+      # against the COMMITTED _data/*.yml, so it runs without access to the
+      # private polarizetech/research repo. Staleness of _data/ is caught
+      # locally by `sync_research.py --check` before you commit.
+      - name: Validate posts
+        run: python3 scripts/validate_posts.py
+
+      - name: Validate drafts (non-blocking)
+        continue-on-error: true
+        run: python3 scripts/validate_posts.py --drafts
