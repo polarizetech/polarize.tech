@@ -2,6 +2,40 @@
 # Source: polarizetech/research (machine-verified against Crossref/PubMed).
 # Regenerate: python3 scripts/sync_research.py
 
+AEP-0005:
+  tier: "C"
+  statement: "A designed acoustic protocol can draw a specified compiled signal in the medial superior olive, recoverable from the recorded neurophonic and distinguishable from matched-energy plain tonotopic drive, at a drive level that published calibration places in the regime where activity-dependent calcium influx and transcription-factor activation are known to follow. AMENDED 2026-08-15b/c — the original wording claimed the drive could be placed ABOVE THE THRESHOLD FOR SUPRATHRESHOLD COINCIDENT FIRING. F-suprathreshold FIRED against that wording (the far-field is postsynaptic and cannot report firing) and was then RESTATED: firing is not the gating variable, calcium is, and subthreshold depolarization is a second documented route to it. See both dated sections."
+  path: "projects/audio-evoked-potentials/claims/AEP-0005-verified-delivery-compiled-signal-mso.md"
+  has_disconfirming: true
+  sources:
+    - "goldwyn2014"
+    - "goldwyn2016"
+    - "goldwyn2017"
+    - "hardingham2001"
+    - "illing2002"
+    - "cheong2011"
+    - "selimkhanov2014"
+    - "nakashima2019"
+    - "stripling1997"
+    - "pradogutierrez2015"
+    - "yu2017"
+    - "bengtson2010"
+    - "freund2010"
+    - "lee2017"
+    - "kuokkanen2025"
+    - "van2013"
+    - "kuwada1979"
+    - "yin1983"
+    - "sanmiguel2021"
+    - "simpson2020"
+    - "bidelman2024"
+    - "bidelman2018"
+    - "coffey2016"
+    - "fino2009"
+    - "ludwar2020"
+    - "trus2024"
+    - "franzen2020"
+
 BIO-0001:
   tier: "C"
   statement: "Endogenous bioelectric state (spatial Vmem patterns across cell collectives) is an instructive, causally-sufficient control layer for large-scale morphogenesis and pattern regulation, not merely a downstream readout of genetic/biochemical signaling."

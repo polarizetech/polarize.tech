@@ -2,6 +2,55 @@
 # Source: polarizetech/research (machine-verified against Crossref/PubMed).
 # Regenerate: python3 scripts/sync_research.py
 
+goldwyn2014:
+  doi: "10.1523/JNEUROSCI.0175-14.2014"
+  pmid: "25164666"
+  first_author: "Goldwyn"
+  year: "2014"
+  title: "A Model of the Medial Superior Olive Explains Spatiotemporal Features of Local Field Potentials"
+  journal: "The Journal of Neuroscience"
+  volume: "34"
+  pages: "11705-11722"
+  registry: "crossref"
+  verified_on: "2026-08-26"
+  full_text_read: false
+  authors:
+    - "Goldwyn Joshua H."
+    - "Mc Laughlin Myles"
+    - "Verschooten Eric"
+    - "Joris Philip X."
+    - "Rinzel John"
+
+iaccarino2016:
+  doi: "10.1038/nature20587"
+  pmid: "27929004"
+  first_author: "Iaccarino"
+  year: "2016"
+  title: "Gamma frequency entrainment attenuates amyloid load and modifies microglia"
+  journal: "Nature"
+  volume: "540"
+  pages: "230-235"
+  registry: "crossref"
+  verified_on: "2026-08-26"
+  full_text_read: false
+  authors:
+    - "Iaccarino Hunter F."
+    - "Singer Annabelle C."
+    - "Martorell Anthony J."
+    - "Rudenko Andrii"
+    - "Gao Fan"
+    - "Gillingham Tyler Z."
+    - "Mathys Hansruedi"
+    - "Seo Jinsoo"
+    - "Kritskiy Oleg"
+    - "Abdurrob Fatema"
+    - "Adaikkan Chinnakkaruppan"
+    - "Canter Rebecca G."
+    - "Rueda Richard"
+    - "Brown Emery N."
+    - "Boyden Edward S."
+    - "Tsai Li-Huei"
+
 levin2014:
   doi: "10.1091/mbc.e13-12-0708"
   first_author: "Levin"
@@ -11,7 +60,7 @@ levin2014:
   volume: "25"
   pages: "3835-3850"
   registry: "crossref"
-  verified_on: "2026-07-24"
+  verified_on: "2026-08-26"
   full_text_read: false
   authors:
     - "Levin Michael"
@@ -25,8 +74,39 @@ levin2018:
   volume: "164"
   pages: "76-93"
   registry: "crossref"
-  verified_on: "2026-07-24"
+  verified_on: "2026-08-26"
   full_text_read: false
   authors:
     - "Levin Michael"
     - "Martyniuk Christopher J."
+
+martorell2019:
+  doi: "10.1016/j.cell.2019.02.014"
+  pmid: "30879788"
+  first_author: "Martorell"
+  year: "2019"
+  title: "Multi-sensory Gamma Stimulation Ameliorates Alzheimer’s-Associated Pathology and Improves Cognition"
+  journal: "Cell"
+  volume: "177"
+  pages: "256-271.e22"
+  registry: "crossref"
+  verified_on: "2026-08-26"
+  full_text_read: false
+  authors:
+    - "Martorell Anthony J."
+    - "Paulson Abigail L."
+    - "Suk Ho-Jun"
+    - "Abdurrob Fatema"
+    - "Drummond Gabrielle T."
+    - "Guan Webster"
+    - "Young Jennie Z."
+    - "Kim David Nam-Woo"
+    - "Kritskiy Oleg"
+    - "Barker Scarlett J."
+    - "Mangena Vamsi"
+    - "Prince Stephanie M."
+    - "Brown Emery N."
+    - "Chung Kwanghun"
+    - "Boyden Edward S."
+    - "Singer Annabelle C."
+    - "Tsai Li-Huei"
