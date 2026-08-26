@@ -3,7 +3,8 @@
 Read this before touching `_posts/`, `_drafts/`, or `_data/`.
 
 This site is the **public face** of a private, falsification-first research corpus
-(`polarizetech/research`, checked out at `~/Sites/research`). That repo already
+(`polarizetech/research`, checked out at `~/Sites/audio-projects/research`, where it is a
+submodule of the `audio-projects` monorepo). That repo already
 enforces a citation gate. This repo's job is to make sure nothing gets weaker on
 the way out the door.
 
@@ -55,11 +56,11 @@ possible** — that is why citations are a Liquid include and not a `{% cite %}`
 ## Adding a post — the process
 
 ### 1. Establish what is actually being claimed
-Before writing a word, work out which **claim IDs** in `~/Sites/research` the post
+Before writing a word, work out which **claim IDs** in `~/Sites/audio-projects/research` the post
 rests on (`AEP-`, `AUD-`, `BIO-`, `COS-`, `SCH-`).
 
 ```bash
-ls ~/Sites/research/projects/*/claims/
+ls ~/Sites/audio-projects/research/projects/*/claims/
 ```
 
 - If the post rests on a formal claim → list its ID in front matter.
@@ -82,17 +83,17 @@ Copied from the research repo's tiering, never invented here:
 The gate enforces `post tier ≤ weakest claim tier`.
 
 ### 3. Confirm every source is in the ledger
-Every source must already exist in `~/Sites/research/CITATIONS.yaml`.
+Every source must already exist in `~/Sites/audio-projects/research/CITATIONS.yaml`.
 
 ```bash
-grep -n '^somekey:' ~/Sites/research/CITATIONS.yaml
+grep -n '^somekey:' ~/Sites/audio-projects/research/CITATIONS.yaml
 ```
 
 **If it isn't there, it does not exist yet.** Do not add it here. Go to the research
 repo and add it properly:
 
 ```bash
-cd ~/Sites/research
+cd ~/Sites/audio-projects/research
 python3 scripts/build_ledger.py --corpus . --out CITATIONS.yaml
 python3 scripts/verify_citations.py
 ```
@@ -130,7 +131,7 @@ Body rules:
 ### 5. Sync and gate
 
 ```bash
-python3 scripts/sync_research.py --research ~/Sites/research
+python3 scripts/sync_research.py --research ~/Sites/audio-projects/research
 python3 scripts/validate_posts.py --strict
 ```
 
@@ -141,7 +142,7 @@ correspondingly hedged.
 Then confirm `_data/` is committed in the same change as the post:
 
 ```bash
-python3 scripts/sync_research.py --research ~/Sites/research --check
+python3 scripts/sync_research.py --research ~/Sites/audio-projects/research --check
 ```
 
 CI re-runs the gate against the committed `_data/`, without access to the private
@@ -173,7 +174,7 @@ prove the prose is honest. Do this pass by hand, every time:
    the paper found. Read it, update the research repo, re-sync — or hedge the prose.
 5. **Check retractions** before publishing anything that leans on a source:
    ```bash
-   cd ~/Sites/research && python3 scripts/check_retractions.py
+   cd ~/Sites/audio-projects/research && python3 scripts/check_retractions.py
    ```
 6. **Disproof condition stated.** For tier `B`/`C` posts, the body should say what
    would make it wrong. If you can't write that sentence, the claim isn't ready.

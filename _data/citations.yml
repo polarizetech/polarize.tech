@@ -2,6 +2,25 @@
 # Source: polarizetech/research (machine-verified against Crossref/PubMed).
 # Regenerate: python3 scripts/sync_research.py
 
+goldwyn2014:
+  doi: "10.1523/JNEUROSCI.0175-14.2014"
+  pmid: "25164666"
+  first_author: "Goldwyn"
+  year: "2014"
+  title: "A Model of the Medial Superior Olive Explains Spatiotemporal Features of Local Field Potentials"
+  journal: "The Journal of Neuroscience"
+  volume: "34"
+  pages: "11705-11722"
+  registry: "crossref"
+  verified_on: "2026-08-26"
+  full_text_read: false
+  authors:
+    - "Goldwyn Joshua H."
+    - "Mc Laughlin Myles"
+    - "Verschooten Eric"
+    - "Joris Philip X."
+    - "Rinzel John"
+
 levin2014:
   doi: "10.1091/mbc.e13-12-0708"
   first_author: "Levin"
@@ -11,7 +30,7 @@ levin2014:
   volume: "25"
   pages: "3835-3850"
   registry: "crossref"
-  verified_on: "2026-07-24"
+  verified_on: "2026-08-26"
   full_text_read: false
   authors:
     - "Levin Michael"
@@ -25,7 +44,7 @@ levin2018:
   volume: "164"
   pages: "76-93"
   registry: "crossref"
-  verified_on: "2026-07-24"
+  verified_on: "2026-08-26"
   full_text_read: false
   authors:
     - "Levin Michael"

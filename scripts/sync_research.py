@@ -133,7 +133,7 @@ def render_claims(claims):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument('--research', default=str(Path.home() / 'Sites' / 'research'),
+    ap.add_argument('--research', default=str(Path.home() / 'Sites' / 'audio-projects' / 'research'),
                     help='path to a polarizetech/research checkout')
     ap.add_argument('--drafts', action='store_true', help='include _drafts/')
     ap.add_argument('--check', action='store_true',
