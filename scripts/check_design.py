@@ -27,6 +27,11 @@ by hand (design/CLAUDE.md, operator 2026-08-19/20):
   RULE 6  The vendored copy is not edited. design/ must match the monorepo
           byte for byte, or it is a fork nobody is maintaining.
 
+  RULE 8  Stylesheets are cache-busted. GitHub Pages caches on the URL, so a
+          deploy that keeps /styles.css unchanged serves a returning visitor the
+          PREVIOUS stylesheet against the current HTML. That happened on
+          2026-08-31 and presented as a broken layout, not as a cache problem.
+
   RULE 7  A tier badge carries a word AND a glyph, never colour alone — the
           five epistemic families fail an all-pairs colour-blindness check.
 
@@ -116,6 +121,16 @@ def main():
         for fam in ('measured', 'predicted', 'exploring', 'spec'):
             if fam not in t:
                 fail(7, f'tier.html never maps to the "{fam}" family')
+
+    # ---- RULE 8 — the stylesheet URL changes when the deploy does ---------
+    layout = (SITE / '_layouts' / 'default.html').read_text()
+    for asset in ('design.css', 'styles.css'):
+        line = next((l for l in layout.splitlines() if asset in l and 'rel="stylesheet"' in l), None)
+        if line is None:
+            fail(8, f'{asset} is not linked from _layouts/default.html')
+        elif '?v=' not in line:
+            fail(8, f'{asset} is linked without ?v= — a returning visitor will get '
+                    f'the previous deploy\'s stylesheet against this HTML')
 
     for f in FAILS:
         print(f'FAIL  {f}', file=sys.stderr)
