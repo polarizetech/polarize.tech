@@ -13,6 +13,9 @@ claims:
 citations:
   - levin2014
   - levin2018
+citation_notes:
+  - levin2014 >> Cited only as work that exists. Its full text has not been read here, so nothing on this page says what it found.
+  - levin2018 >> Same standing — the badge on the entry, not this line, is the record of that.
 ---
 
 This is a placeholder. It exists so the machinery has something to chew on — but

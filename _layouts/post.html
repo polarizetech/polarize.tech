@@ -4,30 +4,41 @@ layout: default
 <article class="post">
 
   <header class="post__head">
-    <p class="kicker">
+    <p class="ui-label">
       {{ page.date | date: "%B %-d, %Y" }}
       {%- if page.project %} · {{ page.project }}{% endif %}
     </p>
-    <h1 class="post__title">{{ page.title }}</h1>
+    <h1 class="ui-display ui-display--1">{{ page.title }}</h1>
     {%- if page.description %}
-    <p class="post__lede">{{ page.description }}</p>
+    <p class="ui-standfirst">{{ page.description }}</p>
     {%- endif %}
 
     <ul class="post__badges">
-      <li class="badge badge--tier badge--tier-{{ page.tier | downcase }}"
-          title="Confidence tier — computed in polarizetech/research, never asserted here">
-        Tier {{ page.tier }}
-      </li>
+      <li>{% include tier.html tier=page.tier %}</li>
       {%- if page.citations %}
-      <li class="badge" title="Citations, all resolved against Crossref or PubMed">
+      <li><span class="ui-pill" title="Citations, all resolved against Crossref or PubMed">
         {{ page.citations | size }} resolved source{% if page.citations.size != 1 %}s{% endif %}
-      </li>
+      </span></li>
       {%- endif %}
       {%- for c in page.claims %}
-      <li class="badge badge--claim" title="Formal claim in polarizetech/research">{{ c }}</li>
+      <li><span class="ui-pill" title="Formal claim in polarizetech/research">{{ c }}</span></li>
       {%- endfor %}
     </ul>
   </header>
+
+  {%- if page.summary %}
+  <section class="post__summary" aria-label="In short">
+    <h2 class="post__summary-title ui-label">In short</h2>
+    <div class="post__summary-body">{{ page.summary | markdownify }}</div>
+  </section>
+  {%- endif %}
+
+  {%- if page.audio %}
+  <section class="post__audio" aria-label="Author audio">
+    <p class="post__audio-label ui-label">The author, on this post</p>
+    <audio controls preload="none" src="{{ page.audio | relative_url }}"></audio>
+  </section>
+  {%- endif %}
 
   <div class="prose">
     {{ content }}
@@ -42,7 +53,7 @@ layout: default
       <li class="claims__item">
         <span class="claims__id">{{ id }}</span>
         {%- if c -%}
-        <span class="claims__tier">Tier {{ c.tier }}</span>
+        {% include tier.html tier=c.tier %}
         <span class="claims__stmt">{{ c.statement }}</span>
         {%- else -%}
         <span class="claims__stmt claims__stmt--broken">NOT IN CLAIM INDEX — this post must not be published.</span>
@@ -60,7 +71,7 @@ layout: default
   {% include references.html %}
 
   <nav class="post__foot">
-    <a class="btn btn--ghost" href="{{ '/blog/' | relative_url }}">← All research</a>
+    <a class="ui-btn" href="{{ '/blog/' | relative_url }}">← All research</a>
   </nav>
 
 </article>

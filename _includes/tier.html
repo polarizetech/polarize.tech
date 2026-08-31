@@ -1,0 +1,23 @@
+{%- comment -%}
+  A tier badge, in the monorepo design system's epistemic vocabulary
+  (design/tokens.json → epistemic.tiers). Colour is NEVER load-bearing: every
+  badge ships a glyph and a word alongside it, because the five families fail
+  an all-pairs colour-blindness check past three slots.
+
+  A, B, C and SPEC are the site's own ladder; they map onto the shared families
+  measured / predicted / exploring / spec.
+
+  Usage: {% include tier.html tier=page.tier %}
+{%- endcomment -%}
+{%- assign t = include.tier | upcase -%}
+{%- case t -%}
+  {%- when 'A'    %}{% assign fam = 'measured'  %}{% assign glyph = '◆' %}
+  {%- when 'B'    %}{% assign fam = 'predicted' %}{% assign glyph = '▲' %}
+  {%- when 'C'    %}{% assign fam = 'exploring' %}{% assign glyph = '●' %}
+  {%- when 'SPEC' %}{% assign fam = 'spec'      %}{% assign glyph = '◇' %}
+  {%- else        %}{% assign fam = 'refuted'   %}{% assign glyph = '✕' %}
+{%- endcase -%}
+<span class="ui-tier" data-family="{{ fam }}"
+      title="Confidence tier — computed in polarizetech/research, never asserted here">
+  <span class="ui-tier__glyph" aria-hidden="true">{{ glyph }}</span>[{{ t }}]
+</span>

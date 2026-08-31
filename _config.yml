@@ -28,6 +28,29 @@ plugins:
 feed:
   path: /blog/feed.xml
 
+# Human labels for the `project:` front-matter key. This is the only place a
+# project's display name and blurb are written; the homepage and the blog index
+# both read from here, so a topic cannot be named two different things.
+# NOT a citation surface — nothing here is machine-resolved, and nothing here
+# may assert a finding.
+projects:
+  audio-evoked-potentials:
+    label: "Audio-evoked potentials"
+    blurb: >-
+      Whether a designed acoustic protocol can put a specified structure into a
+      recorded evoked response — and what a $70 amplifier can and cannot hear.
+  bioem-propagation:
+    label: "Bioelectromagnetic propagation"
+    blurb: >-
+      What carries a biological signal out of a body and through the world — and
+      what it takes to read it once it is out there.
+  method:
+    label: "Method"
+    blurb: >-
+      How the work is done: build first and narrow later, kill conditions written
+      before the measurement, and the difference between a closed door and a
+      closed question.
+
 defaults:
   - scope:
       path: ""

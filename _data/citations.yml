@@ -2,6 +2,37 @@
 # Source: polarizetech/research (machine-verified against Crossref/PubMed).
 # Regenerate: python3 scripts/sync_research.py
 
+blakemore1975:
+  doi: "10.1126/science.170679"
+  first_author: "Blakemore"
+  year: "1975"
+  title: "Magnetotactic Bacteria"
+  journal: "Science"
+  volume: "190"
+  pages: "377-379"
+  registry: "crossref"
+  verified_on: "2026-08-31"
+  full_text_read: false
+  authors:
+    - "Blakemore Richard"
+
+clarke2013:
+  doi: "10.1126/science.1230883"
+  first_author: "Clarke"
+  year: "2013"
+  title: "Detection and Learning of Floral Electric Fields by Bumblebees"
+  journal: "Science"
+  volume: "340"
+  pages: "66-69"
+  registry: "crossref"
+  verified_on: "2026-08-31"
+  full_text_read: false
+  authors:
+    - "Clarke Dominic"
+    - "Whitney Heather"
+    - "Sutton Gregory"
+    - "Robert Daniel"
+
 goldwyn2014:
   doi: "10.1523/JNEUROSCI.0175-14.2014"
   pmid: "25164666"
@@ -12,7 +43,7 @@ goldwyn2014:
   volume: "34"
   pages: "11705-11722"
   registry: "crossref"
-  verified_on: "2026-08-26"
+  verified_on: "2026-08-31"
   full_text_read: false
   authors:
     - "Goldwyn Joshua H."
@@ -31,7 +62,7 @@ iaccarino2016:
   volume: "540"
   pages: "230-235"
   registry: "crossref"
-  verified_on: "2026-08-26"
+  verified_on: "2026-08-31"
   full_text_read: false
   authors:
     - "Iaccarino Hunter F."
@@ -51,6 +82,20 @@ iaccarino2016:
     - "Boyden Edward S."
     - "Tsai Li-Huei"
 
+kalmijn1971:
+  doi: "10.1242/jeb.55.2.371"
+  first_author: "Kalmijn"
+  year: "1971"
+  title: "The Electric Sense of Sharks and Rays"
+  journal: "Journal of Experimental Biology"
+  volume: "55"
+  pages: "371-383"
+  registry: "crossref"
+  verified_on: "2026-08-31"
+  full_text_read: false
+  authors:
+    - "Kalmijn A. J."
+
 levin2014:
   doi: "10.1091/mbc.e13-12-0708"
   first_author: "Levin"
@@ -60,7 +105,7 @@ levin2014:
   volume: "25"
   pages: "3835-3850"
   registry: "crossref"
-  verified_on: "2026-08-26"
+  verified_on: "2026-08-31"
   full_text_read: false
   authors:
     - "Levin Michael"
@@ -74,7 +119,7 @@ levin2018:
   volume: "164"
   pages: "76-93"
   registry: "crossref"
-  verified_on: "2026-08-26"
+  verified_on: "2026-08-31"
   full_text_read: false
   authors:
     - "Levin Michael"
@@ -90,7 +135,7 @@ martorell2019:
   volume: "177"
   pages: "256-271.e22"
   registry: "crossref"
-  verified_on: "2026-08-26"
+  verified_on: "2026-08-31"
   full_text_read: false
   authors:
     - "Martorell Anthony J."
@@ -110,3 +155,129 @@ martorell2019:
     - "Boyden Edward S."
     - "Singer Annabelle C."
     - "Tsai Li-Huei"
+
+morley2018:
+  doi: "10.1016/j.cub.2018.05.057"
+  first_author: "Morley"
+  year: "2018"
+  title: "Electric Fields Elicit Ballooning in Spiders"
+  journal: "Current Biology"
+  volume: "28"
+  pages: "2324-2330.e2"
+  registry: "crossref"
+  verified_on: "2026-08-31"
+  full_text_read: false
+  authors:
+    - "Morley Erica L."
+    - "Robert Daniel"
+
+ortegajimenez2013:
+  doi: "10.1038/srep02108"
+  first_author: "Ortega-Jimenez"
+  year: "2013"
+  title: "Spiderweb deformation induced by electrostatically charged insects"
+  journal: "Scientific Reports"
+  volume: "3"
+  registry: "crossref"
+  verified_on: "2026-08-31"
+  full_text_read: false
+  authors:
+    - "Ortega-Jimenez Victor Manuel"
+    - "Dudley Robert"
+
+pfeffer2012:
+  doi: "10.1038/nature11586"
+  first_author: "Pfeffer"
+  year: "2012"
+  title: "Filamentous bacteria transport electrons over centimetre distances"
+  journal: "Nature"
+  volume: "491"
+  pages: "218-221"
+  registry: "crossref"
+  verified_on: "2026-08-31"
+  full_text_read: false
+  authors:
+    - "Pfeffer Christian"
+    - "Larsen Steffen"
+    - "Song Jie"
+    - "Dong Mingdong"
+    - "Besenbacher Flemming"
+    - "Meyer Rikke Louise"
+    - "Kjeldsen Kasper Urup"
+    - "Schreiber Lars"
+    - "Gorby Yuri A."
+    - "El-Naggar Mohamed Y."
+    - "Leung Kar Man"
+    - "Schramm Andreas"
+    - "Risgaard-Petersen Nils"
+    - "Nielsen Lars Peter"
+
+toyota2018:
+  doi: "10.1126/science.aat7744"
+  first_author: "Toyota"
+  year: "2018"
+  title: "Glutamate triggers long-distance, calcium-based plant defense signaling"
+  journal: "Science"
+  volume: "361"
+  pages: "1112-1115"
+  registry: "crossref"
+  verified_on: "2026-08-31"
+  full_text_read: false
+  authors:
+    - "Toyota Masatsugu"
+    - "Spencer Dirk"
+    - "Sawai-Toyota Satoe"
+    - "Jiaqi Wang"
+    - "Zhang Tong"
+    - "Koo Abraham J."
+    - "Howe Gregg A."
+    - "Gilroy Simon"
+
+xu2021:
+  doi: "10.1038/s41586-021-03618-9"
+  first_author: "Xu"
+  year: "2021"
+  title: "Magnetic sensitivity of cryptochrome 4 from a migratory songbird"
+  journal: "Nature"
+  volume: "594"
+  pages: "535-540"
+  registry: "crossref"
+  verified_on: "2026-08-31"
+  full_text_read: false
+  authors:
+    - "Xu Jingjing"
+    - "Jarocha Lauren E."
+    - "Zollitsch Tilo"
+    - "Konowalczyk Marcin"
+    - "Henbest Kevin B."
+    - "Richert Sabine"
+    - "Golesworthy Matthew J."
+    - "Schmidt Jessica"
+    - "Déjean Victoire"
+    - "Sowood Daniel J. C."
+    - "Bassetto Marco"
+    - "Luo Jiate"
+    - "Walton Jessica R."
+    - "Fleming Jessica"
+    - "Wei Yujing"
+    - "Pitcher Tommy L."
+    - "Moise Gabriel"
+    - "Herrmann Maike"
+    - "Yin Hang"
+    - "Wu Haijia"
+    - "Bartölke Rabea"
+    - "Käsehagen Stefanie J."
+    - "Horst Simon"
+    - "Dautaj Glen"
+    - "Murton Patrick D. F."
+    - "Gehrckens Angela S."
+    - "Chelliah Yogarany"
+    - "Takahashi Joseph S."
+    - "Koch Karl-Wilhelm"
+    - "Weber Stefan"
+    - "Solov’yov Ilia A."
+    - "Xie Can"
+    - "Mackenzie Stuart R."
+    - "Timmel Christiane R."
+    - "Mouritsen Henrik"
+    - "Hore P. J."

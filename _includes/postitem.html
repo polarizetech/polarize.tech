@@ -1,0 +1,24 @@
+{%- comment -%}
+  One row in a post list. Used by the homepage ("From the research notes") and
+  by /blog/, so the two cannot drift apart.
+
+  Usage: {% include postitem.html post=post %}
+{%- endcomment -%}
+{%- assign p = include.post -%}
+{%- assign proj = site.projects[p.project] -%}
+<li class="postlist__item">
+  <a class="postlist__link" href="{{ p.url | relative_url }}">
+    <span class="postlist__date">{{ p.date | date: "%Y-%m-%d" }}</span>
+    <span class="postlist__body">
+      <span class="postlist__title">{{ p.title }}</span>
+      {%- if p.description %}
+      <span class="postlist__desc">{{ p.description }}</span>
+      {%- endif %}
+    </span>
+    <span class="postlist__meta">
+      {%- if proj %}<span class="ui-pill">{{ proj.label }}</span>{% endif -%}
+      {%- include tier.html tier=p.tier -%}
+      {%- if p.citations and p.citations.size > 0 %}<span class="ui-pill">{{ p.citations | size }} src</span>{% endif -%}
+    </span>
+  </a>
+</li>

@@ -17,16 +17,19 @@ everything on this site, and an error must not be able to survive a commit.
 
 | Path | What it is |
 |---|---|
-| `index.html`, `app.js` | The original one-page site. Plain HTML, no front matter — Jekyll copies it verbatim. **Don't Jekyll-ify it.** |
-| `styles.css` | One stylesheet for everything. Blog styles are appended at the bottom under the "DOCUMENT PAGES" banner. |
-| `blog/index.html` | Post index. |
+| `index.html`, `app.js` | The homepage. Keeps its own `<head>` and hand-built markup — **no layout, and the design is never templated away.** It carries `layout: null` front matter for one reason only: so Liquid runs and the page can list *real* posts instead of hand-maintained links. Adding Liquid beyond the post list and shared includes is out of scope. |
+| `design/` | **Vendored, never edited.** A verbatim copy of the monorepo's shared design system (`polarizetech/audio-projects` → `tools/design`, theme INSTRUMENT): `design.css` generated from `tokens.json`, the self-hosted Instrument Serif / Inter / IBM Plex Mono faces, and the icon sprite. Update by re-copying; `scripts/check_design.py` fails if this copy has drifted. |
+| `styles.css` | The **project layer only** — what a research blog needs and `design/` does not already provide. No hex literals, no font stacks, no palette: everything is a token. |
+| `blog/index.html` | Post index — flat and chronological. |
 | `_posts/` | Published posts. `YYYY-MM-DD-slug.md`. |
 | `_drafts/` | Work in progress. Never deployed. |
-| `_layouts/`, `_includes/` | Shell, post layout, `cite.html`, `references.html`. |
+| `_layouts/`, `_includes/` | Shell, post layout, `cite.html`, `references.html`, `ai-disclosure.html`, `postitem.html`. |
+| `_config.yml` → `projects:` | Hand-written display labels for the `project:` front-matter key, shown as a badge on each post row. **Not a citation surface** — nothing in it is machine-resolved, and nothing in it may assert a finding. A post whose `project:` has no entry here still lists normally, just without the badge. |
 | `_data/citations.yml` | **Generated.** Bibliography, machine-copied from the research ledger. |
 | `_data/claims.yml` | **Generated.** Claim tiers + statements from the research repo. |
 | `scripts/sync_research.py` | The only path by which research data enters this repo. |
 | `scripts/validate_posts.py` | The publication gate. |
+| `scripts/check_design.py` | The design gate — no CDN, never-bold, uppercase-is-mono, never-tracked-sans, no raw colour, vendored copy untouched, and a tier badge that carries a glyph as well as a hue. |
 
 GitHub Pages builds this repo with its own Jekyll. **No custom plugins are
 possible** — that is why citations are a Liquid include and not a `{% cite %}` tag.
@@ -50,6 +53,31 @@ possible** — that is why citations are a Liquid include and not a `{% cite %}`
 - **Abstract ≠ paper.** If `full_text_read` is false for a source, you may cite it
   as existing, but you may **not** state what it found, measured, or concluded.
 - **Nothing is deleted.** Corrections are amended in place with a dated note.
+
+---
+
+## Design — the rules that come with the system
+
+The look is **not decided here.** It comes from the monorepo's shared design
+system, vendored under `design/`. Its own `CLAUDE.md` is the authority; these are
+the rules easiest to break from this repo, and `scripts/check_design.py` enforces
+each one:
+
+- **Three type roles, no others.** Instrument Serif for headings (`.ui-display`,
+  **never uppercased**), Inter for running text, uppercase IBM Plex Mono for
+  labels (`.ui-label`). **Uppercase is always the mono face.**
+- **The sans is never bold and never tracked.** Hierarchy comes from size, face,
+  colour and case. `font-weight: 600` and above exists only inside `@font-face`.
+- **No hex in `styles.css`.** Every colour is a token; light and dark both come
+  from `design.css`'s three-state root for free.
+- **No CDN, ever.** All three faces are self-hosted under `design/fonts/` with
+  their OFL texts. A network font also breaks the monorepo's offline rule.
+- **A tier badge carries a word and a glyph, never a hue alone** — the five
+  epistemic families fail an all-pairs colour-blindness check past three slots.
+  Render tiers with `{% include tier.html tier=... %}`, never by hand.
+- **A label may never be hidden; its explanation must be.** The tier badge, the
+  numbers and the units stay inline. The prose explaining them goes in a
+  `<details>` drawer — which is exactly what `ai-disclosure.html` is.
 
 ---
 

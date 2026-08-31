@@ -23,7 +23,7 @@ portable EEG hardware for a living. The ask is at the bottom and it's small.
 
 ## The rig
 
-A single-channel Olimex SHIELD-EKG-EMG on an Arduino. **Active Oz, reference Cz, ground
+A single-channel Olimex SHIELD-EKG/EMG on an Arduino. **Active Oz, reference Cz, ground
 mastoid** — a posterior montage chosen for alpha. 250 Hz sampling, 10-bit ADC at roughly
 7.9 µV per count, and a **~40 Hz analog low-pass**. Closed-back headphones. Python doing
 Welch PSD with FOOOF for aperiodic separation, and Web Audio generating the stimulus, so
@@ -43,7 +43,7 @@ Here's the actual landscape, checked 2026-08-25:
 
 | | channels | price |
 |---|---|---|
-| Olimex SHIELD-EKG-EMG *(what I have)* | 1 | **€19.95** |
+| Olimex SHIELD-EKG/EMG *(what I have)* | 1 | **€19.95** |
 | Olimex EEG-SMT | 2 | €99.00 |
 | OpenBCI Cyton | 8 | $1,759 |
 | OpenBCI Cyton + Daisy | 16 | $3,518 |

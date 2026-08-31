@@ -6,7 +6,7 @@
 {%- endcomment -%}
 {%- if page.citations and page.citations.size > 0 -%}
 <section class="refs" id="references">
-  <h2 class="refs__title">References</h2>
+  <h2 class="ui-display ui-display--3 refs__title">The sources, in the order the argument uses them</h2>
   <ol class="refs__list">
     {%- for k in page.citations -%}
     {%- assign r = site.data.citations[k] -%}
@@ -27,6 +27,17 @@
         </span>
         {%- if r.full_text_read == true %}<span class="refs__ft">full text read</span>{% endif -%}
       </span>
+      {%- comment -%} What this source contributes: author-written, per post, as
+          `key >> note`. The
+        bibliographic record above stays machine-resolved. {%- endcomment -%}
+      {%- for n in page.citation_notes -%}
+        {%- assign parts = n | split: " >> " -%}
+        {%- assign note_key = parts | first -%}
+        {%- assign note_txt = parts | last -%}
+        {%- if note_key == k and note_txt != note_key -%}
+        <p class="refs__why">{{ note_txt }}</p>
+        {%- endif -%}
+      {%- endfor -%}
       {%- else -%}
       <span class="refs__key refs__key--broken">{{ k }}</span>
       <span class="refs__ttl">NOT IN LEDGER — this post must not be published.</span>
@@ -38,6 +49,9 @@
     Every entry above was resolved against Crossref or PubMed by
     <code>polarizetech/research</code> and copied here by machine. Citations are
     referenced by key; no author, year or DOI on this page was typed by hand.
+      They appear in the order the argument uses them, not alphabetically. Any line
+      describing <em>what a source contributes</em> is the author's summary — the
+      bibliographic record above it is not.
   </p>
 </section>
 {%- endif -%}

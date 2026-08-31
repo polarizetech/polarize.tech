@@ -1,15 +1,22 @@
+---
+# Front matter is here ONLY so Liquid runs and this page can list real
+# posts. The page keeps its own <head> and markup — it does not use a
+# layout, and nothing about the hand-built design is templated away.
+layout: null
+sitemap: true
+---
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>POLARIZE — The Hidden Electricity of Life</title>
-  <meta name="description" content="Every living cell hums with electricity. Explore bioelectricity and the phenomenon of membrane polarization — the silent voltage that powers thought, movement, and life itself." />
-  <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
-  <link href="https://api.fontshare.com/v2/css?f[]=familjen-grotesk@400,500,600,700&display=swap" rel="stylesheet" />
+  <title>POLARIZE — Reading and Writing the Body Electric</title>
+  <meta name="description" content="A working bench for the translation layer between external instruments and the body's own bioelectric signalling: scalp EEG, magnetometry, and audio-evoked potentials. Falsification-first, citation-gated, and open about what the instruments cannot hear." />
+  <link rel="stylesheet" href="design/design.css" />
   <link rel="stylesheet" href="styles.css" />
+  <script type="module" src="design/design.js"></script>
 </head>
-<body>
+<body class="ui">
 
   <!-- ===== NAV ===== -->
   <header class="nav">
@@ -17,162 +24,57 @@
       <span class="brand__mark"></span>
       <span class="brand__word">POLARIZE</span>
     </a>
-    <nav class="nav__links">
-      <a href="#concept">The Concept</a>
-      <a href="#demo">The Cell</a>
-      <a href="#signal">The Signal</a>
-      <a href="#scale">Why It Matters</a>
-      <a href="/blog/">Research</a>
-    </nav>
   </header>
 
   <!-- ===== HERO ===== -->
+  <!-- Copy rule for this block: it may describe the bench and the questions, and
+       it may state textbook physiology. It may NOT report a result. Nothing on
+       this program has been established, so nothing here claims one. -->
   <section class="hero" id="top">
     <canvas class="hero__canvas" id="heroCanvas" aria-hidden="true"></canvas>
     <div class="hero__vignette"></div>
     <div class="hero__inner">
-      <p class="kicker">Bioelectricity · A Field Guide to the Living Current</p>
-      <h1 class="hero__title">The Electric<br /><em>Spark</em> of Life</h1>
+      <h1 class="ui-display ui-display--1">Reading and writing the <em>body electric</em></h1>
       <p class="hero__lede">
-        Long before the first nerve fired, life learned to speak in voltage.
-        Every cell in your body holds a charge across its membrane — a tiny,
-        relentless battery called <strong>polarization</strong>. This is the
-        story of that current.
+        Every cell holds a charge across its membrane, and the body leaks that
+        voltage outward — to the scalp, to the skin, into the magnetic field
+        around it. This is a working bench for the
+        <strong>translation layer</strong>: what it takes to read those signals
+        with instruments anyone can buy, and whether anything can deliberately
+        be written back.
       </p>
+
       <div class="hero__cta">
-        <a class="btn btn--gold" href="#demo">Enter the Cell</a>
-        <a class="btn btn--ghost" href="#concept">What is bioelectricity?</a>
+        <a class="ui-btn ui-btn--primary" href="#notes">Read the research notes</a>
       </div>
-    </div>
-    <div class="hero__scroll">Scroll to explore</div>
-  </section>
-
-  <!-- ===== CONCEPT ===== -->
-  <section class="section concept" id="concept">
-    <div class="section__rail">01 — The Concept</div>
-    <div class="concept__grid">
-      <div class="concept__lead">
-        <h2 class="h2">A battery in every cell.</h2>
-        <p>
-          A living cell is wrapped in a fatty membrane just two molecules thick.
-          That membrane is a wall — and a gatekeeper. It carefully sorts
-          electrically charged particles called <strong>ions</strong>, keeping
-          some out and locking others in.
-        </p>
-        <p>
-          The result is a difference in charge between the inside and outside of
-          the cell: the <strong>membrane potential</strong>. The cell is
-          <em>polarized</em>. It is, quite literally, charged — holding roughly
-          <span class="data">−70 millivolts</span> at rest, the same order of
-          magnitude as a bolt of lightning packed into a space a million times
-          thinner than a human hair.
-        </p>
-      </div>
-      <ul class="stat-cards">
-        <li class="stat-card">
-          <span class="stat-card__num">−70<small>mV</small></span>
-          <span class="stat-card__label">Resting potential of a typical neuron</span>
-        </li>
-        <li class="stat-card">
-          <span class="stat-card__num">5<small>nm</small></span>
-          <span class="stat-card__label">Thickness of the cell membrane</span>
-        </li>
-        <li class="stat-card">
-          <span class="stat-card__num">100<small>m/s</small></span>
-          <span class="stat-card__label">Speed of a nerve impulse</span>
-        </li>
-      </ul>
     </div>
   </section>
 
-  <!-- ===== INTERACTIVE DEMO: POLARIZATION ===== -->
-  <section class="section demo" id="demo">
-    <div class="section__rail">02 — Polarization, Live</div>
-    <div class="demo__head">
-      <h2 class="h2">Watch a cell <em>fire</em>.</h2>
-      <p>
-        Below is a slice of a living membrane. Positive sodium ions
-        <span class="legend legend--na">Na⁺</span> crowd the outside; the inside
-        is held negative. Press <strong>Stimulate</strong> and watch a wave of
-        <strong>depolarization</strong> sweep across — gates fling open, ions
-        flood in, and the cell's voltage flips in a fraction of a millisecond.
+  <!-- ===== FROM THE RESEARCH NOTES ===== -->
+  <section class="section notes" id="notes">
+    <div class="section__rail ui-label">01 — From the Research Notes</div>
+    <div class="notes__head">
+      <h2 class="ui-display ui-display--2">Written down so it can be <em>wrong</em>.</h2>
+      <p class="notes__lede">
+        Working notes from an ongoing research program. Every source is resolved
+        against Crossref or PubMed by machine before it appears here, every post
+        carries a computed confidence tier, and every claim states the conditions
+        under which it would be false.
       </p>
     </div>
 
-    <div class="stage">
-      <canvas id="membraneCanvas" class="stage__canvas"></canvas>
-      <div class="stage__voltbadge">
-        <span class="stage__voltlabel">Membrane potential</span>
-        <span class="stage__voltval" id="voltReadout">−70 mV</span>
-      </div>
-    </div>
+    <ul class="postlist">
+      {%- for post in site.posts limit: 4 %}
+      {%- include postitem.html post=post %}
+      {%- else %}
+      <li class="postlist__item postlist__item--empty">Nothing published yet.</li>
+      {%- endfor %}
+    </ul>
 
-    <div class="demo__controls">
-      <button class="btn btn--gold" id="stimulateBtn">⚡ Stimulate</button>
-      <button class="btn btn--ghost" id="autoBtn">Auto-pulse: Off</button>
-      <div class="legend-row">
-        <span class="legend legend--na">Na⁺ Sodium</span>
-        <span class="legend legend--k">K⁺ Potassium</span>
-        <span class="legend legend--neg">Anion −</span>
-      </div>
-    </div>
-
-    <!-- Voltage trace -->
-    <figure class="trace">
-      <figcaption class="trace__cap">The Action Potential — voltage over time</figcaption>
-      <canvas id="traceCanvas" class="trace__canvas"></canvas>
-    </figure>
-  </section>
-
-  <!-- ===== SIGNAL PROPAGATION ===== -->
-  <section class="section signal" id="signal">
-    <div class="section__rail">03 — The Signal Travels</div>
-    <div class="signal__grid">
-      <div class="signal__copy">
-        <h2 class="h2">One spark becomes a message.</h2>
-        <p>
-          A single depolarization doesn't stay put. It triggers its neighbour,
-          which triggers the next — a self-renewing wave racing down the length
-          of a nerve fibre without ever losing strength.
-        </p>
-        <p>
-          This is how a thought leaves your brain and becomes a movement in your
-          hand. Not a flow of electrons through a wire, but a <em>relay of
-          charge</em> leaping from gate to gate through living tissue.
-        </p>
-        <blockquote class="pull">
-          “The body electric is not a metaphor. It is the literal medium of
-          life's fastest conversations.”
-        </blockquote>
-      </div>
-      <div class="signal__viz">
-        <canvas id="axonCanvas" class="signal__canvas"></canvas>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== WHY IT MATTERS ===== -->
-  <section class="section scale" id="scale">
-    <div class="section__rail">04 — Why It Matters</div>
-    <h2 class="h2 scale__title">Voltage shapes life itself.</h2>
-    <div class="scale__grid">
-      <article class="domain">
-        <h3>The Thinking Mind</h3>
-        <p>Eighty-six billion neurons polarize and fire in concert — the electrical symphony we experience as thought, memory, and consciousness.</p>
-      </article>
-      <article class="domain">
-        <h3>The Beating Heart</h3>
-        <p>A wave of depolarization sweeps the heart 100,000 times a day, each pulse a perfectly timed bioelectric command to contract.</p>
-      </article>
-      <article class="domain">
-        <h3>The Healing Body</h3>
-        <p>Wounds generate their own electric fields. Cells read this voltage like a map, navigating toward injury to rebuild what was lost.</p>
-      </article>
-      <article class="domain">
-        <h3>The Blueprint of Form</h3>
-        <p>Emerging science suggests bioelectric patterns help decide where a limb, an eye, or an organ should grow — a code written in charge.</p>
-      </article>
-    </div>
+    <p class="notes__more">
+      <a class="ui-btn" href="{{ '/blog/' | relative_url }}">All research notes</a>
+      <a class="notes__feed ui-label" href="{{ '/blog/feed.xml' | relative_url }}">RSS</a>
+    </p>
   </section>
 
   <!-- ===== FOOTER ===== -->
@@ -182,7 +84,8 @@
       <span class="brand__word">POLARIZE</span>
     </div>
     <p class="footer__tag">The hidden electricity of life.</p>
-    <p class="footer__fine">An educational exploration of bioelectricity &amp; cellular polarization · polarize.tech</p>
+    {% include ai-disclosure.html %}
+    <p class="footer__fine ui-label">An ongoing, falsification-first research program on bioelectric sensing &amp; stimulation · polarize.tech</p>
   </footer>
 
   <script src="app.js"></script>
