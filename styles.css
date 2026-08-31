@@ -154,15 +154,19 @@ body.ui { margin: 0; }
 .postlist { list-style: none; margin: 0; padding: 0; }
 .postlist__item { border-bottom: 1px solid var(--border); }
 .postlist__item--empty { padding: var(--space-6) 0; color: var(--faint-foreground); }
+/* Two columns, not three. The main column is ~600px next to the sidebar, and a
+   third column for the badges left the title wrapping at ~200px. The badges sit
+   under the description instead. */
 .postlist__link {
   display: grid;
-  grid-template-columns: 7rem 1fr auto;
-  gap: var(--space-5);
+  grid-template-columns: 6rem minmax(0, 1fr);
+  gap: var(--space-2) var(--space-4);
   align-items: baseline;
-  padding: clamp(var(--space-4), 2.2vh, var(--space-5)) 0;
+  padding: var(--space-5) 0;
   text-decoration: none;
   transition: opacity var(--motion-base) ease;
 }
+.postlist__body { grid-column: 2; }
 .postlist__link:hover { opacity: .7; }
 .postlist__date {
   font-family: var(--font-mono);
@@ -179,12 +183,19 @@ body.ui { margin: 0; }
   color: var(--foreground);
   margin-bottom: var(--space-1);
 }
-.postlist__desc { display: block; font-size: var(--text-base); line-height: 1.55; color: var(--muted-foreground); }
-.postlist__meta { display: flex; gap: var(--space-2); flex-wrap: wrap; justify-content: flex-end; }
+.postlist__desc { display: block; font-size: var(--text-base); line-height: 1.6; color: var(--muted-foreground); max-width: 62ch; }
+.postlist__meta {
+  grid-column: 2;
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: var(--space-1);
+}
 
 @media (max-width: 680px) {
-  .postlist__link { grid-template-columns: 1fr; gap: var(--space-2); }
-  .postlist__meta { justify-content: flex-start; }
+  .postlist__link { grid-template-columns: 1fr; }
+  .postlist__body, .postlist__meta { grid-column: 1; }
 }
 
 /* ---------- Post ---------- */
