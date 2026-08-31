@@ -17,13 +17,14 @@ everything on this site, and an error must not be able to survive a commit.
 
 | Path | What it is |
 |---|---|
-| `index.html`, `app.js` | The homepage. Keeps its own `<head>` and hand-built markup — **no layout, and the design is never templated away.** It carries `layout: null` front matter for one reason only: so Liquid runs and the page can list *real* posts instead of hand-maintained links. Adding Liquid beyond the post list and shared includes is out of scope. |
+| `index.html` | The home page — **now a normal Jekyll page** (`layout: home`), not a standalone file. It is the paginated post list. The hand-built one-pager, its hero canvas and `app.js` were removed on 2026-08-31 when the site became a blog; the earlier "don't Jekyll-ify it" rule died with the page it protected. |
+| `_layouts/`, `_includes/` | `default.html` is the sidebar + main shell. `sidebar.html` (brand, author note, topics, RSS/GitHub), `postlist.html`, `postitem.html`, `tier.html`, `cite.html`, `references.html`. |
+| `blog/topics/*.html` | One page per `project:`. **Written by hand because GitHub Pages runs no plugin that can generate them** — `jekyll-paginate` v1 is the only paginator available and it paginates the root index and nothing else. Add a page whenever you add a project. |
 | `design/` | **Vendored, never edited.** A verbatim copy of the monorepo's shared design system (`polarizetech/audio-projects` → `tools/design`, theme INSTRUMENT): `design.css` generated from `tokens.json`, the self-hosted Instrument Serif / Inter / IBM Plex Mono faces, and the icon sprite. Update by re-copying; `scripts/check_design.py` fails if this copy has drifted. |
 | `styles.css` | The **project layer only** — what a research blog needs and `design/` does not already provide. No hex literals, no font stacks, no palette: everything is a token. |
-| `blog/index.html` | Post index — flat and chronological. |
+| `blog/index.html` | Every post, unpaginated — the home page shows the same list a page at a time. |
 | `_posts/` | Published posts. `YYYY-MM-DD-slug.md`. |
 | `_drafts/` | Work in progress. Never deployed. |
-| `_layouts/`, `_includes/` | Shell, post layout, `cite.html`, `references.html`, `ai-disclosure.html`, `postitem.html`. |
 | `_config.yml` → `projects:` | Hand-written display labels for the `project:` front-matter key, shown as a badge on each post row. **Not a citation surface** — nothing in it is machine-resolved, and nothing in it may assert a finding. A post whose `project:` has no entry here still lists normally, just without the badge. |
 | `_data/citations.yml` | **Generated.** Bibliography, machine-copied from the research ledger. |
 | `_data/claims.yml` | **Generated.** Claim tiers + statements from the research repo. |

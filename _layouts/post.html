@@ -6,7 +6,8 @@ layout: default
   <header class="post__head">
     <p class="ui-label">
       {{ page.date | date: "%B %-d, %Y" }}
-      {%- if page.project %} · {{ page.project }}{% endif %}
+      {%- assign proj = site.projects[page.project] %}
+      {%- if proj %} · <a class="post__topic" href="{{ '/blog/topics/' | append: page.project | append: '/' | relative_url }}">{{ proj.label }}</a>{% endif %}
     </p>
     <h1 class="ui-display ui-display--1">{{ page.title }}</h1>
     {%- if page.description %}

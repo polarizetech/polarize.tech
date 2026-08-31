@@ -2,35 +2,18 @@
 layout: default
 title: Research
 description: >-
-  Working notes on audio-evoked potentials, bioelectricity, neuroscience and
-  neuromedicine — published under a falsification-first citation protocol.
+  Every post, newest first — audio-evoked potentials, bioelectromagnetic
+  propagation, and the method behind both.
 ---
 
 <header class="doc__head">
-  <p class="ui-label">Research Notes</p>
-  <h1 class="ui-display ui-display--1">Written down so it can be <em>wrong</em>.</h1>
+  <h1 class="ui-display ui-display--2">Everything, newest first.</h1>
   <p class="doc__lede">
-    These are working notes from an ongoing research program on audio-evoked
-    potentials and the bioelectric substrate they act on. Every source here was
-    resolved against Crossref or PubMed by machine before publication, every
-    claim carries a computed confidence tier, and every claim states the
-    conditions under which it would be false.
+    The home page shows these a page at a time. This is the whole list.
   </p>
 </header>
 
-{%- comment -%}
-  Flat and chronological. The topic a post belongs to rides along as a badge on
-  its row (labelled from `projects:` in _config.yml) — there are no per-topic
-  headings, so no post can be hidden by a missing label.
-{%- endcomment -%}
-
-<ul class="postlist">
-  {%- for post in site.posts %}
-  {%- include postitem.html post=post %}
-  {%- else %}
-  <li class="postlist__item postlist__item--empty">Nothing published yet.</li>
-  {%- endfor %}
-</ul>
+{% include postlist.html posts=site.posts %}
 
 <p class="doc__note">
   <a href="{{ '/blog/feed.xml' | relative_url }}">RSS</a> ·

@@ -1,0 +1,19 @@
+---
+layout: default
+title: "Bioelectromagnetic propagation"
+topic: bioem-propagation
+description: >-
+  What carries a biological signal out of a body and through the world — and what it takes to read it once it is out there.
+permalink: /blog/topics/bioem-propagation/
+---
+
+<header class="doc__head">
+  <p class="ui-label">Topic</p>
+  <h1 class="ui-display ui-display--2">{{ page.title }}</h1>
+  <p class="doc__lede">{{ page.description }}</p>
+</header>
+
+{%- assign in_topic = site.posts | where: "project", "bioem-propagation" %}
+{% include postlist.html posts=in_topic %}
+
+<p class="doc__note"><a href="{{ '/blog/' | relative_url }}">← Every post</a></p>

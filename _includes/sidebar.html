@@ -1,0 +1,49 @@
+{%- comment -%}
+  The shell's left column on desktop, stacked above the list on narrow screens.
+  Brand, a short author note, the topic list, and two links at the foot.
+{%- endcomment -%}
+<aside class="side">
+  <a class="brand side__brand" href="{{ '/' | relative_url }}">
+    <span class="brand__mark"></span>
+    <span class="brand__word">POLARIZE</span>
+  </a>
+
+  <p class="side__tagline">Reading and writing the body electric</p>
+
+  {%- if site.author %}
+  <div class="side__bio">
+    {%- if site.author.avatar %}
+    <img class="side__avatar" src="{{ site.author.avatar | relative_url }}"
+         alt="" width="44" height="44" loading="lazy" onerror="this.remove()" />
+    {%- endif %}
+    <p class="side__note">{{ site.author.note }}</p>
+  </div>
+  {%- endif %}
+
+  <nav class="side__topics" aria-label="Topics">
+    <p class="ui-label side__heading">Topics</p>
+    <ul class="side__list">
+      <li>
+        <a class="side__link{% if page.topic == nil and page.url != '/blog/' %} is-current{% endif %}"
+           href="{{ '/' | relative_url }}">All posts
+          <span class="side__count">{{ site.posts | size }}</span></a>
+      </li>
+      {%- for pair in site.projects %}
+      {%- assign slug = pair[0] %}
+      {%- assign in_topic = site.posts | where: "project", slug %}
+      {%- if in_topic.size > 0 %}
+      <li>
+        <a class="side__link{% if page.topic == slug %} is-current{% endif %}"
+           href="{{ '/blog/topics/' | append: slug | append: '/' | relative_url }}">{{ pair[1].label }}
+          <span class="side__count">{{ in_topic.size }}</span></a>
+      </li>
+      {%- endif %}
+      {%- endfor %}
+    </ul>
+  </nav>
+
+  <nav class="side__meta" aria-label="Elsewhere">
+    <a class="side__meta-link" href="{{ '/blog/feed.xml' | relative_url }}">RSS</a>
+    <a class="side__meta-link" href="https://github.com/polarizetech" rel="noopener">GitHub</a>
+  </nav>
+</aside>

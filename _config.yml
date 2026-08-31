@@ -1,5 +1,5 @@
 title: POLARIZE
-tagline: The hidden electricity of life.
+tagline: Reading and writing the body electric
 description: >-
   Research notes on audio-evoked potentials, bioelectricity, neuroscience and
   neuromedicine. Falsification-first, citation-gated.
@@ -24,6 +24,24 @@ kramdown:
 plugins:
   - jekyll-feed
   - jekyll-sitemap
+  - jekyll-paginate
+
+# jekyll-paginate v1 — the only paginator GitHub Pages runs. It paginates the
+# root index.html and nothing else, which is why /blog/ lists everything instead
+# of paginating too.
+paginate: 8
+paginate_path: "/page:num/"
+
+# The sidebar's author note. Kept here rather than in a post so it is written
+# once. `avatar` is optional — the sidebar renders without it.
+author:
+  name: "Josh Anderton"
+  avatar: "/assets/author.jpg"
+  note: >-
+    I build software for a living and came at this from the computer-science
+    side: signals, protocols, and what a measurement can actually support. This
+    is where I work through whether the questions I find interesting survive
+    contact with an instrument.
 
 feed:
   path: /blog/feed.xml

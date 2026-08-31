@@ -1,0 +1,11 @@
+{%- comment -%}
+  The post list. `include.posts` is the collection to render — paginator.posts on
+  the home page, a filtered set on a topic page, site.posts on /blog/.
+{%- endcomment -%}
+<ul class="postlist">
+  {%- for post in include.posts %}
+  {%- include postitem.html post=post %}
+  {%- else %}
+  <li class="postlist__item postlist__item--empty">Nothing published yet.</li>
+  {%- endfor %}
+</ul>

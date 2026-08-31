@@ -1,0 +1,19 @@
+---
+layout: default
+title: "Audio-evoked potentials"
+topic: audio-evoked-potentials
+description: >-
+  Whether a designed acoustic protocol can put a specified structure into a recorded evoked response — and what a $70 amplifier can and cannot hear.
+permalink: /blog/topics/audio-evoked-potentials/
+---
+
+<header class="doc__head">
+  <p class="ui-label">Topic</p>
+  <h1 class="ui-display ui-display--2">{{ page.title }}</h1>
+  <p class="doc__lede">{{ page.description }}</p>
+</header>
+
+{%- assign in_topic = site.posts | where: "project", "audio-evoked-potentials" %}
+{% include postlist.html posts=in_topic %}
+
+<p class="doc__note"><a href="{{ '/blog/' | relative_url }}">← Every post</a></p>

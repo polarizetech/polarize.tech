@@ -1,83 +1,33 @@
 ---
-# Front matter is here ONLY so Liquid runs and this page can list real
-# posts. The page keeps its own <head> and markup — it does not use a
-# layout, and nothing about the hand-built design is templated away.
-layout: null
-sitemap: true
+layout: home
+title: null
+description: >-
+  Working notes on bioelectric sensing and stimulation — audio-evoked
+  potentials, magnetometry, and the instruments in between. Falsification-first,
+  citation-gated, and open about what the instruments cannot hear.
 ---
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>POLARIZE — Reading and Writing the Body Electric</title>
-  <meta name="description" content="A working bench for the translation layer between external instruments and the body's own bioelectric signalling: scalp EEG, magnetometry, and audio-evoked potentials. Falsification-first, citation-gated, and open about what the instruments cannot hear." />
-  <link rel="stylesheet" href="design/design.css" />
-  <link rel="stylesheet" href="styles.css" />
-  <script type="module" src="design/design.js"></script>
-</head>
-<body class="ui">
 
-  <!-- ===== NAV ===== -->
-  <header class="nav">
-    <a class="brand" href="#top">
-      <span class="brand__mark"></span>
-      <span class="brand__word">POLARIZE</span>
-    </a>
-  </header>
+<header class="doc__head">
+  <h1 class="ui-display ui-display--2">Written down so it can be <em>wrong</em>.</h1>
+  <p class="doc__lede">
+    Every source here was resolved against Crossref or PubMed by machine before
+    publication, every post carries a computed confidence tier, and every claim
+    states the conditions under which it would be false.
+  </p>
+</header>
 
-  <!-- ===== HERO ===== -->
-  <!-- Copy rule for this block: it may describe the bench and the questions, and
-       it may state textbook physiology. It may NOT report a result. Nothing on
-       this program has been established, so nothing here claims one. -->
-  <section class="hero" id="top">
-    <canvas class="hero__canvas" id="heroCanvas" aria-hidden="true"></canvas>
-    <div class="hero__vignette"></div>
-    <div class="hero__inner">
-      <h1 class="ui-display ui-display--1">Reading and writing the <em>body electric</em></h1>
-      <p class="hero__lede">
-        Every cell holds a charge across its membrane, and the body leaks that
-        voltage outward — to the scalp, to the skin, into the magnetic field
-        around it. This is a working bench for the
-        <strong>translation layer</strong>: what it takes to read those signals
-        with instruments anyone can buy, and whether anything can deliberately
-        be written back.
-      </p>
+{% include postlist.html posts=paginator.posts %}
 
-      <div class="hero__cta">
-        <a class="ui-btn ui-btn--primary" href="#notes">Read the research notes</a>
-      </div>
-    </div>
-  </section>
+{%- if paginator.total_pages > 1 %}
+<nav class="pager" aria-label="Pagination">
+  {%- if paginator.previous_page %}
+  <a class="ui-btn pager__prev" href="{{ paginator.previous_page_path | relative_url }}">← Newer</a>
+  {%- else %}<span class="pager__spacer"></span>{% endif %}
 
-  <!-- ===== FROM THE RESEARCH NOTES ===== -->
-  <section class="section notes" id="notes">
+  <span class="ui-label pager__count">Page {{ paginator.page }} of {{ paginator.total_pages }}</span>
 
-    <ul class="postlist">
-      {%- for post in site.posts limit: 4 %}
-      {%- include postitem.html post=post %}
-      {%- else %}
-      <li class="postlist__item postlist__item--empty">Nothing published yet.</li>
-      {%- endfor %}
-    </ul>
-
-    <p class="notes__more">
-      <a class="ui-btn" href="{{ '/blog/' | relative_url }}">All research notes</a>
-      <a class="notes__feed ui-label" href="{{ '/blog/feed.xml' | relative_url }}">RSS</a>
-    </p>
-  </section>
-
-  <!-- ===== FOOTER ===== -->
-  <footer class="footer">
-    <div class="footer__brand">
-      <span class="brand__mark"></span>
-      <span class="brand__word">POLARIZE</span>
-    </div>
-    <p class="footer__tag">The hidden electricity of life.</p>
-    {% include ai-disclosure.html %}
-    <p class="footer__fine ui-label">An ongoing, falsification-first research program on bioelectric sensing &amp; stimulation · polarize.tech</p>
-  </footer>
-
-  <script src="app.js"></script>
-</body>
-</html>
+  {%- if paginator.next_page %}
+  <a class="ui-btn pager__next" href="{{ paginator.next_page_path | relative_url }}">Older →</a>
+  {%- else %}<span class="pager__spacer"></span>{% endif %}
+</nav>
+{%- endif %}

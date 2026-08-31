@@ -13,11 +13,12 @@
 </head>
 <body class="ui page">
 
-  {% include nav.html %}
-
-  <main class="doc">
-    {{ content }}
-  </main>
+  <div class="shell">
+    {% include sidebar.html %}
+    <main class="main">
+      {{ content }}
+    </main>
+  </div>
 
   {% include footer.html %}
 
