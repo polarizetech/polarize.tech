@@ -30,10 +30,8 @@ body.ui { margin: 0; }
 .shell {
   display: grid;
   grid-template-columns: 16rem minmax(0, 1fr);
-  gap: clamp(var(--space-6), 5vw, var(--space-9));
-  max-width: var(--content-max);
-  margin: 0 auto;
-  padding: var(--space-8) var(--space-5) var(--space-9);
+  gap: clamp(var(--space-6), 4vw, var(--space-8));
+  padding: var(--space-8) clamp(var(--space-5), 3vw, var(--space-7)) var(--space-9);
   align-items: start;
 }
 @media (max-width: 900px) {
@@ -65,7 +63,7 @@ body.ui { margin: 0; }
 
 /* Author note — deliberately quiet: small, muted, below the fold of attention. */
 .side__bio { display: flex; gap: var(--space-3); margin: var(--space-5) 0 0; align-items: flex-start; }
-.side__avatar { width: 44px; height: 44px; border-radius: var(--radius-pill); flex: none; object-fit: cover; }
+.side__avatar { width: 48px; height: 48px; border-radius: var(--radius-pill); flex: none; object-fit: cover; }
 .side__note { font-size: var(--text-sm); line-height: 1.55; color: var(--faint-foreground); margin: 0; }
 
 .side__topics { margin-top: var(--space-7); }
@@ -88,23 +86,32 @@ body.ui { margin: 0; }
 
 .side__meta {
   display: flex;
-  gap: var(--space-4);
+  gap: var(--space-2);
   margin-top: var(--space-6);
   padding-top: var(--space-4);
   border-top: 1px solid var(--border);
 }
 .side__meta-link {
-  font-family: var(--font-mono);
-  font-size: var(--text-xs);
-  letter-spacing: .12em;
-  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
   color: var(--faint-foreground);
   text-decoration: none;
+  transition: color var(--motion-base) ease, border-color var(--motion-base) ease;
 }
-.side__meta-link:hover { color: var(--accent); }
+.side__meta-link:hover { color: var(--accent); border-color: var(--accent); }
+.side__meta-link .ui-icon { width: 1rem; height: 1rem; fill: currentColor; }
+.side__meta-link:focus-visible { outline: 2px solid var(--ring); outline-offset: 2px; }
 
 /* ---------- Main column ---------- */
-.main { min-width: 0; }
+/* The shell is full-bleed and the main column is allowed to be genuinely wide;
+   readability is protected on the TEXT (.doc__lede, .postlist__desc, .prose)
+   rather than by starving the column, so a large screen actually fills. */
+.main { min-width: 0; max-width: 76rem; }
 .main .doc { max-width: none; padding: 0; }
 .main .doc__head { padding-bottom: var(--space-5); margin-bottom: var(--space-5); }
 
@@ -199,7 +206,7 @@ body.ui { margin: 0; }
 }
 
 /* ---------- Post ---------- */
-.post__head { border-bottom: 1px solid var(--border); padding-bottom: var(--space-6); margin-bottom: var(--space-7); }
+.post__head { max-width: 68ch; border-bottom: 1px solid var(--border); padding-bottom: var(--space-6); margin-bottom: var(--space-7); }
 .post__meta { display: flex; gap: var(--space-4); flex-wrap: wrap; align-items: center; margin-bottom: var(--space-4); }
 .post__badges { display: flex; gap: var(--space-2); flex-wrap: wrap; list-style: none; margin: var(--space-4) 0 0; padding: 0; }
 
@@ -214,7 +221,7 @@ body.ui { margin: 0; }
 .post__audio audio { width: 100%; max-width: 34rem; }
 
 /* ---------- Prose ---------- */
-.prose { font-size: var(--text-lg); line-height: 1.7; }
+.prose { font-size: var(--text-lg); line-height: 1.7; max-width: 68ch; }
 .prose h2 {
   font-family: var(--font-display);
   font-size: var(--display-2);
@@ -349,9 +356,7 @@ body.ui { margin: 0; }
 /* ---------- Footer ---------- */
 .footer {
   border-top: 1px solid var(--border);
-  max-width: var(--content-max);
-  margin: 0 auto;
-  padding: var(--space-6) var(--space-5) var(--space-8);
+  padding: var(--space-6) clamp(var(--space-5), 3vw, var(--space-7)) var(--space-8);
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-3) var(--space-5);

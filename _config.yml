@@ -36,7 +36,7 @@ paginate_path: "/page:num/"
 # once. `avatar` is optional — the sidebar renders without it.
 author:
   name: "Josh Anderton"
-  avatar: "/assets/author.jpg"
+  avatar: "/assets/author.png"
   note: >-
     I build software for a living and came at this from the computer-science
     side: signals, protocols, and what a measurement can actually support. This
