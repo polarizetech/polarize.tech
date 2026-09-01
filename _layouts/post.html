@@ -27,9 +27,27 @@ layout: default
     </ul>
   </header>
 
+  {%- comment -%}
+    Flat keys, not a nested `image:` map: scripts/_common.py parses front matter
+    itself and only understands scalars and `- item` lists, so a nested mapping
+    fails the gate even though Jekyll renders it.
+  {%- endcomment -%}
+  {%- if page.image %}
+  <figure class="post__lead">
+    <img src="{{ page.image | relative_url }}" alt="{{ page.image_alt }}" />
+    {%- if page.image_credit %}
+    <figcaption class="post__credit">
+      <a href="{{ page.image_source_url }}" rel="noopener">Photograph</a> by
+      {{ page.image_credit }}, <a href="{{ page.image_license_url }}" rel="noopener">{{ page.image_license }}</a>.
+      Desaturated for this site.
+    </figcaption>
+    {%- endif %}
+  </figure>
+  {%- endif %}
+
   {%- if page.summary %}
   <section class="post__summary" aria-label="In short">
-    <h2 class="post__summary-title ui-label">In short</h2>
+    <h2 class="post__summary-title ui-label">{% include icon.html name="note" %} In short</h2>
     <div class="post__summary-body">{{ page.summary | markdownify }}</div>
   </section>
   {%- endif %}
@@ -47,7 +65,7 @@ layout: default
 
   {%- if page.claims and page.claims.size > 0 %}
   <section class="claims">
-    <h2 class="refs__title">Claims this post rests on</h2>
+    <h2 class="ui-display ui-display--3 refs__title">{% include icon.html name="tag" %} Claims this post rests on</h2>
     <ul class="claims__list">
       {%- for id in page.claims -%}
       {%- assign c = site.data.claims[id] -%}

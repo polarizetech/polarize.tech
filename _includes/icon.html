@@ -1,0 +1,17 @@
+{%- comment -%}
+  Small inline SVGs, used where they carry meaning rather than decoration.
+  Not from design/icons/polarize-icons.svg: that sprite is 15 audio-UI glyphs and
+  the vendored copy must stay byte-identical to the monorepo (check_design RULE 6).
+
+  Usage: {% include icon.html name="book" %}
+{%- endcomment -%}
+{%- case include.name -%}
+{%- when 'tag' -%}
+<svg class="ui-icon" viewBox="0 0 256 256" aria-hidden="true" focusable="false"><path d="M243.3 110.6 145.4 12.7A16 16 0 0 0 134.1 8H40a16 16 0 0 0-16 16v94.1a16 16 0 0 0 4.7 11.3l97.9 97.9a16 16 0 0 0 22.6 0l94.1-94.1a16 16 0 0 0 0-22.6ZM84 96a12 12 0 1 1 12-12 12 12 0 0 1-12 12Z"/></svg>
+{%- when 'book' -%}
+<svg class="ui-icon" viewBox="0 0 256 256" aria-hidden="true" focusable="false"><path d="M224 48h-64a32 32 0 0 0-32 32 32 32 0 0 0-32-32H32a8 8 0 0 0-8 8v128a8 8 0 0 0 8 8h64a16 16 0 0 1 16 16 8 8 0 0 0 16 0 16 16 0 0 1 16-16h64a8 8 0 0 0 8-8V56a8 8 0 0 0-8-8Zm-104 8v113.6a32 32 0 0 0-24-9.6H40V64h56a16 16 0 0 1 16 16Zm96 104h-56a32 32 0 0 0-24 9.6V80a16 16 0 0 1 16-16h56Z"/></svg>
+{%- when 'note' -%}
+<svg class="ui-icon" viewBox="0 0 256 256" aria-hidden="true" focusable="false"><path d="M216 40H40a16 16 0 0 0-16 16v144a16 16 0 0 0 16 16h176a16 16 0 0 0 16-16V56a16 16 0 0 0-16-16ZM72 88h112a8 8 0 0 1 0 16H72a8 8 0 0 1 0-16Zm0 32h112a8 8 0 0 1 0 16H72a8 8 0 0 1 0-16Zm0 32h64a8 8 0 0 1 0 16H72a8 8 0 0 1 0-16Z"/></svg>
+{%- when 'check' -%}
+<svg class="ui-icon" viewBox="0 0 256 256" aria-hidden="true" focusable="false"><path d="M128 24a104 104 0 1 0 104 104A104.1 104.1 0 0 0 128 24Zm45.7 85.7-56 56a8 8 0 0 1-11.4 0l-24-24a8 8 0 0 1 11.4-11.4L112 148.7l50.3-50.4a8 8 0 0 1 11.4 11.4Z"/></svg>
+{%- endcase -%}

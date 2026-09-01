@@ -16,12 +16,12 @@
     <img class="side__avatar" src="{{ site.author.avatar | relative_url }}"
          alt="" width="44" height="44" loading="lazy" onerror="this.remove()" />
     {%- endif %}
-    <p class="side__note">{{ site.author.note }}</p>
+    <div class="side__note">{{ site.author.note | markdownify }}</div>
   </div>
   {%- endif %}
 
   <nav class="side__topics" aria-label="Topics">
-    <p class="ui-label side__heading">Topics</p>
+    <p class="ui-label side__heading">{% include icon.html name="tag" %} Topics</p>
     <ul class="side__list">
       <li>
         <a class="side__link{% if page.topic == nil and page.url != '/blog/' %} is-current{% endif %}"

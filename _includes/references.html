@@ -6,7 +6,7 @@
 {%- endcomment -%}
 {%- if page.citations and page.citations.size > 0 -%}
 <section class="refs" id="references">
-  <h2 class="ui-display ui-display--3 refs__title">The sources, in the order the argument uses them</h2>
+  <h2 class="ui-display ui-display--3 refs__title">{% include icon.html name="book" %} The sources, in the order the argument uses them</h2>
   <ol class="refs__list">
     {%- for k in page.citations -%}
     {%- assign r = site.data.citations[k] -%}
@@ -25,7 +25,7 @@
         <span class="refs__verified" title="Resolved against {{ r.registry }} on {{ r.verified_on }}">
           resolved · {{ r.registry }} · {{ r.verified_on }}
         </span>
-        {%- if r.full_text_read == true %}<span class="refs__ft">full text read</span>{% endif -%}
+        {%- if r.full_text_read == true %}<span class="refs__ft">{% include icon.html name="check" %} full text read</span>{% endif -%}
       </span>
       {%- comment -%} What this source contributes: author-written, per post, as
           `key >> note`. The

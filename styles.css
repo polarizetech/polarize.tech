@@ -64,7 +64,9 @@ body.ui { margin: 0; }
 /* Author note — deliberately quiet: small, muted, below the fold of attention. */
 .side__bio { display: flex; gap: var(--space-3); margin: var(--space-5) 0 0; align-items: flex-start; }
 .side__avatar { width: 48px; height: 48px; border-radius: var(--radius-pill); flex: none; object-fit: cover; }
-.side__note { font-size: var(--text-sm); line-height: 1.55; color: var(--faint-foreground); margin: 0; }
+.side__note { font-size: var(--text-sm); line-height: 1.55; color: var(--faint-foreground); }
+.side__note p { margin: 0; }
+.side__note strong { color: var(--muted-foreground); }
 
 .side__topics { margin-top: var(--space-7); }
 .side__heading { margin-bottom: var(--space-3); }
@@ -220,6 +222,31 @@ body.ui { margin: 0; }
 .post__audio-label { margin-bottom: var(--space-2); }
 .post__audio audio { width: 100%; max-width: 34rem; }
 
+/* ---------- Post lead image ----------
+   Post images run through scripts/prepare_image.py, which desaturates and
+   contrast-shapes them to one recipe so the set looks like a set. */
+.post__lead { margin: 0 0 var(--space-7); }
+.post__lead img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-base);
+  border: 1px solid var(--border);
+}
+.post__credit {
+  margin: var(--space-2) 0 0;
+  font-size: var(--text-xs);
+  color: var(--faint-foreground);
+}
+.post__credit a { color: var(--muted-foreground); }
+
+/* ---------- Inline icons ---------- */
+.ui-icon { width: 1em; height: 1em; fill: currentColor; vertical-align: -.125em; }
+.refs__title .ui-icon,
+.post__summary-title .ui-icon,
+.side__heading .ui-icon { opacity: .55; margin-right: .35em; }
+.refs__ft .ui-icon { margin-right: .3em; }
+
 /* ---------- Prose ---------- */
 .prose { font-size: var(--text-lg); line-height: 1.7; max-width: 68ch; }
 .prose h2 {
@@ -356,17 +383,14 @@ body.ui { margin: 0; }
 /* ---------- Footer ---------- */
 .footer {
   border-top: 1px solid var(--border);
-  padding: var(--space-6) clamp(var(--space-5), 3vw, var(--space-7)) var(--space-8);
+  padding: var(--space-7) clamp(var(--space-5), 3vw, var(--space-7)) var(--space-8);
   display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-3) var(--space-5);
-  align-items: baseline;
-  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+  text-align: center;
 }
-.footer__fine { margin: 0; }
-.footer__links { display: flex; gap: var(--space-4); margin: 0; font-size: var(--text-sm); }
-.footer__links a { color: var(--muted-foreground); text-decoration: none; }
-.footer__links a:hover { color: var(--foreground); }
+.footer__fine { margin: 0; max-width: 46ch; }
 
 /* ---------- Claims ---------- */
 .claims__list { list-style: none; margin: 0; padding: 0; }

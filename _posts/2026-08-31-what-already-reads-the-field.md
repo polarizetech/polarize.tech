@@ -22,6 +22,14 @@ citations:
   - kane2018
   - blakemore1975
   - xu2021
+image: /assets/posts/peacock-crest.jpg
+image_alt: >-
+  A peafowl in profile, its fan-shaped head crest of narrow feathers with wide
+  flags at the tips clearly visible against a paved background.
+image_credit: Thomas Quine
+image_license: CC BY 2.0
+image_license_url: https://creativecommons.org/licenses/by/2.0/
+image_source_url: https://commons.wikimedia.org/wiki/File:Peacock_crest_(24697301410).jpg
 summary: >-
   Biology solved electric and magnetic sensing long before anyone built an
   instrument for it, and the solutions are stranger than the engineering ones.
