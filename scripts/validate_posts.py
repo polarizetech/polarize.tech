@@ -29,6 +29,12 @@ did not weaken it on the way out. It enforces:
   RULE 6  No tier laundering. A post may not assert a confidence tier stronger
           than the weakest claim it rests on.
 
+  RULE 0  _data/*.yml is parseable. A double-quoted scalar that never closes -- a
+          Crossref title arriving with raw newlines produced exactly this -- makes
+          the file unreadable to a stricter YAML parser. The local Jekyll build
+          tolerated it and said nothing; GitHub Pages failed the deploy. Checked
+          here so the failure is caught before the push, not after.
+
   RULE 7  No forbidden provenance — nothing sourced from RETRACTED/ or archive/,
           no [VERIFIED] self-assertions, no unresolved TODO tiers.
 
@@ -172,6 +178,20 @@ def main():
     cites = load_generated(SITE / '_data' / 'citations.yml')
     claims = load_generated(SITE / '_data' / 'claims.yml')
     rep = Report()
+
+    # ---- RULE 0 — the generated data must actually parse ------------------
+    for name in ('citations.yml', 'claims.yml'):
+        path = SITE / '_data' / name
+        if not path.exists():
+            continue
+        for n, line in enumerate(path.read_text().splitlines(), 1):
+            stripped = line.strip()
+            if re.match(r'^[\w-]+: ".*', stripped) and not stripped.endswith('"'):
+                rep.fail(f'_data/{name}', 0,
+                         f'line {n}: double-quoted value is never closed — '
+                         f'{stripped[:60]!r}. Regenerate the ledger upstream; '
+                         f'GitHub Pages will refuse to build this.')
+
 
     found = posts(args.drafts)
     if not found:
