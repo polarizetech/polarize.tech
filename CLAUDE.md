@@ -57,6 +57,29 @@ possible** — that is why citations are a Liquid include and not a `{% cite %}`
 
 ---
 
+## Claude Code responses — two bullet lists, nothing else (operator, 2026-09-01)
+
+Same rule as the monorepo's `CLAUDE.md`; repeated here because this repo is often
+opened on its own.
+
+1. **What was done** — one bullet per thing. Past tense, concrete.
+2. **What I need from you** — questions, decisions, anything blocked on the operator.
+   Say what changes depending on the answer. If nothing is needed, say so in one line.
+3. *(only when it applies)* **Not done, and not blocked on you** — skipped, deferred or
+   impossible, no operator input required. Omit the list when empty, which is most of
+   the time.
+
+**Usually only the first two lists appear.** No prose summaries, no narrative walkthroughs,
+no headed essay-style status reports — they bury the two things actually being read.
+
+A bullet may carry a short sub-bullet where a decision needs context; it may not carry a
+paragraph. **Failures and corrections are bullets in list 1**, stated plainly.
+
+**This is a response-format rule, not a work rule.** It does not shorten the work or
+license skipping any gate.
+
+---
+
 ## Design — the rules that come with the system
 
 The look is **not decided here.** It comes from the monorepo's shared design
