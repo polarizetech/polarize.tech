@@ -110,6 +110,17 @@ body.ui { margin: 0; }
 .side__meta-link:focus-visible { outline: 2px solid var(--ring); outline-offset: 2px; }
 
 /* ---------- Main column ---------- */
+/* The heading is the main column's alignment anchor. Without it the list began
+   with a row whose own top padding pushed the first title ~23px below the
+   sidebar brand, which read as lopsided. Its top edge now matches the brand's. */
+.main__heading {
+  margin: 0 0 var(--space-4);
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid var(--border);
+  color: var(--muted-foreground);
+}
+.main__heading + .postlist .postlist__item:first-child .postlist__link { padding-top: var(--space-4); }
+
 /* The shell is full-bleed and the main column is allowed to be genuinely wide;
    readability is protected on the TEXT (.doc__lede, .postlist__desc, .prose)
    rather than by starving the column, so a large screen actually fills. */
