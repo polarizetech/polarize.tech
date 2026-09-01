@@ -7,7 +7,7 @@ description: >-
 date: 2026-08-31 09:00:00 -0600
 project: bioem-propagation
 status: published
-tier: A
+tier: B
 claims:
 citations:
   - kalmijn1971
@@ -19,6 +19,7 @@ citations:
   - ortegajimenez2013
   - pfeffer2012
   - toyota2018
+  - kane2018
   - blakemore1975
   - xu2021
 summary: >-
@@ -34,12 +35,16 @@ Three times now I have hit a sensing question on this bench — how weak a field
 detected, across what distance, with what geometry — and found that something alive
 had already settled it. This post is the survey I wish I had read first.
 
-**What this post is, exactly.** It describes phenomena at the level where they are
-settled and uncontroversial, and it is tiered accordingly. Each source below is
-cited as *the entry point to its topic* — none of them has been read here at full
-text, so nothing on this page reports what any individual paper measured or
-concluded. Where I say something is known, I mean textbook-known, not
-"this study showed."
+**What this post is, exactly.** Most of it describes phenomena at the level where they
+are settled and uncontroversial, and most of the sources below are cited as *the entry
+point to their topic* — not read here at full text, so nothing on this page reports what
+those papers measured or concluded. Where I say something is known, I mean
+textbook-known, not "this study showed."
+
+**One source is different.** The peafowl work has been read at full text, so that section
+does report what it found, and the post is tiered `B` on account of it rather than `A`.
+The reference list marks which is which; a badge on an entry reading *full text read* is
+the difference between "this paper exists" and "this paper found."
 
 ## Reading a field another body makes
 
@@ -152,6 +157,47 @@ electrophysiology and do carry propagating electrical signals. I have not put a 
 for long-distance algal signalling into the ledger yet, so there is no entry for it
 here. That is a gap, not a judgement.)*
 
+## The other half of a receiver
+
+Everything above is about a *transducer* — the thing that turns a field into a signal.
+The peafowl crest is about what sits **in front** of one, and it is the clearest published
+case I have found of a biological pre-filter whose contribution can be read off in numbers
+rather than assumed.
+
+A peacock's display rattles its train at around 26 Hz. A peahen's crest — a fan of twenty
+to thirty feathers, each a tapered shaft with a wide flag at the end — is a mechanical
+resonator, and its resonant frequency sits inside that band, with filoplumes and their
+mechanoreceptors at the feather bases {% include cite.html key="kane2018" %}.
+
+This is the one source on this page I have read at full text, so it is the one whose
+findings I will actually state. The crests were measured on a shaker: female crests
+resonate near 28 Hz, male near 26, with quality factors around 5 and 6.
+
+**The number that matters is that quality factor**, because at resonance it is roughly the
+amplitude gain. Being tuned bought a factor of about five. Not a thousand, not a hundred —
+five. And a *Q* of five is a broad filter: about a twenty per cent band, which is a wide
+target for a 26 Hz stimulus to land in.
+
+So the resonator is not rescuing a signal from below the noise. It cannot be: the impacts
+in question deflect the crest by around nine millimetres, which is visible on ordinary
+video and sits enormously far above what a mechanoreceptor needs. What the tuning buys is
+**rejection** — a narrow-ish window centred on the frequency conspecifics actually
+display at, which ignores wind and footfalls and broadband racket. The gain is almost
+incidental.
+
+That is the transferable lesson, and it cuts against the intuition that biology must be
+doing something extraordinary: **a passive biological resonator buys single digits.**
+There is a real ceiling here — wet keratin at body temperature does not make a high-*Q*
+cavity. Sharper biological filtering exists, in the cochlea, but it is *active*: it spends
+energy, and anything claiming that trick has to say where the power comes from and what
+noise it adds.
+
+**And the honest caveat, which the paper states itself:** every one of those measurements
+was made on dried crests mounted on balsa. No live bird, no nerve recording, no behavioural
+test. That the crest is mechanically tuned to the display frequency is measured. That
+peafowl actually *use* it that way is not, and the authors say so.
+
+
 ## Two ways to feel the Earth
 
 Magnetoreception is where the divergence gets sharpest, because the two best-known
@@ -180,6 +226,9 @@ Three things, all structural, none of them a finding of mine:
 
 1. **A field sensor can be a motion sensor.** Two of the three organisms above read
    electric fields with hairs. Any charged, compliant surface is a candidate transducer.
+1. **Tuning is worth single digits, and it buys rejection more than gain.** The one
+   measured number on this page is a factor of about five. A front end narrows the band
+   the noise arrives through; it does not lift a signal that is already under the floor.
 2. **Geometry alone can convert a field into motion**, with no receptor in the loop at all.
 3. **Long-distance conduction in biology is not always ionic.** Electrons travel too.
 4. **If an instrument emits, cancelling its own signal is most of the work** — and the one

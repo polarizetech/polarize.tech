@@ -2,6 +2,23 @@
 # Source: polarizetech/research (machine-verified against Crossref/PubMed).
 # Regenerate: python3 scripts/sync_research.py
 
+bell1997:
+  doi: "10.1038/387278a0"
+  first_author: "Bell"
+  year: "1997"
+  title: "Synaptic plasticity in a cerebellum-like structure depends on temporal order"
+  journal: "Nature"
+  volume: "387"
+  pages: "278-281"
+  registry: "crossref"
+  verified_on: "2026-09-01"
+  full_text_read: false
+  authors:
+    - "Bell Curtis C."
+    - "Han Victor Z."
+    - "Sugawara Yoshiko"
+    - "Grant Kirsty"
+
 blakemore1975:
   doi: "10.1126/science.170679"
   first_author: "Blakemore"
@@ -11,7 +28,7 @@ blakemore1975:
   volume: "190"
   pages: "377-379"
   registry: "crossref"
-  verified_on: "2026-08-31"
+  verified_on: "2026-09-01"
   full_text_read: false
   authors:
     - "Blakemore Richard"
@@ -25,7 +42,7 @@ clarke2013:
   volume: "340"
   pages: "66-69"
   registry: "crossref"
-  verified_on: "2026-08-31"
+  verified_on: "2026-09-01"
   full_text_read: false
   authors:
     - "Clarke Dominic"
@@ -43,7 +60,7 @@ goldwyn2014:
   volume: "34"
   pages: "11705-11722"
   registry: "crossref"
-  verified_on: "2026-08-31"
+  verified_on: "2026-09-01"
   full_text_read: false
   authors:
     - "Goldwyn Joshua H."
@@ -62,7 +79,7 @@ iaccarino2016:
   volume: "540"
   pages: "230-235"
   registry: "crossref"
-  verified_on: "2026-08-31"
+  verified_on: "2026-09-01"
   full_text_read: false
   authors:
     - "Iaccarino Hunter F."
@@ -91,10 +108,45 @@ kalmijn1971:
   volume: "55"
   pages: "371-383"
   registry: "crossref"
-  verified_on: "2026-08-31"
+  verified_on: "2026-09-01"
   full_text_read: false
   authors:
     - "Kalmijn A. J."
+
+kane2018:
+  doi: "10.1371/journal.pone.0207247"
+  first_author: "Kane"
+  year: "2018"
+  title: "Biomechanics of the peafowl’s crest reveals frequencies tuned to social displays"
+  journal: "PLOS ONE"
+  volume: "13"
+  pages: "e0207247"
+  registry: "crossref"
+  verified_on: "2026-09-01"
+  full_text_read: true
+  authors:
+    - "Kane Suzanne Amador"
+    - "Van Beveren Daniel"
+    - "Dakin Roslyn"
+
+kennedy2014:
+  doi: "10.1038/nn.3650"
+  first_author: "Kennedy"
+  year: "2014"
+  title: "A temporal basis for predicting the sensory consequences of motor commands in an electric fish"
+  journal: "Nature Neuroscience"
+  volume: "17"
+  pages: "416-422"
+  registry: "crossref"
+  verified_on: "2026-09-01"
+  full_text_read: false
+  authors:
+    - "Kennedy Ann"
+    - "Wayne Greg"
+    - "Kaifosh Patrick"
+    - "Alviña Karina"
+    - "Abbott L F"
+    - "Sawtell Nathaniel B"
 
 martorell2019:
   doi: "10.1016/j.cell.2019.02.014"
@@ -106,7 +158,7 @@ martorell2019:
   volume: "177"
   pages: "256-271.e22"
   registry: "crossref"
-  verified_on: "2026-08-31"
+  verified_on: "2026-09-01"
   full_text_read: false
   authors:
     - "Martorell Anthony J."
@@ -136,7 +188,7 @@ morley2018:
   volume: "28"
   pages: "2324-2330.e2"
   registry: "crossref"
-  verified_on: "2026-08-31"
+  verified_on: "2026-09-01"
   full_text_read: false
   authors:
     - "Morley Erica L."
@@ -150,7 +202,7 @@ ortegajimenez2013:
   journal: "Scientific Reports"
   volume: "3"
   registry: "crossref"
-  verified_on: "2026-08-31"
+  verified_on: "2026-09-01"
   full_text_read: false
   authors:
     - "Ortega-Jimenez Victor Manuel"
@@ -165,7 +217,7 @@ pfeffer2012:
   volume: "491"
   pages: "218-221"
   registry: "crossref"
-  verified_on: "2026-08-31"
+  verified_on: "2026-09-01"
   full_text_read: false
   authors:
     - "Pfeffer Christian"
@@ -183,6 +235,23 @@ pfeffer2012:
     - "Risgaard-Petersen Nils"
     - "Nielsen Lars Peter"
 
+sutton2016:
+  doi: "10.1073/pnas.1601624113"
+  first_author: "Sutton"
+  year: "2016"
+  title: "\"Mechanosensory hairs in bumblebees ("
+  journal: "Proceedings of the National Academy of Sciences"
+  volume: "113"
+  pages: "7261-7265"
+  registry: "crossref"
+  verified_on: "2026-09-01"
+  full_text_read: false
+  authors:
+    - "Sutton Gregory P."
+    - "Clarke Dominic"
+    - "Morley Erica L."
+    - "Robert Daniel"
+
 toyota2018:
   doi: "10.1126/science.aat7744"
   first_author: "Toyota"
@@ -192,7 +261,7 @@ toyota2018:
   volume: "361"
   pages: "1112-1115"
   registry: "crossref"
-  verified_on: "2026-08-31"
+  verified_on: "2026-09-01"
   full_text_read: false
   authors:
     - "Toyota Masatsugu"
@@ -213,7 +282,7 @@ xu2021:
   volume: "594"
   pages: "535-540"
   registry: "crossref"
-  verified_on: "2026-08-31"
+  verified_on: "2026-09-01"
   full_text_read: false
   authors:
     - "Xu Jingjing"
@@ -252,54 +321,3 @@ xu2021:
     - "Timmel Christiane R."
     - "Mouritsen Henrik"
     - "Hore P. J."
-
-bell1997:
-  doi: "10.1038/387278a0"
-  first_author: "Bell"
-  year: "1997"
-  title: "Synaptic plasticity in a cerebellum-like structure depends on temporal order"
-  journal: "Nature"
-  volume: "387"
-  pages: "278-281"
-  registry: "crossref"
-  verified_on: "2026-09-01"
-  full_text_read: false
-  authors:
-    - "Bell Curtis C."
-    - "Han Victor Z."
-    - "Sugawara Yoshiko"
-    - "Grant Kirsty"
-
-kennedy2014:
-  doi: "10.1038/nn.3650"
-  first_author: "Kennedy"
-  year: "2014"
-  title: "A temporal basis for predicting the sensory consequences of motor commands in an electric fish"
-  journal: "Nature Neuroscience"
-  volume: "17"
-  pages: "416-422"
-  registry: "crossref"
-  verified_on: "2026-09-01"
-  full_text_read: false
-  authors:
-    - "Kennedy Ann"
-    - "Wayne Greg"
-    - "Kaifosh Patrick"
-    - "Alvina Karina"
-
-sutton2016:
-  doi: "10.1073/pnas.1601624113"
-  first_author: "Sutton"
-  year: "2016"
-  title: "Mechanosensory hairs in bumblebees (Bombus terrestris) detect weak electric fields"
-  journal: "Proceedings of the National Academy of Sciences"
-  volume: "113"
-  pages: "7261-7265"
-  registry: "crossref"
-  verified_on: "2026-09-01"
-  full_text_read: false
-  authors:
-    - "Sutton Gregory P."
-    - "Clarke Dominic"
-    - "Morley Erica L."
-    - "Robert Daniel"
