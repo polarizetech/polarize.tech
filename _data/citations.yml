@@ -2,6 +2,30 @@
 # Source: polarizetech/research (machine-verified against Crossref/PubMed).
 # Regenerate: python3 scripts/sync_research.py
 
+attia2019:
+  doi: "10.1161/CIRCEP.119.007284"
+  first_author: "Attia"
+  year: "2019"
+  title: "Age and Sex Estimation Using Artificial Intelligence From Standard 12-Lead ECGs"
+  journal: "Circulation: Arrhythmia and Electrophysiology"
+  volume: "12"
+  registry: "crossref"
+  verified_on: "2026-09-01"
+  full_text_read: false
+  authors:
+    - "Attia Zachi I."
+    - "Friedman Paul A."
+    - "Noseworthy Peter A."
+    - "Lopez-Jimenez Francisco"
+    - "Ladewig Dorothy J."
+    - "Satam Gaurav"
+    - "Pellikka Patricia A."
+    - "Munger Thomas M."
+    - "Asirvatham Samuel J."
+    - "Scott Christopher G."
+    - "Carter Rickey E."
+    - "Kapa Suraj"
+
 bell1997:
   doi: "10.1038/387278a0"
   first_author: "Bell"
@@ -33,6 +57,22 @@ blakemore1975:
   authors:
     - "Blakemore Richard"
 
+chan2018:
+  doi: "10.3389/fninf.2018.00066"
+  first_author: "Chan"
+  year: "2018"
+  title: "Challenges and Future Perspectives on Electroencephalogram-Based Biometrics in Person Recognition"
+  journal: "Frontiers in Neuroinformatics"
+  volume: "12"
+  registry: "crossref"
+  verified_on: "2026-09-01"
+  full_text_read: false
+  authors:
+    - "Chan Hui-Ling"
+    - "Kuo Po-Chih"
+    - "Cheng Chia-Yi"
+    - "Chen Yong-Sheng"
+
 clarke2013:
   doi: "10.1126/science.1230883"
   first_author: "Clarke"
@@ -49,6 +89,22 @@ clarke2013:
     - "Whitney Heather"
     - "Sutton Gregory"
     - "Robert Daniel"
+
+fratini2015:
+  doi: "10.1186/s12938-015-0072-y"
+  first_author: "Fratini"
+  year: "2015"
+  title: "Individual identification via electrocardiogram analysis"
+  journal: "BioMedical Engineering OnLine"
+  volume: "14"
+  registry: "crossref"
+  verified_on: "2026-09-01"
+  full_text_read: false
+  authors:
+    - "Fratini Antonio"
+    - "Sansone Mario"
+    - "Bifulco Paolo"
+    - "Cesarelli Mario"
 
 goldwyn2014:
   doi: "10.1523/JNEUROSCI.0175-14.2014"
@@ -148,6 +204,32 @@ kennedy2014:
     - "Abbott L F"
     - "Sawtell Nathaniel B"
 
+lima2021:
+  doi: "10.1038/s41467-021-25351-7"
+  first_author: "Lima"
+  year: "2021"
+  title: "Deep neural network-estimated electrocardiographic age as a mortality predictor"
+  journal: "Nature Communications"
+  volume: "12"
+  registry: "crossref"
+  verified_on: "2026-09-01"
+  full_text_read: false
+  authors:
+    - "Lima Emilly M."
+    - "Ribeiro Antônio H."
+    - "Paixão Gabriela M. M."
+    - "Ribeiro Manoel Horta"
+    - "Pinto-Filho Marcelo M."
+    - "Gomes Paulo R."
+    - "Oliveira Derick M."
+    - "Sabino Ester C."
+    - "Duncan Bruce B."
+    - "Giatti Luana"
+    - "Barreto Sandhi M."
+    - "Meira Jr Wagner"
+    - "Schön Thomas B."
+    - "Ribeiro Antonio Luiz P."
+
 martorell2019:
   doi: "10.1016/j.cell.2019.02.014"
   pmid: "30879788"
@@ -194,6 +276,19 @@ morley2018:
     - "Morley Erica L."
     - "Robert Daniel"
 
+odenwald2022:
+  doi: "10.1029/2020SW002669"
+  first_author: "Odenwald"
+  year: "2022"
+  title: "Can Smartphones Detect Geomagnetic Storms?"
+  journal: "Space Weather"
+  volume: "20"
+  registry: "crossref"
+  verified_on: "2026-09-01"
+  full_text_read: false
+  authors:
+    - "Odenwald S. F."
+
 ortegajimenez2013:
   doi: "10.1038/srep02108"
   first_author: "Ortega-Jimenez"
@@ -234,6 +329,19 @@ pfeffer2012:
     - "Schramm Andreas"
     - "Risgaard-Petersen Nils"
     - "Nielsen Lars Peter"
+
+roth2024:
+  doi: "10.1063/5.0201950"
+  first_author: "Roth"
+  year: "2024"
+  title: "The magnetocardiogram"
+  journal: "Biophysics Reviews"
+  volume: "5"
+  registry: "crossref"
+  verified_on: "2026-09-01"
+  full_text_read: false
+  authors:
+    - "Roth Bradley J."
 
 sutton2016:
   doi: "10.1073/pnas.1601624113"
