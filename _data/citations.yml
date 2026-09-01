@@ -252,3 +252,54 @@ xu2021:
     - "Timmel Christiane R."
     - "Mouritsen Henrik"
     - "Hore P. J."
+
+bell1997:
+  doi: "10.1038/387278a0"
+  first_author: "Bell"
+  year: "1997"
+  title: "Synaptic plasticity in a cerebellum-like structure depends on temporal order"
+  journal: "Nature"
+  volume: "387"
+  pages: "278-281"
+  registry: "crossref"
+  verified_on: "2026-09-01"
+  full_text_read: false
+  authors:
+    - "Bell Curtis C."
+    - "Han Victor Z."
+    - "Sugawara Yoshiko"
+    - "Grant Kirsty"
+
+kennedy2014:
+  doi: "10.1038/nn.3650"
+  first_author: "Kennedy"
+  year: "2014"
+  title: "A temporal basis for predicting the sensory consequences of motor commands in an electric fish"
+  journal: "Nature Neuroscience"
+  volume: "17"
+  pages: "416-422"
+  registry: "crossref"
+  verified_on: "2026-09-01"
+  full_text_read: false
+  authors:
+    - "Kennedy Ann"
+    - "Wayne Greg"
+    - "Kaifosh Patrick"
+    - "Alvina Karina"
+
+sutton2016:
+  doi: "10.1073/pnas.1601624113"
+  first_author: "Sutton"
+  year: "2016"
+  title: "Mechanosensory hairs in bumblebees (Bombus terrestris) detect weak electric fields"
+  journal: "Proceedings of the National Academy of Sciences"
+  volume: "113"
+  pages: "7261-7265"
+  registry: "crossref"
+  verified_on: "2026-09-01"
+  full_text_read: false
+  authors:
+    - "Sutton Gregory P."
+    - "Clarke Dominic"
+    - "Morley Erica L."
+    - "Robert Daniel"

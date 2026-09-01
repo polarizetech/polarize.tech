@@ -1,9 +1,9 @@
 ---
 title: "What already reads the field"
 description: >-
-  Sharks, bumblebees, spiders, sediment bacteria and migratory birds all solve
-  sensing problems this bench keeps re-deriving. A survey of the biological
-  precedent — and one popular story about spider webs that is wrong.
+  Sharks, bumblebees, spiders, electric fish, sediment bacteria and migratory
+  birds all solve sensing problems this bench keeps re-deriving. A survey of the
+  biological precedent — and one popular story about spider webs that is wrong.
 date: 2026-08-31 09:00:00 -0600
 project: bioem-propagation
 status: published
@@ -12,7 +12,10 @@ claims:
 citations:
   - kalmijn1971
   - clarke2013
+  - sutton2016
   - morley2018
+  - bell1997
+  - kennedy2014
   - ortegajimenez2013
   - pfeffer2012
   - toyota2018
@@ -56,15 +59,51 @@ between the ground and the sky — and use it as a cue for
 ballooning {% include cite.html key="morley2018" %}.
 
 Both solve the air problem the same way, and this is the part worth taking:
-**neither uses anything like an electrode.** They use hair. A charged filament sitting
-in an electric field experiences a force and moves, and both animals already had an
-organ exquisitely good at detecting the movement of hairs, because that is how they
-sense air currents and vibration. The field sense is a *mechanical* sense wearing a
-different hat.
+**neither uses anything like an electrode.** They use hair {% include cite.html key="sutton2016" %}.
+A charged filament sitting in an electric field experiences a force and moves, and both
+animals already had an organ exquisitely good at detecting the movement of hairs, because
+that is how they sense air currents and vibration. The field sense is a *mechanical* sense
+wearing a different hat.
 
 For anyone building an instrument, that reframes the problem. A field detector does
 not have to be a voltage-measuring device in contact with something. It can be
 anything charged, compliant, and watched closely enough.
+
+## Reading a field you make yourself
+
+Everything above is passive: the animal reads a field something else produced. There is a
+second mode, and it is the one an instrument builder should look at hardest, because it is
+the one where you supply the signal.
+
+Weakly electric fish emit a discharge from a dedicated organ and read how nearby objects
+perturb it. That is active sensing — the same idea as radar or sonar, arrived at
+independently, in water.
+
+What makes it worth studying is not that it works. It is what it costs. Four things have to
+be present, and each is separately necessary:
+
+1. An organ that produces a discrete, command-triggered discharge.
+2. A receptor class tuned to that discharge, distinct from the receptors the same fish uses
+   to sense other animals passively.
+3. A cerebellum-like structure that learns a **negative image** of the animal's own
+   discharge and subtracts it, through a plasticity rule that depends on the order in which
+   the two inputs arrive {% include cite.html key="bell1997" %}.
+4. A **corollary discharge** — a copy of the motor command that fired the organ — supplying
+   the timing the negative image is built against
+   {% include cite.html key="kennedy2014" %}.
+
+Item 4 is the one I keep coming back to. The cancellation is not computed from the recorded
+signal. It is timed from the *command that caused it*, before the signal arrives. An
+instrument that emits and then tries to subtract its own contribution by measuring it is
+solving a harder problem than the fish is, and the fish has had a long time to look for an
+easier route.
+
+The other half of the lesson is a warning about copying it. This works in water because
+water conducts, so the fish drives a current through the medium and objects perturb the
+current density at its skin. Air does not conduct. The nearest thing in air is capacitive —
+a nearby object changes how much charge sits where — which is a different quantity, with a
+different distance dependence, and it responds to a different property of the object. The
+intuition transfers; the arithmetic does not.
 
 ## The spider web — and the story that is wrong
 
@@ -143,6 +182,8 @@ Three things, all structural, none of them a finding of mine:
    electric fields with hairs. Any charged, compliant surface is a candidate transducer.
 2. **Geometry alone can convert a field into motion**, with no receptor in the loop at all.
 3. **Long-distance conduction in biology is not always ionic.** Electrons travel too.
+4. **If an instrument emits, cancelling its own signal is most of the work** — and the one
+   animal that does this times the cancellation from the command, not from the recording.
 
 None of this is evidence for anything I am claiming. It is a map of where the good
 ideas already are, and every one of them was arrived at by something with no access to
