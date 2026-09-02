@@ -178,6 +178,15 @@ def parse_front_matter(block, path='<post>'):
             fm[key], mode = '', 'folded'
         elif val == '':
             fm[key], mode = [], 'list'
+        elif val.startswith('[') and val.endswith(']'):
+            # YAML flow sequence: `citations: []` or `claims: [A, B]`. Without this the
+            # value became the STRING "[]", which downstream code iterates character by
+            # character -- producing citation keys "[" and "]" and two failures that name
+            # a bracket as if it were a ledger key. Found writing the first post that
+            # legitimately cites nothing.
+            inner = val[1:-1].strip()
+            fm[key] = [_scalar(x) for x in inner.split(',') if x.strip()] if inner else []
+            mode = 'list'
         else:
             fm[key], mode = _scalar(val), 'scalar'
     return fm
