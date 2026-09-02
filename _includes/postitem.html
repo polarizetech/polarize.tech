@@ -16,6 +16,7 @@
       {%- endif %}
     </span>
     <span class="postlist__meta">
+      {%- if p.category %}<span class="ui-pill ui-pill--cat">{{ p.category | replace: "-", " " }}</span>{% endif -%}
       {%- if proj %}<span class="ui-pill">{{ proj.label }}</span>{% endif -%}
       {%- include tier.html tier=p.tier -%}
       {%- if p.citations and p.citations.size > 0 %}<span class="ui-pill">{{ p.citations | size }} src</span>{% endif -%}

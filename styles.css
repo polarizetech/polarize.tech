@@ -462,3 +462,8 @@ body.ui { margin: 0; }
 .footer__fine { margin: 0; }
 
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+/* Category pill — first used by the gear-review category, 2026-08-27. Distinct
+   from the project pill so a reader can tell "what kind of post" from "which
+   programme" at a glance. */
+.ui-pill--cat { text-transform: lowercase; letter-spacing: .02em; opacity: .85; }
