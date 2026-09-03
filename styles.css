@@ -127,16 +127,28 @@ body.ui { margin: 0; }
    rather than by starving the column, so a large screen actually fills. */
 .main { min-width: 0; max-width: 76rem; position: relative; }
 
-/* Contact CTA — top right of the content column, level with the sidebar brand
-   and the column heading. Absolutely placed so it does not push the heading
-   down and re-break the alignment it sits next to; the heading rows carry
-   padding-right to keep text from running under it. */
-.contact { position: absolute; top: 0; right: 0; z-index: 3; }
+/* .ui-btn was written for <button>, which has no underline. Every use here is an
+   <a>, so the browser default has to be turned off — contact CTA, pager, and the
+   back-link at the foot of a post. */
+a.ui-btn { text-decoration: none; }
+
+/* Contact CTA — fixed to the top right so it stays reachable while scrolling.
+   top is --space-8 rather than something smaller on purpose: at scroll-top that
+   puts it level with the sidebar brand and the column heading, so the alignment
+   holds and it does not jump when the page moves. */
+.contact {
+  position: fixed;
+  top: var(--space-8);
+  right: clamp(var(--space-5), 3vw, var(--space-7));
+  z-index: 50;
+}
 .main__heading,
 .doc__head h1,
 .doc__head .ui-label { padding-right: 10rem; }
 @media (max-width: 640px) {
-  .contact { position: static; display: inline-flex; margin-bottom: var(--space-5); }
+  /* Still fixed, just tighter to the corner. At scroll-top it sits over the
+     stacked sidebar's empty right side, clear of the wordmark on the left. */
+  .contact { top: var(--space-5); right: var(--space-5); }
   .main__heading,
   .doc__head h1,
   .doc__head .ui-label { padding-right: 0; }
