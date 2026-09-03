@@ -10,7 +10,7 @@ attia2019:
   journal: "Circulation: Arrhythmia and Electrophysiology"
   volume: "12"
   registry: "crossref"
-  verified_on: "2026-09-01"
+  verified_on: "2026-09-02"
   full_text_read: false
   authors:
     - "Attia Zachi I."
@@ -35,7 +35,7 @@ bell1997:
   volume: "387"
   pages: "278-281"
   registry: "crossref"
-  verified_on: "2026-09-01"
+  verified_on: "2026-09-02"
   full_text_read: false
   authors:
     - "Bell Curtis C."
@@ -52,7 +52,7 @@ blakemore1975:
   volume: "190"
   pages: "377-379"
   registry: "crossref"
-  verified_on: "2026-09-01"
+  verified_on: "2026-09-02"
   full_text_read: false
   authors:
     - "Blakemore Richard"
@@ -65,7 +65,7 @@ chan2018:
   journal: "Frontiers in Neuroinformatics"
   volume: "12"
   registry: "crossref"
-  verified_on: "2026-09-01"
+  verified_on: "2026-09-02"
   full_text_read: false
   authors:
     - "Chan Hui-Ling"
@@ -82,7 +82,7 @@ clarke2013:
   volume: "340"
   pages: "66-69"
   registry: "crossref"
-  verified_on: "2026-09-01"
+  verified_on: "2026-09-02"
   full_text_read: false
   authors:
     - "Clarke Dominic"
@@ -98,7 +98,7 @@ fratini2015:
   journal: "BioMedical Engineering OnLine"
   volume: "14"
   registry: "crossref"
-  verified_on: "2026-09-01"
+  verified_on: "2026-09-02"
   full_text_read: false
   authors:
     - "Fratini Antonio"
@@ -116,7 +116,7 @@ goldwyn2014:
   volume: "34"
   pages: "11705-11722"
   registry: "crossref"
-  verified_on: "2026-09-01"
+  verified_on: "2026-09-02"
   full_text_read: false
   authors:
     - "Goldwyn Joshua H."
@@ -135,7 +135,7 @@ iaccarino2016:
   volume: "540"
   pages: "230-235"
   registry: "crossref"
-  verified_on: "2026-09-01"
+  verified_on: "2026-09-02"
   full_text_read: false
   authors:
     - "Iaccarino Hunter F."
@@ -164,7 +164,7 @@ kalmijn1971:
   volume: "55"
   pages: "371-383"
   registry: "crossref"
-  verified_on: "2026-09-01"
+  verified_on: "2026-09-02"
   full_text_read: false
   authors:
     - "Kalmijn A. J."
@@ -178,7 +178,7 @@ kane2018:
   volume: "13"
   pages: "e0207247"
   registry: "crossref"
-  verified_on: "2026-09-01"
+  verified_on: "2026-09-02"
   full_text_read: true
   authors:
     - "Kane Suzanne Amador"
@@ -194,7 +194,7 @@ kennedy2014:
   volume: "17"
   pages: "416-422"
   registry: "crossref"
-  verified_on: "2026-09-01"
+  verified_on: "2026-09-02"
   full_text_read: false
   authors:
     - "Kennedy Ann"
@@ -212,7 +212,7 @@ lima2021:
   journal: "Nature Communications"
   volume: "12"
   registry: "crossref"
-  verified_on: "2026-09-01"
+  verified_on: "2026-09-02"
   full_text_read: false
   authors:
     - "Lima Emilly M."
@@ -240,7 +240,7 @@ martorell2019:
   volume: "177"
   pages: "256-271.e22"
   registry: "crossref"
-  verified_on: "2026-09-01"
+  verified_on: "2026-09-02"
   full_text_read: false
   authors:
     - "Martorell Anthony J."
@@ -270,8 +270,8 @@ morley2018:
   volume: "28"
   pages: "2324-2330.e2"
   registry: "crossref"
-  verified_on: "2026-09-01"
-  full_text_read: false
+  verified_on: "2026-09-02"
+  full_text_read: true
   authors:
     - "Morley Erica L."
     - "Robert Daniel"
@@ -284,7 +284,7 @@ odenwald2022:
   journal: "Space Weather"
   volume: "20"
   registry: "crossref"
-  verified_on: "2026-09-01"
+  verified_on: "2026-09-02"
   full_text_read: false
   authors:
     - "Odenwald S. F."
@@ -297,7 +297,7 @@ ortegajimenez2013:
   journal: "Scientific Reports"
   volume: "3"
   registry: "crossref"
-  verified_on: "2026-09-01"
+  verified_on: "2026-09-02"
   full_text_read: false
   authors:
     - "Ortega-Jimenez Victor Manuel"
@@ -312,7 +312,7 @@ pfeffer2012:
   volume: "491"
   pages: "218-221"
   registry: "crossref"
-  verified_on: "2026-09-01"
+  verified_on: "2026-09-02"
   full_text_read: false
   authors:
     - "Pfeffer Christian"
@@ -338,7 +338,7 @@ roth2024:
   journal: "Biophysics Reviews"
   volume: "5"
   registry: "crossref"
-  verified_on: "2026-09-01"
+  verified_on: "2026-09-02"
   full_text_read: false
   authors:
     - "Roth Bradley J."
@@ -352,7 +352,7 @@ sutton2016:
   volume: "113"
   pages: "7261-7265"
   registry: "crossref"
-  verified_on: "2026-09-01"
+  verified_on: "2026-09-02"
   full_text_read: false
   authors:
     - "Sutton Gregory P."
@@ -369,7 +369,7 @@ toyota2018:
   volume: "361"
   pages: "1112-1115"
   registry: "crossref"
-  verified_on: "2026-09-01"
+  verified_on: "2026-09-02"
   full_text_read: false
   authors:
     - "Toyota Masatsugu"
@@ -390,7 +390,7 @@ xu2021:
   volume: "594"
   pages: "535-540"
   registry: "crossref"
-  verified_on: "2026-09-01"
+  verified_on: "2026-09-02"
   full_text_read: false
   authors:
     - "Xu Jingjing"

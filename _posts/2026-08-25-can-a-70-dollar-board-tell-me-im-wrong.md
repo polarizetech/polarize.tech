@@ -5,7 +5,7 @@ description: >-
   for, and a question I can't answer alone.
 date: 2026-08-25 09:00:00 -0600
 project: audio-evoked-potentials
-status: draft
+status: published
 tier: C
 claims:
   - AEP-0005
