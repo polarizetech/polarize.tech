@@ -256,8 +256,14 @@ a.ui-btn { text-decoration: none; }
   .postlist__title { font-size: var(--display-3); }
 }
 
-/* ---------- Post ---------- */
-.post__head { max-width: 68ch; border-bottom: 1px solid var(--border); padding-bottom: var(--space-6); margin-bottom: var(--space-7); }
+/* ---------- Post ----------
+   One measure for the whole article. Before this the header was 601px (68ch at
+   the standfirst's size), the prose 665px (68ch at a larger size) and the lead
+   image, claims and references all 930px — three different left-to-right edges
+   stacked down one page. A rem measure rather than ch so it does not drift with
+   whatever font-size a block happens to use. */
+.post { --measure: 42rem; }
+.post__head { max-width: var(--measure); border-bottom: 1px solid var(--border); padding-bottom: var(--space-6); margin-bottom: var(--space-7); }
 /* The label, title and standfirst were butted together with a 0px gap — they are
    three different type roles and need to read as three things. */
 .post__head > .ui-label { margin-bottom: var(--space-3); }
@@ -267,19 +273,19 @@ a.ui-btn { text-decoration: none; }
 .post__badges { display: flex; gap: var(--space-2); flex-wrap: wrap; align-items: center; list-style: none; margin: 0; padding: 0; }
 
 /* "In short" — the summary that opens a post. */
-.post__summary { border-left: 2px solid var(--accent); padding-left: var(--space-4); margin: var(--space-6) 0 var(--space-7); }
+.post__summary { max-width: var(--measure); border-left: 2px solid var(--accent); padding-left: var(--space-4); margin: var(--space-6) 0 var(--space-7); }
 .post__summary-title { margin-bottom: var(--space-2); }
 .post__summary-body p { font-size: var(--text-lg); line-height: 1.6; margin: var(--space-2) 0; }
 .post__summary-body p:first-child { margin-top: 0; }
 
-.post__audio { margin: var(--space-6) 0 var(--space-7); }
+.post__audio { max-width: var(--measure); margin: var(--space-6) 0 var(--space-7); }
 .post__audio-label { margin-bottom: var(--space-2); }
 .post__audio audio { width: 100%; max-width: 34rem; }
 
 /* ---------- Post lead image ----------
    Post images run through scripts/prepare_image.py, which desaturates and
    contrast-shapes them to one recipe so the set looks like a set. */
-.post__lead { margin: 0 0 var(--space-7); }
+.post__lead { max-width: var(--measure); margin: 0 0 var(--space-7); }
 .post__lead img {
   display: block;
   width: 100%;
@@ -302,7 +308,7 @@ a.ui-btn { text-decoration: none; }
 .refs__ft .ui-icon { margin-right: .3em; }
 
 /* ---------- Prose ---------- */
-.prose { font-size: var(--text-lg); line-height: 1.7; max-width: 68ch; }
+.prose { font-size: var(--text-lg); line-height: 1.7; max-width: var(--measure); }
 .prose h2 {
   font-family: var(--font-display);
   font-size: var(--display-2);
@@ -361,8 +367,8 @@ a.ui-btn { text-decoration: none; }
 }
 
 /* ---------- Claims + references ---------- */
-.claims { margin: var(--space-7) 0 0; }
-.refs { margin: var(--space-8) 0 0; padding-top: var(--space-5); border-top: 1px solid var(--border); }
+.claims { max-width: var(--measure); margin: var(--space-7) 0 0; }
+.refs { max-width: var(--measure); margin: var(--space-8) 0 0; padding-top: var(--space-5); border-top: 1px solid var(--border); }
 .refs__title { font-family: var(--font-display); font-size: var(--display-3); margin: 0 0 var(--space-4); }
 .refs__list { padding-left: var(--space-5); }
 .refs__item { margin-bottom: var(--space-4); font-size: var(--text-base); color: var(--muted-foreground); }
@@ -435,7 +441,7 @@ a.ui-btn { text-decoration: none; }
 /* ---------- Misc ---------- */
 .notes__feed { color: var(--faint-foreground); text-decoration: none; }
 .notes__feed:hover { color: var(--muted-foreground); }
-.post__foot { margin-top: var(--space-8); }
+.post__foot { max-width: var(--measure); margin-top: var(--space-8); }
 .post__topic { color: var(--muted-foreground); text-decoration: none; }
 .post__topic:hover { color: var(--accent); }
 
@@ -498,7 +504,7 @@ a.ui-btn { text-decoration: none; }
 /* ---------- Misc ---------- */
 .notes__feed { color: var(--faint-foreground); text-decoration: none; }
 .notes__feed:hover { color: var(--muted-foreground); }
-.post__foot { margin-top: var(--space-8); }
+.post__foot { max-width: var(--measure); margin-top: var(--space-8); }
 .post__topic { color: var(--muted-foreground); text-decoration: none; }
 .post__topic:hover { color: var(--accent); }
 
