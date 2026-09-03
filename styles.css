@@ -122,6 +122,7 @@ body.ui { margin: 0; }
 }
 .main__heading + .postlist .postlist__item:first-child .postlist__link { padding-top: var(--space-5); }
 
+
 /* The shell is full-bleed and the main column is allowed to be genuinely wide;
    readability is protected on the TEXT (.doc__lede, .postlist__desc, .prose)
    rather than by starving the column, so a large screen actually fills. */
@@ -208,16 +209,40 @@ a.ui-btn { text-decoration: none; }
 /* Stacked, not columnar: date over title over description over meta. The date
    used to sit in its own left column, which fought the sidebar for the reader's
    left edge and left the title starting a third of the way across. */
+/* Thumbnail beside a stacked body: date over title over description over meta. */
 .postlist__link {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: var(--space-2);
+  display: grid;
+  grid-template-columns: 7.5rem minmax(0, 1fr);
+  gap: var(--space-5);
+  align-items: start;
   padding: var(--space-6) 0;
   text-decoration: none;
   transition: opacity var(--motion-base) ease;
 }
+.postlist__main { display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-2); min-width: 0; }
 .postlist__body { display: block; }
+
+/* Generated placeholder. Angle and mid-stop come from the post (see
+   postitem.html); every colour is a token, so it tracks light and dark. */
+.postlist__thumb {
+  display: block;
+  aspect-ratio: 1 / 1;
+  border-radius: var(--radius-base);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  /* Two layers: a soft off-centre highlight over a diagonal wash. The dark
+     theme's neutrals sit close together, so one linear gradient alone read as a
+     flat square — the highlight is what makes each one legibly its own. */
+  background:
+    radial-gradient(70% 70% at var(--g-x, 50%) var(--g-y, 50%),
+      var(--border-strong) 0%, transparent 70%),
+    linear-gradient(var(--g-angle, 135deg),
+      var(--background) 0%,
+      var(--muted) var(--g-stop, 50%),
+      var(--border-strong) 100%);
+}
+.postlist__thumb img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
 .postlist__link:hover { opacity: .7; }
 .postlist__date {
   font-family: var(--font-mono);
@@ -244,6 +269,14 @@ a.ui-btn { text-decoration: none; }
 }
 
 
+
+/* Must come after every .postlist rule above: these are the same specificity, so
+   source order decides. Placed mid-block the first time and .postlist__title's
+   base rule simply won. */
+@media (max-width: 600px) {
+  .postlist__link { grid-template-columns: 4.5rem minmax(0, 1fr); gap: var(--space-4); }
+  .postlist__title { font-size: var(--display-3); }
+}
 
 /* ---------- Post ---------- */
 .post__head { max-width: 68ch; border-bottom: 1px solid var(--border); padding-bottom: var(--space-6); margin-bottom: var(--space-7); }
