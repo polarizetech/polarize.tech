@@ -2,32 +2,16 @@
   One row in a post list. Used by the homepage, /blog/ and the topic pages, so
   the three cannot drift apart.
 
-  The thumbnail is the post's own image where it has one, and otherwise a
-  generated placeholder. That placeholder is DETERMINISTIC: its angle and stop
-  position come from the post's own publication epoch, so a given post draws the
-  same figure on every build and every page load, and two posts do not collide.
-  Its three colours are design tokens — all near-neutral in both themes — so the
-  set reads as one family and follows light/dark for free rather than being a
-  hardcoded grey.
+  The thumbnail is optional and trails the text. It is only emitted when the post
+  actually has an image — no placeholder, no reserved column — so a row without
+  one is simply full-width text rather than text with a hole beside it.
 
   Usage: {% include postitem.html post=post %}
 {%- endcomment -%}
 {%- assign p = include.post -%}
 {%- assign proj = site.projects[p.project] -%}
-{%- assign seed = p.date | date: "%s" | plus: 0 -%}
-{%- assign g_angle = seed | modulo: 137 | plus: 20 -%}
-{%- assign g_stop = seed | divided_by: 11 | modulo: 40 | plus: 30 -%}
-{%- assign g_x = seed | divided_by: 7 | modulo: 70 | plus: 15 -%}
-{%- assign g_y = seed | divided_by: 17 | modulo: 70 | plus: 15 -%}
 <li class="postlist__item">
   <a class="postlist__link" href="{{ p.url | relative_url }}">
-    <span class="postlist__thumb"
-          style="--g-angle: {{ g_angle }}deg; --g-stop: {{ g_stop }}%; --g-x: {{ g_x }}%; --g-y: {{ g_y }}%;">
-      {%- if p.image %}
-      <img src="{{ p.image | relative_url }}" alt="" loading="lazy" />
-      {%- endif %}
-    </span>
-
     <span class="postlist__main">
       <span class="postlist__date">{{ p.date | date: "%Y-%m-%d" }}</span>
       <span class="postlist__body">
@@ -43,5 +27,11 @@
         {%- if p.citations and p.citations.size > 0 %}<span class="ui-pill">{{ p.citations | size }} src</span>{% endif -%}
       </span>
     </span>
+
+    {%- if p.image %}
+    <span class="postlist__thumb">
+      <img src="{{ p.image | relative_url }}" alt="" loading="lazy" />
+    </span>
+    {%- endif %}
   </a>
 </li>
