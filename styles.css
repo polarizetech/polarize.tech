@@ -29,8 +29,8 @@ body.ui { margin: 0; }
 /* ---------- Shell: sidebar + main ---------- */
 .shell {
   display: grid;
-  grid-template-columns: 16rem minmax(0, 1fr);
-  gap: clamp(var(--space-6), 4vw, var(--space-8));
+  grid-template-columns: 22rem minmax(0, 1fr);
+  gap: clamp(var(--space-6), 5vw, var(--space-9));
   padding: var(--space-8) clamp(var(--space-5), 3vw, var(--space-7)) var(--space-9);
   align-items: start;
 }
@@ -62,12 +62,13 @@ body.ui { margin: 0; }
 }
 
 /* Author note — deliberately quiet: small, muted, below the fold of attention. */
-.side__bio { display: flex; gap: var(--space-3); margin: var(--space-5) 0 0; align-items: flex-start; }
+.side__bio { display: flex; gap: var(--space-3); margin: var(--space-3) 0 0; align-items: flex-start; }
 .side__avatar { width: 48px; height: 48px; border-radius: var(--radius-pill); flex: none; object-fit: cover; }
 .side__note { font-size: var(--text-sm); line-height: 1.55; color: var(--faint-foreground); }
 .side__note p { margin: 0; }
 .side__note strong { color: var(--muted-foreground); }
 
+.side__section { margin-top: var(--space-7); }
 .side__topics { margin-top: var(--space-7); }
 .side__heading { margin-bottom: var(--space-3); }
 .side__list { list-style: none; margin: 0; padding: 0; }
@@ -119,7 +120,7 @@ body.ui { margin: 0; }
   border-bottom: 1px solid var(--border);
   color: var(--muted-foreground);
 }
-.main__heading + .postlist .postlist__item:first-child .postlist__link { padding-top: var(--space-4); }
+.main__heading + .postlist .postlist__item:first-child .postlist__link { padding-top: var(--space-5); }
 
 /* The shell is full-bleed and the main column is allowed to be genuinely wide;
    readability is protected on the TEXT (.doc__lede, .postlist__desc, .prose)
@@ -192,16 +193,19 @@ body.ui { margin: 0; }
 /* Two columns, not three. The main column is ~600px next to the sidebar, and a
    third column for the badges left the title wrapping at ~200px. The badges sit
    under the description instead. */
+/* Stacked, not columnar: date over title over description over meta. The date
+   used to sit in its own left column, which fought the sidebar for the reader's
+   left edge and left the title starting a third of the way across. */
 .postlist__link {
-  display: grid;
-  grid-template-columns: 6rem minmax(0, 1fr);
-  gap: var(--space-2) var(--space-4);
-  align-items: baseline;
-  padding: var(--space-5) 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-2);
+  padding: var(--space-6) 0;
   text-decoration: none;
   transition: opacity var(--motion-base) ease;
 }
-.postlist__body { grid-column: 2; }
+.postlist__body { display: block; }
 .postlist__link:hover { opacity: .7; }
 .postlist__date {
   font-family: var(--font-mono);
@@ -213,14 +217,13 @@ body.ui { margin: 0; }
 .postlist__title {
   display: block;
   font-family: var(--font-display);
-  font-size: var(--display-3);
+  font-size: var(--display-2);
   line-height: 1.25;
   color: var(--foreground);
   margin-bottom: var(--space-1);
 }
 .postlist__desc { display: block; font-size: var(--text-base); line-height: 1.6; color: var(--muted-foreground); max-width: 62ch; }
 .postlist__meta {
-  grid-column: 2;
   display: flex;
   gap: var(--space-2);
   flex-wrap: wrap;
@@ -228,10 +231,7 @@ body.ui { margin: 0; }
   margin-top: var(--space-1);
 }
 
-@media (max-width: 680px) {
-  .postlist__link { grid-template-columns: 1fr; }
-  .postlist__body, .postlist__meta { grid-column: 1; }
-}
+
 
 /* ---------- Post ---------- */
 .post__head { max-width: 68ch; border-bottom: 1px solid var(--border); padding-bottom: var(--space-6); margin-bottom: var(--space-7); }

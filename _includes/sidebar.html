@@ -11,12 +11,15 @@
   <p class="side__tagline">Reading and writing the body electric</p>
 
   {%- if site.author %}
+  <div class="side__section">
+  <p class="ui-label side__heading">{% include icon.html name="note" %} About</p>
   <div class="side__bio">
     {%- if site.author.avatar %}
     <img class="side__avatar" src="{{ site.author.avatar | relative_url }}"
          alt="" width="44" height="44" loading="lazy" onerror="this.remove()" />
     {%- endif %}
     <div class="side__note">{{ site.author.note | markdownify }}</div>
+  </div>
   </div>
   {%- endif %}
 
