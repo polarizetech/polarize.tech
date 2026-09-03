@@ -133,9 +133,12 @@ body.ui { margin: 0; }
    back-link at the foot of a post. */
 a.ui-btn { text-decoration: none; }
 
-/* The CTA sits in the sidebar under the author note, reading as part of it
-   rather than as page chrome. It was fixed to the top right until 2026-09-02. */
-.side__contact { display: inline-flex; margin-top: var(--space-4); }
+/* A text link on its own line inside the author note, not a button. Shares the
+   hover with .prose a so every inline link in the site behaves the same. */
+.side__note p + p { margin-top: var(--space-3); }
+.side__contact { color: var(--accent); text-decoration: none; }
+.side__contact:hover,
+.prose a:hover { text-decoration: underline; text-underline-offset: .18em; }
 
 .main .doc { max-width: none; padding: 0; }
 .main .doc__head { padding-bottom: var(--space-5); margin-bottom: var(--space-5); }
@@ -255,8 +258,13 @@ a.ui-btn { text-decoration: none; }
 
 /* ---------- Post ---------- */
 .post__head { max-width: 68ch; border-bottom: 1px solid var(--border); padding-bottom: var(--space-6); margin-bottom: var(--space-7); }
+/* The label, title and standfirst were butted together with a 0px gap — they are
+   three different type roles and need to read as three things. */
+.post__head > .ui-label { margin-bottom: var(--space-3); }
+.post__head h1 { margin-bottom: var(--space-4); }
+.post__head .ui-standfirst { margin-bottom: var(--space-5); }
 .post__meta { display: flex; gap: var(--space-4); flex-wrap: wrap; align-items: center; margin-bottom: var(--space-4); }
-.post__badges { display: flex; gap: var(--space-2); flex-wrap: wrap; list-style: none; margin: var(--space-4) 0 0; padding: 0; }
+.post__badges { display: flex; gap: var(--space-2); flex-wrap: wrap; align-items: center; list-style: none; margin: 0; padding: 0; }
 
 /* "In short" — the summary that opens a post. */
 .post__summary { border-left: 2px solid var(--accent); padding-left: var(--space-4); margin: var(--space-6) 0 var(--space-7); }
@@ -382,11 +390,15 @@ a.ui-btn { text-decoration: none; }
 
 /* ---------- Claims ---------- */
 .claims__list { list-style: none; margin: 0; padding: 0; }
+/* Flex, not grid: the statement spans the full row, and under `auto auto` that
+   spanning child inflated both tracks — so the tier badge ended up ~480px away
+   from the claim id it belongs to. Flex lets the id and badge sit together and
+   the statement wrap onto its own line. */
 .claims__item {
-  display: grid;
-  grid-template-columns: auto auto;
-  gap: var(--space-2) var(--space-4);
-  align-items: baseline;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2) var(--space-3);
   padding: var(--space-4) 0;
   border-bottom: 1px solid var(--border);
 }
@@ -397,7 +409,8 @@ a.ui-btn { text-decoration: none; }
   text-transform: uppercase;
   color: var(--foreground);
 }
-.claims__stmt { grid-column: 1 / -1; font-size: var(--text-base); line-height: 1.55; color: var(--muted-foreground); }
+.claims__item > .ui-tier { flex: none; }
+.claims__stmt { flex: 1 0 100%; font-size: var(--text-base); line-height: 1.55; color: var(--muted-foreground); }
 .claims__stmt--broken { color: var(--refuted); }
 
 /* ---------- Reference record detail ---------- */
@@ -440,11 +453,15 @@ a.ui-btn { text-decoration: none; }
 
 /* ---------- Claims ---------- */
 .claims__list { list-style: none; margin: 0; padding: 0; }
+/* Flex, not grid: the statement spans the full row, and under `auto auto` that
+   spanning child inflated both tracks — so the tier badge ended up ~480px away
+   from the claim id it belongs to. Flex lets the id and badge sit together and
+   the statement wrap onto its own line. */
 .claims__item {
-  display: grid;
-  grid-template-columns: auto auto;
-  gap: var(--space-2) var(--space-4);
-  align-items: baseline;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2) var(--space-3);
   padding: var(--space-4) 0;
   border-bottom: 1px solid var(--border);
 }
@@ -455,7 +472,8 @@ a.ui-btn { text-decoration: none; }
   text-transform: uppercase;
   color: var(--foreground);
 }
-.claims__stmt { grid-column: 1 / -1; font-size: var(--text-base); line-height: 1.55; color: var(--muted-foreground); }
+.claims__item > .ui-tier { flex: none; }
+.claims__stmt { flex: 1 0 100%; font-size: var(--text-base); line-height: 1.55; color: var(--muted-foreground); }
 .claims__stmt--broken { color: var(--refuted); }
 
 /* ---------- Reference record detail ---------- */

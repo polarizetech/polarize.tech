@@ -18,12 +18,13 @@
     <img class="side__avatar" src="{{ site.author.avatar | relative_url }}"
          alt="" width="44" height="44" loading="lazy" onerror="this.remove()" />
     {%- endif %}
-    <div class="side__note">{{ site.author.note | markdownify }}</div>
+    <div class="side__note">
+      {{ site.author.note | markdownify }}
+      {%- if site.contact_email %}
+      <p><a class="side__contact" href="mailto:{{ site.contact_email }}?subject=polarize.tech">Get in touch</a></p>
+      {%- endif %}
+    </div>
   </div>
-  {%- if site.contact_email %}
-  <a class="ui-btn ui-btn--primary side__contact"
-     href="mailto:{{ site.contact_email }}?subject=polarize.tech">Get in touch</a>
-  {%- endif %}
   </div>
   {%- endif %}
 
