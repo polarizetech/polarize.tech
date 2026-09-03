@@ -12,6 +12,13 @@ claims:
 citations:
   - roth2024
   - odenwald2022
+image: /assets/posts/fluxgate-magnetometer.jpg
+image_alt: >-
+  A fluxgate magnetometer under a glass dome in a museum case, its permalloy cores and mounting plates visible.
+image_credit: Daderot
+image_license: CC0
+image_license_url: https://creativecommons.org/publicdomain/zero/1.0/
+image_source_url: https://commons.wikimedia.org/wiki/File:Fluxgate_magnetometer,_of_the_type_installed_in_a_lunar_surface_probe_for_the_Apollo_Project_-_National_Museum_of_Nature_and_Science,_Tokyo_-_DSC07833.JPG
 summary: >-
   Every phone has a magnetometer in it. The interesting question is not whether
   you can read a body with one — you cannot — but how far careful software

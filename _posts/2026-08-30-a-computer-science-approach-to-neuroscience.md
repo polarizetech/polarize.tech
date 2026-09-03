@@ -10,6 +10,13 @@ status: published
 tier: A
 claims:
 citations:
+image: /assets/posts/oscilloscope-waves.jpg
+image_alt: >-
+  An oscilloscope screen showing a triangular wave above a square wave against the instrument graticule.
+image_credit: Xato
+image_license: CC0
+image_license_url: https://creativecommons.org/publicdomain/zero/1.0/
+image_source_url: https://commons.wikimedia.org/wiki/File:Triangular_wave_and_square_wave_on_oscilloscope_screen.jpg
 summary: >-
   The questions here are open — none of them has been settled on this bench, and
   most are not settled anywhere. What follows is the method: build first and

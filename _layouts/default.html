@@ -25,10 +25,6 @@
   <div class="shell">
     {% include sidebar.html %}
     <main class="main">
-      {%- if site.contact_email %}
-      <a class="ui-btn ui-btn--primary contact"
-         href="mailto:{{ site.contact_email }}?subject=polarize.tech">Get in touch</a>
-      {%- endif %}
       {{ content }}
     </main>
   </div>

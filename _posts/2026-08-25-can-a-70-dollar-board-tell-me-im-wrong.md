@@ -13,6 +13,14 @@ citations:
   - iaccarino2016
   - martorell2019
   - goldwyn2014
+image: /assets/posts/eeg-recording-cap.jpg
+image_alt: >-
+  A person wearing a multi-electrode EEG recording cap in profile, ringed
+  electrodes and their lead wires covering the scalp.
+image_credit: Chris Hope
+image_license: CC BY 2.0
+image_license_url: https://creativecommons.org/licenses/by/2.0/
+image_source_url: https://commons.wikimedia.org/wiki/File:EEG_Recording_Cap.jpg
 ---
 
 I've been running a solo research program for about two months. The honest next step

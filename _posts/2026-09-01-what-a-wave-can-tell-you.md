@@ -14,6 +14,13 @@ citations:
   - chan2018
   - attia2019
   - lima2021
+image: /assets/posts/sea-wave.jpg
+image_alt: >-
+  A breaking ocean wave photographed close to the water surface.
+image_credit: Editor abcdef
+image_license: CC0
+image_license_url: https://creativecommons.org/publicdomain/zero/1.0/
+image_source_url: https://commons.wikimedia.org/wiki/File:Sea_wave_saipan.JPG
 summary: >-
   A heartbeat is usually treated as a trace of a heart working. The published
   literature says it is considerably more than that — identity, sex, age and

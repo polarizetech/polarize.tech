@@ -20,6 +20,10 @@
     {%- endif %}
     <div class="side__note">{{ site.author.note | markdownify }}</div>
   </div>
+  {%- if site.contact_email %}
+  <a class="ui-btn ui-btn--primary side__contact"
+     href="mailto:{{ site.contact_email }}?subject=polarize.tech">Get in touch</a>
+  {%- endif %}
   </div>
   {%- endif %}
 

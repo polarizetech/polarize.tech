@@ -133,27 +133,10 @@ body.ui { margin: 0; }
    back-link at the foot of a post. */
 a.ui-btn { text-decoration: none; }
 
-/* Contact CTA — fixed to the top right so it stays reachable while scrolling.
-   top is --space-8 rather than something smaller on purpose: at scroll-top that
-   puts it level with the sidebar brand and the column heading, so the alignment
-   holds and it does not jump when the page moves. */
-.contact {
-  position: fixed;
-  top: var(--space-8);
-  right: clamp(var(--space-5), 3vw, var(--space-7));
-  z-index: 50;
-}
-.main__heading,
-.doc__head h1,
-.doc__head .ui-label { padding-right: 10rem; }
-@media (max-width: 640px) {
-  /* Still fixed, just tighter to the corner. At scroll-top it sits over the
-     stacked sidebar's empty right side, clear of the wordmark on the left. */
-  .contact { top: var(--space-5); right: var(--space-5); }
-  .main__heading,
-  .doc__head h1,
-  .doc__head .ui-label { padding-right: 0; }
-}
+/* The CTA sits in the sidebar under the author note, reading as part of it
+   rather than as page chrome. It was fixed to the top right until 2026-09-02. */
+.side__contact { display: inline-flex; margin-top: var(--space-4); }
+
 .main .doc { max-width: none; padding: 0; }
 .main .doc__head { padding-bottom: var(--space-5); margin-bottom: var(--space-5); }
 
@@ -225,7 +208,7 @@ a.ui-btn { text-decoration: none; }
 
 .postlist__thumb {
   flex: none;
-  width: 7.5rem;
+  width: 10rem;
   aspect-ratio: 1 / 1;
   border-radius: var(--radius-base);
   border: 1px solid var(--border);
@@ -266,7 +249,7 @@ a.ui-btn { text-decoration: none; }
    base rule simply won. */
 @media (max-width: 600px) {
   .postlist__link { gap: var(--space-4); }
-  .postlist__thumb { width: 4.5rem; }
+  .postlist__thumb { width: 6rem; }
   .postlist__title { font-size: var(--display-3); }
 }
 

@@ -10,6 +10,13 @@ status: published
 tier: A
 claims:
 citations:
+image: /assets/posts/card-catalog.jpg
+image_alt: >-
+  An open library card catalog drawer, index cards standing upright in a long wooden tray.
+image_credit: Michael Holley
+image_license: Public domain
+image_license_url: https://en.wikipedia.org/wiki/Public_domain
+image_source_url: https://commons.wikimedia.org/wiki/File:Copyright_Card_Catalog_Drawer.jpg
 summary: >-
   Every reference on this site is machine-resolved against Crossref or PubMed
   and copied in by a script — none is typed by hand, so none can be invented,
