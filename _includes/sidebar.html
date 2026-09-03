@@ -12,19 +12,28 @@
 
   {%- if site.author %}
   <div class="side__section">
-  <p class="ui-label side__heading">{% include icon.html name="note" %} About</p>
-  <div class="side__bio">
-    {%- if site.author.avatar %}
-    <img class="side__avatar" src="{{ site.author.avatar | relative_url }}"
-         alt="" width="44" height="44" loading="lazy" onerror="this.remove()" />
-    {%- endif %}
-    <div class="side__note">
-      {{ site.author.note | markdownify }}
+    <p class="ui-label side__heading">{% include icon.html name="note" %} About</p>
+
+    {%- comment -%}
+      Identity stacks under the avatar — name, then place, then the contact
+      link — and the description sits below the whole group, flush to the
+      avatar's left edge rather than indented beside it.
+    {%- endcomment -%}
+    <div class="side__ident">
+      {%- if site.author.avatar %}
+      <img class="side__avatar" src="{{ site.author.avatar | relative_url }}"
+           alt="" width="56" height="56" loading="lazy" onerror="this.remove()" />
+      {%- endif %}
+      {%- if site.author.name %}<span class="side__name">{{ site.author.name }}</span>{% endif %}
+      {%- if site.author.location %}<span class="side__place">{{ site.author.location }}</span>{% endif %}
       {%- if site.contact_email %}
-      <p><a class="side__contact" href="mailto:{{ site.contact_email }}?subject=polarize.tech">{% include icon.html name="mail" %} Get in touch</a></p>
+      <a class="side__contact" href="mailto:{{ site.contact_email }}?subject=polarize.tech">{% include icon.html name="mail" %} Get in touch</a>
       {%- endif %}
     </div>
-  </div>
+
+    {%- if site.author.note %}
+    <p class="side__note">{{ site.author.note }}</p>
+    {%- endif %}
   </div>
   {%- endif %}
 

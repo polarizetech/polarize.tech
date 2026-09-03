@@ -62,12 +62,13 @@ body.ui { margin: 0; }
 }
 
 /* Author note — deliberately quiet: small, muted, below the fold of attention. */
-.side__bio { display: flex; gap: var(--space-3); margin: var(--space-3) 0 0; align-items: flex-start; }
-.side__avatar { width: 48px; height: 48px; border-radius: var(--radius-pill); flex: none; object-fit: cover; }
-.side__note { font-size: var(--text-sm); line-height: 1.55; color: var(--faint-foreground); }
-.side__note p { margin: 0; }
-.side__note strong { color: var(--muted-foreground); }
-
+/* Identity stacks vertically under the avatar; the description sits below the
+   whole group, flush left with it rather than indented beside the image. */
+.side__ident { display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-1); margin-top: var(--space-3); }
+.side__avatar { width: 56px; height: 56px; border-radius: var(--radius-pill); object-fit: cover; margin-bottom: var(--space-2); }
+.side__name { color: var(--foreground); font-size: var(--text-base); }
+.side__place { color: var(--faint-foreground); font-size: var(--text-sm); }
+.side__note { margin: var(--space-4) 0 0; font-size: var(--text-sm); line-height: 1.55; color: var(--faint-foreground); }
 .side__section { margin-top: var(--space-7); }
 .side__topics { margin-top: var(--space-7); }
 .side__heading { margin-bottom: var(--space-3); }
@@ -135,8 +136,7 @@ a.ui-btn { text-decoration: none; }
 
 /* A text link on its own line inside the author note, not a button. Shares the
    hover with .prose a so every inline link in the site behaves the same. */
-.side__note p + p { margin-top: var(--space-3); }
-.side__contact { color: var(--accent); text-decoration: none; }
+.side__contact { margin-top: var(--space-2); color: var(--accent); text-decoration: none; font-size: var(--text-sm); }
 .side__contact .ui-icon { margin-right: .4em; opacity: .8; }
 .side__contact:hover,
 .prose a:hover { text-decoration: underline; text-underline-offset: .18em; }
