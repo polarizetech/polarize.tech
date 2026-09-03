@@ -21,7 +21,7 @@
     <div class="side__note">
       {{ site.author.note | markdownify }}
       {%- if site.contact_email %}
-      <p><a class="side__contact" href="mailto:{{ site.contact_email }}?subject=polarize.tech">Get in touch</a></p>
+      <p><a class="side__contact" href="mailto:{{ site.contact_email }}?subject=polarize.tech">{% include icon.html name="mail" %} Get in touch</a></p>
       {%- endif %}
     </div>
   </div>

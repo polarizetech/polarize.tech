@@ -137,6 +137,7 @@ a.ui-btn { text-decoration: none; }
    hover with .prose a so every inline link in the site behaves the same. */
 .side__note p + p { margin-top: var(--space-3); }
 .side__contact { color: var(--accent); text-decoration: none; }
+.side__contact .ui-icon { margin-right: .4em; opacity: .8; }
 .side__contact:hover,
 .prose a:hover { text-decoration: underline; text-underline-offset: .18em; }
 

@@ -1,5 +1,5 @@
 ---
-title: "What a wave can tell you about the thing that made it"
+title: '"Frequencies" are just one piece of the puzzle'
 description: >-
   Building a list of every kind of information a biological signal is known to
   carry, and which structural feature of the wave carries it — then asking the
