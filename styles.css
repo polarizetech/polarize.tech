@@ -124,7 +124,22 @@ body.ui { margin: 0; }
 /* The shell is full-bleed and the main column is allowed to be genuinely wide;
    readability is protected on the TEXT (.doc__lede, .postlist__desc, .prose)
    rather than by starving the column, so a large screen actually fills. */
-.main { min-width: 0; max-width: 76rem; }
+.main { min-width: 0; max-width: 76rem; position: relative; }
+
+/* Contact CTA — top right of the content column, level with the sidebar brand
+   and the column heading. Absolutely placed so it does not push the heading
+   down and re-break the alignment it sits next to; the heading rows carry
+   padding-right to keep text from running under it. */
+.contact { position: absolute; top: 0; right: 0; z-index: 3; }
+.main__heading,
+.doc__head h1,
+.doc__head .ui-label { padding-right: 10rem; }
+@media (max-width: 640px) {
+  .contact { position: static; display: inline-flex; margin-bottom: var(--space-5); }
+  .main__heading,
+  .doc__head h1,
+  .doc__head .ui-label { padding-right: 0; }
+}
 .main .doc { max-width: none; padding: 0; }
 .main .doc__head { padding-bottom: var(--space-5); margin-bottom: var(--space-5); }
 
@@ -466,4 +481,4 @@ body.ui { margin: 0; }
 /* Category pill — first used by the gear-review category, 2026-08-27. Distinct
    from the project pill so a reader can tell "what kind of post" from "which
    programme" at a glance. */
-.ui-pill--cat { text-transform: lowercase; letter-spacing: .02em; opacity: .85; }
+.ui-pill--cat { text-transform: lowercase; opacity: .85; }

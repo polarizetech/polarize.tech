@@ -32,6 +32,13 @@ plugins:
 paginate: 8
 paginate_path: "/page:num/"
 
+# The address behind the contact button. A plain mailto: on purpose — it opens
+# whatever the reader actually uses (Gmail in a browser, Mail.app, Outlook),
+# where a Gmail compose URL would only work for Gmail users.
+# NOTE: this address is PUBLISHED on every page. Change it here to swap it for
+# an alias or a forwarding address.
+contact_email: info@joshanderton.com
+
 # The sidebar's author note. Kept here rather than in a post so it is written
 # once. `avatar` is optional — the sidebar renders without it.
 author:
