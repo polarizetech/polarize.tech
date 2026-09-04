@@ -25,15 +25,10 @@ description: >-
     rather than a form that silently goes nowhere.
   {%- endcomment -%}
   <form class="contactform"
-        {% if site.contact_endpoint %}action="{{ site.contact_endpoint }}" method="post"{% else %}action="mailto:{{ site.contact_email }}" method="post" enctype="text/plain"{% endif %}>
+        {% if site.contact_endpoint %}action="{{ site.contact_endpoint }}" method="post"{% else %}action="mailto:{{ site.contact_email }}?subject=polarize.tech" method="post" enctype="text/plain"{% endif %}>
     <label class="contactform__field">
       <span class="ui-label">Your email</span>
       <input type="email" name="from" required autocomplete="email" />
-    </label>
-
-    <label class="contactform__field">
-      <span class="ui-label">Subject</span>
-      <input type="text" name="subject" value="polarize.tech" required />
     </label>
 
     <label class="contactform__field">
