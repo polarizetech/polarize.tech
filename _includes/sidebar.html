@@ -1,13 +1,9 @@
 {%- comment -%}
-  The shell's left column on desktop, stacked above the list on narrow screens.
-  Brand, a short author note, the topic list, and two links at the foot.
+  Everything in the left column EXCEPT the brand, which the layout places
+  itself: on desktop this sits under it, but on mobile the brand stays at the
+  top of the page and all of this moves below the content.
 {%- endcomment -%}
 <aside class="side">
-  <a class="brand side__brand" href="{{ '/' | relative_url }}">
-    <span class="brand__mark"></span>
-    <span class="brand__word">POLARIZE</span>
-  </a>
-
   <p class="side__tagline">Reading and writing the body electric</p>
 
   {%- if site.author %}

@@ -27,23 +27,41 @@ body.ui { margin: 0; }
 .section { max-width: var(--content-max); margin: 0 auto; }
 
 /* ---------- Shell: sidebar + main ---------- */
+/* Named areas so the brand can be placed independently of the rest of the
+   sidebar: on desktop it heads the left column, on mobile it stays at the top of
+   the page and everything else in the sidebar drops below the content. */
 .shell {
   display: grid;
   grid-template-columns: 22rem minmax(0, 1fr);
-  gap: clamp(var(--space-6), 5vw, var(--space-9));
+  grid-template-areas:
+    "brand main"
+    "side  main";
+  grid-template-rows: auto 1fr;
+  column-gap: clamp(var(--space-6), 5vw, var(--space-9));
+  row-gap: var(--space-5);
   padding: var(--space-8) clamp(var(--space-5), 3vw, var(--space-7)) var(--space-9);
   align-items: start;
 }
+.shell__brand { grid-area: brand; }
+.side { grid-area: side; }
+.main { grid-area: main; }
+
 @media (max-width: 900px) {
-  .shell { grid-template-columns: 1fr; gap: var(--space-7); padding-top: var(--space-6); }
+  .shell {
+    grid-template-columns: 1fr;
+    grid-template-areas: "brand" "main" "side";
+    grid-template-rows: auto auto auto;
+    row-gap: var(--space-7);
+    padding-top: var(--space-6);
+  }
 }
 
 /* ---------- Sidebar ---------- */
 .side { position: sticky; top: var(--space-6); }
 @media (max-width: 900px) {
-  .side { position: static; border-bottom: 1px solid var(--border); padding-bottom: var(--space-6); }
+  /* Below the content now, so it takes a rule ABOVE it rather than below. */
+  .side { position: static; border-top: 1px solid var(--border); padding-top: var(--space-6); }
 }
-.side__brand { display: inline-flex; align-items: center; gap: var(--space-2); text-decoration: none; }
 .brand { display: inline-flex; align-items: center; gap: var(--space-2); text-decoration: none; }
 .brand__mark { width: 12px; height: 20px; background: var(--accent); border-radius: 2px; }
 .brand__word {
