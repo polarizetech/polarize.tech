@@ -84,7 +84,7 @@ body.ui { margin: 0; }
    this row, so it falls below the whole group and stays flush with the avatar's
    left edge instead of indenting under the text column. */
 .side__ident { display: flex; align-items: flex-start; gap: var(--space-3); margin-top: var(--space-3); }
-.side__avatar { flex: none; width: 56px; height: 56px; border-radius: var(--radius-pill); object-fit: cover; }
+.side__avatar { flex: none; width: 56px; height: 56px; border-radius: var(--radius-base); object-fit: cover; }
 .side__who { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; min-width: 0; }
 .side__name { color: var(--foreground); font-size: var(--text-base); }
 .side__place { color: var(--faint-foreground); font-size: var(--text-sm); }
