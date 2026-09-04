@@ -191,14 +191,6 @@ a.ui-btn { text-decoration: none; }
 .doc { max-width: 46rem; padding: var(--space-9) var(--space-5) var(--space-8); }
 .doc__head { border-bottom: 1px solid var(--border); padding-bottom: var(--space-6); margin-bottom: var(--space-7); }
 .doc__lede { font-size: var(--text-lg); line-height: 1.6; color: var(--muted-foreground); max-width: 58ch; }
-.doc__note {
-  margin-top: var(--space-8);
-  padding-top: var(--space-5);
-  border-top: 1px solid var(--border);
-  font-size: var(--text-sm);
-  color: var(--faint-foreground);
-}
-.doc__note a { color: var(--muted-foreground); }
 
 /* ---------- Notes section (homepage) ---------- */
 .notes__head { max-width: 62ch; margin-bottom: clamp(var(--space-3), 2vh, var(--space-5)); }
@@ -483,7 +475,6 @@ a.ui-btn { text-decoration: none; }
 /* ---------- Misc ---------- */
 .notes__feed { color: var(--faint-foreground); text-decoration: none; }
 .notes__feed:hover { color: var(--muted-foreground); }
-.post__foot { max-width: var(--measure); margin-top: var(--space-8); }
 .post__topic { color: var(--muted-foreground); text-decoration: none; }
 .post__topic:hover { color: var(--accent); }
 
@@ -546,7 +537,6 @@ a.ui-btn { text-decoration: none; }
 /* ---------- Misc ---------- */
 .notes__feed { color: var(--faint-foreground); text-decoration: none; }
 .notes__feed:hover { color: var(--muted-foreground); }
-.post__foot { max-width: var(--measure); margin-top: var(--space-8); }
 .post__topic { color: var(--muted-foreground); text-decoration: none; }
 .post__topic:hover { color: var(--accent); }
 
