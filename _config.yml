@@ -39,6 +39,12 @@ paginate_path: "/page:num/"
 # an alias or a forwarding address.
 contact_email: info@joshanderton.com
 
+# Where /contact/'s form posts. LEAVE EMPTY and the form falls back to a mailto:
+# submit that opens the reader's own mail client — GitHub Pages is static and
+# cannot post a form anywhere by itself. Set this to a deployed
+# tools/contact-endpoint URL to get real submissions.
+contact_endpoint:
+
 # The sidebar's author note. Kept here rather than in a post so it is written
 # once. `avatar` is optional — the sidebar renders without it.
 author:

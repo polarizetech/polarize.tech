@@ -1,0 +1,63 @@
+---
+layout: default
+title: Contact
+permalink: /contact/
+description: >-
+  Get in touch about the research, the instruments, or anything on this site.
+---
+
+<header class="doc__head">
+  <p class="ui-label">{% include icon.html name="mail" %} Contact</p>
+  <h1 class="ui-display ui-display--2">Get in touch</h1>
+  <p class="doc__lede">
+    Corrections are the most useful thing you can send. If something here
+    overreaches its source, or a number does not reproduce, I want to know —
+    that is the whole point of citing by key.
+  </p>
+</header>
+
+<div class="contactpage">
+  <p class="contactpage__direct">
+    Email directly:
+    <a href="mailto:{{ site.contact_email }}?subject=polarize.tech">{{ site.contact_email }}</a>
+  </p>
+
+  {%- comment -%}
+    The form's action is site.contact_endpoint when one is configured. With none
+    set it falls back to a mailto: submit, which opens the reader's own mail
+    client with the fields filled in — GitHub Pages is static and cannot post a
+    form anywhere by itself, so this is the honest zero-infrastructure default
+    rather than a form that silently goes nowhere.
+  {%- endcomment -%}
+  <form class="contactform"
+        {% if site.contact_endpoint %}action="{{ site.contact_endpoint }}" method="post"{% else %}action="mailto:{{ site.contact_email }}" method="post" enctype="text/plain"{% endif %}>
+    <label class="contactform__field">
+      <span class="ui-label">Your email</span>
+      <input type="email" name="from" required autocomplete="email" />
+    </label>
+
+    <label class="contactform__field">
+      <span class="ui-label">Subject</span>
+      <input type="text" name="subject" value="polarize.tech" required />
+    </label>
+
+    <label class="contactform__field">
+      <span class="ui-label">Message</span>
+      <textarea name="message" rows="8" required></textarea>
+    </label>
+
+    {%- comment -%} Bot trap. Hidden from people, filled in by scrapers; the endpoint
+        accepts and drops anything that carries it. {%- endcomment -%}
+    <input class="contactform__trap" type="text" name="website" tabindex="-1"
+           autocomplete="off" aria-hidden="true" />
+
+    <button class="ui-btn ui-btn--primary" type="submit">Send</button>
+
+    {%- unless site.contact_endpoint %}
+    <p class="contactform__note">
+      This opens your own mail client with the message filled in — nothing is
+      submitted to this site.
+    </p>
+    {%- endunless %}
+  </form>
+</div>

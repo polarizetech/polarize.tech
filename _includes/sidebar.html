@@ -28,7 +28,7 @@
         {%- if site.author.name %}<span class="side__name">{{ site.author.name }}</span>{% endif %}
         {%- if site.author.location %}<span class="side__place">{{ site.author.location }}</span>{% endif %}
         {%- if site.contact_email %}
-        <a class="side__contact" href="mailto:{{ site.contact_email }}?subject=polarize.tech">{% include icon.html name="mail" %} Get in touch</a>
+        <a class="side__contact" href="{{ '/contact/' | relative_url }}">{% include icon.html name="mail" %} Get in touch</a>
         {%- endif %}
       </span>
     </div>
