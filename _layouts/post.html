@@ -37,9 +37,13 @@ layout: default
     <img src="{{ page.image | relative_url }}" alt="{{ page.image_alt }}" />
     {%- if page.image_credit %}
     <figcaption class="post__credit">
+      {%- if page.image_license -%}
       <a href="{{ page.image_source_url }}" rel="noopener">Photograph</a> by
       {{ page.image_credit }}, <a href="{{ page.image_license_url }}" rel="noopener">{{ page.image_license }}</a>.
       Desaturated for this site.
+      {%- else -%}
+      {{ page.image_credit }}
+      {%- endif -%}
     </figcaption>
     {%- endif %}
   </figure>

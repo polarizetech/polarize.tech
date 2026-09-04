@@ -11,12 +11,13 @@ tier: C
 claims:
   - AEP-0005
 citations:
-image: /assets/posts/bone-vs-air-conduction.svg
+image: /assets/posts/suunto-sonic.jpg
 image_alt: >-
-  Two heads compared. Left, a sealed transducer at one ear: roughly 40 to 60 decibels
-  of interaural attenuation, two independent ears. Right, a transducer on the skull:
-  roughly 0 to 10 decibels, because the skull couples both cochleae.
-image_credit: "Diagram drawn for this post."
+  The Suunto Sonic, a bone-conduction headset: a wraparound neckband with two
+  transducer pads that sit on the cheekbones rather than over the ear canals.
+image_credit: >-
+  Manufacturer product image, Suunto. Reproduced to illustrate a review of the
+  product. Desaturated for this site.
 ---
 
 First entry in a gear category. The format is deliberate: **specifications, then
