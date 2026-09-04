@@ -279,10 +279,6 @@ a.ui-btn { text-decoration: none; }
 
 /* ---------- Contact ---------- */
 .contactpage { max-width: 34rem; }
-.contactpage__direct { font-size: var(--text-base); color: var(--muted-foreground); margin: 0 0 var(--space-6); }
-.contactpage__direct a { color: var(--accent); text-decoration: none; }
-.contactpage__direct a:hover { text-decoration: underline; text-underline-offset: .18em; }
-
 .contactform { display: flex; flex-direction: column; gap: var(--space-4); align-items: flex-start; }
 .contactform__field { display: flex; flex-direction: column; gap: var(--space-2); width: 100%; }
 .contactform input,
