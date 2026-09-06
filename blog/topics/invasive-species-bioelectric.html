@@ -1,0 +1,17 @@
+---
+layout: default
+title: "Invasive species and bioelectricity"
+topic: invasive-species-bioelectric
+description: >-
+  What a European green crab can and cannot sense, computed where the numbers exist and refused where they do not — and how the native Pacific crabs compare.
+permalink: /blog/topics/invasive-species-bioelectric/
+---
+
+<header class="doc__head">
+  <p class="ui-label">Topic</p>
+  <h1 class="ui-display ui-display--2">{{ page.title }}</h1>
+  <p class="doc__lede">{{ page.description }}</p>
+</header>
+
+{%- assign in_topic = site.posts | where: "project", "invasive-species-bioelectric" %}
+{% include postlist.html posts=in_topic %}

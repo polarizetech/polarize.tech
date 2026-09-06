@@ -76,6 +76,12 @@ projects:
     blurb: >-
       What carries a biological signal out of a body and through the world — and
       what it takes to read it once it is out there.
+  invasive-species-bioelectric:
+    label: "Invasive species & bioelectricity"
+    blurb: >-
+      What a European green crab can and cannot sense, computed where the
+      numbers exist and refused where they do not — and how the native Pacific
+      crabs compare.
   method:
     label: "Method"
     blurb: >-

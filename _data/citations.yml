@@ -2,6 +2,24 @@
 # Source: polarizetech/research (machine-verified against Crossref/PubMed).
 # Regenerate: python3 scripts/sync_research.py
 
+aimon2021:
+  doi: "10.1016/j.envpol.2021.117148"
+  first_author: "Aimon"
+  year: "2021"
+  title: "Anthropogenic underwater vibrations are sensed and stressful for the shore crab Carcinus maenas"
+  journal: "Environmental Pollution"
+  volume: "285"
+  pages: "117148"
+  registry: "crossref"
+  verified_on: "2026-09-06"
+  full_text_read: false
+  authors:
+    - "Aimon Cassandre"
+    - "Simpson Stephen D."
+    - "Hazelwood Richard A."
+    - "Bruintjes Rick"
+    - "Urbina Mauricio A."
+
 attia2019:
   doi: "10.1161/CIRCEP.119.007284"
   first_author: "Attia"
@@ -10,7 +28,7 @@ attia2019:
   journal: "Circulation: Arrhythmia and Electrophysiology"
   volume: "12"
   registry: "crossref"
-  verified_on: "2026-09-02"
+  verified_on: "2026-09-06"
   full_text_read: false
   authors:
     - "Attia Zachi I."
@@ -26,6 +44,21 @@ attia2019:
     - "Carter Rickey E."
     - "Kapa Suraj"
 
+bedore2013:
+  doi: "10.1086/669973"
+  first_author: "Bedore"
+  year: "2013"
+  title: "Bioelectric Fields of Marine Organisms: Voltage and Frequency Contributions to Detectability by Electroreceptive Predators"
+  journal: "Physiological and Biochemical Zoology"
+  volume: "86"
+  pages: "298-311"
+  registry: "crossref"
+  verified_on: "2026-09-06"
+  full_text_read: true
+  authors:
+    - "Bedore Christine N."
+    - "Kajiura Stephen M."
+
 bell1997:
   doi: "10.1038/387278a0"
   first_author: "Bell"
@@ -35,13 +68,47 @@ bell1997:
   volume: "387"
   pages: "278-281"
   registry: "crossref"
-  verified_on: "2026-09-02"
+  verified_on: "2026-09-06"
   full_text_read: false
   authors:
     - "Bell Curtis C."
     - "Han Victor Z."
     - "Sugawara Yoshiko"
     - "Grant Kirsty"
+
+bergshoeff2018:
+  doi: "10.7717/peerj.4223"
+  first_author: "Bergshoeff"
+  year: "2018"
+  title: "Using underwater video to evaluate the performance of the Fukui trap as a mitigation tool for the invasive European green crab ( Carcinus maenas ) in Newfoundland, Canada"
+  journal: "PeerJ"
+  volume: "6"
+  pages: "e4223"
+  registry: "crossref"
+  verified_on: "2026-09-06"
+  full_text_read: true
+  authors:
+    - "Bergshoeff Jonathan A."
+    - "McKenzie Cynthia H."
+    - "Best Kiley"
+    - "Zargarpour Nicola"
+    - "Favaro Brett"
+
+bergshoeff2019:
+  doi: "10.7717/peerj.6308"
+  first_author: "Bergshoeff"
+  year: "2019"
+  title: "Improving the efficiency of the Fukui trap as a capture tool for the invasive European green crab ( Carcinus maenas ) in Newfoundland, Canada"
+  journal: "PeerJ"
+  volume: "7"
+  pages: "e6308"
+  registry: "crossref"
+  verified_on: "2026-09-06"
+  full_text_read: true
+  authors:
+    - "Bergshoeff Jonathan A."
+    - "McKenzie Cynthia H."
+    - "Favaro Brett"
 
 blakemore1975:
   doi: "10.1126/science.170679"
@@ -52,10 +119,39 @@ blakemore1975:
   volume: "190"
   pages: "377-379"
   registry: "crossref"
-  verified_on: "2026-09-02"
+  verified_on: "2026-09-06"
   full_text_read: false
   authors:
     - "Blakemore Richard"
+
+boles2003:
+  doi: "10.1038/nature01226"
+  first_author: "Boles"
+  year: "2003"
+  title: "True navigation and magnetic maps in spiny lobsters"
+  journal: "Nature"
+  volume: "421"
+  pages: "60-63"
+  registry: "crossref"
+  verified_on: "2026-09-06"
+  full_text_read: false
+  authors:
+    - "Boles Larry C."
+    - "Lohmann Kenneth J."
+
+burke1954:
+  doi: "10.1242/jeb.31.1.127"
+  first_author: "Burke"
+  year: "1954"
+  title: "An Organ for Proprioception and Vibration Sense in Carcinus Maenas"
+  journal: "Journal of Experimental Biology"
+  volume: "31"
+  pages: "127-138"
+  registry: "crossref"
+  verified_on: "2026-09-06"
+  full_text_read: false
+  authors:
+    - "Burke W."
 
 chan2018:
   doi: "10.3389/fninf.2018.00066"
@@ -65,7 +161,7 @@ chan2018:
   journal: "Frontiers in Neuroinformatics"
   volume: "12"
   registry: "crossref"
-  verified_on: "2026-09-02"
+  verified_on: "2026-09-06"
   full_text_read: false
   authors:
     - "Chan Hui-Ling"
@@ -82,13 +178,61 @@ clarke2013:
   volume: "340"
   pages: "66-69"
   registry: "crossref"
-  verified_on: "2026-09-02"
+  verified_on: "2026-09-06"
   full_text_read: false
   authors:
     - "Clarke Dominic"
     - "Whitney Heather"
     - "Sutton Gregory"
     - "Robert Daniel"
+
+coquereau2016:
+  doi: "10.1007/s00227-016-2902-2"
+  first_author: "Coquereau"
+  year: "2016"
+  title: "Sound production and associated behaviours of benthic invertebrates from a coastal habitat in the north-east Atlantic"
+  journal: "Marine Biology"
+  volume: "163"
+  registry: "crossref"
+  verified_on: "2026-09-06"
+  full_text_read: true
+  authors:
+    - "Coquereau Laura"
+    - "Grall Jacques"
+    - "Chauvaud Laurent"
+    - "Gervaise Cédric"
+    - "Clavier Jacques"
+    - "Jolivet Aurélie"
+    - "Di Iorio Lucia"
+
+defur1983:
+  doi: "10.2307/1541467"
+  first_author: "DEFUR"
+  year: "1983"
+  title: "ANALYSIS OF HEMOLYMPH OXYGEN LEVELS AND ACID-BASE STATUS DURING EMERSION 'IN SITU' IN THE RED ROCK CRAB, CANCER PRODUCTUS"
+  journal: "The Biological Bulletin"
+  volume: "165"
+  pages: "582-590"
+  registry: "crossref"
+  verified_on: "2026-09-06"
+  full_text_read: false
+  authors:
+    - "DEFUR PETER L."
+    - "MCMAHON BRIAN R."
+    - "BOOTH CHARLES E."
+
+ernst2016:
+  doi: "10.1242/jeb.136036"
+  first_author: "Ernst"
+  year: "2016"
+  title: "Effect of magnetic pulses on Caribbean spiny lobsters: implications for magnetoreception"
+  journal: "Journal of Experimental Biology"
+  registry: "crossref"
+  verified_on: "2026-09-06"
+  full_text_read: false
+  authors:
+    - "Ernst David A."
+    - "Lohmann Kenneth J."
 
 fratini2015:
   doi: "10.1186/s12938-015-0072-y"
@@ -98,13 +242,27 @@ fratini2015:
   journal: "BioMedical Engineering OnLine"
   volume: "14"
   registry: "crossref"
-  verified_on: "2026-09-02"
+  verified_on: "2026-09-06"
   full_text_read: false
   authors:
     - "Fratini Antonio"
     - "Sansone Mario"
     - "Bifulco Paolo"
     - "Cesarelli Mario"
+
+garm2005:
+  doi: "10.1007/s00227-005-0020-7"
+  first_author: "Garm"
+  year: "2005"
+  title: "Mechanosensory properties of the mouthpart setae of the European shore crab Carcinus maenas"
+  journal: "Marine Biology"
+  volume: "147"
+  pages: "1179-1190"
+  registry: "crossref"
+  verified_on: "2026-09-06"
+  full_text_read: true
+  authors:
+    - "Garm A."
 
 goldwyn2014:
   doi: "10.1523/JNEUROSCI.0175-14.2014"
@@ -116,7 +274,7 @@ goldwyn2014:
   volume: "34"
   pages: "11705-11722"
   registry: "crossref"
-  verified_on: "2026-09-02"
+  verified_on: "2026-09-06"
   full_text_read: false
   authors:
     - "Goldwyn Joshua H."
@@ -124,6 +282,48 @@ goldwyn2014:
     - "Verschooten Eric"
     - "Joris Philip X."
     - "Rinzel John"
+
+hardege2011:
+  doi: "10.3354/meps09226"
+  first_author: "Hardege"
+  year: "2011"
+  title: "Identification of a female sex pheromone in Carcinus maenas"
+  journal: "Marine Ecology Progress Series"
+  volume: "436"
+  pages: "177-189"
+  registry: "crossref"
+  verified_on: "2026-09-06"
+  full_text_read: false
+  authors:
+    - "Hardege JD"
+    - "Bartels-Hardege HD"
+    - "Fletcher N"
+    - "Terschak JA"
+    - "Harley M"
+    - "Smith MA"
+    - "Davidson L"
+    - "Hayden D"
+    - "Müller CT"
+    - "Lorch M"
+    - "Welham K"
+    - "Walther T"
+    - "Bublitz R"
+
+holsman2006:
+  doi: "10.3354/meps308183"
+  first_author: "Holsman"
+  year: "2006"
+  title: "Intertidal migration and habitat use by subadult Dungeness crab Cancer magister in a NE Pacific estuary"
+  journal: "Marine Ecology Progress Series"
+  volume: "308"
+  pages: "183-195"
+  registry: "crossref"
+  verified_on: "2026-09-06"
+  full_text_read: false
+  authors:
+    - "Holsman KK"
+    - "McDonald PS"
+    - "Armstrong DA"
 
 iaccarino2016:
   doi: "10.1038/nature20587"
@@ -135,7 +335,7 @@ iaccarino2016:
   volume: "540"
   pages: "230-235"
   registry: "crossref"
-  verified_on: "2026-09-02"
+  verified_on: "2026-09-06"
   full_text_read: false
   authors:
     - "Iaccarino Hunter F."
@@ -155,6 +355,75 @@ iaccarino2016:
     - "Boyden Edward S."
     - "Tsai Li-Huei"
 
+james2025:
+  doi: "10.1021/acs.estlett.5c00862"
+  first_author: "James"
+  year: "2025"
+  title: "Female Crabs Are More Sensitive to Environmentally Relevant Electromagnetic Fields from Submarine Power Cables"
+  journal: "Environmental Science &amp; Technology Letters"
+  volume: "12"
+  pages: "1487-1494"
+  registry: "crossref"
+  verified_on: "2026-09-06"
+  full_text_read: true
+  authors:
+    - "James Elizabeth"
+    - "Ghodsi Mojtaba"
+    - "Ford Alex T."
+
+jeppesen2024:
+  doi: "10.1007/s10530-024-03467-3"
+  first_author: "Jeppesen"
+  year: "2024"
+  title: "Recovering population of the southern sea otter suppresses a global marine invader"
+  journal: "Biological Invasions"
+  volume: "27"
+  registry: "crossref"
+  verified_on: "2026-09-06"
+  full_text_read: false
+  authors:
+    - "Jeppesen Rikke"
+    - "de Rivera Catherine E."
+    - "Grosholz Edwin D."
+    - "Tinker M. Tim"
+    - "Hughes Brent B."
+    - "Eby Ron"
+    - "Wasson Kerstin"
+
+jury2024:
+  doi: "10.1016/B978-0-323-99694-5.00004-0"
+  first_author: "Jury"
+  year: "2024"
+  title: "Sensory biology and behaviour"
+  journal: "Ecophysiology of the European Green Crab (Carcinus Maenas) and Related Species"
+  pages: "123-157"
+  registry: "crossref"
+  verified_on: "2026-09-06"
+  full_text_read: false
+  authors:
+    - "Jury Steven"
+    - "Chabot Christopher C."
+    - "Goldstein Jason"
+    - "Harzsch Steffen"
+
+jzquel2021:
+  doi: "10.1242/jeb.240747"
+  first_author: "Jézéquel"
+  year: "2021"
+  title: "Sound detection by the American lobster (Homarus americanus)"
+  journal: "Journal of Experimental Biology"
+  volume: "224"
+  registry: "crossref"
+  verified_on: "2026-09-06"
+  full_text_read: false
+  authors:
+    - "Jézéquel Youenn"
+    - "Jones Ian T."
+    - "Bonnel Julien"
+    - "Chauvaud Laurent"
+    - "Atema Jelle"
+    - "Mooney T. Aran"
+
 kalmijn1971:
   doi: "10.1242/jeb.55.2.371"
   first_author: "Kalmijn"
@@ -164,7 +433,7 @@ kalmijn1971:
   volume: "55"
   pages: "371-383"
   registry: "crossref"
-  verified_on: "2026-09-02"
+  verified_on: "2026-09-06"
   full_text_read: false
   authors:
     - "Kalmijn A. J."
@@ -178,7 +447,7 @@ kane2018:
   volume: "13"
   pages: "e0207247"
   registry: "crossref"
-  verified_on: "2026-09-02"
+  verified_on: "2026-09-06"
   full_text_read: true
   authors:
     - "Kane Suzanne Amador"
@@ -194,7 +463,7 @@ kennedy2014:
   volume: "17"
   pages: "416-422"
   registry: "crossref"
-  verified_on: "2026-09-02"
+  verified_on: "2026-09-06"
   full_text_read: false
   authors:
     - "Kennedy Ann"
@@ -212,7 +481,7 @@ lima2021:
   journal: "Nature Communications"
   volume: "12"
   registry: "crossref"
-  verified_on: "2026-09-02"
+  verified_on: "2026-09-06"
   full_text_read: false
   authors:
     - "Lima Emilly M."
@@ -230,6 +499,20 @@ lima2021:
     - "Schön Thomas B."
     - "Ribeiro Antonio Luiz P."
 
+lohmann1984:
+  doi: "10.1242/jeb.113.1.29"
+  first_author: "Lohmann"
+  year: "1984"
+  title: "Magnetic Remanence in the Western Atlantic Spiny Lobster, Panulirus Argus"
+  journal: "Journal of Experimental Biology"
+  volume: "113"
+  pages: "29-41"
+  registry: "crossref"
+  verified_on: "2026-09-06"
+  full_text_read: false
+  authors:
+    - "Lohmann Kenneth J."
+
 martorell2019:
   doi: "10.1016/j.cell.2019.02.014"
   pmid: "30879788"
@@ -240,7 +523,7 @@ martorell2019:
   volume: "177"
   pages: "256-271.e22"
   registry: "crossref"
-  verified_on: "2026-09-02"
+  verified_on: "2026-09-06"
   full_text_read: false
   authors:
     - "Martorell Anthony J."
@@ -261,6 +544,22 @@ martorell2019:
     - "Singer Annabelle C."
     - "Tsai Li-Huei"
 
+moksnes2003:
+  doi: "10.3354/meps250215"
+  first_author: "Moksnes"
+  year: "2003"
+  title: "Settlement behavior in shore crabs Carcinus maenas: why do postlarvae emigrate from nursery habitats?"
+  journal: "Marine Ecology Progress Series"
+  volume: "250"
+  pages: "215-230"
+  registry: "crossref"
+  verified_on: "2026-09-06"
+  full_text_read: false
+  authors:
+    - "Moksnes P-O"
+    - "Hedvall O"
+    - "Reinwald T"
+
 morley2018:
   doi: "10.1016/j.cub.2018.05.057"
   first_author: "Morley"
@@ -270,11 +569,25 @@ morley2018:
   volume: "28"
   pages: "2324-2330.e2"
   registry: "crossref"
-  verified_on: "2026-09-02"
+  verified_on: "2026-09-06"
   full_text_read: true
   authors:
     - "Morley Erica L."
     - "Robert Daniel"
+
+nicol2025:
+  doi: "10.1111/maec.70071"
+  first_author: "Nicol"
+  year: "2025"
+  title: "Comparison of Predatory Capabilities of Invasive European Green Crabs ( Carcinus maenas ) and Native Red Rock Crabs ( Cancer productus ) Preying Upon a Common Native Bivalve ( Leukoma staminea )"
+  journal: "Marine Ecology"
+  volume: "46"
+  registry: "crossref"
+  verified_on: "2026-09-06"
+  full_text_read: false
+  authors:
+    - "Nicol Samantha J."
+    - "Leighton Lindsey R."
 
 odenwald2022:
   doi: "10.1029/2020SW002669"
@@ -284,7 +597,7 @@ odenwald2022:
   journal: "Space Weather"
   volume: "20"
   registry: "crossref"
-  verified_on: "2026-09-02"
+  verified_on: "2026-09-06"
   full_text_read: false
   authors:
     - "Odenwald S. F."
@@ -297,11 +610,26 @@ ortegajimenez2013:
   journal: "Scientific Reports"
   volume: "3"
   registry: "crossref"
-  verified_on: "2026-09-02"
+  verified_on: "2026-09-06"
   full_text_read: false
   authors:
     - "Ortega-Jimenez Victor Manuel"
     - "Dudley Robert"
+
+patullo2010:
+  doi: "10.1242/jeb.039073"
+  first_author: "Patullo"
+  year: "2010"
+  title: "Making sense of electrical sense in crayfish"
+  journal: "Journal of Experimental Biology"
+  volume: "213"
+  pages: "651-657"
+  registry: "crossref"
+  verified_on: "2026-09-06"
+  full_text_read: false
+  authors:
+    - "Patullo B. W."
+    - "Macmillan D. L."
 
 pfeffer2012:
   doi: "10.1038/nature11586"
@@ -312,7 +640,7 @@ pfeffer2012:
   volume: "491"
   pages: "218-221"
   registry: "crossref"
-  verified_on: "2026-09-02"
+  verified_on: "2026-09-06"
   full_text_read: false
   authors:
     - "Pfeffer Christian"
@@ -330,6 +658,39 @@ pfeffer2012:
     - "Risgaard-Petersen Nils"
     - "Nielsen Lars Peter"
 
+popper2001:
+  doi: "10.1007/s003590100184"
+  first_author: "Popper"
+  year: "2001"
+  title: "Acoustic detection and communication by decapod crustaceans"
+  journal: "Journal of Comparative Physiology A: Sensory, Neural, and Behavioral Physiology"
+  volume: "187"
+  pages: "83-89"
+  registry: "crossref"
+  verified_on: "2026-09-06"
+  full_text_read: true
+  authors:
+    - "Popper Arthur N."
+    - "Salmon Michael"
+    - "Horch Kenneth W."
+
+rising2022:
+  doi: "10.1371/journal.pone.0276889"
+  first_author: "Rising"
+  year: "2022"
+  title: "Anthropogenic noise may impair the mating behaviour of the Shore Crab Carcinus Maenas"
+  journal: "PLOS ONE"
+  volume: "17"
+  pages: "e0276889"
+  registry: "crossref"
+  verified_on: "2026-09-06"
+  full_text_read: true
+  authors:
+    - "Rising Kara"
+    - "Hardege Jörg"
+    - "Tregenza Tom"
+    - "Stevens Martin"
+
 roth2024:
   doi: "10.1063/5.0201950"
   first_author: "Roth"
@@ -338,10 +699,24 @@ roth2024:
   journal: "Biophysics Reviews"
   volume: "5"
   registry: "crossref"
-  verified_on: "2026-09-02"
+  verified_on: "2026-09-06"
   full_text_read: false
   authors:
     - "Roth Bradley J."
+
+schmidt1989:
+  doi: "10.1007/BF00193467"
+  first_author: "Schmidt"
+  year: "1989"
+  title: "Specificity and response characteristics of gustatory sensilla (funnel-canal organs) on the dactyls of the shore crab, Carcinus maenas (Crustacea, Decapoda)"
+  journal: "Journal of Comparative Physiology A"
+  volume: "166"
+  registry: "crossref"
+  verified_on: "2026-09-06"
+  full_text_read: false
+  authors:
+    - "Schmidt Manfred"
+    - "Gnatzy Werner"
 
 sutton2016:
   doi: "10.1073/pnas.1601624113"
@@ -352,13 +727,56 @@ sutton2016:
   volume: "113"
   pages: "7261-7265"
   registry: "crossref"
-  verified_on: "2026-09-02"
+  verified_on: "2026-09-06"
   full_text_read: false
   authors:
     - "Sutton Gregory P."
     - "Clarke Dominic"
     - "Morley Erica L."
     - "Robert Daniel"
+
+tautz1980:
+  doi: "10.1242/jeb.88.1.351"
+  first_author: "Tautz"
+  year: "1980"
+  title: "The Detection of Waterborne Vibration by Sensory Hairs on the Chelae of the Crayfish"
+  journal: "Journal of Experimental Biology"
+  volume: "88"
+  pages: "351-356"
+  registry: "crossref"
+  verified_on: "2026-09-06"
+  full_text_read: false
+  authors:
+    - "Tautz J."
+    - "Sandeman D. C."
+
+tepolt2020:
+  doi: "10.3389/fevo.2020.580701"
+  first_author: "Tepolt"
+  year: "2020"
+  title: "Rapid Adaptation to Temperature via a Potential Genomic Island of Divergence in the Invasive Green Crab, Carcinus maenas"
+  journal: "Frontiers in Ecology and Evolution"
+  volume: "8"
+  registry: "crossref"
+  verified_on: "2026-09-06"
+  full_text_read: false
+  authors:
+    - "Tepolt Carolyn K."
+    - "Palumbi Stephen R."
+
+thia2021:
+  doi: "10.1111/mec.16258"
+  first_author: "Thia"
+  year: "2021"
+  title: "Ready on arrival: Standing variation at a chromosomal inversion contributes to rapid adaptation in an invasive marine crab"
+  journal: "Molecular Ecology"
+  volume: "31"
+  pages: "37-40"
+  registry: "crossref"
+  verified_on: "2026-09-06"
+  full_text_read: false
+  authors:
+    - "Thia Joshua A."
 
 toyota2018:
   doi: "10.1126/science.aat7744"
@@ -369,7 +787,7 @@ toyota2018:
   volume: "361"
   pages: "1112-1115"
   registry: "crossref"
-  verified_on: "2026-09-02"
+  verified_on: "2026-09-06"
   full_text_read: false
   authors:
     - "Toyota Masatsugu"
@@ -381,6 +799,60 @@ toyota2018:
     - "Howe Gregg A."
     - "Gilroy Simon"
 
+venkataraman2025:
+  doi: "10.1101/2025.04.22.650023"
+  first_author: "Venkataraman"
+  year: "2025"
+  title: "Plasticity, not genetics, shapes individual responses to thermal stress in non-native populations of the European green crab ( Carcinus maenas )"
+  registry: "crossref"
+  verified_on: "2026-09-06"
+  full_text_read: false
+  authors:
+    - "Venkataraman Yaamini R."
+    - "Kelso Julia C."
+    - "Payne Catlin"
+    - "Freitas Heidi L."
+    - "Kohler Jasmine"
+    - "Tepolt Carolyn K."
+
+volkenborn2012:
+  doi: "10.1357/002224012806770955"
+  first_author: "Volkenborn"
+  year: "2012"
+  title: "Intermittent bioirrigation and oxygen dynamics in permeable sediments: An experimental and modeling study of three tellinid bivalves"
+  journal: "Journal of Marine Research"
+  volume: "70"
+  pages: "794-823"
+  registry: "crossref"
+  verified_on: "2026-09-06"
+  full_text_read: true
+  authors:
+    - "Volkenborn Nils"
+    - "Meile Christof"
+    - "Polerecky Lubos"
+    - "Pilditch Conrad A."
+    - "Norkko Alf"
+    - "Norkko Joanna"
+    - "Hewitt Judi E."
+    - "Thrush Simon F."
+    - "Wethey David S."
+    - "Woodin Sarah A."
+
+wethey2005:
+  doi: "10.2307/3593131"
+  first_author: "Wethey"
+  year: "2005"
+  title: "Infaunal Hydraulics Generate Porewater Pressure Signals"
+  journal: "The Biological Bulletin"
+  volume: "209"
+  pages: "139-145"
+  registry: "crossref"
+  verified_on: "2026-09-06"
+  full_text_read: false
+  authors:
+    - "Wethey David S."
+    - "Woodin Sarah Ann"
+
 xu2021:
   doi: "10.1038/s41586-021-03618-9"
   first_author: "Xu"
@@ -390,7 +862,7 @@ xu2021:
   volume: "594"
   pages: "535-540"
   registry: "crossref"
-  verified_on: "2026-09-02"
+  verified_on: "2026-09-06"
   full_text_read: false
   authors:
     - "Xu Jingjing"
@@ -429,3 +901,18 @@ xu2021:
     - "Timmel Christiane R."
     - "Mouritsen Henrik"
     - "Hore P. J."
+
+young2019:
+  doi: "10.3390/fishes5010004"
+  first_author: "Young"
+  year: "2019"
+  title: "Life History and Population Dynamics of Green Crabs (Carcinus maenas)"
+  journal: "Fishes"
+  volume: "5"
+  pages: "4"
+  registry: "crossref"
+  verified_on: "2026-09-06"
+  full_text_read: true
+  authors:
+    - "Young Alan M."
+    - "Elliott James A."
