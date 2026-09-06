@@ -10,6 +10,14 @@ project: invasive-species-bioelectric
 status: published
 tier: C
 claims:
+image: /assets/posts/european-green-crab.jpg
+image_alt: >-
+  A European green crab on wet sand, chelae raised, its carapace mottled green
+  and its walking legs spread.
+image_credit: Victor Heng
+image_license: CC0
+image_license_url: https://creativecommons.org/publicdomain/zero/1.0/
+image_source_url: https://commons.wikimedia.org/wiki/File:Carcinus_maenas_138761951.jpg
 citations:
   - bergshoeff2018
   - bergshoeff2019
@@ -189,6 +197,19 @@ substantially more time in the exposed zones while males showed no consistent
 preference**{% include cite.html key="james2025" %}. That is a real, sex-specific response in
 this species — and it is a static-field spatial preference, not a compass, and not a receptor.
 Nobody has located the transducer.
+
+**And there is a confound worth stating plainly, because it is the obvious one.** Helmholtz coils
+dissipate heat, and crabs are thermotactic. Working the published coil geometry through a thermal
+model gives, at the strongest field over the exposure period, roughly **20 W dissipated, a 0.58 K
+gradient across the tank and a 0.30 K bulk rise** — small, but not obviously below what an animal
+can detect, and I could not find a behavioural thermal-discrimination threshold for this species
+to compare it against. So the model returns a number and refuses a verdict.
+
+One thing does argue against the thermal explanation, weakly: ohmic heating scales with the square
+of the current, so the confound is about ten times larger at the strongest field than at the
+intermediate one — while the reported attraction was *strongest at the intermediate field*. The
+confound and the effect run in opposite directions. **A thermocouple in the tank would settle it,
+and that is the cheapest experiment anywhere in this review.**
 
 The usual comparison is the spiny lobster, which is the standard invertebrate magnetoreception
 system{% include cite.html key="lohmann1984" %}{% include cite.html key="boles2003" %}{% include cite.html key="ernst2016" %}.
