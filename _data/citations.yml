@@ -631,6 +631,23 @@ patullo2010:
     - "Patullo B. W."
     - "Macmillan D. L."
 
+pearson1979:
+  doi: "10.1016/0022-0981(79)90005-4"
+  first_author: "Pearson"
+  year: "1979"
+  title: "Thresholds for detection and feeding behavior in the dungeness crab, Cancer magister (Dana)"
+  journal: "Journal of Experimental Marine Biology and Ecology"
+  volume: "39"
+  pages: "65-78"
+  registry: "crossref"
+  verified_on: "2026-09-06"
+  full_text_read: false
+  authors:
+    - "Pearson Walter H."
+    - "Sugarman Peter C."
+    - "Woodruff Dana L."
+    - "Olla Bori L."
+
 pfeffer2012:
   doi: "10.1038/nature11586"
   first_author: "Pfeffer"
@@ -717,6 +734,22 @@ schmidt1989:
   authors:
     - "Schmidt Manfred"
     - "Gnatzy Werner"
+
+sugarman1983:
+  doi: "10.2307/1351397"
+  first_author: "Sugarman"
+  year: "1983"
+  title: "Salinity Detection and Associated Behavior in the Dungeness Crab, Cancer magister"
+  journal: "Estuaries"
+  volume: "6"
+  pages: "380"
+  registry: "crossref"
+  verified_on: "2026-09-06"
+  full_text_read: false
+  authors:
+    - "Sugarman Peter C."
+    - "Pearson Walter H."
+    - "Woodruff Dana L."
 
 sutton2016:
   doi: "10.1073/pnas.1601624113"

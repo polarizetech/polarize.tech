@@ -42,6 +42,8 @@ citations:
   - ernst2016
   - young2019
   - holsman2006
+  - pearson1979
+  - sugarman1983
   - defur1983
   - moksnes2003
   - nicol2025
@@ -228,9 +230,19 @@ became most informative, because **the comparison cannot be run.**
 
 Across eight receptor channels and five species, the green crab has measured values in five
 channels and a described-but-unmeasured organ in two. For Dungeness crab, red rock crab,
-graceful rock crab and yellow shore crab, I found two measured chemosensory thresholds in a
-single species and nothing else. No channel is measured in two species in commensurable units,
-so no channel can be compared.
+graceful rock crab and yellow shore crab, I found **two** measured thresholds, both in Dungeness.
+One establishes a behavioural detection threshold for a prey
+extract{% include cite.html key="pearson1979" %}; the other, behavioural salinity detection
+measured by antennular flicking{% include cite.html key="sugarman1983" %}. **I have both at
+abstract only, so those are descriptions of what was measured, not of what was found** — the
+model carries the values with the same tag. (A third record sits off this matrix entirely:
+dactyl chemo- and mechanoreceptor recordings in the kelp crab, a species not among the five.)
+
+**Two filled cells out of thirty-two, and the comparison still cannot be run** — but for a
+different and much smaller reason than an empty literature. Those are *behavioural* thresholds,
+in grams per litre and parts per thousand. Every green crab value is *single-unit
+electrophysiology*, in micrometres or molar. They are not the same quantity, so putting them in
+one row would be a category error rather than a comparison.
 
 **That is the state of the literature, not a gap in the modelling.** Green crab is a classic
 laboratory animal; the natives are commercially and ecologically important animals whose
@@ -283,7 +295,37 @@ by a test that fails if the figure is misquoted, and in one working session thos
 four errors that had entered the model from secondary summaries of paywalled sources — which
 is exactly how this literature is normally read.
 
+**The most instructive failure, though, was mine and not the literature's.** The claim above —
+that no native species had a single measured sensory channel — was a strong negative drawn from
+a shallow search, and it was wrong; a deeper search turned up the two Dungeness thresholds
+immediately. **A test had been pinning the wrong number in place**, with a comment beside it
+admitting the value was known to be stale. That is worse than an unchecked number, because it
+looks checked.
+
+And correcting it nearly introduced a new error. The function answering *which channels are
+comparable across species* tested only whether a cell was marked measured. Filling the two
+Dungeness cells would have made two channels report as comparable when the underlying
+quantities are not the same thing. It compares units now. **A test that counts statuses will
+happily certify a category error**, and the correction is what exposed it.
+
 **What would make it wrong:** if a measured audiogram for *Carcinus maenas*, Dungeness and red
 rock crab on one rig showed the receptor bands to be substantially different from the surrogate
 values used here, most of the mechanical conclusions would need redoing. That measurement does
 not exist, and it is the single experiment that would change the most.
+
+---
+
+## Corrections
+
+**2026-09-06.** Three changes, none of which erase anything above.
+
+- The native-comparison section originally said I had found *"two measured chemosensory
+  thresholds in a single species and nothing else."* The two are now **cited by
+  key**{% include cite.html key="pearson1979" %}{% include cite.html key="sugarman1983" %}, one
+  of them is a salinity threshold rather than a prey-odour one, and **"nothing else" was an
+  overreach** — a third native record exists off the matrix. Both are held at abstract only, so
+  the post names what they measured and not what they measured it to be. The count of filled
+  cells is unchanged at two of thirty-two, and the comparison remains un-runnable.
+- The **"What the tool is for"** section gains the account of how that error survived a test,
+  and of the second defect that correcting it exposed.
+- The correction has been applied to the model itself, not only to this post.
