@@ -212,7 +212,7 @@ clarke2013:
   pages: "66-69"
   registry: "crossref"
   verified_on: "2026-09-12"
-  full_text_read: false
+  full_text_read: true
   authors:
     - "Clarke Dominic"
     - "Whitney Heather"
@@ -534,7 +534,7 @@ kennedy2014:
   pages: "416-422"
   registry: "crossref"
   verified_on: "2026-09-12"
-  full_text_read: false
+  full_text_read: true
   authors:
     - "Kennedy Ann"
     - "Wayne Greg"
@@ -773,7 +773,7 @@ ortegajimenez2013:
   volume: "3"
   registry: "crossref"
   verified_on: "2026-09-12"
-  full_text_read: false
+  full_text_read: true
   authors:
     - "Ortega-Jimenez Victor Manuel"
     - "Dudley Robert"
@@ -959,7 +959,7 @@ sutton2016:
   pages: "7261-7265"
   registry: "crossref"
   verified_on: "2026-09-12"
-  full_text_read: false
+  full_text_read: true
   authors:
     - "Sutton Gregory P."
     - "Clarke Dominic"
