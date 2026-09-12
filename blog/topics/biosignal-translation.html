@@ -1,0 +1,18 @@
+---
+layout: default
+title: "Biosignal translation"
+topic: biosignal-translation
+description: >-
+  Reading structure out of a waveform without assuming what produced it — and the
+  published parallels between collective and neural decision-making.
+permalink: /blog/topics/biosignal-translation/
+---
+
+<header class="doc__head">
+  <p class="ui-label">Topic</p>
+  <h1 class="ui-display ui-display--2">{{ page.title }}</h1>
+  <p class="doc__lede">{{ page.description }}</p>
+</header>
+
+{%- assign in_topic = site.posts | where: "project", "biosignal-translation" %}
+{% include postlist.html posts=in_topic %}

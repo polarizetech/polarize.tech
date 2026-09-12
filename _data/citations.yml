@@ -11,7 +11,7 @@ aimon2021:
   volume: "285"
   pages: "117148"
   registry: "crossref"
-  verified_on: "2026-09-06"
+  verified_on: "2026-09-12"
   full_text_read: false
   authors:
     - "Aimon Cassandre"
@@ -28,7 +28,7 @@ attia2019:
   journal: "Circulation: Arrhythmia and Electrophysiology"
   volume: "12"
   registry: "crossref"
-  verified_on: "2026-09-06"
+  verified_on: "2026-09-12"
   full_text_read: false
   authors:
     - "Attia Zachi I."
@@ -44,6 +44,23 @@ attia2019:
     - "Carter Rickey E."
     - "Kapa Suraj"
 
+barron2007:
+  doi: "10.1073/pnas.0610506104"
+  first_author: "Barron"
+  year: "2007"
+  title: "Octopamine modulates honey bee dance behavior"
+  journal: "Proceedings of the National Academy of Sciences"
+  volume: "104"
+  pages: "1703-1707"
+  registry: "crossref"
+  verified_on: "2026-09-12"
+  full_text_read: false
+  authors:
+    - "Barron Andrew B."
+    - "Maleszka Ryszard"
+    - "Vander Meer Robert K."
+    - "Robinson Gene E."
+
 bedore2013:
   doi: "10.1086/669973"
   first_author: "Bedore"
@@ -53,7 +70,7 @@ bedore2013:
   volume: "86"
   pages: "298-311"
   registry: "crossref"
-  verified_on: "2026-09-06"
+  verified_on: "2026-09-12"
   full_text_read: true
   authors:
     - "Bedore Christine N."
@@ -68,7 +85,7 @@ bell1997:
   volume: "387"
   pages: "278-281"
   registry: "crossref"
-  verified_on: "2026-09-06"
+  verified_on: "2026-09-12"
   full_text_read: false
   authors:
     - "Bell Curtis C."
@@ -85,7 +102,7 @@ bergshoeff2018:
   volume: "6"
   pages: "e4223"
   registry: "crossref"
-  verified_on: "2026-09-06"
+  verified_on: "2026-09-12"
   full_text_read: true
   authors:
     - "Bergshoeff Jonathan A."
@@ -103,7 +120,7 @@ bergshoeff2019:
   volume: "7"
   pages: "e6308"
   registry: "crossref"
-  verified_on: "2026-09-06"
+  verified_on: "2026-09-12"
   full_text_read: true
   authors:
     - "Bergshoeff Jonathan A."
@@ -119,7 +136,7 @@ blakemore1975:
   volume: "190"
   pages: "377-379"
   registry: "crossref"
-  verified_on: "2026-09-06"
+  verified_on: "2026-09-12"
   full_text_read: false
   authors:
     - "Blakemore Richard"
@@ -133,7 +150,7 @@ boles2003:
   volume: "421"
   pages: "60-63"
   registry: "crossref"
-  verified_on: "2026-09-06"
+  verified_on: "2026-09-12"
   full_text_read: false
   authors:
     - "Boles Larry C."
@@ -148,10 +165,26 @@ burke1954:
   volume: "31"
   pages: "127-138"
   registry: "crossref"
-  verified_on: "2026-09-06"
+  verified_on: "2026-09-12"
   full_text_read: false
   authors:
     - "Burke W."
+
+cardosojunior2020:
+  doi: "10.1098/rsbl.2020.0440"
+  first_author: "Cardoso-Junior"
+  year: "2020"
+  title: "Queen pheromone modulates the expression of epigenetic modifier genes in the brain of honeybee workers"
+  journal: "Biology Letters"
+  volume: "16"
+  registry: "crossref"
+  verified_on: "2026-09-12"
+  full_text_read: false
+  authors:
+    - "Cardoso-Junior Carlos Antônio Mendes"
+    - "Ronai Isobel"
+    - "Hartfelder Klaus"
+    - "Oldroyd Benjamin P."
 
 chan2018:
   doi: "10.3389/fninf.2018.00066"
@@ -161,7 +194,7 @@ chan2018:
   journal: "Frontiers in Neuroinformatics"
   volume: "12"
   registry: "crossref"
-  verified_on: "2026-09-06"
+  verified_on: "2026-09-12"
   full_text_read: false
   authors:
     - "Chan Hui-Ling"
@@ -178,7 +211,7 @@ clarke2013:
   volume: "340"
   pages: "66-69"
   registry: "crossref"
-  verified_on: "2026-09-06"
+  verified_on: "2026-09-12"
   full_text_read: false
   authors:
     - "Clarke Dominic"
@@ -194,7 +227,7 @@ coquereau2016:
   journal: "Marine Biology"
   volume: "163"
   registry: "crossref"
-  verified_on: "2026-09-06"
+  verified_on: "2026-09-12"
   full_text_read: true
   authors:
     - "Coquereau Laura"
@@ -214,12 +247,49 @@ defur1983:
   volume: "165"
   pages: "582-590"
   registry: "crossref"
-  verified_on: "2026-09-06"
+  verified_on: "2026-09-12"
   full_text_read: false
   authors:
     - "DEFUR PETER L."
     - "MCMAHON BRIAN R."
     - "BOOTH CHARLES E."
+
+dong2023:
+  doi: "10.1016/j.cub.2023.03.072"
+  first_author: "Dong"
+  year: "2023"
+  title: "An inhibitory signal associated with danger reduces honeybee dopamine levels"
+  journal: "Current Biology"
+  volume: "33"
+  pages: "2081-2087.e4"
+  registry: "crossref"
+  verified_on: "2026-09-12"
+  full_text_read: false
+  authors:
+    - "Dong Shihao"
+    - "Gu Gaoying"
+    - "Lin Tao"
+    - "Wang Ziqi"
+    - "Li Jianjun"
+    - "Tan Ken"
+    - "Nieh James C."
+
+dong2023b:
+  doi: "10.1126/science.ade1702"
+  first_author: "Dong"
+  year: "2023"
+  title: "Social signal learning of the waggle dance in honey bees"
+  journal: "Science"
+  volume: "379"
+  pages: "1015-1018"
+  registry: "crossref"
+  verified_on: "2026-09-12"
+  full_text_read: false
+  authors:
+    - "Dong Shihao"
+    - "Lin Tao"
+    - "Nieh James C."
+    - "Tan Ken"
 
 ernst2016:
   doi: "10.1242/jeb.136036"
@@ -228,7 +298,7 @@ ernst2016:
   title: "Effect of magnetic pulses on Caribbean spiny lobsters: implications for magnetoreception"
   journal: "Journal of Experimental Biology"
   registry: "crossref"
-  verified_on: "2026-09-06"
+  verified_on: "2026-09-12"
   full_text_read: false
   authors:
     - "Ernst David A."
@@ -242,7 +312,7 @@ fratini2015:
   journal: "BioMedical Engineering OnLine"
   volume: "14"
   registry: "crossref"
-  verified_on: "2026-09-06"
+  verified_on: "2026-09-12"
   full_text_read: false
   authors:
     - "Fratini Antonio"
@@ -259,7 +329,7 @@ garm2005:
   volume: "147"
   pages: "1179-1190"
   registry: "crossref"
-  verified_on: "2026-09-06"
+  verified_on: "2026-09-12"
   full_text_read: true
   authors:
     - "Garm A."
@@ -274,7 +344,7 @@ goldwyn2014:
   volume: "34"
   pages: "11705-11722"
   registry: "crossref"
-  verified_on: "2026-09-06"
+  verified_on: "2026-09-12"
   full_text_read: false
   authors:
     - "Goldwyn Joshua H."
@@ -292,7 +362,7 @@ hardege2011:
   volume: "436"
   pages: "177-189"
   registry: "crossref"
-  verified_on: "2026-09-06"
+  verified_on: "2026-09-12"
   full_text_read: false
   authors:
     - "Hardege JD"
@@ -318,7 +388,7 @@ holsman2006:
   volume: "308"
   pages: "183-195"
   registry: "crossref"
-  verified_on: "2026-09-06"
+  verified_on: "2026-09-12"
   full_text_read: false
   authors:
     - "Holsman KK"
@@ -335,7 +405,7 @@ iaccarino2016:
   volume: "540"
   pages: "230-235"
   registry: "crossref"
-  verified_on: "2026-09-06"
+  verified_on: "2026-09-12"
   full_text_read: false
   authors:
     - "Iaccarino Hunter F."
@@ -364,7 +434,7 @@ james2025:
   volume: "12"
   pages: "1487-1494"
   registry: "crossref"
-  verified_on: "2026-09-06"
+  verified_on: "2026-09-12"
   full_text_read: true
   authors:
     - "James Elizabeth"
@@ -379,7 +449,7 @@ jeppesen2024:
   journal: "Biological Invasions"
   volume: "27"
   registry: "crossref"
-  verified_on: "2026-09-06"
+  verified_on: "2026-09-12"
   full_text_read: false
   authors:
     - "Jeppesen Rikke"
@@ -398,7 +468,7 @@ jury2024:
   journal: "Ecophysiology of the European Green Crab (Carcinus Maenas) and Related Species"
   pages: "123-157"
   registry: "crossref"
-  verified_on: "2026-09-06"
+  verified_on: "2026-09-12"
   full_text_read: false
   authors:
     - "Jury Steven"
@@ -414,7 +484,7 @@ jzquel2021:
   journal: "Journal of Experimental Biology"
   volume: "224"
   registry: "crossref"
-  verified_on: "2026-09-06"
+  verified_on: "2026-09-12"
   full_text_read: false
   authors:
     - "Jézéquel Youenn"
@@ -433,7 +503,7 @@ kalmijn1971:
   volume: "55"
   pages: "371-383"
   registry: "crossref"
-  verified_on: "2026-09-06"
+  verified_on: "2026-09-12"
   full_text_read: false
   authors:
     - "Kalmijn A. J."
@@ -447,7 +517,7 @@ kane2018:
   volume: "13"
   pages: "e0207247"
   registry: "crossref"
-  verified_on: "2026-09-06"
+  verified_on: "2026-09-12"
   full_text_read: true
   authors:
     - "Kane Suzanne Amador"
@@ -463,7 +533,7 @@ kennedy2014:
   volume: "17"
   pages: "416-422"
   registry: "crossref"
-  verified_on: "2026-09-06"
+  verified_on: "2026-09-12"
   full_text_read: false
   authors:
     - "Kennedy Ann"
@@ -481,7 +551,7 @@ lima2021:
   journal: "Nature Communications"
   volume: "12"
   registry: "crossref"
-  verified_on: "2026-09-06"
+  verified_on: "2026-09-12"
   full_text_read: false
   authors:
     - "Lima Emilly M."
@@ -499,6 +569,46 @@ lima2021:
     - "Schön Thomas B."
     - "Ribeiro Antonio Luiz P."
 
+lin2026:
+  doi: "10.1073/pnas.2518687123"
+  first_author: "Lin"
+  year: "2026"
+  title: "The audience shapes the information content of the honey bee waggle dance"
+  journal: "Proceedings of the National Academy of Sciences"
+  volume: "123"
+  registry: "crossref"
+  verified_on: "2026-09-12"
+  full_text_read: true
+  authors:
+    - "Lin Tao"
+    - "Dong Shihao"
+    - "Gu Gaoying"
+    - "Zhang Fu"
+    - "Ye Xiuchuan"
+    - "Wang Tianyi"
+    - "Wang Ziqi"
+    - "Li Jianjun"
+    - "Nieh James C."
+    - "Chittka Lars"
+    - "Tan Ken"
+
+linn2020:
+  doi: "10.1098/rspb.2020.1950"
+  first_author: "Linn"
+  year: "2020"
+  title: "Octopamine and dopamine mediate waggle dance following and information use in honeybees"
+  journal: "Proceedings of the Royal Society B: Biological Sciences"
+  volume: "287"
+  pages: "20201950"
+  registry: "crossref"
+  verified_on: "2026-09-12"
+  full_text_read: false
+  authors:
+    - "Linn Melissa"
+    - "Glaser Simone M."
+    - "Peng Tianfei"
+    - "Grüter Christoph"
+
 lohmann1984:
   doi: "10.1242/jeb.113.1.29"
   first_author: "Lohmann"
@@ -508,10 +618,44 @@ lohmann1984:
   volume: "113"
   pages: "29-41"
   registry: "crossref"
-  verified_on: "2026-09-06"
+  verified_on: "2026-09-12"
   full_text_read: false
   authors:
     - "Lohmann Kenneth J."
+
+marshall2009:
+  doi: "10.1016/j.cub.2009.03.011"
+  first_author: "Marshall"
+  year: "2009"
+  title: "Colony-level cognition"
+  journal: "Current Biology"
+  volume: "19"
+  pages: "R395-R396"
+  registry: "crossref"
+  verified_on: "2026-09-12"
+  full_text_read: false
+  authors:
+    - "Marshall James A.R."
+    - "Franks Nigel R."
+
+marshall2009b:
+  doi: "10.1098/rsif.2008.0511"
+  first_author: "Marshall"
+  year: "2009"
+  title: "On optimal decision-making in brains and social insect colonies"
+  journal: "Journal of The Royal Society Interface"
+  volume: "6"
+  pages: "1065-1074"
+  registry: "crossref"
+  verified_on: "2026-09-12"
+  full_text_read: true
+  authors:
+    - "Marshall James A. R."
+    - "Bogacz Rafal"
+    - "Dornhaus Anna"
+    - "Planqué Robert"
+    - "Kovacs Tim"
+    - "Franks Nigel R."
 
 martorell2019:
   doi: "10.1016/j.cell.2019.02.014"
@@ -523,7 +667,7 @@ martorell2019:
   volume: "177"
   pages: "256-271.e22"
   registry: "crossref"
-  verified_on: "2026-09-06"
+  verified_on: "2026-09-12"
   full_text_read: false
   authors:
     - "Martorell Anthony J."
@@ -553,7 +697,7 @@ moksnes2003:
   volume: "250"
   pages: "215-230"
   registry: "crossref"
-  verified_on: "2026-09-06"
+  verified_on: "2026-09-12"
   full_text_read: false
   authors:
     - "Moksnes P-O"
@@ -569,11 +713,29 @@ morley2018:
   volume: "28"
   pages: "2324-2330.e2"
   registry: "crossref"
-  verified_on: "2026-09-06"
+  verified_on: "2026-09-12"
   full_text_read: true
   authors:
     - "Morley Erica L."
     - "Robert Daniel"
+
+myersjoseph2024:
+  doi: "10.1016/j.neuron.2023.11.006"
+  first_author: "Myers-Joseph"
+  year: "2024"
+  title: "Disinhibition by VIP interneurons is orthogonal to cross-modal attentional modulation in primary visual cortex"
+  journal: "Neuron"
+  volume: "112"
+  pages: "628-645.e7"
+  registry: "crossref"
+  verified_on: "2026-09-12"
+  full_text_read: false
+  authors:
+    - "Myers-Joseph Dylan"
+    - "Wilmes Katharina A."
+    - "Fernandez-Otero Marian"
+    - "Clopath Claudia"
+    - "Khan Adil G."
 
 nicol2025:
   doi: "10.1111/maec.70071"
@@ -583,7 +745,7 @@ nicol2025:
   journal: "Marine Ecology"
   volume: "46"
   registry: "crossref"
-  verified_on: "2026-09-06"
+  verified_on: "2026-09-12"
   full_text_read: false
   authors:
     - "Nicol Samantha J."
@@ -597,7 +759,7 @@ odenwald2022:
   journal: "Space Weather"
   volume: "20"
   registry: "crossref"
-  verified_on: "2026-09-06"
+  verified_on: "2026-09-12"
   full_text_read: false
   authors:
     - "Odenwald S. F."
@@ -610,7 +772,7 @@ ortegajimenez2013:
   journal: "Scientific Reports"
   volume: "3"
   registry: "crossref"
-  verified_on: "2026-09-06"
+  verified_on: "2026-09-12"
   full_text_read: false
   authors:
     - "Ortega-Jimenez Victor Manuel"
@@ -625,7 +787,7 @@ patullo2010:
   volume: "213"
   pages: "651-657"
   registry: "crossref"
-  verified_on: "2026-09-06"
+  verified_on: "2026-09-12"
   full_text_read: false
   authors:
     - "Patullo B. W."
@@ -640,7 +802,7 @@ pearson1979:
   volume: "39"
   pages: "65-78"
   registry: "crossref"
-  verified_on: "2026-09-06"
+  verified_on: "2026-09-12"
   full_text_read: false
   authors:
     - "Pearson Walter H."
@@ -657,7 +819,7 @@ pfeffer2012:
   volume: "491"
   pages: "218-221"
   registry: "crossref"
-  verified_on: "2026-09-06"
+  verified_on: "2026-09-12"
   full_text_read: false
   authors:
     - "Pfeffer Christian"
@@ -684,12 +846,28 @@ popper2001:
   volume: "187"
   pages: "83-89"
   registry: "crossref"
-  verified_on: "2026-09-06"
+  verified_on: "2026-09-12"
   full_text_read: true
   authors:
     - "Popper Arthur N."
     - "Salmon Michael"
     - "Horch Kenneth W."
+
+reina2017:
+  doi: "10.1103/physreve.95.052411"
+  first_author: "Reina"
+  year: "2017"
+  title: "Model of the best-of-Nnest-site selection process in honeybees"
+  journal: "Physical Review E"
+  volume: "95"
+  registry: "crossref"
+  verified_on: "2026-09-12"
+  full_text_read: false
+  authors:
+    - "Reina Andreagiovanni"
+    - "Marshall James A. R."
+    - "Trianni Vito"
+    - "Bose Thomas"
 
 rising2022:
   doi: "10.1371/journal.pone.0276889"
@@ -700,7 +878,7 @@ rising2022:
   volume: "17"
   pages: "e0276889"
   registry: "crossref"
-  verified_on: "2026-09-06"
+  verified_on: "2026-09-12"
   full_text_read: true
   authors:
     - "Rising Kara"
@@ -716,7 +894,7 @@ roth2024:
   journal: "Biophysics Reviews"
   volume: "5"
   registry: "crossref"
-  verified_on: "2026-09-06"
+  verified_on: "2026-09-12"
   full_text_read: false
   authors:
     - "Roth Bradley J."
@@ -729,11 +907,31 @@ schmidt1989:
   journal: "Journal of Comparative Physiology A"
   volume: "166"
   registry: "crossref"
-  verified_on: "2026-09-06"
+  verified_on: "2026-09-12"
   full_text_read: false
   authors:
     - "Schmidt Manfred"
     - "Gnatzy Werner"
+
+seeley2012:
+  doi: "10.1126/science.1210361"
+  pmid: "22157081"
+  first_author: "Seeley"
+  year: "2012"
+  title: "Stop Signals Provide Cross Inhibition in Collective Decision-Making by Honeybee Swarms"
+  journal: "Science"
+  volume: "335"
+  pages: "108-111"
+  registry: "crossref"
+  verified_on: "2026-09-12"
+  full_text_read: false
+  authors:
+    - "Seeley Thomas D."
+    - "Visscher P. Kirk"
+    - "Schlegel Thomas"
+    - "Hogan Patrick M."
+    - "Franks Nigel R."
+    - "Marshall James A. R."
 
 sugarman1983:
   doi: "10.2307/1351397"
@@ -744,7 +942,7 @@ sugarman1983:
   volume: "6"
   pages: "380"
   registry: "crossref"
-  verified_on: "2026-09-06"
+  verified_on: "2026-09-12"
   full_text_read: false
   authors:
     - "Sugarman Peter C."
@@ -760,7 +958,7 @@ sutton2016:
   volume: "113"
   pages: "7261-7265"
   registry: "crossref"
-  verified_on: "2026-09-06"
+  verified_on: "2026-09-12"
   full_text_read: false
   authors:
     - "Sutton Gregory P."
@@ -777,7 +975,7 @@ tautz1980:
   volume: "88"
   pages: "351-356"
   registry: "crossref"
-  verified_on: "2026-09-06"
+  verified_on: "2026-09-12"
   full_text_read: false
   authors:
     - "Tautz J."
@@ -791,7 +989,7 @@ tepolt2020:
   journal: "Frontiers in Ecology and Evolution"
   volume: "8"
   registry: "crossref"
-  verified_on: "2026-09-06"
+  verified_on: "2026-09-12"
   full_text_read: false
   authors:
     - "Tepolt Carolyn K."
@@ -806,7 +1004,7 @@ thia2021:
   volume: "31"
   pages: "37-40"
   registry: "crossref"
-  verified_on: "2026-09-06"
+  verified_on: "2026-09-12"
   full_text_read: false
   authors:
     - "Thia Joshua A."
@@ -820,7 +1018,7 @@ toyota2018:
   volume: "361"
   pages: "1112-1115"
   registry: "crossref"
-  verified_on: "2026-09-06"
+  verified_on: "2026-09-12"
   full_text_read: false
   authors:
     - "Toyota Masatsugu"
@@ -838,7 +1036,7 @@ venkataraman2025:
   year: "2025"
   title: "Plasticity, not genetics, shapes individual responses to thermal stress in non-native populations of the European green crab ( Carcinus maenas )"
   registry: "crossref"
-  verified_on: "2026-09-06"
+  verified_on: "2026-09-12"
   full_text_read: false
   authors:
     - "Venkataraman Yaamini R."
@@ -857,7 +1055,7 @@ volkenborn2012:
   volume: "70"
   pages: "794-823"
   registry: "crossref"
-  verified_on: "2026-09-06"
+  verified_on: "2026-09-12"
   full_text_read: true
   authors:
     - "Volkenborn Nils"
@@ -880,7 +1078,7 @@ wethey2005:
   volume: "209"
   pages: "139-145"
   registry: "crossref"
-  verified_on: "2026-09-06"
+  verified_on: "2026-09-12"
   full_text_read: false
   authors:
     - "Wethey David S."
@@ -895,7 +1093,7 @@ xu2021:
   volume: "594"
   pages: "535-540"
   registry: "crossref"
-  verified_on: "2026-09-06"
+  verified_on: "2026-09-12"
   full_text_read: false
   authors:
     - "Xu Jingjing"
@@ -944,7 +1142,7 @@ young2019:
   volume: "5"
   pages: "4"
   registry: "crossref"
-  verified_on: "2026-09-06"
+  verified_on: "2026-09-12"
   full_text_read: true
   authors:
     - "Young Alan M."

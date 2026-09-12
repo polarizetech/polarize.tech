@@ -76,6 +76,11 @@ projects:
     blurb: >-
       What carries a biological signal out of a body and through the world — and
       what it takes to read it once it is out there.
+  biosignal-translation:
+    label: "Biosignal translation"
+    blurb: >-
+      Reading structure out of a waveform without assuming what produced it —
+      and the published parallels between collective and neural decision-making.
   invasive-species-bioelectric:
     label: "Invasive species & bioelectricity"
     blurb: >-

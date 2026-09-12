@@ -63,7 +63,7 @@ classic laboratory animal. That makes it a good test of a question worth asking 
 organism: **how much of its sensory front end can be computed rather than assumed?**
 
 The thing I built is not a simulator. A simulator implies you can turn a crank and get
-behaviour out the other end. What this does is narrower and, I think, more useful: for a
+behaviour out the other end. What this does is narrower: for a
 given stimulus it answers **how much** arrives at a receptor, **in what format** that
 receptor passes it on, and **where** it goes — and it refuses to answer when the number
 underneath does not exist. Calling it a *screening tool* is more honest than calling it a
