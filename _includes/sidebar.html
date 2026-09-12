@@ -23,8 +23,16 @@
       <span class="side__who">
         {%- if site.author.name %}<span class="side__name">{{ site.author.name }}</span>{% endif %}
         {%- if site.author.location %}<span class="side__place">{{ site.author.location }}</span>{% endif %}
-        {%- if site.contact_email %}
+        {%- comment -%}
+          The contact page only goes anywhere once `contact_endpoint` is set —
+          until then its form can't post. So while it is empty the link is a
+          plain mailto:, and it switches to /contact/ by itself when an
+          endpoint is deployed. Either way the address is never the link text.
+        {%- endcomment -%}
+        {%- if site.contact_endpoint and site.contact_endpoint != "" %}
         <a class="side__contact" href="{{ '/contact/' | relative_url }}">{% include icon.html name="mail" %} Get in touch</a>
+        {%- elsif site.contact_email %}
+        <a class="side__contact" href="mailto:{{ site.contact_email }}">{% include icon.html name="mail" %} Get in touch</a>
         {%- endif %}
       </span>
     </div>
