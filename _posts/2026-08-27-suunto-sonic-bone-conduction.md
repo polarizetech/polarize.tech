@@ -20,9 +20,8 @@ image_credit: >-
   product. Desaturated for this site.
 ---
 
-First entry in a gear category. The format is deliberate: **specifications, then
-what the physics of the delivery path allows, then a personal impression kept
-separate from both.**
+Gear entry. Specifications, then what the delivery path allows, then an impression kept
+separate from both.
 
 ## Specifications
 
@@ -34,34 +33,30 @@ Checked 2026-08-27.
 | Chip / Bluetooth | Qualcomm QCC3044, Bluetooth 5.2, multipoint |
 | Codec | aptX Adaptive |
 | Stated frequency range | 20 Hz – 20 kHz |
-| Microphones | Dual, with cVc echo cancelling and noise suppression |
-| Battery | 140 mAh, 10 h playtime; 5 min charge ≈ 90 min use; full charge ≈ 1 h |
+| Microphones | Dual, cVc echo cancelling and noise suppression |
+| Battery | 140 mAh, 10 h; 5 min charge ≈ 90 min use; full ≈ 1 h |
 | Weight | 30.6 g |
-| Materials | Titanium alloy and silicone |
+| Materials | Titanium alloy, silicone |
 | Ingress | IP55 |
 | Price | $149 USD at launch; $79 on the Suunto US store when checked |
 
-One correction worth making, because it is easy to repeat. **"Dual" refers to the
-microphones, not the transducers.** Every listing I checked says "Built-in Dual
-Mics". Two bone transducers, one per side, is the standard arrangement for any
-stereo bone-conduction headset and is not a distinguishing feature.
+**"Dual" is the microphones, not the transducers.** Every listing checked says "Built-in
+Dual Mics." Two bone transducers, one per side, is standard for any stereo bone-conduction
+headset and not a distinguishing feature.
 
-## The property that decides everything else
+## The property that decides the rest
 
-A sealed transducer at one ear gives roughly 40–60 dB of **interaural
-attenuation** — the signal arriving at the far ear is far quieter than at the
-near one, which is what makes two ears independent. A transducer on the skull
-gives close to none. The skull couples both cochleae, so a bone-conducted signal
-arrives at both at once.
+A sealed transducer at one ear gives roughly 40–60 dB of interaural attenuation. That
+separation is what makes two ears independent.
 
-This is not a shortcoming of this product. It is what bone conduction is.
+A transducer on the skull gives close to none. The skull couples both cochleae, so the
+signal arrives at both at once.
 
-It has a hard consequence for the work I do. My rulebase returns a laterality of
-`undefined` — not "left", not "bilateral-ish" — for any delivery path with under
-15 dB of interaural attenuation. A path that cannot deliver a left-ear stimulus
-must not have downstream predictions made as though it did.
+This is what bone conduction is, not a fault in the product.
 
-So, for this device:
+Consequence for protocol selection: the rulebase returns laterality `undefined` — not
+"left", not "bilateral-ish" — for any path under 15 dB of interaural attenuation. A path
+that cannot deliver a left-ear stimulus gets no downstream per-ear predictions.
 
 | protocol | usable |
 |---|---|
@@ -70,17 +65,17 @@ So, for this device:
 | Interaural time differences, dichotic drive | **no** |
 | Anything reporting a per-ear result | **no** |
 
-Two further limits, neither disqualifying. The 20 Hz – 20 kHz figure is an
-air-conduction-style specification and I have not verified it as *delivered*
-through bone on a head — for evoked-potential work the delivered envelope is what
-matters, and it is unmeasured. And the nearest measured air-versus-bone
-separation I have is 22 dB, from tuning-fork work on a different transducer for a
-different purpose.
+Two further limits, neither disqualifying:
+
+- 20 Hz – 20 kHz is an air-conduction-style specification. Not verified as *delivered*
+  through bone on a head. For evoked-potential work the delivered envelope is what matters,
+  and it is unmeasured.
+- Nearest measured air-versus-bone separation on hand is 22 dB, from tuning-fork work on a
+  different transducer for a different purpose.
 
 ## First impression
 
-Mine, one person, one session, unblinded. Not evidence, and the tier on this post
-reflects that.
+One person, one session, unblinded. Not evidence; the tier reflects that.
 
 > The headphones were extremely easy to get set up, and this is the first time
 > that I've used bone conduction headphones, so it truly blew my mind experiencing
@@ -93,8 +88,6 @@ reflects that.
 > aren't covered, and I'm more aware and more present, but can still be running a
 > therapeutic music solution.
 
-That last point is the one I would actually defend, and it is about compliance
-rather than acoustics: **a protocol that can run while you are present with your
-family is a protocol that gets run.** Nothing here measures whether the delivered
-signal is adequate for the purpose — only that the barrier to wearing it is much
-lower.
+The defensible part of that is about compliance, not acoustics: a protocol that runs while
+you are present with your family is a protocol that gets run. Nothing here measures whether
+the delivered signal is adequate — only that the barrier to wearing it is lower.

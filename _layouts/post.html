@@ -91,6 +91,13 @@ layout: default
   </section>
   {%- endif %}
 
+  {%- comment -%}
+    Posts with `inline_sources: true` render each source as a card at the point of
+    use (see _includes/source.html), so the foot-of-page bibliography would only
+    repeat them.
+  {%- endcomment -%}
+  {%- unless page.inline_sources %}
   {% include references.html %}
+  {%- endunless %}
 
 </article>

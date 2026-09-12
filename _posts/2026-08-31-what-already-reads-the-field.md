@@ -7,6 +7,7 @@ description: >-
 date: 2026-08-31 09:00:00 -0600
 project: bioem-propagation
 status: published
+inline_sources: true
 tier: B
 claims:
 citations:
@@ -39,215 +40,130 @@ summary: >-
   the other gives you a spectrometer.
 ---
 
-Three times now I have hit a sensing question on this bench — how weak a field can be
-detected, across what distance, with what geometry — and found that something alive
-had already settled it. This post is the survey I wish I had read first.
-
-**What this post is, exactly.** Most of it describes phenomena at the level where they
-are settled and uncontroversial, and most of the sources below are cited as *the entry
-point to their topic* — not read here at full text, so nothing on this page reports what
-those papers measured or concluded. Where I say something is known, I mean
-textbook-known, not "this study showed."
-
-**One source is different.** The peafowl work has been read at full text, so that section
-does report what it found, and the post is tiered `B` on account of it rather than `A`.
-The reference list marks which is which; a badge on an entry reading *full text read* is
-the difference between "this paper exists" and "this paper found."
+Survey of biological precedent. Phenomena are described at the level where they are
+settled. Two sources below were read at full text and are marked as such on their cards;
+the rest are entry points, and where this post says a study *tested* or *examined*
+something, that marks pointing at a result rather than having checked it.
 
 ## Reading a field another body makes
 
-The oldest example is the one everybody has heard of. Sharks, rays and skates
-detect the standing bioelectric field that surrounds another animal, using
-jelly-filled canals in the head called the ampullae of
-Lorenzini {% include cite.html key="kalmijn1971" %}. Seawater helps enormously
-here: it conducts, so a body's field propagates through it and stays readable at
-a distance.
+Sharks, rays and skates detect the standing bioelectric field around another animal, using
+jelly-filled canals in the head called the ampullae of Lorenzini. Seawater conducts, so the
+field stays readable at a distance.
 
-The two examples that impressed me more happen in **air**, which is much harder,
-because air does not conduct and there is no comparable field to swim through.
+{% include source.html key="kalmijn1971" %}
 
-Bumblebees detect the electric field around a flower {% include cite.html key="clarke2013" %}.
-Spiders detect the atmospheric potential gradient — the standing voltage difference
-between the ground and the sky — and use it as a cue for
-ballooning {% include cite.html key="morley2018" %}.
+Bumblebees detect the electric field around a flower.
 
-Both solve the air problem the same way, and this is the part worth taking:
-**neither uses anything like an electrode.** They use hair {% include cite.html key="sutton2016" %}.
-A charged filament sitting in an electric field experiences a force and moves, and both
-animals already had an organ exquisitely good at detecting the movement of hairs, because
-that is how they sense air currents and vibration. The field sense is a *mechanical* sense
-wearing a different hat.
+{% include source.html key="clarke2013" %}
+{% include source.html key="sutton2016" %}
 
-For anyone building an instrument, that reframes the problem. A field detector does
-not have to be a voltage-measuring device in contact with something. It can be
-anything charged, compliant, and watched closely enough.
+Spiders detect the atmospheric potential gradient — the standing voltage between ground and
+sky — and use it as a cue for ballooning.
 
-## Reading a field you make yourself
+{% include source.html key="morley2018" %}
 
-Everything above is passive: the animal reads a field something else produced. There is a
-second mode, and it is the one an instrument builder should look at hardest, because it is
-the one where you supply the signal.
+**Both air cases use hair, not electrodes.** A charged filament in a field experiences a
+force and moves; both animals already had an organ good at detecting hair movement, because
+that is how they sense air currents and vibration. The field sense is a mechanical sense in
+a different role.
 
-Weakly electric fish emit a discharge from a dedicated organ and read how nearby objects
-perturb it. That is active sensing — the same idea as radar or sonar, arrived at
-independently, in water.
+For instrument design that reframes the problem: a field detector need not be a
+voltage-measuring device in contact with anything. Anything charged, compliant, and watched
+closely enough is a candidate.
 
-What makes it worth studying is not that it works. It is what it costs. Four things have to
-be present, and each is separately necessary:
+## Geometry with no sensor in it
 
-1. An organ that produces a discrete, command-triggered discharge.
-2. A receptor class tuned to that discharge, distinct from the receptors the same fish uses
-   to sense other animals passively.
-3. A cerebellum-like structure that learns a **negative image** of the animal's own
-   discharge and subtracts it, through a plasticity rule that depends on the order in which
-   the two inputs arrive {% include cite.html key="bell1997" %}.
-4. A **corollary discharge** — a copy of the motor command that fired the organ — supplying
-   the timing the negative image is built against
-   {% include cite.html key="kennedy2014" %}.
+Insects in flight carry charge; a web does not. Whether that difference deforms the silk
+toward a passing insect, and whether it changes capture probability, has been tested
+directly.
 
-Item 4 is the one I keep coming back to. The cancellation is not computed from the recorded
-signal. It is timed from the *command that caused it*, before the signal arrives. An
-instrument that emits and then tries to subtract its own contribution by measuring it is
-solving a harder problem than the fish is, and the fish has had a long time to look for an
-easier route.
+{% include source.html key="ortegajimenez2013" %}
 
-The other half of the lesson is a warning about copying it. This works in water because
-water conducts, so the fish drives a current through the medium and objects perturb the
-current density at its skin. Air does not conduct. The nearest thing in air is capacitive —
-a nearby object changes how much charge sits where — which is a different quantity, with a
-different distance dependence, and it responds to a different property of the object. The
-intuition transfers; the arithmetic does not.
+**There is no receptor anywhere in this.** No nerve, no organism doing anything. A passive
+dielectric structure whose shape converts a static charge difference into mechanical motion.
 
-## The spider web — and the story that is wrong
+A correction worth recording: the effect is **electrostatic, not optical.** Not photon
+interaction, not amplification of light, not a quantum-optical property of the spiral. The
+optical version circulates widely and has nothing behind it.
 
-There is a well-travelled claim that a spider web's geometry does something clever
-with *light* — that the web amplifies a fly's photons, or exploits some optical
-property of the spiral. I went looking for it because it is a good story.
+## Active electric sense
 
-It is not what happens. What actually happens is
-**electrostatic** {% include cite.html key="ortegajimenez2013" %}. Insects in flight
-carry charge. A web does not. When a charged insect passes close, the silk is pulled
-toward it — the threads physically deform in its direction, which makes contact more
-likely than the geometry alone would predict.
+Some fish generate a field and read its distortion, rather than reading a field something
+else made. That inverts the problem: the organism supplies the carrier.
 
-That is a better story than the optical one, for a reason worth stating plainly:
-**there is no sensor anywhere in it.** No receptor, no nerve, no organism doing
-anything. It is a passive dielectric structure whose shape converts a static charge
-difference into mechanical motion. Everything else in this post is an animal reading
-a field. This is geometry alone doing the work.
-
-I mention the correction rather than quietly writing the right version because the
-two ideas get conflated constantly, and only one of them has a source behind it.
+{% include source.html key="bell1997" %}
+{% include source.html key="kennedy2014" %}
 
 ## Signals that travel
 
-Distance is the constraint that kills most sensing ideas, so it is worth knowing what
-biology manages.
+Distance kills most sensing ideas, so what biology manages is worth knowing.
 
-In marine sediment there are filamentous bacteria that move **electrons** along their
-length, through conductive structures running the length of the
-filament {% include cite.html key="pfeffer2012" %}. The distances involved are
-centimetres — which sounds modest until you hold it against the size of a cell, where
-it is enormous.
+Filamentous bacteria in marine sediment have been examined for electron transport along
+their length, over distances described in centimetres — modest until held against the size
+of a cell.
 
-Plants do something different and just as long-ranged: a wound at one site produces a
-travelling calcium wave that reaches undamaged tissue elsewhere in the
-organism {% include cite.html key="toyota2018" %}.
+{% include source.html key="pfeffer2012" %}
 
-The reason to keep these two apart is that they are not the same kind of transport.
-Most of what I reason about on this bench is ionic — the action potential, charge
-moving across a membrane. **Cable bacteria are not doing that.** They are moving
-electrons, which is a different mechanism with different limits, and it is a useful
-reminder that "biological conduction" is not one thing.
+Plants have been examined for a different long-range mechanism: whether a wound at one site
+triggers a travelling calcium signal reaching undamaged tissue elsewhere.
 
-*(On algae specifically: giant algal cells are a foundational preparation in plant
-electrophysiology and do carry propagating electrical signals. I have not put a source
-for long-distance algal signalling into the ledger yet, so there is no entry for it
-here. That is a gap, not a judgement.)*
+{% include source.html key="toyota2018" %}
 
-## The other half of a receiver
+**These are not the same transport.** Most of what this bench reasons about is ionic —
+charge across a membrane. Cable bacteria move electrons. "Biological conduction" is not one
+thing.
 
-Everything above is about a *transducer* — the thing that turns a field into a signal.
-The peafowl crest is about what sits **in front** of one, and it is the clearest published
-case I have found of a biological pre-filter whose contribution can be read off in numbers
-rather than assumed.
+*On algae: giant algal cells are foundational in plant electrophysiology and carry
+propagating electrical signals. No source for long-distance algal signalling is in the
+ledger yet, so there is no entry. A gap, not a judgement.*
 
-A peacock's display rattles its train at around 26 Hz. A peahen's crest — a fan of twenty
-to thirty feathers, each a tapered shaft with a wide flag at the end — is a mechanical
-resonator, and its resonant frequency sits inside that band, with filoplumes and their
-mechanoreceptors at the feather bases {% include cite.html key="kane2018" %}.
+## A tuned mechanical receiver
 
-This is the one source on this page I have read at full text, so it is the one whose
-findings I will actually state. The crests were measured on a shaker: female crests
-resonate near 28 Hz, male near 26, with quality factors around 5 and 6.
+Peafowl crest feathers have been measured for resonance against the frequencies of
+conspecific display.
 
-**The number that matters is that quality factor**, because at resonance it is roughly the
-amplitude gain. Being tuned bought a factor of about five. Not a thousand, not a hundred —
-five. And a *Q* of five is a broad filter: about a twenty per cent band, which is a wide
-target for a 26 Hz stimulus to land in.
+{% include source.html key="kane2018" %}
 
-So the resonator is not rescuing a signal from below the noise. It cannot be: the impacts
-in question deflect the crest by around nine millimetres, which is visible on ordinary
-video and sits enormously far above what a mechanoreceptor needs. What the tuning buys is
-**rejection** — a narrow-ish window centred on the frequency conspecifics actually
-display at, which ignores wind and footfalls and broadband racket. The gain is almost
-incidental.
-
-That is the transferable lesson, and it cuts against the intuition that biology must be
-doing something extraordinary: **a passive biological resonator buys single digits.**
-There is a real ceiling here — wet keratin at body temperature does not make a high-*Q*
-cavity. Sharper biological filtering exists, in the cochlea, but it is *active*: it spends
-energy, and anything claiming that trick has to say where the power comes from and what
-noise it adds.
-
-**And the honest caveat, which the paper states itself:** every one of those measurements
-was made on dried crests mounted on balsa. No live bird, no nerve recording, no behavioural
-test. That the crest is mechanically tuned to the display frequency is measured. That
-peafowl actually *use* it that way is not, and the authors say so.
-
+The relevant quantity is the gain a tuned passive resonator buys, and the reported values
+are single-digit. Useful as a ceiling: a passive biological resonator in fluid at body
+temperature is not a high-Q device.
 
 ## Two ways to feel the Earth
 
-Magnetoreception is where the divergence gets sharpest, because the two best-known
-mechanisms have almost nothing in common.
+Some bacteria build chains of magnetic particles in membrane-bound compartments. The cell is
+physically torqued into alignment.
 
-Some bacteria build chains of magnetic particles inside membrane-bound
-compartments {% include cite.html key="blakemore1975" %}. The cell is then physically
-torqued into alignment by the Earth's field. This is a **compass needle** in the most
-literal sense: no energy budget, no light, no computation, no nervous system. The
-physics does the work and the organism goes along with it.
+{% include source.html key="blakemore1975" %}
 
-Migratory songbirds are thought to do something entirely different — a light-dependent
-reaction in a protein in the eye, where the magnetic field influences the chemistry of
-a short-lived pair of radicals {% include cite.html key="xu2021" %}. This is a
-**chemical magnetometer**. It needs a photon to start, and it reports the field as a
-change in how a reaction turns out.
+**A compass needle, literally.** No energy budget, no light, no computation, no nervous
+system. The physics does the work.
+
+Migratory songbirds are thought to do something else — a light-dependent reaction in a
+retinal protein, where the field influences the chemistry of a short-lived radical pair.
+
+{% include source.html key="xu2021" %}
+
+**A chemical magnetometer.** Needs a photon to start, and reports the field as a change in
+reaction yield.
 
 Copy the first and you have built a magnetometer. Copy the second and you have built a
 spectrometer that happens to be field-sensitive. Same environmental quantity, two
-instruments with nothing in common — which is a useful thing to have internalised
-before deciding what "detecting the field" is going to mean for a given design.
+instruments with nothing in common.
 
-## What I take from it
+## What transfers
 
-Three things, all structural, none of them a finding of mine:
+1. **A field sensor can be a motion sensor.** Two of the three organisms above read electric
+   fields with hairs.
+2. **Geometry alone can convert a field into motion**, with no receptor in the loop.
+3. **Long-distance conduction is not always ionic.** Electrons travel too.
+4. **Passive resonance buys single-digit gain.** Not orders of magnitude.
 
-1. **A field sensor can be a motion sensor.** Two of the three organisms above read
-   electric fields with hairs. Any charged, compliant surface is a candidate transducer.
-1. **Tuning is worth single digits, and it buys rejection more than gain.** The one
-   measured number on this page is a factor of about five. A front end narrows the band
-   the noise arrives through; it does not lift a signal that is already under the floor.
-2. **Geometry alone can convert a field into motion**, with no receptor in the loop at all.
-3. **Long-distance conduction in biology is not always ionic.** Electrons travel too.
-4. **If an instrument emits, cancelling its own signal is most of the work** — and the one
-   animal that does this times the cancellation from the command, not from the recording.
-
-None of this is evidence for anything I am claiming. It is a map of where the good
-ideas already are, and every one of them was arrived at by something with no access to
-an amplifier.
+None of this is evidence for anything claimed here. It is a map of where the good ideas
+already are, and every one was arrived at by something with no access to an amplifier.
 
 ## Corrections
 
-If any statement above overreaches its source, that is a defect and I want it reported
-— the whole point of citing by key is that you can go and check. The spider-web
-paragraph exists because I believed the wrong version myself.
+If a statement above overreaches its source, that is a defect and worth reporting — the
+point of citing by key is that you can check. The spider-web paragraph exists because the
+wrong version was believed here first.

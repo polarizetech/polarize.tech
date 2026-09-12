@@ -1,13 +1,14 @@
 ---
 title: "A hive and a cortex, described the same way"
 description: >-
-  Two systems — a honeybee colony choosing a nest and a cortical population
-  choosing between two motions — have been given the same formal description
-  since at least 2009. What that description covers, and where it stops.
+  A honeybee colony choosing a nest and a cortical population choosing between
+  two motions have carried the same formal description since 2009. What it
+  covers, and where its own authors say it stops.
 date: 2026-09-12 07:00:00 -0600
 project: biosignal-translation
 status: published
 tier: C
+inline_sources: true
 claims:
 citations:
   - marshall2009b
@@ -17,10 +18,17 @@ citations:
   - lin2026
   - dong2023b
   - barron2007
-  - dong2023
   - linn2020
+  - dong2023
   - cardosojunior2020
   - myersjoseph2024
+citation_notes:
+  - marshall2009b >> The formal treatment. Read at full text for the sections carrying its conclusions; the model derivations were not read.
+  - marshall2009 >> Same authors, same year, the idea under a different heading.
+  - seeley2012 >> The experimental result usually paired with the framework above.
+  - reina2017 >> Extends the analysis past two options.
+  - lin2026 >> Results section read in full. The statistics quoted here come from it; no interpretation is attributed to it.
+  - myersjoseph2024 >> Published version of a preprint; the published title narrows the claim to cross-modal attention.
 image: /assets/posts/waggle-dance.jpg
 image_alt: >-
   A dense crowd of European honeybee workers covering comb, bodies overlapping
@@ -30,155 +38,133 @@ image_license: CC BY 3.0
 image_license_url: https://creativecommons.org/licenses/by/3.0/
 image_source_url: https://commons.wikimedia.org/wiki/File:CSIRO_ScienceImage_7077_European_honeybees_Apis_mellifera_in_a_hive.jpg
 summary: >-
-  A swarm deciding where to nest and a cortical population deciding which way
-  dots are moving have been modelled with the same equations for over fifteen
-  years, and the idea is older than that. This is an inventory of what the
-  correspondence actually covers, which parts of it are the authors' own claim
-  rather than an inference, and the two places the papers themselves say it
-  stops.
+  Inventory of an existing parallel, not a proposal. A swarm choosing a nest and
+  a cortical population choosing a direction are modelled as the same
+  statistical procedure. The parallel is not mine; it dates to at least 1979 and
+  was formalised in 2009.
 ---
 
-This is an inventory, not an argument. The parallel described below is not mine and is
-not new; the point of writing it down is to be precise about how much of it is
-established, and where the edges are.
+An inventory. The parallel below is not mine and is not new.
 
-## The observation, and whose it is
+## The parallel, and whose it is
 
-A honeybee swarm choosing between two candidate nest sites and a cortical population
-choosing which way a field of dots is moving have been given the same formal description.
-The clearest statement of it is a 2009 paper in *Journal of the Royal Society Interface*
-{% include cite.html key="marshall2009b" %}, which sets a model of primate cortical
-decision-making beside three models of house-hunting in ants and honeybees and works
-through what they share.
+A swarm choosing between two nest sites and a cortical population choosing which way dots
+move have been given one formal description.
 
-Its own opening is careful to say the idea was already old: speculation about whether
-decision-making in brains and in insect colonies is related, in the authors' words,
-begins "at least with Hofstadter (1979)" and had been taken up repeatedly before they
-wrote. They describe their contribution as a first step toward a common theoretical
-framework — one based on the interactions between a system's components rather than on
-what the components are. A companion piece the same year discusses the same territory
-under the heading of colony-level cognition {% include cite.html key="marshall2009" %}.
+{% include source.html key="marshall2009b" %}
 
-So the lineage runs roughly: an analogy in the 1970s, recurring discussion, a formal
-treatment in 2009, and then the experimental
-work most often cited alongside it, on inhibitory signalling between scouts
-{% include cite.html key="seeley2012" %} — a paper whose own title and framing put the
-comparison to brains front and centre rather than leaving it to a reader.
+That paper dates the idea to "at least Hofstadter (1979)" in its own introduction, and
+describes itself as a first step toward a common framework — one built on how a system's
+components interact rather than on what they are.
 
-## What the correspondence actually covers
+{% include source.html key="marshall2009" %}
 
-Three things, as set out in the 2009 treatment:
+The experimental work usually paired with it concerns inhibitory signalling between scouts.
+Its title and framing put the comparison to brains in front, rather than leaving it to a
+reader.
 
-- **Populations, not individuals.** Both systems are modelled as mutually interacting
-  populations that accumulate noisy evidence for competing alternatives.
-- **A threshold on one population.** A choice is made when one population's activity
-  crosses a threshold, and the alternative that population represents is the one taken.
-- **A threshold that can be moved.** The same threshold trades speed against accuracy.
-  Raise it and decisions get slower and more reliable; lower it and the reverse. In the
-  cortical model this is a parameter; in the ants it is the number of individuals that
-  must accumulate at a site.
+{% include source.html key="seeley2012" %}
 
-The formal claim attached to this is stronger than a resemblance. Under particular
-settings, the cortical model reduces to a diffusion process that implements the
-sequential probability ratio test — the procedure that, for a two-way choice, minimises
-decision time for any given error rate. The 2009 analysis asks which of the colony
-models can do the same thing, and treats the answer as a source of testable predictions
-about how colonies ought to behave if they are deciding optimally. That is the substance
-of the parallel: not that a hive resembles a brain, but that both can be written as the
-same statistical procedure.
+## What the description covers
 
-Extending the same analysis past two options changes it. The best-of-N case — more than two
-options — has been analysed separately for whether the controlling parameter stays the
-same {% include cite.html key="reina2017" %}
-— which is also the point where this literature meets the best-of-N problem in
-distributed and robotic systems, since that is the same problem stated without the bees.
+Three properties, per the 2009 treatment:
 
-## Where the papers say it stops
+- **Populations, not individuals.** Interacting populations accumulate noisy evidence for
+  competing alternatives.
+- **A threshold on one population.** The alternative whose population crosses first is the
+  one taken.
+- **A threshold that moves.** Raising it buys accuracy and costs speed. A parameter in the
+  cortical model; a headcount at a site in the ants.
 
-Two limits come from the 2009 treatment itself, not from a critic.
+The claim is stronger than resemblance. Under particular settings the cortical model
+reduces to a diffusion process implementing the sequential probability ratio test — for a
+two-way choice, the procedure minimising decision time at any given error rate. The
+analysis asks which colony models do the same, and treats the answer as a prediction about
+how colonies should behave if deciding optimally.
 
-**The colony has to go and get its information.** In the cortical task, evidence for both
-alternatives arrives at a fixed, equal rate. A colony's scouts discover sites
-stochastically, which leaves the colony holding an explore-or-exploit problem the
-cortical version does not have: assess the sites already known, or look for better ones.
-The authors describe this as a hybrid of a bandit problem and a minimum-decision-time
-problem, and say no one had formalised it.
+Past two options the analysis changes.
 
-**Consensus and foraging are different problems.** This one is easy to lose. The paper
-states plainly that the decision a colony solves while emigrating is *optimal consensus*
-decision-making, and that this "differs from the problem of distributed resource intake
-maximization that colonies tackle during foraging." The quorum figures, and the
-cross-inhibition result, come from nest-site selection during swarming. Foraging
-recruitment is governed by different machinery. A description that moves freely between
-the two is describing two systems, not one.
+{% include source.html key="reina2017" %}
 
-## Two directions the mapping is being pushed, neither established
+This is also where the literature meets the best-of-N problem in distributed and robotic
+systems — the same problem stated without the bees.
 
-The following are working framings, recorded here as untested rather than as findings.
+## Where its own authors say it stops
 
-**A modulatory layer.** The decision models above have recruitment and inhibition in
-them, and nothing that sets the regime those operate in. Bees have candidates for such a
-layer: octopamine dosing has been examined for its effect on how strongly value is
-reported in dances {% include cite.html key="barron2007" %}, octopamine and dopamine have
-been examined in dance following and information use
-{% include cite.html key="linn2020" %}, and an inhibitory signal associated with danger
-has been examined against dopamine levels {% include cite.html key="dong2023" %}. Whether
-these belong in the decision architecture as a separate axis — gain rather than content —
-is a framing, not a result. Note also that the last of those cuts across the tidy version
-of it: if a targeted inhibitory signal moves a diffuse modulator, then "selecting among
-candidates" and "setting the regime" are not cleanly separable.
+**The colony must go and get its evidence.** In the cortical task, evidence for both
+alternatives arrives at a fixed equal rate. Scouts discover sites stochastically, leaving
+an explore-or-exploit problem the cortical version does not have: assess what is known, or
+look for better. The authors call it a hybrid of a bandit problem and a
+minimum-decision-time problem, and say nobody had formalised it.
 
-**A write step.** Queen mandibular pheromone has been examined against the expression of
-genes responsible for epigenetic modifications in worker brains
-{% include cite.html key="cardosojunior2020" %}. Placing that as the durable-change step
-of a decision architecture is an analogy across levels, and the level mismatch is real:
-the bee side of most of these mappings is role-level — dancer, follower, scout — while
-the neural side is cell-type-level.
+**Consensus is not foraging.** The paper states that colony emigration is *optimal
+consensus* decision-making and "differs from the problem of distributed resource intake
+maximization that colonies tackle during foraging." Quorum figures and the cross-inhibition
+result come from nest-site selection during swarming. Foraging recruitment runs on
+different machinery. A description that moves between the two is describing two systems.
+
+## Two extensions, neither established
+
+Recorded as framings, not findings.
+
+**A modulatory layer.** The models have recruitment and inhibition, and nothing setting the
+regime those run in. Bees have candidates.
+
+{% include source.html key="barron2007" %}
+{% include source.html key="linn2020" %}
+{% include source.html key="dong2023" %}
+
+Whether these belong in the architecture as a separate axis — gain rather than content — is
+untested. The third cuts across the tidy version: if a targeted inhibitory signal moves a
+diffuse modulator, then selecting among candidates and setting the regime are not cleanly
+separable.
+
+**A write step.** Queen pheromone has been examined against expression of genes responsible
+for epigenetic modifications in worker brains.
+
+{% include source.html key="cardosojunior2020" %}
+
+Placing that as the durable-change step is an analogy across levels. The level mismatch is
+real: the bee side is role-level — dancer, follower, scout — and the neural side is
+cell-type-level.
 
 ## Two observations that cut the other way
 
-**The signal is shaped by its audience.** Recent work tested whether the information
-content of the dance depends on who is watching, by removing bees from the dance floor and
-separately by replacing adults with bees too young to follow
-{% include cite.html key="lin2026" %}. Directional and distance precision tracked the
-number of followers; the precision measures moved, and the paper reports the mean waggle
-run duration and distance per run as unchanged. Anything built on
-this should preserve that shape: it is a variance effect, not a bias effect. A population
-whose output precision depends on the size of its readership is not a one-way sender.
+**The signal is shaped by its audience.** Removing bees from the dance floor, and separately
+replacing adults with bees too young to follow, was used to test whether dance information
+content depends on who is watching. Directional and distance precision tracked follower
+numbers; mean waggle-run duration and distance per run are reported unchanged.
 
-**There is no offline replay on the bee side.** The dance has a fixed structure — a waggle
-run, then a return loop that alternates left and right. The return loop repositions the
-dancer; no reversed waggle run is reported. On the neural side, compressed reactivation of
-place-cell sequences in both directions is a large literature. The absence of a bee
-counterpart is an absence of reported evidence rather than a study that looked and found
-none, and it is the clearest gap in the correspondence as it currently stands.
+{% include source.html key="lin2026" %}
 
-## What would make this description wrong
+A variance effect, not a bias effect. A population whose output precision depends on its
+readership is not a one-way sender.
 
-The parallel is about dynamics, so the things that would break it are dynamical:
+**No offline replay on the bee side.** The dance is a waggle run, then a return loop
+alternating left and right. The loop repositions; no reversed waggle run is reported.
+Compressed reactivation of place-cell sequences in both directions is a large neural
+literature. The bee-side absence is absence of reported evidence, not a study that looked.
 
-- Follower recruitment turning out to be determined almost entirely by the instantaneous
-  properties of a dance, with no contribution from the prior state of the dance floor.
-- Simultaneous dances that do not measurably interact through competition for a finite
-  pool.
-- Cross-inhibition in swarms and in cortex producing qualitatively different dynamics
-  under matched conditions.
-- The thresholds turning out to be observer cutoffs rather than nonlinear transitions in
-  a population variable.
+{% include source.html key="dong2023b" %}
 
-One more caution belongs here, because it is about the neural side rather than the bee
-side. It is tempting to reach for cortical disinhibition as the mechanism of attention and
-then borrow it. Whether that link holds is an
-open question in its own literature, and has been tested directly for one interneuron
-class in primary visual cortex {% include cite.html key="myersjoseph2024" %}. Importing
-"disinhibition is attention" would import an unsettled claim, whichever way it settles.
+## What would make this wrong
+
+- Follower recruitment determined almost entirely by instantaneous dance properties, with
+  no contribution from prior dance-floor state.
+- Simultaneous dances that do not measurably interact through competition for a finite pool.
+- Cross-inhibition in swarms and cortex producing qualitatively different dynamics under
+  matched conditions.
+- Thresholds turning out to be observer cutoffs rather than nonlinear population
+  transitions.
+
+One caution on the neural side. Reaching for cortical disinhibition as the mechanism of
+attention and then borrowing it imports an unsettled claim.
+
+{% include source.html key="myersjoseph2024" %}
 
 ## On sources
 
-Two of the papers cited here have been read beyond their abstracts: the 2009 framework
-paper, in the sections carrying its conclusions rather than its derivations, and the
-audience study, whose results section was read in full. The rest are cited as entry points
-to their topics. Where this post describes what a study examined, that
-wording is deliberate — it marks the difference between pointing at a result and having
-checked it. Social learning of the dance itself {% include cite.html key="dong2023b" %}
-is cited on the same footing.
+Two of the papers above were read beyond their abstracts: the 2009 framework, in the
+sections carrying its conclusions, and the audience study, its results section. The rest are
+entry points. Where this post says a study *examined* or *tested* something, that wording is
+load-bearing — it marks pointing at a result rather than having checked it.

@@ -7,6 +7,7 @@ description: >-
 date: 2026-09-01 11:00:00 -0600
 project: audio-evoked-potentials
 status: published
+inline_sources: true
 tier: C
 claims:
 citations:
@@ -29,130 +30,122 @@ summary: >-
   happened when the same reader was pointed at waves with no organism in them.
 ---
 
-This is a process post. It is about building a list, why the list turned out to be the
-useful artefact, and what checking it against non-living waves did to it.
+Process note. Building a list of what a biological signal is known to carry, then pointing
+the same reader at waves with nothing alive in them.
 
-The starting observation is unremarkable once stated: **an ECG is not only a record of a
-heart contracting.** The published literature has read identity, sex, age and health out
-of the same trace. If that is true of one signal, the obvious question is what *every*
-biological signal carries, and whether the same structural features carry it each time.
+Starting observation: an ECG is not only a record of a heart contracting. Identity, sex, age
+and health have all been read out of one. If that holds for a single signal, the question is
+what *every* biological signal carries, and whether the same structural features carry it
+each time.
 
-Answering that properly starts with a boring inventory.
+## The signals catalogued
 
-## The signals catalogued so far
+Six, named by source tissue rather than application. Representative textbook ranges, not
+hard bounds.
 
-Six, named by the tissue they come from rather than the application they serve. These are
-representative textbook ranges, not hard bounds.
-
-| signal | source | band | amplitude | what its shape is like |
+| signal | source | band | amplitude | shape |
 |---|---|---|---|---|
-| **ECG** | myocardium | ~0.05–100 Hz | 1–10 mV | strongly periodic, one sharp recurring event, very consistent beat shape |
+| **ECG** | myocardium | ~0.05–100 Hz | 1–10 mV | strongly periodic, one sharp recurring event, consistent beat shape |
 | **EEG** | cortex | ~0.5–100 Hz | 2 µV – 0.1 mV | broadband, oscillatory, band-structured, weakly event-locked |
 | **EMG** | skeletal muscle | ~2–500 Hz | 50 µV – 5 mV | burst-structured, high-frequency, amplitude tracks effort |
-| **EOG** | corneo-retinal dipole | ~DC–10 Hz | 10 µV – 5 mV | slow steps and ramps — saccades, blinks — essentially DC |
-| **EDA** | sweat glands | ~DC–2 Hz | µS-scale | a slow level with responses on top; not oscillatory at all |
-| **EGG** | stomach smooth muscle | ~0.03–0.15 Hz | 10–500 µV | a very-low-frequency near-sinusoidal pacemaker rhythm |
+| **EOG** | corneo-retinal dipole | ~DC–10 Hz | 10 µV – 5 mV | slow steps and ramps; essentially DC |
+| **EDA** | sweat glands | ~DC–2 Hz | µS-scale | slow level with responses on top; not oscillatory |
+| **EGG** | stomach smooth muscle | ~0.03–0.15 Hz | 10–500 µV | very-low-frequency near-sinusoidal pacemaker rhythm |
 
-Writing that table was the first useful thing, and not for the reason I expected. Laid
-out together, the six are separated by properties that have nothing to do with
-physiology: how periodic they are, how sharp their events are, where their spectral
-weight sits, how much DC they carry. **You can tell them apart without knowing what
-tissue you are looking at.** That is either an interesting fact about biological signals
-or an artefact of how they are all recorded, and I genuinely do not know which yet.
+**The useful part was unexpected.** Laid out together, the six separate on properties that
+have nothing to do with physiology: how periodic, how sharp the events, where the spectral
+weight sits, how much DC. You can tell them apart without knowing the tissue.
 
-## The axes, and where each one comes from
+That is either an interesting fact about biological signals or an artefact of how they are
+all recorded. Which one is not known here.
 
-The second list is the map: what kind of information is a biological wave known to carry?
-Each row below is an entry point to a literature, not a claim of mine.
+## The information axes
 
-**Identity.** Attributing a trace to a specific person is a mature field for
-ECG {% include cite.html key="fratini2015" %}, and there is a parallel line of work on
-individuating signatures in EEG {% include cite.html key="chan2018" %}.
+What kind of information is a biological wave known to carry. Each row is an entry point to
+a literature.
 
-**Sex and age.** Both have been read from short clinical
-recordings {% include cite.html key="attia2019" %}, and the *discrepancy* between an
-age estimated from the signal and the person's actual age has itself been studied as a
-marker {% include cite.html key="lima2021" %}.
+**Identity.** Attributing a trace to a specific person is a mature field for ECG, with a
+parallel line on individuating signatures in EEG.
+
+{% include source.html key="fratini2015" %}
+{% include source.html key="chan2018" %}
+
+**Sex and age.** Both have been read from short clinical recordings.
+
+{% include source.html key="attia2019" %}
+
+The *discrepancy* between an age estimated from the signal and a person's actual age has
+itself been studied as a marker.
+
+{% include source.html key="lima2021" %}
 
 **Autonomic and affective state.** Heart-rate variability is the standard non-invasive
-window onto autonomic balance, and electrodermal activity indexes a sympathetic pathway
+window onto autonomic balance; electrodermal activity indexes a sympathetic pathway
 directly.
 
 **Intention.** Muscle activity decodes motor intent; cortical activity carries potentials
-that precede movement rather than follow it.
+preceding movement rather than following it.
 
 **Health.** The axis with the most literature behind it, and the only one this bench has
-measured anything on directly.
+measured anything on.
 
-I want to be careful here, because this is exactly the point where a survey turns into an
-overclaim: **I have not read any of those papers at full text.** They are cited as the
-entry point to their topic. What I can say is that these axes exist and are established;
-what I cannot say from this page is what any individual study found.
+None of those papers was read at full text. They are cited as entry points; what they exist
+to study is stated, not what any of them found.
 
-## The part I did not expect
+## The reframing
 
-Building the list changed what I thought the project was.
+Building the list changed what the project looked like.
 
-I had been treating this as *signal processing* — a question about extracting a feature
-from a trace. Laying the axes out next to each other makes it look like a **taxonomy
-problem** instead. Identity, sex and age are properties that barely change. State and
-intention change minute to minute. Health drifts. Those are not the same kind of quantity,
-and lumping them together as "information in the signal" hides the most important
-distinction between them.
+It had been treated as signal processing — extracting a feature from a trace. Laid out
+together the axes look like a **taxonomy** problem instead.
 
-That reframing is the actual output of the exercise, and it came from making a table, not
-from running anything.
+Identity, sex and age barely change. State and intention change minute to minute. Health
+drifts. Those are not the same kind of quantity, and calling them all "information in the
+signal" hides the most important distinction between them.
 
-## Pointing it at waves with nothing alive in them
+That came from making a table, not from running anything.
 
-Here is the part that keeps the whole thing honest, and it is the reason I would defend
-this method to anyone building something similar.
+## Waves with nothing alive in them
 
-If you build a reader that finds rich structure in biological signals, you have to ask
-whether it finds rich structure in *everything*. So the same reader gets pointed at waves
-with no organism anywhere in them:
+A reader that finds rich structure in biological signals has to be asked whether it finds
+rich structure in everything. So the same reader gets pointed at waves with no organism in
+them:
 
 - **Tide gauges** — two stations, 61 days. A blind read recovered the principal lunar
-  semidiurnal period and correctly separated the moon's contribution from the weather's.
-- **Solar flux against cosmic-ray flux** — 14.6 years. It recovered the known
-  anticorrelation, but only when given the full cycle. That makes it a result about
-  *how much data you need*, not about the sun.
-- **Seismic, infrasound, ocean sound and the geomagnetic field** — it recovered the
-  secondary microseism and the daily solar-quiet variation, blind.
+  semidiurnal period and separated the moon's contribution from the weather's.
+- **Solar flux against cosmic-ray flux** — 14.6 years. Recovered the known anticorrelation,
+  but only given the full cycle. That makes it a result about *how much data you need*.
+- **Seismic, infrasound, ocean sound, geomagnetic field** — recovered the secondary
+  microseism and the daily solar-quiet variation, blind.
 
-The standing rule on that log is the sentence I would put on the wall:
+The standing rule on that log:
 
 > A high structure score on a signal with no organism in it is a caution about the
 > instrument, not a finding about nature.
 
-**Reading tides well is partly bad news.** It means the structure the reader is finding
-might be a property of the reader rather than of life. Every one of those runs was a test
-of the instrument that could have embarrassed it, and two of them did — one exposed
-silent bugs at low sample rates, another showed a standard statistical null to be invalid
-on deterministic signals.
+**Reading tides well is partly bad news.** The structure being found might be a property of
+the reader rather than of life. Two of those runs did embarrass the instrument — one exposed
+silent bugs at low sample rates, another showed a standard statistical null invalid on
+deterministic signals.
 
-## Sound, light, and water
+## Sound, light, water
 
-The obvious next question is whether the same characteristics carry information in
-non-biological waves, and here I want to be honest about the state of it: **this is
-mapped, not tested.**
+Mapped, not tested.
 
-The structural properties in question — how loud, how bright, how periodic, how
-consistent the repeating unit is, whether a slow rhythm modulates a fast one — all have
-natural readings in sound and in light. Loudness and timbre in acoustics; brightness and
-colour in optics; amplitude and morphology in a bioelectric trace. Water gave the
-cleanest test so far precisely because a tide is so well characterised that the reader
-had nowhere to hide.
+The structural properties in question — how loud, how bright, how periodic, how consistent
+the repeating unit, whether a slow rhythm modulates a fast one — have natural readings in
+sound and in light. Loudness and timbre in acoustics; brightness and colour in optics;
+amplitude and morphology in a bioelectric trace. Water gave the cleanest test so far because
+a tide is well enough characterised that the reader had nowhere to hide.
 
-But a correspondence you can *write down* is not a correspondence you have *shown*.
-Applying these characteristics across modalities is, until it is tested the same way the
-cardiac work was, **a hypothesis carried by analogy.** I would rather say that plainly
-than let a tidy table imply otherwise.
+A correspondence you can write down is not one you have shown. Applying these
+characteristics across modalities is, until tested the way the cardiac work was, **a
+hypothesis carried by analogy.**
 
 ## What would make this wrong
 
-If the structural characteristics that separate biological signals turn out to separate
-*any* filtered time series equally well, then the shared-grammar idea is an artefact of
-everyone using similar analysis pipelines, and this survey is describing the pipeline
-rather than describing life. That is a real possibility, it is the reason the
-non-biological waves get read at all, and nothing on this page rules it out.
+If the structural characteristics separating biological signals turn out to separate *any*
+filtered time series equally well, then the shared-grammar idea is an artefact of everyone
+using similar pipelines, and this survey describes the pipeline rather than life. That is a
+live possibility, it is why the non-biological waves get read at all, and nothing here rules
+it out.

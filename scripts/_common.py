@@ -202,7 +202,14 @@ def _scalar(v):
 # --------------------------------------------------------------------------
 # citation keys used in a body
 # --------------------------------------------------------------------------
-CITE_INCLUDE_RE = re.compile(r'\{%-?\s*include\s+cite\.html\s+key=["\']([A-Za-z0-9_-]+)["\']\s*-?%\}')
+# Both citation mechanisms count as citing a key in the body:
+#   cite.html   — superscript marker, bibliography at the foot of the post
+#   source.html — inline source card at the point of use (added 2026-09-12)
+# A key cited by EITHER must be declared in front matter, and a declared key must
+# be cited by one of them. Widening this regex rather than adding a second one
+# keeps that both-directions check in a single place.
+CITE_INCLUDE_RE = re.compile(
+    r'\{%-?\s*include\s+(?:cite|source)\.html\s+key=["\']([A-Za-z0-9_-]+)["\']\s*-?%\}')
 
 
 def cite_keys_in(body):
