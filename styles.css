@@ -439,6 +439,45 @@ a.ui-btn { text-decoration: none; }
 .src__ft .ui-icon { width: .9em; height: .9em; margin-right: .35em; }
 .src--broken { border-left-color: var(--refuted); padding: var(--space-3) var(--space-4); font-size: var(--text-sm); color: var(--refuted); }
 
+/* ---------- Hardware parts (inline in a post) ----------
+   Product photos come from retailer listings on white grounds; they run through
+   scripts/prepare_image.py like every other post image, and sit in a framed
+   square so four differently shaped photos still read as one row. */
+.parts {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(7.5rem, 1fr));
+  gap: var(--space-3);
+  max-width: var(--measure);
+  margin: var(--space-4) 0 var(--space-6);
+}
+.part {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--card);
+  text-decoration: none;
+  overflow: hidden;
+}
+.part:hover { background: var(--muted); }
+.part__media {
+  display: block;
+  aspect-ratio: 1 / 1;
+  background: var(--muted);
+  border-bottom: 1px solid var(--border);
+}
+.part__media img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.part__text { display: flex; flex-direction: column; gap: 2px; padding: var(--space-3); }
+.part__name { font-size: var(--text-sm); line-height: 1.4; color: var(--foreground); }
+.part__role { font-size: var(--text-xs); line-height: 1.45; color: var(--muted-foreground); }
+.part__meta {
+  margin-top: var(--space-1);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--faint-foreground);
+}
+.part:hover .part__meta { color: var(--accent); }
+
 /* ---------- Inline citation markers ---------- */
 .cite {
   font-family: var(--font-mono);
