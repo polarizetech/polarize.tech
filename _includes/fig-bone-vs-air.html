@@ -1,0 +1,39 @@
+{%- comment -%}
+  Air conduction versus bone conduction, as an inline, theme-aware figure.
+  Replaces assets/posts/bone-vs-air-conduction.svg, which hard-coded hex colours,
+  bold system-ui type and a dark background, and so broke the design rules and
+  the light theme. Colours and faces come from design tokens via .fig-ear rules
+  in styles.css. Numbers match the post's prose; change both together.
+{%- endcomment -%}
+<figure class="fig-ear">
+  <svg viewBox="0 0 720 360" role="img"
+       aria-label="Air conduction reaches one ear at a time; bone conduction reaches both cochleae at once, so it cannot deliver a per-ear stimulus.">
+    <title>Air conduction versus bone conduction: interaural attenuation</title>
+    <text class="fig-ear__label" x="40" y="34">AIR CONDUCTION</text>
+    <text class="fig-ear__sub" x="40" y="54">a sealed transducer at one ear</text>
+    <ellipse class="fig-ear__head" cx="180" cy="170" rx="86" ry="100"/>
+    <circle class="fig-ear__coch" cx="112" cy="170" r="15"/>
+    <circle class="fig-ear__coch" cx="248" cy="170" r="15"/>
+    <rect class="fig-ear__air-fill" x="72" y="154" width="16" height="32" rx="3"/>
+    <path class="fig-ear__air" d="M92 170 H105"/>
+    <path class="fig-ear__air fig-ear__faint" stroke-dasharray="4 5" d="M127 170 H233"/>
+    <text class="fig-ear__num" x="180" y="300" text-anchor="middle">≈ 40–60 dB</text>
+    <text class="fig-ear__sub" x="180" y="320" text-anchor="middle">interaural attenuation</text>
+    <text class="fig-ear__sub" x="180" y="338" text-anchor="middle">two independent ears</text>
+
+    <line class="fig-ear__rule" x1="360" y1="30" x2="360" y2="340"/>
+
+    <text class="fig-ear__label" x="400" y="34">BONE CONDUCTION</text>
+    <text class="fig-ear__sub" x="400" y="54">a transducer on the skull</text>
+    <ellipse class="fig-ear__head" cx="540" cy="170" rx="86" ry="100"/>
+    <circle class="fig-ear__coch" cx="472" cy="170" r="15"/>
+    <circle class="fig-ear__coch" cx="608" cy="170" r="15"/>
+    <rect class="fig-ear__bone-fill" x="432" y="140" width="16" height="26" rx="3"/>
+    <path class="fig-ear__bone" d="M450 153 Q500 110 560 140"/>
+    <path class="fig-ear__bone" d="M452 162 Q470 170 465 170"/>
+    <path class="fig-ear__bone" d="M560 140 Q596 150 604 162"/>
+    <text class="fig-ear__num" x="540" y="300" text-anchor="middle">≈ 0–10 dB</text>
+    <text class="fig-ear__sub" x="540" y="320" text-anchor="middle">interaural attenuation</text>
+    <text class="fig-ear__sub" x="540" y="338" text-anchor="middle">the skull couples both cochleae</text>
+  </svg>
+</figure>

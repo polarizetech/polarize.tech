@@ -52,6 +52,8 @@ separation is what makes two ears independent.
 A transducer on the skull gives close to none. The skull couples both cochleae, so the
 signal arrives at both at once.
 
+{% include fig-bone-vs-air.html %}
+
 This is what bone conduction is, not a fault in the product.
 
 Consequence for protocol selection: the rulebase returns laterality `undefined` — not

@@ -439,6 +439,26 @@ a.ui-btn { text-decoration: none; }
 .src__ft .ui-icon { width: .9em; height: .9em; margin-right: .35em; }
 .src--broken { border-left-color: var(--refuted); padding: var(--space-3) var(--space-4); font-size: var(--text-sm); color: var(--refuted); }
 
+/* ---------- Figure: air vs bone conduction (Suunto post) ----------
+   Inline SVG so it follows the theme. Labels are uppercase, so mono; the two
+   paths differ by label and shape as well as hue. */
+.fig-ear { max-width: var(--measure); margin: var(--space-5) 0 var(--space-6); }
+.fig-ear svg {
+  display: block; width: 100%; height: auto;
+  border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--card);
+}
+.fig-ear__label { font-family: var(--font-mono); font-size: 12px; letter-spacing: .1em; fill: var(--foreground); }
+.fig-ear__sub { font-family: var(--font-sans); font-size: 12px; fill: var(--muted-foreground); }
+.fig-ear__num { font-family: var(--font-mono); font-size: 16px; fill: var(--foreground); }
+.fig-ear__head { fill: none; stroke: var(--border-strong); stroke-width: 2; }
+.fig-ear__coch { fill: var(--muted); stroke: var(--faint-foreground); stroke-width: 1.5; }
+.fig-ear__rule { stroke: var(--border); stroke-width: 1; }
+.fig-ear__air { fill: none; stroke: var(--series-1); stroke-width: 2.5; }
+.fig-ear__air-fill { fill: var(--series-1); }
+.fig-ear__bone { fill: none; stroke: var(--series-2); stroke-width: 2.5; }
+.fig-ear__bone-fill { fill: var(--series-2); }
+.fig-ear__faint { opacity: .35; }
+
 /* ---------- Hardware parts (inline in a post) ----------
    Product photos come from retailer listings on white grounds; they run through
    scripts/prepare_image.py like every other post image, and sit in a framed
