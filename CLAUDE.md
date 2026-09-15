@@ -180,6 +180,12 @@ Body rules:
   superscript numbering.
 - `## Heading` for sections. No `#` — the title is the `<h1>`.
 
+**Drafting a post from sources:** use the monorepo's `tools/opendraft` with target `blog`
+(`~/Sites/audio-projects/tools/opendraft/PIPELINE.md`). Its `render` writes the cite includes,
+the front matter (citations in first-appearance order, `status: draft`) and an AI-use line, and
+refuses any DOI not in the research ledger. Output goes to `_drafts/`; the tier it writes is a
+placeholder to replace with the weakest claim's tier. Steps 1–3 above still apply.
+
 ### 5. Sync and gate
 
 ```bash
