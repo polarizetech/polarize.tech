@@ -237,6 +237,22 @@ clarke2013:
     - "Sutton Gregory"
     - "Robert Daniel"
 
+compton2010:
+  doi: "10.1111/j.1472-4642.2010.00644.x"
+  first_author: "Compton"
+  year: "2010"
+  title: "Thermogeography predicts the potential global range of the invasive European green crab (Carcinus maenas)"
+  journal: "Diversity and Distributions"
+  volume: "16"
+  pages: "243-255"
+  registry: "crossref"
+  verified_on: "2026-09-16"
+  full_text_read: false
+  authors:
+    - "Compton T. J."
+    - "Leathwick J. R."
+    - "Inglis G. J."
+
 coquereau2016:
   doi: "10.1007/s00227-016-2902-2"
   first_author: "Coquereau"
@@ -271,6 +287,25 @@ defur1983:
     - "DEFUR PETER L."
     - "MCMAHON BRIAN R."
     - "BOOTH CHARLES E."
+
+derivera2006:
+  doi: "10.1007/s00227-006-0451-9"
+  first_author: "deRivera"
+  year: "2006"
+  title: "Larval development rate predicts range expansion of an introduced crab"
+  journal: "Marine Biology"
+  volume: "150"
+  pages: "1275-1288"
+  registry: "crossref"
+  verified_on: "2026-09-16"
+  full_text_read: false
+  authors:
+    - "deRivera Catherine E."
+    - "Hitchcock Natasha Gray"
+    - "Teck Sarah J."
+    - "Steves Brian P."
+    - "Hines Anson H."
+    - "Ruiz Gregory M."
 
 dong2023:
   doi: "10.1016/j.cub.2023.03.072"
@@ -308,6 +343,47 @@ dong2023b:
     - "Lin Tao"
     - "Nieh James C."
     - "Tan Ken"
+
+du2024:
+  doi: "10.1016/j.pocean.2024.103245"
+  first_author: "Du"
+  year: "2024"
+  title: "Dispersal pathways of European green crab larvae into and throughout the eastern Salish Sea"
+  journal: "Progress in Oceanography"
+  volume: "223"
+  pages: "103245"
+  registry: "crossref"
+  verified_on: "2026-09-16"
+  full_text_read: false
+  authors:
+    - "Du Jiabi"
+    - "Tepolt Carolyn K."
+    - "Grason Emily W."
+    - "Sean McDonald P."
+    - "Jia Yan"
+    - "Zhang Weifeng G."
+
+ens2022:
+  doi: "10.1139/er-2021-0059"
+  first_author: "Ens"
+  year: "2022"
+  title: "The Green Wave: reviewing the environmental impacts of the invasive European green crab ( Carcinus maenas ) and potential management approaches"
+  journal: "Environmental Reviews"
+  volume: "30"
+  pages: "306-322"
+  registry: "crossref"
+  verified_on: "2026-09-16"
+  full_text_read: false
+  authors:
+    - "Ens Nicholas J."
+    - "Harvey Bronwyn"
+    - "Davies Morgan M."
+    - "Thomson Hanna M."
+    - "Meyers Keegan J."
+    - "Yakimishyn Jennifer"
+    - "Lee Lynn C."
+    - "McCord Meaghen E."
+    - "Gerwing Travis G."
 
 ernst2016:
   doi: "10.1242/jeb.136036"
@@ -352,6 +428,23 @@ garm2005:
   authors:
     - "Garm A."
 
+goddard2005:
+  doi: "10.1007/s10530-003-2981-0"
+  first_author: "Goddard"
+  year: "2005"
+  title: "Host specificity of Sacculina carcini, a potential biological control agent of the introduced European green crab Carcinus maenas in California"
+  journal: "Biological Invasions"
+  volume: "7"
+  pages: "895-912"
+  registry: "crossref"
+  verified_on: "2026-09-16"
+  full_text_read: false
+  authors:
+    - "Goddard Jeffrey H. R"
+    - "Torchin Mark E"
+    - "Kuris Armand M"
+    - "Lafferty Kevin D."
+
 goldwyn2014:
   doi: "10.1523/JNEUROSCI.0175-14.2014"
   pmid: "25164666"
@@ -370,6 +463,53 @@ goldwyn2014:
     - "Verschooten Eric"
     - "Joris Philip X."
     - "Rinzel John"
+
+grason2018:
+  doi: "10.3391/mbi.2018.9.1.04"
+  first_author: "Grason"
+  year: "2018"
+  title: "Citizen science program detects range expansion of the globally invasive European green crab in Washington State (USA)"
+  journal: "Management of Biological Invasions"
+  volume: "9"
+  pages: "39-47"
+  registry: "crossref"
+  verified_on: "2026-09-16"
+  full_text_read: false
+  authors:
+    - "Grason Emily"
+    - "McDonald Sean"
+    - "Adams Jeff"
+    - "Litle Kate"
+    - "Apple Jude"
+    - "Pleus Allen"
+
+grosholz2021:
+  doi: "10.1073/pnas.2003955118"
+  first_author: "Grosholz"
+  year: "2021"
+  title: "Stage-specific overcompensation, the hydra effect, and the failure to eradicate an invasive predator"
+  journal: "Proceedings of the National Academy of Sciences"
+  volume: "118"
+  registry: "crossref"
+  verified_on: "2026-09-16"
+  full_text_read: false
+  authors:
+    - "Grosholz Edwin"
+    - "Ashton Gail"
+    - "Bradley Marko"
+    - "Brown Chris"
+    - "Ceballos-Osuna Lina"
+    - "Chang Andrew"
+    - "de Rivera Catherine"
+    - "Gonzalez Julie"
+    - "Heineke Marcella"
+    - "Marraffini Michelle"
+    - "McCann Linda"
+    - "Pollard Erica"
+    - "Pritchard Ian"
+    - "Ruiz Gregory"
+    - "Turner Brian"
+    - "Tepolt Carolyn"
 
 hardege2011:
   doi: "10.3354/meps09226"
@@ -558,6 +698,23 @@ kasiouras2024:
     - "Hubbard Peter C."
     - "Gräns Albin"
     - "Sneddon Lynne U."
+
+keller2025:
+  doi: "10.1111/1365-2656.70176"
+  first_author: "Keller"
+  year: "2025"
+  title: "An integrated integral projection model ( IPM 2 ) to disentangle size‐structured harvest and natural mortality"
+  journal: "Journal of Animal Ecology"
+  volume: "95"
+  pages: "157-174"
+  registry: "crossref"
+  verified_on: "2026-09-16"
+  full_text_read: true
+  authors:
+    - "Keller Abigail G."
+    - "Goldstein Benjamin R."
+    - "Skare Leah"
+    - "de Valpine Perry"
 
 kennedy2014:
   doi: "10.1038/nn.3650"
@@ -755,6 +912,22 @@ martorell2019:
     - "Singer Annabelle C."
     - "Tsai Li-Huei"
 
+mcdonald2001:
+  doi: "10.1016/S0022-0981(00)00344-0"
+  first_author: "McDonald"
+  year: "2001"
+  title: "The competitive and predatory impacts of the nonindigenous crab Carcinus maenas (L.) on early benthic phase Dungeness crab Cancer magister Dana"
+  journal: "Journal of Experimental Marine Biology and Ecology"
+  volume: "258"
+  pages: "39-54"
+  registry: "crossref"
+  verified_on: "2026-09-16"
+  full_text_read: false
+  authors:
+    - "McDonald P.Sean"
+    - "Jensen Gregory C."
+    - "Armstrong David A."
+
 moksnes2003:
   doi: "10.3354/meps250215"
   first_author: "Moksnes"
@@ -936,6 +1109,26 @@ reina2017:
     - "Trianni Vito"
     - "Bose Thomas"
 
+rey2017:
+  doi: "10.1007/s12237-017-0235-0"
+  first_author: "Rey"
+  year: "2017"
+  title: "Effect of Maternal Size, Reproductive Season and Interannual Variability in Offspring Provisioning of Carcinus maenas in a Coastal Lagoon"
+  journal: "Estuaries and Coasts"
+  volume: "40"
+  pages: "1732-1743"
+  registry: "crossref"
+  verified_on: "2026-09-16"
+  full_text_read: false
+  authors:
+    - "Rey Felisa"
+    - "Domingues M. Rosário M."
+    - "Domingues Pedro"
+    - "Rosa Rui"
+    - "Orgaz María D. M."
+    - "Queiroga Henrique"
+    - "Calado Ricardo"
+
 rising2022:
   doi: "10.1371/journal.pone.0276889"
   first_author: "Rising"
@@ -1096,6 +1289,23 @@ toyota2018:
     - "Koo Abraham J."
     - "Howe Gregg A."
     - "Gilroy Simon"
+
+turner2015:
+  doi: "10.1007/s10530-015-1026-9"
+  first_author: "Turner"
+  year: "2015"
+  title: "Assessing population increase as a possible outcome to management of invasive species"
+  journal: "Biological Invasions"
+  volume: "18"
+  pages: "533-548"
+  registry: "crossref"
+  verified_on: "2026-09-16"
+  full_text_read: false
+  authors:
+    - "Turner B. C."
+    - "de Rivera C. E."
+    - "Grosholz E. D."
+    - "Ruiz G. M."
 
 venkataraman2025:
   doi: "10.1101/2025.04.22.650023"

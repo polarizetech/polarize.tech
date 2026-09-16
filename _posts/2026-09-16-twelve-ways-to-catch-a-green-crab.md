@@ -4,9 +4,10 @@ description: >-
   A screening exercise across sensory, biological and operational mechanisms for
   controlling an invasive crab — what each route would need to be true, what
   closed it, and the two that are still standing.
-date: 2026-09-09 09:00:00 -0600
+date: 2026-09-16 09:00:00 -0600
 project: invasive-species-bioelectric
 status: published
+inline_sources: true
 tier: C
 claims:
 image: /assets/posts/european-green-crab.jpg
@@ -43,7 +44,6 @@ citations:
   - holsman2006
   - defur1983
   - moksnes2003
-  - moksnes2004
   - nicol2025
   - mcdonald2001
   - goddard2005
@@ -54,6 +54,7 @@ citations:
   - grason2018
   - bergshoeff2018
   - bergshoeff2019
+  - keller2025
   - derivera2006
   - compton2010
   - rey2017
@@ -128,7 +129,9 @@ The project began with a specific published result: juvenile green crabs
 exposed to static magnetic fields at strengths relevant to submarine power
 cables showed a **sex-specific** response, with females spending more time in
 exposed zones and males showing no consistent
-preference{% include cite.html key="james2025" %}.
+preference.
+
+{% include source.html key="james2025" %}
 
 That is exactly the shape of thing the constraint above demands — a
 differential response, in the target species, in a channel you can generate
@@ -139,12 +142,16 @@ none of them.**
 
 **First, a mechanism.** No transducer has been located. The obvious comparison
 is the spiny lobster, the standard invertebrate magnetoreception
-system{% include cite.html key="lohmann1984" %}{% include cite.html key="boles2003" %}{% include cite.html key="ernst2016" %}
+system
 — but the receptor cells have not been located and characterised in that animal
 either. Mapping a mechanism from one order of crustaceans onto another, across
 more than two hundred million years of divergence, when the source species'
 anatomy is itself unresolved, produces a hypothesis wearing borrowed
 credibility.
+
+{% include source.html key="lohmann1984" %}
+{% include source.html key="boles2003" %}
+{% include source.html key="ernst2016" %}
 
 **Second, the field map has to reproduce.** It does not. No coil geometry I
 could construct, at any separation or tank bearing, reproduces the published
@@ -178,25 +185,32 @@ bioelectric field of buried prey. It is closed on two independent grounds.
 **The physics.** Prey bioelectric fields were measured at **microvolt scale
 with the electrode less than a millimetre from the tissue**, and the authors
 state plainly that the voltage from invertebrates **was too weak to record away
-from the source**{% include cite.html key="bedore2013" %}. Run through a
+from the source**. Run through a
 shark's own measured sensitivity, a natural prey field is readable at a few
 centimetres. A crab is not a shark.
 
+{% include source.html key="bedore2013" %}
+
 **The biology.** No electroreceptor has been identified in any crustacean, and
 none has been sought in green crab. A behavioural sensitivity figure exists for
-a freshwater crayfish{% include cite.html key="patullo2010" %} — a surrogate,
+a freshwater crayfish — a surrogate,
 from a different order, in fresh water.
+
+{% include source.html key="patullo2010" %}
 
 **That is not a modelling gap. It is the state of the field**, and the honest
 output was to say so rather than to model around it.
 
 **And the welfare evidence points the same way.** Green crabs have nociceptors in
-every soft tissue tested{% include cite.html key="kasiouras2024" %}, and they
+every soft tissue tested, and they
 **learn to avoid a place where they receive electric shock** — some dropping a
 wired leg even though the voltage was set below the single-shock level that
-causes it{% include cite.html key="magee2013" %}. That was contact current, not a
+causes it. That was contact current, not a
 field in water, so it sets no threshold. But it means an electric lure for this
 animal should be expected to repel as well as attract.
+
+{% include source.html key="kasiouras2024" %}
+{% include source.html key="magee2013" %}
 
 ---
 
@@ -208,29 +222,40 @@ actually broadcasts, and whether a trap can imitate it.
 **The receiver side is better documented than I expected.** There is a real
 transfer function for the mouthpart setae — displacement thresholds, and the
 coding: spike count scales with displacement amplitude, interspike interval
-with velocity{% include cite.html key="garm2005" %}. **That paper is also
+with velocity. **That paper is also
 where I made my first substantive error** (below): those setae are *tactile*
 receptors for handling prey, not distance detectors, and I spent a while
 scoring far-field stimuli against them.
 
+{% include source.html key="garm2005" %}
+
 The organ that matters for substrate vibration is a joint organ in the walking
-leg, described in green crab itself{% include cite.html key="burke1954" %},
+leg, described in green crab itself,
 with a measured band. Water motion is a different receptor
-again{% include cite.html key="tautz1980" %}; the behavioural response of
+again; the behavioural response of
 intact animals to substrate vibration has been tested
-directly{% include cite.html key="aimon2021" %}; decapod acoustic detection has
-been reviewed as a field{% include cite.html key="popper2001" %}; an
+directly; decapod acoustic detection has
+been reviewed as a field; an
 evoked-potential study in the American lobster asks which organ is
-responsible{% include cite.html key="jzquel2021" %}; and a consolidated review
-of green crab sensory biology exists{% include cite.html key="jury2024" %}.
+responsible; and a consolidated review
+of green crab sensory biology exists.
+
+{% include source.html key="burke1954" %}
+{% include source.html key="tautz1980" %}
+{% include source.html key="aimon2021" %}
+{% include source.html key="popper2001" %}
+{% include source.html key="jzquel2021" %}
+{% include source.html key="jury2024" %}
 
 **The transmitter side is where it died.** The reference dataset for benthic
 invertebrate sound gives calibrated source levels for scallops, limpets,
-urchins and crustaceans{% include cite.html key="coquereau2016" %}. Converting
+urchins and crustaceans. Converting
 each to particle displacement and solving for the crab's threshold, **not one
 of the nine sources reaches a crab at more than millimetres** — and every sound
 in that dataset peaks between 5 and 49 kHz, while the analysis band was
 filtered from 2 kHz upward.
+
+{% include source.html key="coquereau2016" %}
 
 **The corpus was built for hydrophone monitoring, not for prey detection, and
 the crab's band was removed before analysis.** A null there is *unavailable*,
@@ -249,11 +274,14 @@ because they close route 4 without any biology at all:
 
 **The one prey cue that survives is not a sound at all.** Porewater pressure
 signals generated by infaunal activity have been recorded directly in
-sediment{% include cite.html key="wethey2005" %}, and the irrigation timing of
+sediment, and the irrigation timing of
 three tellinid bivalves — including a Pacific Northwest clam that is real green
-crab prey — has been measured in detail{% include cite.html key="volkenborn2012" %}.
+crab prey — has been measured in detail.
 That is a slow hydraulic signal, and it is the only prey cue in this review with
 a field detection range measured on relevant species.
+
+{% include source.html key="wethey2005" %}
+{% include source.html key="volkenborn2012" %}
 
 ---
 
@@ -265,17 +293,22 @@ the best mechanical cue reaches a couple. The receptor side has two
 anatomically separate systems doing different jobs — olfaction on the
 antennules, and contact chemoreception on the dactyls, where the gustatory
 organs of this species have been characterised
-electrophysiologically{% include cite.html key="schmidt1989" %}.
+electrophysiologically.
+
+{% include source.html key="schmidt1989" %}
 
 The female sex pheromone has been the subject of an identification
-study{% include cite.html key="hardege2011" %}, and later work using it
+study, and later work using it
 produced the single most interesting behavioural result in this review: males
 presented with a pheromone-treated dummy female showed a mating response 87% of
 the time under ambient conditions and 40% under ship-noise playback, a
 significant drop — **while the time taken to respond to the pheromone did not
-change significantly**{% include cite.html key="rising2022" %}. Noise
+change significantly**. Noise
 interfered with completing the behaviour, not with detecting the signal. That
 dissociation is worth more than either number alone.
+
+{% include source.html key="hardege2011" %}
+{% include source.html key="rising2022" %}
 
 **So chemistry works, and that is the problem.** It is the best-performing
 channel in the whole review and it is the *least* selective one: a bait plume
@@ -305,10 +338,13 @@ Across eight receptor channels and five species, green crab has measured values
 in five channels and a described-but-unmeasured organ in two. For Dungeness
 crab, red rock crab, graceful rock crab and yellow shore crab, I found **two**
 measured thresholds, both in Dungeness and both behavioural — a detection
-threshold for a prey extract{% include cite.html key="pearson1979" %} and
+threshold for a prey extract and
 salinity detection measured by antennular
-flicking{% include cite.html key="sugarman1983" %}. Both are held at abstract
+flicking. Both are held at abstract
 only, so those are descriptions of what was measured, not of what was found.
+
+{% include source.html key="pearson1979" %}
+{% include source.html key="sugarman1983" %}
 
 **Two filled cells out of thirty-two.** And they do not make the comparison
 runnable, because they are behavioural thresholds in grams per litre while
@@ -325,15 +361,21 @@ at which you can shout at a green crab and not be heard by a Dungeness.
 
 What *can* be compared is everything except the senses, and there the
 differences are substantial and well
-documented{% include cite.html key="young2019" %}: salinity tolerance, depth
+documented: salinity tolerance, depth
 and zonation, body size, moult timing, tolerance of emersion and hypoxia.
 Subadult Dungeness use the littoral zone in ways that matter for any comparison
-drawn from trap data{% include cite.html key="holsman2006" %}, red rock crab
+drawn from trap data, red rock crab
 emersion physiology has been measured in
-situ{% include cite.html key="defur1983" %}, settlement and emigration
-behaviour has been studied in green crab{% include cite.html key="moksnes2003" %},
+situ, settlement and emigration
+behaviour has been studied in green crab,
 and predatory capability has been compared directly between green crab and red
-rock crab on a native clam{% include cite.html key="nicol2025" %}.
+rock crab on a native clam.
+
+{% include source.html key="young2019" %}
+{% include source.html key="holsman2006" %}
+{% include source.html key="defur1983" %}
+{% include source.html key="moksnes2003" %}
+{% include source.html key="nicol2025" %}
 
 **That list is the beginning of routes 11 and 12.** Selectivity does not have to
 come from the signal. It can come from the calendar.
@@ -345,18 +387,22 @@ come from the signal. It can come from the calendar.
 **The complete answer to "why not biological control" is one paper.** The
 host specificity of *Sacculina carcini*, the parasitic barnacle proposed as a
 green crab agent, has been tested against native Pacific
-crabs{% include cite.html key="goddard2005" %}, and the result is why nobody
+crabs, and the result is why nobody
 deploys it. I am not going to characterise the numbers here — I hold it at
 abstract level — but the conclusion is not controversial and it is the standing
 reason route 9 is closed.
 
+{% include source.html key="goddard2005" %}
+
 **Route 10 has the only landscape-scale evidence in this entire review**, and it
 is not usable. A recovering sea otter population shows a strong negative
 space-and-time relationship with green crab, with crabs persisting highest where
-tidal restriction excluded the otters{% include cite.html key="jeppesen2024" %}.
+tidal restriction excluded the otters.
 That is the best result anywhere in the predator literature — and **the southern
 sea otter has been absent from the Salish Sea since 1915.** It is an argument
 for removing tidal barriers, not a lever anyone can pull.
+
+{% include source.html key="jeppesen2024" %}
 
 So I built a register of everything else that might eat a green crab in British
 Columbia: **24 agents, each carrying a status so the empty rows stay visible.**
@@ -396,20 +442,25 @@ brings up the thing that kept recurring.
 ## The two that survive
 
 **Route 11 — gear.** Trap entrance modification has the largest demonstrated
-effect of anything in this exercise{% include cite.html key="bergshoeff2018" %}{% include cite.html key="bergshoeff2019" %}.
+effect of anything in this exercise.
 It is a cable tie and a sinker. Nothing the sensory workstream produced comes
 close.
 
+{% include source.html key="bergshoeff2018" %}
+{% include source.html key="bergshoeff2019" %}
+
 There is also a peer-reviewed integrated population model for this species with
-public code{% include cite.html key="keller2025" %}, fitted on a multi-year
+public code, fitted on a multi-year
 removal time series — **which I confidently declared did not exist**, and which
 puts shrimp traps well above the trap type used throughout British Columbia on
-per-trap efficiency. That figure is not settled and I would not quote a
-multiplier: reading the paper's own robustness appendix moves it by about a
-third, and the model's observation process never tested whether catchability
-varies through the season. **The defensible statement is that a paired
-deployment — the two trap types fished side by side, same days, same sites,
-same soak — would settle it cheaply with existing gear.**
+per-trap efficiency. I would not quote a single multiplier from it: the
+estimate shifts noticeably depending on which auxiliary dataset the model is
+fitted with, which the authors report themselves. **The defensible statement
+is that a paired deployment — the two trap types fished side by side, same
+days, same sites, same soak — would pin the number down cheaply with existing
+gear.**
+
+{% include source.html key="keller2025" %}
 
 **Route 12 — place and schedule.** Selectivity from the calendar rather than
 from a device. Two axes came out strong: **trap the structured habitat rather
@@ -417,7 +468,9 @@ than the open flat**, and **fish the daytime flood tide**, because green crab
 move up-shore on the flood regardless of light while the Dungeness incursion is
 nocturnal. Others came out weaker, and the axis most often cited — tidal height
 alone — was **downgraded** by a paper showing subadult Dungeness use the
-littoral zone too{% include cite.html key="holsman2006" %}.
+littoral zone too.
+
+{% include source.html key="holsman2006" %}
 
 It costs nothing, because every axis is a decision about where and when to set
 gear already in the water. It is falsifiable now, at a few hundred trap-sets,
@@ -459,24 +512,36 @@ one sentence from this whole exercise is worth carrying forward, it is that one.
   Pacific crabs it competes with are not, and every cross-species comparison in
   this review foundered on that asymmetry rather than on modelling.
 - **Removal suppresses locally and does not
-  extirpate**{% include cite.html key="ens2022" %}. That is the consistent
+  extirpate**. That is the consistent
   finding across jurisdictions, including a documented case of
   **stage-specific overcompensation — the hydra effect — following adult-only
-  removal**{% include cite.html key="grosholz2021" %}, whose possibility had been
-  assessed in advance{% include cite.html key="turner2015" %}.
-  Early detection has a much better record{% include cite.html key="grason2018" %}.
+  removal**, whose possibility had been
+  assessed in advance.
+  Early detection has a much better record.
 - **The temperature literature is where the actual predictive signal is.**
   Adult thermal tolerance does not discriminate sites — it is broad enough to
-  make the whole coast suitable{% include cite.html key="compton2010" %}. The
+  make the whole coast suitable. The
   discriminator is larval recruitment
-  temperature{% include cite.html key="derivera2006" %}, with warmer winters
-  adding a second brood{% include cite.html key="rey2017" %} and a modelling
+  temperature, with warmer winters
+  adding a second brood and a modelling
   result finding a large increase in larval arrival for a small temperature
-  rise{% include cite.html key="du2024" %}. The adaptive-genomics literature for
+  rise. The adaptive-genomics literature for
   this species is likewise about
-  temperature{% include cite.html key="tepolt2020" %}{% include cite.html key="thia2021" %}{% include cite.html key="venkataraman2025" %},
+  temperature,
   not about reproduction or sensory biology — an observation about what the
   literature is *about*, which is a claim I can make from titles and abstracts.
+
+{% include source.html key="ens2022" %}
+{% include source.html key="grosholz2021" %}
+{% include source.html key="turner2015" %}
+{% include source.html key="grason2018" %}
+{% include source.html key="compton2010" %}
+{% include source.html key="derivera2006" %}
+{% include source.html key="rey2017" %}
+{% include source.html key="du2024" %}
+{% include source.html key="tepolt2020" %}
+{% include source.html key="thia2021" %}
+{% include source.html key="venkataraman2025" %}
 
 ---
 
@@ -501,10 +566,12 @@ on the page.**
 | Scored far-field stimuli against a **tactile** receptor | Reading the paper properly | Invalidated a whole class of range estimates |
 | Attributed a vibration organ to the **wrong joint**, then used a surrogate band from the wrong genus | Re-reading the 1954 source | Reversed a result: "1 of 9 prey sounds rescued" became **0 of 9** |
 | Conflated a trap's **entry success** with its **catch increase** | A test asserting the two figures | The best modification is +81%, not the number I had |
-| Collapsed a lab mechanism into a **population-level** claim | The operator asked what a phrase meant | Split into two claims; pinned that no population-level effect has been demonstrated{% include cite.html key="mcdonald2001" %} |
+| Collapsed a lab mechanism into a **population-level** claim | The operator asked what a phrase meant | Split into two claims; pinned that no population-level effect has been demonstrated |
 | "**Zero** native sensory channels have ever been measured" | Searching again, less shallowly | A strong negative from a shallow search. Overturned within minutes |
 | "**No population model exists** for this species" | Searching by *author* instead of by topic | It existed, with public code. The repos are named after the method, not the species |
 | Read a gear ratio **off a log axis by eye** | Reading the printed posterior table | Both comparison gears understated, **always in the direction that flattered my preferred answer** |
+
+{% include source.html key="mcdonald2001" %}
 
 **Two patterns in that table are worth more than the individual entries.**
 
