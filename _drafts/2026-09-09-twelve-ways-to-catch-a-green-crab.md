@@ -61,6 +61,8 @@ citations:
   - tepolt2020
   - thia2021
   - venkataraman2025
+  - kasiouras2024
+  - magee2013
 summary: >-
   Twelve candidate mechanisms for preferentially removing an invasive crab,
   screened one at a time against the physics and the literature. Ten are closed,
@@ -187,6 +189,14 @@ from a different order, in fresh water.
 
 **That is not a modelling gap. It is the state of the field**, and the honest
 output was to say so rather than to model around it.
+
+**And the welfare evidence points the same way.** Green crabs have nociceptors in
+every soft tissue tested{% include cite.html key="kasiouras2024" %}, and they
+**learn to avoid a place where they receive electric shock** — some dropping a
+wired leg even though the voltage was set below the single-shock level that
+causes it{% include cite.html key="magee2013" %}. That was contact current, not a
+field in water, so it sets no threshold. But it means an electric lure for this
+animal should be expected to repel as well as attract.
 
 ---
 

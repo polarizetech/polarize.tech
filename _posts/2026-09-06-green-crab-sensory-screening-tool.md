@@ -52,6 +52,8 @@ citations:
   - tepolt2020
   - thia2021
   - venkataraman2025
+  - kasiouras2024
+  - magee2013
 summary: >-
   The European green crab is a well-studied laboratory animal, which makes it a
   good test of a question worth asking about any organism: how much of its
@@ -207,6 +209,25 @@ order, fresh water.
 
 The tool quotes named surrogates and will not produce a crab number.
 
+**Welfare, which is a different question from detection.** This species has nociceptors.
+Acetic acid on every soft tissue tested — eyes, antennae, antennules, claws, leg joints —
+produced a central nervous response, longer-lasting and lower in amplitude than a touch.
+
+{% include source.html key="kasiouras2024" %}
+
+And green crabs **learn to avoid a place where they are shocked.** Given two shelters, with a
+10 V, 180 Hz, 200 ms shock delivered every 5 s through wires on the legs in one of them, they
+learned to walk left or right to reach the other. The voltage was set below the level at
+which a single shock made a crab drop a leg, and some dropped a wired leg anyway.
+
+{% include source.html key="magee2013" %}
+
+Both read in full. That shock was contact current through the legs, not a field in water, so
+it gives the tool **no field threshold** and changes no number above. What it changes is the
+expectation: current is aversive to this animal, so an electric lure should be expected to
+repel as well as attract. The welfare limit the tool enforces — crayfish forced electrotaxis,
+about 4 V/m — marks where current *forces* movement, not where it becomes unpleasant.
+
 **Magnetic.** One directly relevant result: juvenile green crabs exposed to static magnetic
 fields at strengths relevant to submarine power cables, **females spending substantially more
 time in exposed zones while males showed no consistent preference.**
@@ -349,3 +370,7 @@ exist, and it is the single experiment that would change the most.
 - **"What the tool is for"** gains the account of how that error survived a test, and of the
   second defect that correcting it exposed.
 - The correction has been applied to the model itself, not only to this post.
+
+**2026-09-16.** One addition, nothing erased: the electric section now carries the
+green-crab welfare evidence — nociceptive responses and learned shock avoidance — with a
+note that neither supplies a field threshold, so no number in the tool changed.
