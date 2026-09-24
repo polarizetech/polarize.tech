@@ -1,9 +1,9 @@
 ---
-title: "Adaptive preregistration when an agent runs the model"
+title: "Adaptive preregistration: predict first, then run the code"
 description: >-
   A protocol for simulations and research software in which the predictions, the pass
-  criteria and the environment are fixed in git before a language-model agent is allowed to
-  run anything a report will cite.
+  criteria and the environment are fixed in git before anything a report will cite is
+  allowed to run.
 date: 2026-09-24 12:00:00 -0600
 project: method
 status: published
@@ -20,15 +20,15 @@ A simulation can be tuned until it agrees with you. Each choice is small: a seed
 an analysis window, a parameter nobody measured. None of them looks like cheating, and
 together they can manufacture any result.
 
-A coding agent makes this faster. It can try twenty variants in the time it takes to read one,
-and it has no stake in which one gets reported. The fix is the same one experimental science
-uses: write down what would count as success before looking, and keep a record that shows the
-order things happened in.
+Software makes this cheap. A new variant costs seconds, and the run that finally agrees looks
+exactly like one that was planned. The fix is the same one experimental science uses: write
+down what would count as success before looking, and keep a record that shows the order things
+happened in.
 
 This is the protocol used for model experiments here. It adapts published work on adaptive
 preregistration for model-based research and on reporting deviations from a preregistered
-plan. It is written for simulations and research software, and for the agents that now do much
-of the running.
+plan. It is written for simulations, analysis pipelines and research software, whoever or
+whatever is doing the running.
 
 ## The five rules
 
@@ -89,42 +89,41 @@ Each experiment gets its own branch and draft pull request. Tagging a milestone 
 to the pull request with the commit and a checksum of the plan and the lockfile. The comment's
 timestamp comes from the hosting service, not from the machine that made the commit.
 
-The conversation that produced the work is recorded too. Each turn, the prompt and the agent's
-final reply are posted to the same pull request and committed as a log beside the experiment,
-with secrets redacted. The diffs are already in the commits.
+When the work is done with a coding assistant, the conversation is recorded too: each prompt
+and reply is posted to the same pull request and committed beside the experiment, with secrets
+redacted.
 
-## Rules for the agent
+## Rules for whoever runs it
+
+The same rules apply to a person at the keyboard, a script, or a coding assistant.
 
 - Before running anything citable, confirm the plan is complete and tagged. If it is not,
-  write it and stop for a human to review.
+  write it and stop for someone else to review.
 - Never edit the plan after it is tagged. Changes go in the deviations table.
 - Asked to "make it pass" or "try a few values and keep the best", do the runs under
   `exploratory/` and say plainly that they are not preregistered evidence.
 - State every open decision before the run that depends on it.
 - In every report, state how deeply each source was read: full text, abstract, background
   knowledge, or supplied by the user.
-- If a human asks to skip a step, write the skip into the deviations table first, with the
+- If anyone asks to skip a step, write the skip into the deviations table first, with the
   outcome-known field filled in honestly.
 
 ## How it reaches every project
 
 The protocol is maintained in one repository and installed into each project with a small
 command-line tool, `kit_ap`. It copies the protocol documents and tools into the project's
-`.agents/` folder and records the exact version in a lockfile. It also adds a short managed
-block of rules to `AGENTS.md`.
+`.agents/` folder and records the exact version in a lockfile. It also writes the rules into
+`AGENTS.md`, so coding assistants working in the repository read the same rules a person
+would.
 
-`AGENTS.md` is the file Codex, Copilot and Cursor read, and Claude Code reads it through an
-import in `CLAUDE.md`. Every agent sees the same rules whatever tool is open, including in
-cloud sandboxes that only have the repository.
+Some of the rules are backed by code rather than left to good intentions:
 
-Where a tool supports hooks, the rules are backed by code rather than left to the agent:
-
-- conversations are logged automatically;
-- Claude Code is told on every prompt whether the current experiment's plan is frozen;
 - an optional commit guard refuses outputs for an experiment that has no preregistration tag,
   and refuses any change to a plan after it is tagged;
-- at the start of a session, the project checks whether the protocol has changed upstream. The
-  agent reports it but does not update without permission.
+- where the tools support hooks, the current experiment's plan status is surfaced on every
+  session, and assistant conversations are logged automatically;
+- at the start of a session, the project checks whether the protocol has changed upstream, and
+  reports it without updating on its own.
 
 ## Limits
 
@@ -135,6 +134,6 @@ A local git date is not tamper-evident. The pull-request receipt is a third-part
 an archive. For outside credibility, the preregistration tag should also be deposited with an
 archive, and the plan should say which.
 
-Most of the protocol is instructions an agent is asked to follow. Only the commit guard and the
-hooks enforce anything, and only in tools that run hooks. The rest relies on the record making
+Most of the protocol is rules that people and tools are asked to follow. Only the commit guard
+and the hooks enforce anything, and the hooks only in tools that run them. The rest relies on the record making
 a violation visible afterwards.
