@@ -110,8 +110,9 @@ The same rules apply to a person at the keyboard, a script, or a coding assistan
 
 ## How it reaches every project
 
-The protocol is maintained in one repository and installed into each project with a small
-command-line tool, `kit_ap`. It copies the protocol documents and tools into the project's
+The protocol is maintained in one public repository,
+[KIT Adaptive Preregistration](https://github.com/polarizetech/kit-adaptive-preregistration), and
+installed into each project with a small command-line tool, `kit_ap`. It copies the protocol documents and tools into the project's
 `.agents/` folder and records the exact version in a lockfile. It also writes the rules into
 `AGENTS.md`, so coding assistants working in the repository read the same rules a person
 would.
@@ -137,3 +138,8 @@ archive, and the plan should say which.
 Most of the protocol is rules that people and tools are asked to follow. Only the commit guard
 and the hooks enforce anything, and the hooks only in tools that run them. The rest relies on the record making
 a violation visible afterwards.
+
+## Update — 2026-09-24
+
+The kit's repository is now public and linked from the section on how the protocol reaches
+each project.
