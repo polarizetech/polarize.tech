@@ -28,7 +28,8 @@ happened in.
 This is the protocol used for model experiments here. It adapts published work on adaptive
 preregistration for model-based research and on reporting deviations from a preregistered
 plan. It is written for simulations, analysis pipelines and research software, whoever or
-whatever is doing the running.
+whatever is doing the running. The full protocol, with its sources and how deeply each was read,
+is in the [protocol document](https://github.com/polarizetech/kit-adaptive-preregistration/blob/main/modules/prereg/protocols/PREREG_PROTOCOL.md).
 
 ## The five rules
 
@@ -37,7 +38,8 @@ whatever is doing the running.
 - **The environment is part of the plan.** The preregistration names the model version it runs
   against, and a lockfile pins every dependency. Adding a dependency afterwards is a deviation.
 - **Failure closes the version; it does not edit it.** A failed experiment is closed with its
-  failure written up, and the next attempt gets a new experiment ID.
+  failure written up, and the next attempt gets a new experiment ID. Every ID stays in a
+  registry, so a pass after earlier failures is reported as one attempt among several.
 - **Every departure from the plan is logged,** dated, with whether the outcome was known at
   the time.
 - **Exploratory work is quarantined.** Anything not in the plan lives in `exploratory/` and is
@@ -48,25 +50,31 @@ whatever is doing the running.
 Modelling is iterative, and a protocol that forbids iteration gets ignored. The rule is about
 order, not rigidity.
 
-- A plan may change between stages. The change is committed and tagged *before* the run it
-  governs, and logged with the outcome marked as not yet known.
+- A plan may change between stages. Each stage says in advance which result leads to which
+  change. The change is committed and tagged *before* the run it governs, and logged with the
+  outcome marked as not yet known.
 - A plan may also change after a result is seen. It is still logged, with the outcome marked as
   known, and it can never be used to convert a fail into a pass.
 - An experiment that fails stays in the record. Nothing is deleted or cleaned up.
 
 ## What the preregistration contains
 
-Ten sections, all written before any scoring run:
+Eleven sections, all written before any scoring run:
 
 - the question, as one mechanistic sentence;
 - risky, numeric, directional predictions, each with the result that would count against it;
-- pass and fail thresholds, with any analytic expectation derived here rather than afterwards;
+- pass and fail thresholds for each estimated quantity, with its uncertainty: a pass means the
+  interval clears the threshold, not just the point estimate;
 - the outcomes that would close the line of work;
 - the model specification, with every parameter tagged as taken from literature, derived, or
-  arbitrary. A pass that depends on an arbitrary parameter does not count;
-- the design: conditions, a fixed list of seeds, controls and exclusion rules;
+  arbitrary;
+- the design: conditions, a fixed list of seeds, controls, exclusion rules, a justified number of
+  runs with a stopping rule, and a sensitivity analysis for every arbitrary parameter. A pass that
+  flips to a fail anywhere in a preregistered range is reported as not robust;
 - the environment, down to the execution backend and thread count, because the same seed does
   not give the same result everywhere;
+- what the authors already knew: which target data they had seen, and which targets the model
+  was calibrated to rather than tested against;
 - any adaptive stages, every decision the specification left open, and how the plan was
   timestamped.
 
@@ -87,7 +95,8 @@ Git holds the ordering. Each milestone is an annotated tag:
 
 Each experiment gets its own branch and draft pull request. Tagging a milestone posts a receipt
 to the pull request with the commit and a checksum of the plan and the lockfile. The comment's
-timestamp comes from the hosting service, not from the machine that made the commit.
+timestamp comes from the hosting service, not from the machine that made the commit, so it shows
+the plan existed by then.
 
 When the work is done with a coding assistant, the conversation is recorded too: each prompt
 and reply is posted to the same pull request and committed beside the experiment, with secrets
@@ -120,7 +129,7 @@ would.
 Some of the rules are backed by code rather than left to good intentions:
 
 - an optional commit guard refuses outputs for an experiment that has no preregistration tag,
-  and refuses any change to a plan after it is tagged;
+  and refuses any change to a plan after it is tagged (like any git hook, it can be bypassed);
 - where the tools support hooks, the current experiment's plan status is surfaced on every
   session, and assistant conversations are logged automatically;
 - at the start of a session, the project checks whether the protocol has changed upstream, and
@@ -131,15 +140,28 @@ Some of the rules are backed by code rather than left to good intentions:
 This protects the record, not the idea. A well-preregistered experiment on a wrong model is
 still wrong.
 
-A local git date is not tamper-evident. The pull-request receipt is a third-party clock but not
-an archive. For outside credibility, the preregistration tag should also be deposited with an
-archive, and the plan should say which.
+A local git history is not tamper-evident: tags can be moved unless they are signed and
+protected on the host. The pull-request receipt is a third-party clock but not an archive, since
+comments can be edited, and it can't show that nothing ran before the plan. For outside
+credibility, the preregistration tag should also be deposited with an archive, and the plan should
+say which.
+
+Nothing stops a new attempt after a failure. The registry only makes the attempts visible, so a
+reader can weigh a pass against them.
 
 Most of the protocol is rules that people and tools are asked to follow. Only the commit guard
-and the hooks enforce anything, and the hooks only in tools that run them. The rest relies on the record making
-a violation visible afterwards.
+and the hooks enforce anything, and the hooks only in tools that run them. The rest relies on the
+record making a violation visible afterwards.
 
 ## Update — 2026-09-24
 
 The kit's repository is now public and linked from the section on how the protocol reaches
 each project.
+
+After a methods review, the protocol was tightened, and this post was revised to match. It now
+describes: the registry of attempts, uncertainty in the pass criteria, a justified run count, a
+sensitivity rule fixed in advance, a section on prior knowledge and calibration (eleven sections,
+previously ten), and decision rules for adaptive stages. The limits section now says more about
+what the record can and can't prove. Previously the post said a pass that depends on an arbitrary
+parameter does not count; the rule is now that a pass which flips within a preregistered range is
+reported as not robust.
