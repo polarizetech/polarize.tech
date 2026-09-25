@@ -616,6 +616,34 @@
  ],
  "_posts/2026-08-25-can-a-70-dollar-board-tell-me-im-wrong.md": [
   {
+   "sha": "ded42f58e80c9fcafa29be2c71cf6ac02f883484",
+   "author": "Joshua Anderton",
+   "date": "2026-09-25T08:23:13-07:00",
+   "subject": "Use polarize-ui for the design system and the blog components",
+   "llm": true,
+   "llm_name": "Claude Opus 5.5",
+   "short": "ded42f5",
+   "first": false,
+   "hunks": [
+    [
+     {
+      "t": "ctx",
+      "h": "## The rig"
+     },
+     {
+      "t": "mod",
+      "h": "&lt;div class=&quot;<ins>ui-</ins>parts&quot;&gt; {% include part.html name=&quot;Olimex SHIELD-EKG-EMG&quot; role=&quot;Analog front end. 0.16–40 Hz, ahead of the converter.&quot; price=&quot;C$34.02&quot; href=&quot;https://www.digikey.ca/en/products/detail/olimex-ltd/SHIELD-EKG-EMG/3471383&quot; img=&quot;/assets/posts/rig/olimex-shield-ekg-emg.jpg&quot; credit=&quot;DigiKey&quot; %} {% include part.html name=&quot;Olimex SHIELD-EKG-EMG-PRO&quot; role=&quot;Passive electrode cable for the shield: 3.5 mm jack to three snap leads.&quot; price=&quot;C$16.91&quot; href=&quot;https://www.digikey.ca/en/products/detail/olimex-ltd/SHIELD-EKG-EMG-PRO/5247133&quot; img=&quot;/assets/posts/rig/olimex-shield-ekg-emg-pro-cable.jpg&quot; credit=&quot;DigiKey&quot; %} {% include part.html name=&quot;Arduino Uno R3&quot; role=&quot;10-bit converter and USB serial.&quot; price=&quot;C$40.99&quot; href=&quot;https://www.amazon.ca/dp/B008GRTSV6&quot; img=&quot;/assets/posts/rig/arduino-uno-r3.jpg&quot; credit=&quot;Amazon.ca&quot; %} {% include part.html name=&quot;AVCOO snap TENS pads, 20&quot; role=&quot;The electrodes. Self-adhesive, reusable gel.&quot; price=&quot;C$13.99&quot; href=&quot;https://www.amazon.ca/dp/B09R1WSVJS&quot; img=&quot;/assets/posts/rig/avcoo-snap-tens-pads.jpg&quot; credit=&quot;Amazon.ca&quot; %} &lt;/div&gt;"
+     },
+     {
+      "t": "ctx",
+      "h": "Board and microcontroller about C$75; the whole rig about C$106, at listing prices on 2026-09-13."
+     }
+    ]
+   ],
+   "added": 1,
+   "removed": 0
+  },
+  {
    "sha": "08f8d3bfc7cdcbf9fd3fcc3a7262f82338aa97d6",
    "author": "Joshua Anderton",
    "date": "2026-09-13T17:08:11-07:00",
