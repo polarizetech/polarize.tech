@@ -106,10 +106,6 @@ to the pull request with the commit and a checksum of the plan and the lockfile.
 timestamp comes from the hosting service, not from the machine that made the commit, so it shows
 the plan existed by then.
 
-When the work is done with a coding assistant, the conversation is recorded too: each prompt
-and reply is posted to the same pull request and committed beside the experiment, with secrets
-redacted.
-
 ## Rules for whoever runs it
 
 The same rules apply to a person at the keyboard, a script, or a coding assistant.
@@ -139,7 +135,7 @@ Some of the rules are backed by code rather than left to good intentions:
 - an optional commit guard refuses outputs for an experiment that has no preregistration tag,
   and refuses any change to a plan after it is tagged (like any git hook, it can be bypassed);
 - where the tools support hooks, the current experiment's plan status is surfaced on every
-  session, and assistant conversations are logged automatically;
+  session;
 - at the start of a session, the project checks whether the protocol has changed upstream, and
   reports it without updating on its own.
 
@@ -173,3 +169,11 @@ previously ten), and decision rules for adaptive stages. The limits section now 
 what the record can and can't prove. Previously the post said a pass that depends on an arbitrary
 parameter does not count; the rule is now that a pass which flips within a preregistered range is
 reported as not robust.
+
+## Update — 2026-09-25
+
+Recording coding-assistant conversations is no longer part of the protocol, and the kit no longer
+installs it. The post previously said each prompt and reply was posted to the experiment's pull
+request and committed beside it; that paragraph and the matching line under "How it reaches every
+project" were removed. The kit's repository was also renamed, and its links here point to the new
+address.
