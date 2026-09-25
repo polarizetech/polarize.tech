@@ -1,0 +1,10 @@
+{%- comment -%}
+  The posts about a repository: every post whose text links to
+  github.com/polarizetech/<repo>. Found automatically — a post joins a repo's
+  tile and page by linking to the repo, nothing else to maintain.
+
+  Usage: {% include repo-posts.html repo="neural-memory" %}
+  Sets `repo_posts` (newest first) for the caller.
+{%- endcomment -%}
+{%- assign repo_needle = 'github.com/polarizetech/' | append: include.repo %}
+{%- assign repo_posts = site.posts | where_exp: "p", "p.content contains repo_needle" %}

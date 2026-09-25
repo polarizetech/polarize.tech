@@ -65,7 +65,7 @@ def main():
     html = '\n'.join(p.read_text() for p in
                      list(SITE.glob('*.html')) + list(SITE.glob('_layouts/*.html'))
                      + list(SITE.glob('_includes/*.html')) + list(SITE.glob('blog/*.html'))
-                     + list(SITE.glob('rants/*.html')) + list(SITE.glob('changelog/**/*.html')))
+                     + list(SITE.glob('rants/*.html')) + list(SITE.glob('changelog/**/*.html')) + list(SITE.glob('work/**/*.html')))
 
     # ---- RULE 1 — no network font / CDN ------------------------------------
     for m in re.finditer(r'https?://[^\s"\')]+', html + css):

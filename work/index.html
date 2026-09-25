@@ -1,0 +1,72 @@
+---
+layout: default
+title: Work
+section: work
+description: >-
+  The public repositories behind the research — each with the posts that
+  explain it, its latest changes, and the code.
+---
+{%- comment -%}
+  A bento board of every public polarizetech repo (_data/repos.json, synced by
+  scripts/sync_changelog.py). Each tile leads with the posts about the repo —
+  the short version — then its latest merged change, then links to its page
+  (/work/<repo>/) and to GitHub. Repos with posts come first and get the bigger
+  tiles; the rest follow by recent activity.
+{%- endcomment -%}
+
+<header class="ui-doc__head">
+  <p class="ui-label">Work</p>
+  <h1 class="ui-display ui-display--2">What we build, and what it found.</h1>
+  <p class="ui-doc__lede">{{ page.description }}</p>
+</header>
+
+{%- comment -%} Order: repos with posts (most posts first), then the rest, each by activity. {%- endcomment -%}
+{%- assign by_activity = site.data.repos | sort: "active_at" | reverse %}
+{%- assign with_posts = "" | split: "" %}
+{%- assign without_posts = "" | split: "" %}
+{%- for r in by_activity %}
+  {%- include repo-posts.html repo=r.name %}
+  {%- if repo_posts.size > 0 %}{% assign with_posts = with_posts | push: r %}{% else %}{% assign without_posts = without_posts | push: r %}{% endif %}
+{%- endfor %}
+{%- assign ordered = with_posts | concat: without_posts %}
+
+<ul class="bento">
+  {%- for r in ordered %}
+  {%- include repo-posts.html repo=r.name %}
+  {%- assign size = "sm" %}
+  {%- if repo_posts.size > 0 %}{% if forloop.index == 1 %}{% assign size = "lg" %}{% else %}{% assign size = "md" %}{% endif %}{% endif %}
+  <li class="bento__tile bento__tile--{{ size }}">
+    <div class="bento__head">
+      <a class="bento__name" href="{{ '/work/' | append: r.name | append: '/' | relative_url }}">{{ r.name }}</a>
+      {%- if r.language != "" %}<span class="ui-pill">{{ r.language }}</span>{% endif %}
+    </div>
+    {%- if r.description != "" %}<p class="bento__desc">{{ r.description }}</p>{% endif %}
+
+    {%- if repo_posts.size > 0 %}
+    <ul class="bento__posts">
+      {%- assign shown = 1 %}{% if size == "lg" %}{% assign shown = 2 %}{% endif %}
+      {%- for p in repo_posts limit: shown %}
+      <li>
+        <a class="bento__post" href="{{ p.url | relative_url }}">
+          <span class="bento__post-label">Post · {{ p.date | date: "%Y-%m-%d" }}</span>
+          <span class="bento__post-title">{{ p.title }}</span>
+          <span class="bento__post-tldr">{{ p.summary | default: p.description | strip_html | strip_newlines | truncatewords: 40 }}</span>
+        </a>
+      </li>
+      {%- endfor %}
+    </ul>
+    {%- endif %}
+
+    <div class="bento__foot">
+      {%- if r.latest_change %}
+      <p class="bento__change"><span class="bento__post-label">Latest change</span>
+        <a class="changelog__num" href="{{ r.latest_change.url }}" rel="noopener">#{{ r.latest_change.number }}</a> {{ r.latest_change.title }}</p>
+      {%- endif %}
+      <p class="bento__links">
+        <a href="{{ '/work/' | append: r.name | append: '/' | relative_url }}">About it →</a>
+        <a href="{{ r.url }}" rel="noopener">GitHub ↗</a>
+      </p>
+    </div>
+  </li>
+  {%- endfor %}
+</ul>

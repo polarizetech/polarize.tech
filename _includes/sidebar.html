@@ -43,7 +43,7 @@
   {%- endif %}
 
   {%- comment -%}
-    The site menu: home, then the three sections. `section` is set per page (front matter, or the
+    The site menu: home, then the sections. `section` is set per page (front matter, or the
     defaults in _config.yml) and marks the current one; the home page has none.
   {%- endcomment -%}
   <nav class="ui-sidebar__topics" aria-label="Menu">
@@ -64,6 +64,11 @@
           <span class="ui-sidebar__count">{{ site.essays | size }}</span></a>
       </li>
       <li>
+        <a class="ui-sidebar__link{% if page.section == 'work' %} is-current{% endif %}"
+           href="{{ '/work/' | relative_url }}">Work
+          <span class="ui-sidebar__count">{{ site.data.repos | size }}</span></a>
+      </li>
+      <li>
         <a class="ui-sidebar__link{% if page.section == 'changelog' %} is-current{% endif %}"
            href="{{ '/changelog/' | relative_url }}">Changelog
           <span class="ui-sidebar__count">{{ site.data.changelog | size }}</span></a>
@@ -73,22 +78,27 @@
 
   {%- comment -%}
     Topics are the posts' `project:` labels, so they show only in the blog
-    section (/blog/, topic pages, posts). The changelog gets its repositories
-    instead; the home page and rants get neither.
+    section (/blog/, topic pages, posts). Work and the changelog get the
+    repositories instead; the home page and rants get neither.
   {%- endcomment -%}
-  {%- if page.section == 'changelog' %}
+  {%- if page.section == 'work' or page.section == 'changelog' %}
   <nav class="ui-sidebar__topics" aria-label="Repositories">
     <p class="ui-label ui-sidebar__heading">{% include icon.html name="tag" %} Repositories</p>
     <ul class="ui-sidebar__list">
       <li>
-        <a class="ui-sidebar__link{% if page.repo == nil %} is-current{% endif %}" href="{{ '/changelog/' | relative_url }}">All changes
+        {%- if page.section == 'work' %}
+        <a class="ui-sidebar__link{% if page.repo == nil %} is-current{% endif %}" href="{{ '/work/' | relative_url }}">All work
+          <span class="ui-sidebar__count">{{ site.data.repos | size }}</span></a>
+        {%- else %}
+        <a class="ui-sidebar__link is-current" href="{{ '/changelog/' | relative_url }}">All changes
           <span class="ui-sidebar__count">{{ site.data.changelog | size }}</span></a>
+        {%- endif %}
       </li>
       {%- for r in site.data.repos %}
       {%- assign n = site.data.changelog | where: "repo", r.name %}
       <li>
         <a class="ui-sidebar__link{% if page.repo == r.name %} is-current{% endif %}"
-           href="{{ '/changelog/' | append: r.name | append: '/' | relative_url }}">{{ r.name }}
+           href="{{ '/work/' | append: r.name | append: '/' | relative_url }}">{{ r.name }}
           <span class="ui-sidebar__count">{{ n.size }}</span></a>
       </li>
       {%- endfor %}

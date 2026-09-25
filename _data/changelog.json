@@ -1,6 +1,22 @@
 [
  {
   "repo": "neural-memory",
+  "number": 8,
+  "title": "singlecell: labile recycling factor and k_deg_scale switches (default = published), reusable R1-R8 gate",
+  "body": "Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>",
+  "url": "https://github.com/polarizetech/neural-memory/pull/8",
+  "merged_at": "2026-09-25T21:19:26Z"
+ },
+ {
+  "repo": "neural-memory",
+  "number": 7,
+  "title": "model-v0.3.0: single-cell habituation (Stentor) in a peer-reviewed simulator",
+  "body": "Single-cell habituation package: published Stentor models (Rajan & Marshall 2025 receptor inactivation; Rajan 2022 two-state; Eckert 2024 CIFF) in Tellurium/libRoadRunner (SBML), each reproduced unmodified first, plus minimal switchable changes (two input channels, membrane readout, synthesis block, Wood gating variant) and a trace exporter. Plan: see PR description updates. No experiment runs here.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
+  "url": "https://github.com/polarizetech/neural-memory/pull/7",
+  "merged_at": "2026-09-25T21:13:05Z"
+ },
+ {
+  "repo": "neural-memory",
   "number": 6,
   "title": "Update KIT Adaptive Preregistration to 6841edc",
   "body": "Vendored kit e64136a → 6841edc (`.agents/kit_ap update`). `kit_ap check` reports up to date. No experiment files touched.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",

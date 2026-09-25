@@ -42,7 +42,7 @@ description: >-
   <ul class="repos__list repos__list--home">
     {%- for r in active_repos %}
     <li>
-      <a class="repocard" href="{{ '/changelog/' | append: r.name | append: '/' | relative_url }}">
+      <a class="repocard" href="{{ '/work/' | append: r.name | append: '/' | relative_url }}">
         <span class="repocard__name">{{ r.name }}</span>
         <span class="repocard__desc">{{ r.description }}</span>
         <span class="repocard__latest">

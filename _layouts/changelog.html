@@ -14,8 +14,8 @@ layout: default
   <h1 class="ui-display ui-display--2">What changed in the code.</h1>
   <p class="ui-doc__lede">
     Merged pull requests across the public polarizetech repositories, newest
-    first, synced from GitHub once a day. Each repository has
-    <a href="#repos">its own page</a>.
+    first, synced from GitHub once a day. Every repository, with the
+    posts about it, is under <a href="{{ '/work/' | relative_url }}">Work</a>.
   </p>
 </header>
 
@@ -43,21 +43,3 @@ layout: default
 </nav>
 {%- endif %}
 
-<section class="repos" id="repos" aria-labelledby="repos-title">
-  <h2 class="ui-label ui-main__heading" id="repos-title">Repositories</h2>
-  <ul class="repos__list">
-    {%- for r in site.data.repos %}
-    {%- assign n = site.data.changelog | where: "repo", r.name %}
-    <li>
-      <a class="repocard" href="{{ '/changelog/' | append: r.name | append: '/' | relative_url }}">
-        <span class="repocard__name">{{ r.name }}</span>
-        <span class="repocard__desc">{{ r.description }}</span>
-        <span class="repocard__meta">
-          {%- if r.language != "" %}<span class="ui-pill">{{ r.language }}</span>{% endif %}
-          <span class="ui-pill">{{ n.size }} merged</span>
-        </span>
-      </a>
-    </li>
-    {%- endfor %}
-  </ul>
-</section>

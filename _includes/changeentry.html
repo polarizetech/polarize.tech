@@ -11,7 +11,7 @@
     <p class="change__meta">
       <span class="change__date">{{ c.merged_at | date: "%Y-%m-%d" }}</span>
       {%- unless include.hide_repo %}
-      <a class="changelog__repo" href="{{ '/changelog/' | append: c.repo | append: '/' | relative_url }}">{{ c.repo }}</a>
+      <a class="changelog__repo" href="{{ '/work/' | append: c.repo | append: '/' | relative_url }}">{{ c.repo }}</a>
       {%- endunless %}
       <a class="changelog__num" href="{{ c.url }}" rel="noopener">#{{ c.number }}</a>
     </p>
