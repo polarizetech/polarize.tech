@@ -1,5 +1,5 @@
 ---
-title: "A RAG protocol that makes the model show its work"
+title: "A RAG tool that keeps the model in check"
 description: >-
   A short, evidence-first protocol for using retrieval-augmented generation
   without letting a language model turn an unsupported answer into a finding.
