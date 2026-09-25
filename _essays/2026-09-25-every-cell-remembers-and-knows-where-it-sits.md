@@ -3,7 +3,7 @@ title: "Every cell remembers, and knows where it sits"
 description: >-
   A hunch that habituation is how a single cell stores information, and that a network of
   cells, past some size, has no choice but to start talking.
-date: 2026-09-25 09:00:00 -0600
+date: 2026-09-25 06:00:00 -0600
 tier: SPEC
 ---
 
