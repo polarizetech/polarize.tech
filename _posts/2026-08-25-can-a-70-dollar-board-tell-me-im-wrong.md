@@ -49,8 +49,9 @@ What this figure is not:
 - **Not explained by electrode prep.** The one capture the app scored good-contact (alpha SNR
   36) has the highest value, 750 nV. The one it flagged no-scalp-contact gives 238 nV. The
   spread is unexplained.
-- **Not absolutely calibrated.** Counts convert at 7.9 µV/count, measured from the shield's
-  calibration signal. The datasheet implies 1.72. That 4.6× disagreement is unresolved, and every
+- **Not absolutely calibrated.** Counts convert at 7.9 µV/count, derived from the shield's
+  built-in calibration signal at its nominal amplitude; no external signal has been injected to
+  check it. The datasheet implies 1.72. That 4.6× disagreement is unresolved, and every
   nV figure here inherits it.
 
 ## Broadband RMS overstates in-band noise 3.5–24×
@@ -77,6 +78,9 @@ Scope: six captures, one person, one rig. The direction transfers. The ratio may
 Board and microcontroller about C$75; the whole rig about C$106, at listing prices on
 2026-09-13.
 
+The firmware, the bridge and the recording workbench are public:
+[olimex-shield](https://github.com/polarizetech/olimex-shield).
+
 | parameter | value |
 |---|---|
 | channels | 1 differential |
@@ -87,7 +91,7 @@ Board and microcontroller about C$75; the whole rig about C$106, at listing pric
 | converter | 10-bit |
 | sample rate | 250 Hz in three captures, 256 Hz in three |
 | gain | ≈2848, set by a hardware trimmer |
-| scale | 7.9 µV/count measured; datasheet implies 1.72 |
+| scale | 7.9 µV/count from the built-in cal signal (nominal amplitude, not externally checked); datasheet implies 1.72 |
 | input-referred noise | **not measured** |
 | stimulus timing | **not measured** (below) |
 | analysis | Python; Welch PSD; FOOOF for aperiodic separation |
@@ -235,3 +239,9 @@ stimulus-timing measurement exists. All four are corrected at source in the rese
 
 A paragraph noting that beta-band and dichotic runs had no producible records was removed rather
 than kept as anecdote. The post was restructured to lead with the instrument characterisation.
+
+## Update — 2026-09-25
+
+The rig's code is now public and linked from the parts list. The scale is described more exactly:
+7.9 µV/count comes from the shield's built-in calibration signal at its nominal amplitude, not from
+an externally injected signal.
