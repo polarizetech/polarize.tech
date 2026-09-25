@@ -10,17 +10,17 @@
 {%- endcomment -%}
 {%- assign p = include.post -%}
 {%- assign proj = site.projects[p.project] -%}
-<li class="postlist__item">
-  <a class="postlist__link" href="{{ p.url | relative_url }}">
-    <span class="postlist__main">
-      <span class="postlist__date">{{ p.date | date: "%Y-%m-%d" }}</span>
-      <span class="postlist__body">
-        <span class="postlist__title">{{ p.title }}</span>
+<li class="ui-postlist__item">
+  <a class="ui-postlist__link" href="{{ p.url | relative_url }}">
+    <span class="ui-postlist__main">
+      <span class="ui-postlist__date">{{ p.date | date: "%Y-%m-%d" }}</span>
+      <span class="ui-postlist__body">
+        <span class="ui-postlist__title">{{ p.title }}</span>
         {%- if p.description %}
-        <span class="postlist__desc">{{ p.description }}</span>
+        <span class="ui-postlist__desc">{{ p.description }}</span>
         {%- endif %}
       </span>
-      <span class="postlist__meta">
+      <span class="ui-postlist__meta">
         {%- if p.category %}<span class="ui-pill ui-pill--cat">{{ p.category | replace: "-", " " }}</span>{% endif -%}
         {%- if proj %}<span class="ui-pill">{{ proj.label }}</span>{% endif -%}
         {%- include tier.html tier=p.tier -%}
@@ -29,7 +29,7 @@
     </span>
 
     {%- if p.image %}
-    <span class="postlist__thumb">
+    <span class="ui-postlist__thumb">
       <img src="{{ p.image | relative_url }}" alt="" loading="lazy" />
     </span>
     {%- endif %}

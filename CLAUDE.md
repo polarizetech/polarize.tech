@@ -20,8 +20,8 @@ everything on this site, and an error must not be able to survive a commit.
 | `index.html` | The home page — **now a normal Jekyll page** (`layout: home`), not a standalone file. It is the paginated post list. The hand-built one-pager, its hero canvas and `app.js` were removed on 2026-08-31 when the site became a blog; the earlier "don't Jekyll-ify it" rule died with the page it protected. |
 | `_layouts/`, `_includes/` | `default.html` is the sidebar + main shell. `sidebar.html` (brand, author note, topics, RSS/GitHub), `postlist.html`, `postitem.html`, `tier.html`, `cite.html`, `references.html`. |
 | `blog/topics/*.html` | One page per `project:`. **Written by hand because GitHub Pages runs no plugin that can generate them** — `jekyll-paginate` v1 is the only paginator available and it paginates the root index and nothing else. Add a page whenever you add a project. |
-| `design/` | **Vendored, never edited.** A verbatim copy of the monorepo's shared design system (`polarizetech/audio-projects` → `tools/design`, theme INSTRUMENT): `design.css` generated from `tokens.json`, the self-hosted Instrument Serif / Inter / IBM Plex Mono faces, and the icon sprite. Update by re-copying; `scripts/check_design.py` fails if this copy has drifted. |
-| `styles.css` | The **project layer only** — what a research blog needs and `design/` does not already provide. No hex literals, no font stacks, no palette: everything is a token. |
+| `design/` | **A git submodule: [`polarizetech/polarize-ui`](https://github.com/polarizetech/polarize-ui), pinned to a release tag, never edited here.** The same repo the monorepo mounts at `tools/design`. The site serves `design.css` (tokens, type, base components, theme INSTRUMENT), `publication.css` (the blog components — `ui-shell`, `ui-sidebar`, `ui-postlist`, `ui-article`, `ui-prose`, `ui-source`, `ui-cite`, `ui-claims`, `ui-refs`, `ui-parts`, `ui-pager`, `ui-form`, `ui-footer`, extracted from this site on 2026-09-25), `design.js`, the self-hosted faces and the icon sprite; `_config.yml` excludes the rest (React source, Storybook). **Update** with `git -C design fetch --tags && git -C design checkout vX.Y.Z`, then commit the pointer. A fresh clone needs `git clone --recurse-submodules` (GitHub Pages fetches public submodules itself). `scripts/check_design.py` fails if `design/` is not the submodule, has local edits, or is not on a tag. |
+| `styles.css` | The **site layer only** — the homepage sections, the contact page width, one post's figure and a category pill. Every reusable component lives in `design/publication.css`; **a new component that another site could use goes to polarize-ui, not here.** No hex literals, no font stacks, no palette: everything is a token. |
 | `blog/index.html` | Every post, unpaginated — the home page shows the same list a page at a time. |
 | `_posts/` | Published posts. `YYYY-MM-DD-slug.md`. |
 | `_drafts/` | Work in progress. Never deployed. |
@@ -30,7 +30,7 @@ everything on this site, and an error must not be able to survive a commit.
 | `_data/claims.yml` | **Generated.** Claim tiers + statements from the research repo. |
 | `scripts/sync_research.py` | The only path by which research data enters this repo. |
 | `scripts/validate_posts.py` | The publication gate. |
-| `scripts/check_design.py` | The design gate — no CDN, never-bold, uppercase-is-mono, never-tracked-sans, no raw colour, vendored copy untouched, and a tier badge that carries a glyph as well as a hue. |
+| `scripts/check_design.py` | The design gate — no CDN, never-bold, uppercase-is-mono, never-tracked-sans, no raw colour, `design/` is the pinned polarize-ui submodule with no local edits, every stylesheet cache-busted, and a tier badge that carries a glyph as well as a hue. |
 
 GitHub Pages builds this repo with its own Jekyll. **No custom plugins are
 possible** — that is why citations are a Liquid include and not a `{% cite %}` tag.
@@ -83,7 +83,7 @@ license skipping any gate.
 ## Design — the rules that come with the system
 
 The look is **not decided here.** It comes from the monorepo's shared design
-system, vendored under `design/`. Its own `CLAUDE.md` is the authority; these are
+system, the polarize-ui submodule under `design/`. Its own `CLAUDE.md` is the authority; these are
 the rules easiest to break from this repo, and `scripts/check_design.py` enforces
 each one:
 

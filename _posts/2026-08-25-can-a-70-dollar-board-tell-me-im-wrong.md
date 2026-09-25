@@ -67,7 +67,7 @@ Scope: six captures, one person, one rig. The direction transfers. The ratio may
 
 ## The rig
 
-<div class="parts">
+<div class="ui-parts">
 {% include part.html name="Olimex SHIELD-EKG-EMG" role="Analog front end. 0.16–40 Hz, ahead of the converter." price="C$34.02" href="https://www.digikey.ca/en/products/detail/olimex-ltd/SHIELD-EKG-EMG/3471383" img="/assets/posts/rig/olimex-shield-ekg-emg.jpg" credit="DigiKey" %}
 {% include part.html name="Olimex SHIELD-EKG-EMG-PRO" role="Passive electrode cable for the shield: 3.5 mm jack to three snap leads." price="C$16.91" href="https://www.digikey.ca/en/products/detail/olimex-ltd/SHIELD-EKG-EMG-PRO/5247133" img="/assets/posts/rig/olimex-shield-ekg-emg-pro-cable.jpg" credit="DigiKey" %}
 {% include part.html name="Arduino Uno R3" role="10-bit converter and USB serial." price="C$40.99" href="https://www.amazon.ca/dp/B008GRTSV6" img="/assets/posts/rig/arduino-uno-r3.jpg" credit="Amazon.ca" %}

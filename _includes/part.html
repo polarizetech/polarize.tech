@@ -1,19 +1,19 @@
 {%- comment -%}
   One piece of hardware, as a card: product photo, what it is, what it does in the
   rig, price, and a link to the listing the photo came from. Sits inside a
-  <div class="parts"> grid. Not a citation — hardware listings are not sources and
+  <div class="ui-parts"> grid. Not a citation — hardware listings are not sources and
   nothing here is machine-resolved, so keep claims out of `role`.
 
   Usage:
     {% include part.html name="..." role="..." price="..." href="..." img="/assets/..." credit="DigiKey listing" %}
 {%- endcomment -%}
-<a class="part" href="{{ include.href }}" rel="noopener">
-  <span class="part__media">
+<a class="ui-part" href="{{ include.href }}" rel="noopener">
+  <span class="ui-part__media">
     <img src="{{ include.img | relative_url }}" alt="{{ include.name }}, product photo" loading="lazy" />
   </span>
-  <span class="part__text">
-    <span class="part__name">{{ include.name }}</span>
-    <span class="part__role">{{ include.role }}</span>
-    <span class="part__meta">{{ include.price }} · photo: {{ include.credit }} ↗</span>
+  <span class="ui-part__text">
+    <span class="ui-part__name">{{ include.name }}</span>
+    <span class="ui-part__role">{{ include.role }}</span>
+    <span class="ui-part__meta">{{ include.price }} · photo: {{ include.credit }} ↗</span>
   </span>
 </a>

@@ -29,7 +29,7 @@ This is the protocol used for model experiments here. It adapts published work o
 preregistration for model-based research and on reporting deviations from a preregistered
 plan. It is written for simulations, analysis pipelines and research software, whoever or
 whatever is doing the running. The full protocol, with its sources and how deeply each was read,
-is in the [protocol document](https://github.com/polarizetech/kit-adaptive-preregistration/blob/main/modules/prereg/protocols/PREREG_PROTOCOL.md).
+is in the [protocol document](https://github.com/polarizetech/adaptive-preregistration/blob/main/modules/prereg/protocols/PREREG_PROTOCOL.md).
 
 ## The five rules
 
@@ -120,7 +120,7 @@ The same rules apply to a person at the keyboard, a script, or a coding assistan
 ## How it reaches every project
 
 The protocol is maintained in one public repository,
-[KIT Adaptive Preregistration](https://github.com/polarizetech/kit-adaptive-preregistration), and
+[KIT Adaptive Preregistration](https://github.com/polarizetech/adaptive-preregistration), and
 installed into each project with a small command-line tool, `kit_ap`. It copies the protocol documents and tools into the project's
 `.agents/` folder and records the exact version in a lockfile. It also writes the rules into
 `AGENTS.md`, so coding assistants working in the repository read the same rules a person
