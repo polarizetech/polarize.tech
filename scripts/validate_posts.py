@@ -35,6 +35,11 @@ did not weaken it on the way out. It enforces:
           tolerated it and said nothing; GitHub Pages failed the deploy. Checked
           here so the failure is caught before the push, not after.
 
+  RULE E  Essays (_essays/) are speculation and say so. They must declare a
+          title and date, be tier SPEC, declare no claims or citations and cite
+          nothing. RULE 4 and RULE 7 apply to them unchanged: an essay that needs
+          a source is a post, not an essay.
+
   RULE 7  No forbidden provenance — nothing sourced from RETRACTED/ or archive/,
           no [VERIFIED] self-assertions, no unresolved TODO tiers.
 
@@ -169,6 +174,34 @@ def check_post(path, cites, claims, rep):
         rep.warn(name, 'tier SPEC — make sure the prose reads as speculation, not finding')
 
 
+def check_essay(path, rep):
+    name = f'_essays/{path.name}'
+    try:
+        fm, body = split_post(path)
+    except Exception as e:                            # noqa: BLE001
+        rep.fail(name, 'E', str(e))
+        return
+    for field in ('title', 'date'):
+        if field not in fm:
+            rep.fail(name, 'E', f'missing front-matter field: {field}')
+    if str(fm.get('tier', 'SPEC')).upper() != 'SPEC':
+        rep.fail(name, 'E', f'essays are tier SPEC, got {fm.get("tier")!r}')
+    for field in ('claims', 'citations'):
+        if fm.get(field):
+            rep.fail(name, 'E', f'essays declare no {field} — sourced writing is a post')
+    if cite_keys_in(body):
+        rep.fail(name, 'E', 'essays cite nothing — sourced writing is a post')
+    text = prose_only(body)
+    for pat, what in ((BARE_DOI, 'a bare DOI'), (BARE_PMID, 'a bare PMID'),
+                      (BIB_URL, 'a bibliographic URL')):
+        for m in pat.finditer(text):
+            rep.fail(name, 4, f'{what} in prose: {m.group(0)[:60]!r}')
+    for m in NAME_YEAR.finditer(text):
+        rep.fail(name, 4, f'inline author-year {m.group(0)!r}')
+    if VERIFIED_TAG.search(text):
+        rep.fail(name, 7, '[VERIFIED] is not a tag anyone asserts here')
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--drafts', action='store_true', help='also validate _drafts/')
@@ -200,6 +233,10 @@ def main():
 
     for p in found:
         check_post(p, cites, claims, rep)
+
+    essays = sorted((SITE / '_essays').glob('*.md')) if (SITE / '_essays').exists() else []
+    for p in essays:
+        check_essay(p, rep)
 
     for w in rep.warns:
         print(f'WARN  {w}')

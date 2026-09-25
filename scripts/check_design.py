@@ -64,7 +64,8 @@ def main():
     body = strip_at_font_face(css)
     html = '\n'.join(p.read_text() for p in
                      list(SITE.glob('*.html')) + list(SITE.glob('_layouts/*.html'))
-                     + list(SITE.glob('_includes/*.html')) + list(SITE.glob('blog/*.html')))
+                     + list(SITE.glob('_includes/*.html')) + list(SITE.glob('blog/*.html'))
+                     + list(SITE.glob('essays/*.html')))
 
     # ---- RULE 1 — no network font / CDN ------------------------------------
     for m in re.finditer(r'https?://[^\s"\')]+', html + css):

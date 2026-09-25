@@ -1,0 +1,31 @@
+---
+layout: default
+---
+{%- comment -%}
+  An essay: dictated, thinking out loud. No claims, no citations, always SPEC —
+  so the header carries the tier badge and one plain line saying what this is,
+  and the body is prose and nothing else.
+{%- endcomment -%}
+<article class="post">
+
+  <header class="post__head">
+    <p class="ui-label">
+      {{ page.date | date: "%B %-d, %Y" }} ·
+      <a class="post__topic" href="{{ '/essays/' | relative_url }}">Essays / rants</a>
+    </p>
+    <h1 class="ui-display ui-display--1">{{ page.title }}</h1>
+    {%- if page.description %}
+    <p class="ui-standfirst">{{ page.description }}</p>
+    {%- endif %}
+
+    <ul class="post__badges">
+      <li>{% include tier.html tier="SPEC" %}</li>
+      <li><span class="ui-pill" title="Essays carry no citations and rest on no formal claim">Essay · not a finding</span></li>
+    </ul>
+  </header>
+
+  <div class="prose">
+    {{ content }}
+  </div>
+
+</article>

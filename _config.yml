@@ -63,6 +63,18 @@ author:
 
 feed:
   path: /blog/feed.xml
+  collections:
+    essays:
+      path: /essays/feed.xml
+
+# Essays / rants: short dictated pieces, thinking out loud. Deliberately a
+# separate collection, not posts: they carry no claims and no citations, so they
+# never enter site.posts, the topic pages or the research feed. Always tier SPEC;
+# the gate (validate_posts.py, essays check) enforces all three.
+collections:
+  essays:
+    output: true
+    permalink: /essays/:title/
 
 # Human labels for the `project:` front-matter key. This is the only place a
 # project's display name and blurb are written; the homepage and the blog index
@@ -104,6 +116,12 @@ defaults:
       type: posts
     values:
       layout: post
+  - scope:
+      path: ""
+      type: essays
+    values:
+      layout: essay
+      tier: SPEC
 
 exclude:
   - README.md
