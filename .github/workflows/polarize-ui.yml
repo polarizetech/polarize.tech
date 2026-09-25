@@ -1,6 +1,6 @@
 # Keep design/ (the polarize-ui submodule) on the newest polarize-ui release.
 #
-# Hourly (and on demand) this looks for a newer vX.Y.Z tag on
+# Once a day (and on demand from the Actions tab) this looks for a newer vX.Y.Z tag on
 # github.com/polarizetech/polarize-ui. If there is one it moves the submodule to it,
 # runs the design gate and the post gate, and only if both pass commits to main —
 # which GitHub Pages then builds and deploys. A failed gate pushes nothing and
@@ -9,10 +9,8 @@ name: polarize-ui
 
 on:
   schedule:
-    - cron: "17 * * * *"
+    - cron: "17 11 * * *"
   workflow_dispatch:
-  repository_dispatch:
-    types: [polarize-ui-release]
 
 permissions:
   contents: write
