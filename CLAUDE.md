@@ -40,6 +40,9 @@ everything on this site, and an error must not be able to survive a commit.
 GitHub Pages builds this repo with its own Jekyll. **No custom plugins are
 possible** — that is why citations are a Liquid include and not a `{% cite %}` tag.
 
+
+**Changing a component?** Do it upstream in polarize-ui. Every push to its `main` is a public release, and outside users are promised that a patch never breaks. **Read the first section of its `CLAUDE.md` (or `AGENTS.md`) before committing there:** mark breaking changes with `!:` or `BREAKING CHANGE:`, and prefer a deprecated alias to a removal. This repo picks up new releases by itself once a day (`.github/workflows/polarize-ui.yml`). If that run fails, a release broke something here and this repo needs a migration commit.
+
 ---
 
 ## Hard rules
