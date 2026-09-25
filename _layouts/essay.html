@@ -6,25 +6,25 @@ layout: default
   so the header carries the tier badge and one plain line saying what this is,
   and the body is prose and nothing else.
 {%- endcomment -%}
-<article class="post">
+<article class="ui-article">
 
-  <header class="post__head">
+  <header class="ui-article__head">
     <p class="ui-label">
       {{ page.date | date: "%B %-d, %Y" }} ·
-      <a class="post__topic" href="{{ '/essays/' | relative_url }}">Essays / rants</a>
+      <a class="ui-article__topic" href="{{ '/essays/' | relative_url }}">Essays / rants</a>
     </p>
     <h1 class="ui-display ui-display--1">{{ page.title }}</h1>
     {%- if page.description %}
     <p class="ui-standfirst">{{ page.description }}</p>
     {%- endif %}
 
-    <ul class="post__badges">
+    <ul class="ui-article__badges">
       <li>{% include tier.html tier="SPEC" %}</li>
       <li><span class="ui-pill" title="Essays carry no citations and rest on no formal claim">Essay · not a finding</span></li>
     </ul>
   </header>
 
-  <div class="prose">
+  <div class="ui-prose">
     {{ content }}
   </div>
 

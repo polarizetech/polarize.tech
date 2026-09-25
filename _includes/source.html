@@ -20,28 +20,28 @@
 {%- assign declared = false -%}
 {%- for c in page.citations -%}{%- if c == k -%}{%- assign declared = true -%}{%- endif -%}{%- endfor -%}
 {%- if r and declared -%}
-<aside class="src" id="ref-{{ k }}">
-  <a class="src__link" href="{% if r.doi %}https://doi.org/{{ r.doi }}{% else %}https://pubmed.ncbi.nlm.nih.gov/{{ r.pmid }}/{% endif %}" rel="noopener">
-    <span class="src__icon" aria-hidden="true">{% include icon.html name="book" %}</span>
-    <span class="src__text">
-      <span class="src__title">{{ r.title }}</span>
-      <span class="src__meta">
+<aside class="ui-source" id="ref-{{ k }}">
+  <a class="ui-source__link" href="{% if r.doi %}https://doi.org/{{ r.doi }}{% else %}https://pubmed.ncbi.nlm.nih.gov/{{ r.pmid }}/{% endif %}" rel="noopener">
+    <span class="ui-source__icon" aria-hidden="true">{% include icon.html name="book" %}</span>
+    <span class="ui-source__text">
+      <span class="ui-source__title">{{ r.title }}</span>
+      <span class="ui-source__meta">
         {{ r.first_author }}{% if r.authors and r.authors.size > 1 %} et al.{% endif %}
         · {{ r.year }}{% if r.journal %} · {{ r.journal }}{% endif %}
       </span>
     </span>
-    <span class="src__go" aria-hidden="true">↗</span>
+    <span class="ui-source__go" aria-hidden="true">↗</span>
   </a>
   {%- for n in page.citation_notes -%}
     {%- assign parts = n | split: " >> " -%}
     {%- if parts[0] == k and parts[1] != k -%}
-    <p class="src__note">{{ parts[1] }}</p>
+    <p class="ui-source__note">{{ parts[1] }}</p>
     {%- endif -%}
   {%- endfor -%}
   {%- if r.full_text_read == true %}
-  <p class="src__ft">{% include icon.html name="check" %} read at full text</p>
+  <p class="ui-source__ft">{% include icon.html name="check" %} read at full text</p>
   {%- endif %}
 </aside>
 {%- else -%}
-<aside class="src src--broken">Source key <code>{{ k }}</code> is not declared in front matter or not in the ledger.</aside>
+<aside class="ui-source ui-source--broken">Source key <code>{{ k }}</code> is not declared in front matter or not in the ledger.</aside>
 {%- endif -%}
