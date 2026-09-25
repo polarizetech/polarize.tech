@@ -5587,6 +5587,62 @@
  ],
  "_posts/2026-09-24-adaptive-preregistration-predict-first-then-run-the-code.md": [
   {
+   "sha": "e294818877d659cfa4f22e8ac2f7aaa078ea8878",
+   "author": "Joshua Anderton",
+   "date": "2026-09-25T08:52:21-07:00",
+   "subject": "Posts: lead images for the spiking-network and adaptive-preregistration posts",
+   "llm": true,
+   "llm_name": "Claude Opus 5.5",
+   "short": "e294818",
+   "first": false,
+   "hunks": [
+    [
+     {
+      "t": "ctx",
+      "h": "  into a pass."
+     },
+     {
+      "t": "add",
+      "h": "image: /assets/posts/darwin-notebook-b-tree.jpg"
+     },
+     {
+      "t": "add",
+      "h": "image_alt: &gt;-"
+     },
+     {
+      "t": "add",
+      "h": "  A page from Charles Darwin&#x27;s 1837 notebook: the words &quot;I think&quot; above a hand-drawn"
+     },
+     {
+      "t": "add",
+      "h": "  branching tree of species, with handwritten notes beneath."
+     },
+     {
+      "t": "add",
+      "h": "image_credit: &gt;-"
+     },
+     {
+      "t": "add",
+      "h": "  Charles Darwin, Notebook B (1837), page 36."
+     },
+     {
+      "t": "add",
+      "h": "  &lt;a href=&quot;https://commons.wikimedia.org/wiki/File:Darwin_Tree_1837.png&quot; rel=&quot;noopener&quot;&gt;Public domain&lt;/a&gt;."
+     },
+     {
+      "t": "add",
+      "h": "  Desaturated for this site."
+     },
+     {
+      "t": "ctx",
+      "h": "---"
+     }
+    ]
+   ],
+   "added": 60,
+   "removed": 0
+  },
+  {
    "sha": "8c23335b2bd9f22b0e4610e47d8e10fca0358eec",
    "author": "Joshua Anderton",
    "date": "2026-09-25T07:44:32-07:00",
@@ -5999,6 +6055,62 @@
   }
  ],
  "_posts/2026-09-25-a-network-built-to-lose.md": [
+  {
+   "sha": "e294818877d659cfa4f22e8ac2f7aaa078ea8878",
+   "author": "Joshua Anderton",
+   "date": "2026-09-25T08:52:21-07:00",
+   "subject": "Posts: lead images for the spiking-network and adaptive-preregistration posts",
+   "llm": true,
+   "llm_name": "Claude Opus 5.5",
+   "short": "e294818",
+   "first": false,
+   "hunks": [
+    [
+     {
+      "t": "ctx",
+      "h": "  protein-synthesis block, where the real cell does not."
+     },
+     {
+      "t": "add",
+      "h": "image: /assets/posts/golgi-pyramidal-neuron.jpg"
+     },
+     {
+      "t": "add",
+      "h": "image_alt: &gt;-"
+     },
+     {
+      "t": "add",
+      "h": "  A Golgi-stained pyramidal neuron from the human hippocampus at 40x magnification: a dark"
+     },
+     {
+      "t": "add",
+      "h": "  cell body with spine-covered dendrites branching across the field."
+     },
+     {
+      "t": "add",
+      "h": "image_credit: MethoxyRoxy"
+     },
+     {
+      "t": "add",
+      "h": "image_license: CC BY-SA 2.5"
+     },
+     {
+      "t": "add",
+      "h": "image_license_url: https://creativecommons.org/licenses/by-sa/2.5/"
+     },
+     {
+      "t": "add",
+      "h": "image_source_url: https://commons.wikimedia.org/wiki/File:Pyramidal_hippocampal_neuron_40x.jpg"
+     },
+     {
+      "t": "ctx",
+      "h": "---"
+     }
+    ]
+   ],
+   "added": 58,
+   "removed": 0
+  },
   {
    "sha": "252cc3d1e92d79a3c1262d8a92fa797a8d7ee54b",
    "author": "Joshua Anderton",
