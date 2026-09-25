@@ -1,0 +1,69 @@
+# Keep design/ (the polarize-ui submodule) on the newest polarize-ui release.
+#
+# Hourly (and on demand) this looks for a newer vX.Y.Z tag on
+# github.com/polarizetech/polarize-ui. If there is one it moves the submodule to it,
+# runs the design gate and the post gate, and only if both pass commits to main —
+# which GitHub Pages then builds and deploys. A failed gate pushes nothing and
+# fails the run, so GitHub emails you.
+name: polarize-ui
+
+on:
+  schedule:
+    - cron: "17 * * * *"
+  workflow_dispatch:
+  repository_dispatch:
+    types: [polarize-ui-release]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: polarize-ui-sync
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: true
+          fetch-depth: 0
+
+      - name: Find the newest release
+        id: v
+        run: |
+          latest=$(git ls-remote --tags --refs https://github.com/polarizetech/polarize-ui.git 'v*' \
+                   | awk -F/ '{print $3}' | sort -V | tail -1)
+          git -C design fetch -q --tags
+          current=$(git -C design describe --tags --exact-match 2>/dev/null || echo none)
+          echo "latest=$latest" >> "$GITHUB_OUTPUT"
+          echo "current=$current" >> "$GITHUB_OUTPUT"
+          echo "polarize-ui: pinned $current, newest $latest" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Move the submodule
+        if: steps.v.outputs.latest != steps.v.outputs.current
+        run: git -C design checkout -q "${{ steps.v.outputs.latest }}"
+
+      - uses: actions/setup-python@v5
+        if: steps.v.outputs.latest != steps.v.outputs.current
+        with:
+          python-version: "3.12"
+
+      - name: Design gate
+        if: steps.v.outputs.latest != steps.v.outputs.current
+        run: python3 scripts/check_design.py
+
+      - name: Post gate
+        if: steps.v.outputs.latest != steps.v.outputs.current
+        run: python3 scripts/validate_posts.py
+
+      - name: Commit and push
+        if: steps.v.outputs.latest != steps.v.outputs.current
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add design
+          git commit -m "polarize-ui ${{ steps.v.outputs.current }} → ${{ steps.v.outputs.latest }}"
+          for i in 1 2 3; do git pull -q --rebase origin main && git push origin HEAD:main && exit 0; sleep 5; done
+          exit 1
