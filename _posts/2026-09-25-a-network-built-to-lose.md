@@ -31,7 +31,7 @@ image_source_url: https://commons.wikimedia.org/wiki/File:Pyramidal_hippocampal_
 Everything below is a result about a computer model with chosen parameters. None of it is a
 measurement of a brain, an animal or a cell, and the tier says so. The code, every preregistered
 plan and every raw output are in a public repository:
-[polarizetech/sim-neural-memory](https://github.com/polarizetech/sim-neural-memory).
+[polarizetech/neural-memory](https://github.com/polarizetech/neural-memory).
 
 ## The question
 
