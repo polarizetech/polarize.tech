@@ -1,5 +1,21 @@
 [
  {
+  "repo": "neural-memory",
+  "number": 6,
+  "title": "Update KIT Adaptive Preregistration to 6841edc",
+  "body": "Vendored kit e64136a → 6841edc (`.agents/kit_ap update`). `kit_ap check` reports up to date. No experiment files touched.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
+  "url": "https://github.com/polarizetech/neural-memory/pull/6",
+  "merged_at": "2026-09-25T19:59:52Z"
+ },
+ {
+  "repo": "neural-memory",
+  "number": 5,
+  "title": "Drop the sim- prefix: renamed to neural-memory",
+  "body": "The repo was renamed from `sim-neural-memory` to `neural-memory` on GitHub (the old URL redirects). The kind now goes in a manifest rather than the name, per the [study protocol](https://github.com/polarizetech/scientific-research-scaffold).\n\n- README, CLAUDE.md and `docs/FINDINGS.md` now use the new name. FINDINGS.md still cites the research-corpus file `2026-09-24-sim-neural-memory-habituation.md` by its real filename.\n- `monorepo.stamp()` now records `repo.name = \"neural-memory\"` in new provenance, and `tests/test_monorepo.py` checks for it. `provenance.json` files already written keep the old name, since they are records.\n- Conversation logs are not touched.\n\nTests: 100 passed, the same as before the rename.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
+  "url": "https://github.com/polarizetech/neural-memory/pull/5",
+  "merged_at": "2026-09-25T19:59:23Z"
+ },
+ {
   "repo": "polarize.tech",
   "number": 2,
   "title": "Use polarize-ui for the design system and blog components",
@@ -8,35 +24,35 @@
   "merged_at": "2026-09-25T15:37:47Z"
  },
  {
-  "repo": "sim-neural-memory",
+  "repo": "neural-memory",
   "number": 4,
   "title": "Conversation log",
   "body": "Session log entries written after the docs/findings merge.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
-  "url": "https://github.com/polarizetech/sim-neural-memory/pull/4",
+  "url": "https://github.com/polarizetech/neural-memory/pull/4",
   "merged_at": "2026-09-25T13:41:17Z"
  },
  {
-  "repo": "sim-neural-memory",
+  "repo": "neural-memory",
   "number": 3,
   "title": "Findings, pre-release review, lint and MIT licence",
   "body": "- docs/FINDINGS.md: every result across the project, and the project marked paused.\n- docs/REVIEW.md: three independent code and methods reviews; dated corrections appended to the affected reports (nothing rewritten).\n- ruff (correctness rules only) + lint workflow; the private-tool imports degrade loudly; MIT licence; public README.\n- Test suite: 100 passed. No numerical change to any committed run.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
-  "url": "https://github.com/polarizetech/sim-neural-memory/pull/3",
+  "url": "https://github.com/polarizetech/neural-memory/pull/3",
   "merged_at": "2026-09-25T13:29:12Z"
  },
  {
-  "repo": "sim-neural-memory",
+  "repo": "neural-memory",
   "number": 1,
   "title": "E01-stentor-map: Stentor-mapped habituation constraints (SR1–SR3) on the depression cascade",
   "body": "Preregistered experiment. See experiments/E01-stentor-map/PREREG.md and RESULTS.md.\n\n**Closed: FAIL** (`E01-stentor-map-closed`, f10f688). 90 runs, 0 failed, model-v0.1.0.\n\n| | pre-registered (efficacy) | observed (spikes) | verdict |\n|---|---|---|---|\n| SR1-std: decrement deepens as recovery slows | 0.126 → 0.494 → 0.624 → 0.728 | 0.057 → 0.418 → 0.597 → 0.765 | **PASS** |\n| SR1-std: half-point later | 4 → 6 → 6 → 7 | 4 → 5.5 → 8 → 8 | **PASS** |\n| SR1-hebb_only: predicted null | no change | D16 unchanged (≤ ±0.023); median half point 4 → 4.5 | **FAIL** (half-point clause) |\n| SR3-std: strong insert deepens | −0.21 % / −0.33 % | −0.69 % / −0.93 %, under MDE 3.5 % | **UNINTERPRETABLE** (analyse.py: FAIL) |\n| SR3-hebb_only | deepening | −0.74 % (under MDE) / **−3.46 % [−5.92, −1.00]** | **UNINTERPRETABLE** (analyse.py: FAIL) |\n| SR2: decrement–rate slope | +28.7 / +19.8 dB/decade | slow-rate decrement below the ±0.03 floor | not computable |\n\n- **Stentor's longer retention after a block:** not reproduced by the depression cascade (0 at ×1 and ×0.25; control at the floor at ×0.1 and frozen). It appears only in `hebb_only`, on shrinking n.\n- No dishabituation in any arm.\n- Deviations #1–#4 are in DEVIATIONS.md; #4 was decided with the outcome known.\n- Exploratory (fast-forward vs direct gaps) is under `exploratory/`.\n- Next EID: RESULTS.md §8.\n- Merge with a merge commit, never a squash.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
-  "url": "https://github.com/polarizetech/sim-neural-memory/pull/1",
+  "url": "https://github.com/polarizetech/neural-memory/pull/1",
   "merged_at": "2026-09-25T04:55:16Z"
  },
  {
-  "repo": "sim-neural-memory",
+  "repo": "neural-memory",
   "number": 2,
   "title": "E02-local-negative-image: depletion's specificity map, B-vs-H removal, R&M receptor structure under a synthesis block",
   "body": "Preregistered experiment E02 (KIT Adaptive Preregistration). Design and the research behind it: `docs/E02/RESEARCH.md`; plan: `experiments/E02-local-negative-image/PREREG.md`. Runs against model-v0.2.0. Tag receipts are posted below as each tag is made.\n\nNothing runs until the operator approves the preregistration.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
-  "url": "https://github.com/polarizetech/sim-neural-memory/pull/2",
+  "url": "https://github.com/polarizetech/neural-memory/pull/2",
   "merged_at": "2026-09-25T04:53:15Z"
  },
  {
