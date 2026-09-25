@@ -10,17 +10,17 @@ layout: default
 {%- assign repo = site.data.repos | where: "name", page.repo | first %}
 {%- assign changes = site.data.changelog | where: "repo", page.repo %}
 
-<article class="post repo">
-  <header class="post__head">
+<article class="ui-article repo">
+  <header class="ui-article__head">
     <p class="ui-label">
-      <a class="post__topic" href="{{ '/changelog/' | relative_url }}">Changelog</a> · Repository
+      <a class="ui-article__topic" href="{{ '/changelog/' | relative_url }}">Changelog</a> · Repository
     </p>
     <h1 class="ui-display ui-display--1">{{ repo.name }}</h1>
     {%- if repo.description != "" %}
     <p class="ui-standfirst">{{ repo.description }}</p>
     {%- endif %}
 
-    <ul class="post__badges">
+    <ul class="ui-article__badges">
       {%- if repo.language != "" %}<li><span class="ui-pill">{{ repo.language }}</span></li>{% endif %}
       {%- if repo.license != "" and repo.license != "NOASSERTION" %}<li><span class="ui-pill">{{ repo.license }} licence</span></li>{% endif %}
       <li><span class="ui-pill">{{ changes.size }} merged PR{% if changes.size != 1 %}s{% endif %}</span></li>
@@ -38,18 +38,18 @@ layout: default
 
   {%- if repo.readme != "" %}
   <section class="repo__readme" aria-labelledby="repo-readme">
-    <h2 class="ui-label main__heading" id="repo-readme">README</h2>
-    <div class="prose">{{ repo.readme | markdownify }}</div>
+    <h2 class="ui-label ui-main__heading" id="repo-readme">README</h2>
+    <div class="ui-prose">{{ repo.readme | markdownify }}</div>
   </section>
   {%- endif %}
 
   <section class="repo__changes" aria-labelledby="repo-changes">
-    <h2 class="ui-label main__heading" id="repo-changes">Changelog</h2>
+    <h2 class="ui-label ui-main__heading" id="repo-changes">Changelog</h2>
     <div class="changes">
       {%- for c in changes %}
       {% include changeentry.html change=c hide_repo=true %}
       {%- else %}
-      <p class="postlist__item--empty">No merged pull requests yet.</p>
+      <p class="ui-postlist__item--empty">No merged pull requests yet.</p>
       {%- endfor %}
     </div>
   </section>

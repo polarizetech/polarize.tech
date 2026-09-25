@@ -14,7 +14,7 @@ description: >-
 {%- assign latest_posts = site.posts | slice: 0, 4 %}
 <section class="home__section" aria-labelledby="home-posts">
   <header class="home__head">
-    <h2 class="ui-label main__heading" id="home-posts">Posts</h2>
+    <h2 class="ui-label ui-main__heading" id="home-posts">Posts</h2>
     <a class="home__more ui-label" href="{{ '/blog/' | relative_url }}">All posts →</a>
   </header>
   {% include postlist.html posts=latest_posts hide_project=true %}
@@ -23,7 +23,7 @@ description: >-
 {%- assign latest_rants = site.essays | sort: "date" | reverse | slice: 0, 4 %}
 <section class="home__section" aria-labelledby="home-rants">
   <header class="home__head">
-    <h2 class="ui-label main__heading" id="home-rants">Rants</h2>
+    <h2 class="ui-label ui-main__heading" id="home-rants">Rants</h2>
     <a class="home__more ui-label" href="{{ '/rants/' | relative_url }}">All rants →</a>
   </header>
   {% include rantcards.html rants=latest_rants row=true %}
@@ -36,7 +36,7 @@ description: >-
 {%- assign active_repos = site.data.repos | sort: "active_at" | reverse | slice: 0, 4 %}
 <section class="home__section" aria-labelledby="home-changelog">
   <header class="home__head">
-    <h2 class="ui-label main__heading" id="home-changelog">Changelog</h2>
+    <h2 class="ui-label ui-main__heading" id="home-changelog">Changelog</h2>
     <a class="home__more ui-label" href="{{ '/changelog/' | relative_url }}">Full changelog →</a>
   </header>
   <ul class="repos__list repos__list--home">

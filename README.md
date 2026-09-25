@@ -60,7 +60,8 @@ bundle exec jekyll serve --drafts
 | Path | |
 |---|---|
 | `index.html`, `app.js` | Landing page. Plain HTML, no front matter — Jekyll copies it verbatim. |
-| `styles.css` | One stylesheet. Document/blog styles are appended at the bottom. |
+| `design/` | The [polarize-ui](https://github.com/polarizetech/polarize-ui) submodule: `design.css`, `publication.css` (the blog components), fonts, icons. Clone with `--recurse-submodules`. |
+| `styles.css` | The site layer only — homepage sections, contact width, one figure. Components live in `design/publication.css`. |
 | `blog/index.html` | Post index. |
 | `_posts/`, `_drafts/` | Research notes. |
 | `_layouts/`, `_includes/` | Page shell, post layout, citation includes. |

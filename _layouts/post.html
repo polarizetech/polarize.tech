@@ -1,22 +1,22 @@
 ---
 layout: default
 ---
-<article class="post">
+<article class="ui-article">
 
-  <header class="post__head">
+  <header class="ui-article__head">
     <p class="ui-label">
       {{ page.date | date: "%B %-d, %Y" }}
       {%- assign proj = site.projects[page.project] %}
-      {%- if proj %} · <a class="post__topic" href="{{ '/blog/topics/' | append: page.project | append: '/' | relative_url }}">{{ proj.label }}</a>{% endif %}
+      {%- if proj %} · <a class="ui-article__topic" href="{{ '/blog/topics/' | append: page.project | append: '/' | relative_url }}">{{ proj.label }}</a>{% endif %}
       {%- assign revs = site.data.history[page.path] %}
-      {%- if revs and revs.size > 0 %} · <a class="post__topic" href="#history" title="Version {{ revs.size }} — see what changed">v{{ revs.size }}</a>{% endif %}
+      {%- if revs and revs.size > 0 %} · <a class="ui-article__topic" href="#history" title="Version {{ revs.size }} — see what changed">v{{ revs.size }}</a>{% endif %}
     </p>
     <h1 class="ui-display ui-display--1">{{ page.title }}</h1>
     {%- if page.description %}
     <p class="ui-standfirst">{{ page.description }}</p>
     {%- endif %}
 
-    <ul class="post__badges">
+    <ul class="ui-article__badges">
       <li>{% include tier.html tier=page.tier %}</li>
       {%- if page.citations %}
       <li><span class="ui-pill" title="Citations, all resolved against Crossref or PubMed">
@@ -35,10 +35,10 @@ layout: default
     fails the gate even though Jekyll renders it.
   {%- endcomment -%}
   {%- if page.image %}
-  <figure class="post__lead">
+  <figure class="ui-article__lead">
     <img src="{{ page.image | relative_url }}" alt="{{ page.image_alt }}" />
     {%- if page.image_credit %}
-    <figcaption class="post__credit">
+    <figcaption class="ui-article__credit">
       {%- if page.image_license -%}
       <a href="{{ page.image_source_url }}" rel="noopener">Photograph</a> by
       {{ page.image_credit }}, <a href="{{ page.image_license_url }}" rel="noopener">{{ page.image_license }}</a>.
@@ -52,41 +52,41 @@ layout: default
   {%- endif %}
 
   {%- if page.summary %}
-  <section class="post__summary" aria-label="In short">
-    <h2 class="post__summary-title ui-label">{% include icon.html name="note" %} In short</h2>
-    <div class="post__summary-body">{{ page.summary | markdownify }}</div>
+  <section class="ui-article__summary" aria-label="In short">
+    <h2 class="ui-article__summary-title ui-label">{% include icon.html name="note" %} In short</h2>
+    <div class="ui-article__summary-body">{{ page.summary | markdownify }}</div>
   </section>
   {%- endif %}
 
   {%- if page.audio %}
-  <section class="post__audio" aria-label="Author audio">
-    <p class="post__audio-label ui-label">The author, on this post</p>
+  <section class="ui-article__audio" aria-label="Author audio">
+    <p class="ui-article__audio-label ui-label">The author, on this post</p>
     <audio controls preload="none" src="{{ page.audio | relative_url }}"></audio>
   </section>
   {%- endif %}
 
-  <div class="prose">
+  <div class="ui-prose">
     {{ content }}
   </div>
 
   {%- if page.claims and page.claims.size > 0 %}
-  <section class="claims">
-    <h2 class="ui-display ui-display--3 refs__title">{% include icon.html name="tag" %} Claims this post rests on</h2>
-    <ul class="claims__list">
+  <section class="ui-claims">
+    <h2 class="ui-display ui-display--3 ui-refs__title">{% include icon.html name="tag" %} Claims this post rests on</h2>
+    <ul class="ui-claims__list">
       {%- for id in page.claims -%}
       {%- assign c = site.data.claims[id] -%}
-      <li class="claims__item">
-        <span class="claims__id">{{ id }}</span>
+      <li class="ui-claims__item">
+        <span class="ui-claims__id">{{ id }}</span>
         {%- if c -%}
         {% include tier.html tier=c.tier %}
-        <span class="claims__stmt">{{ c.statement }}</span>
+        <span class="ui-claims__stmt">{{ c.statement }}</span>
         {%- else -%}
-        <span class="claims__stmt claims__stmt--broken">NOT IN CLAIM INDEX — this post must not be published.</span>
+        <span class="ui-claims__stmt ui-claims__stmt--broken">NOT IN CLAIM INDEX — this post must not be published.</span>
         {%- endif -%}
       </li>
       {%- endfor -%}
     </ul>
-    <p class="refs__note">
+    <p class="ui-refs__note">
       Each claim is maintained in <code>polarizetech/research</code> with recorded
       disproof conditions and disconfirming evidence. A tier is computed, never asserted.
     </p>

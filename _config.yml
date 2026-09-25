@@ -143,3 +143,21 @@ exclude:
   - .github/
   - vendor/
   - .tools/        # local Ruby toolchain for previews (git-ignored)
+  # design/ is the polarize-ui submodule. Only design.css, publication.css,
+  # design.js, tokens.json, fonts/ and icons/ are served; its React source,
+  # Storybook and build scripts are not part of this site.
+  - design/src
+  - design/stories
+  - design/shadcn
+  - design/.storybook
+  - design/node_modules
+  - design/package.json
+  - design/package-lock.json
+  - design/tsconfig.json
+  - design/components.json
+  - design/build_css.py
+  - design/dev_check.py
+  - design/CLAUDE.md
+  - design/INTEGRATION.md
+  - design/README.md
+  - design/LICENSE

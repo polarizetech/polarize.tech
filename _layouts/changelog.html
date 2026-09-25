@@ -9,10 +9,10 @@ layout: default
 {%- assign offset = page.page_num | minus: 1 | times: page.per_page %}
 {%- assign changes = site.data.changelog | slice: offset, page.per_page %}
 
-<header class="doc__head">
+<header class="ui-doc__head">
   <p class="ui-label">Changelog</p>
   <h1 class="ui-display ui-display--2">What changed in the code.</h1>
-  <p class="doc__lede">
+  <p class="ui-doc__lede">
     Merged pull requests across the public polarizetech repositories, newest
     first, synced from GitHub every few hours. Each repository has
     <a href="#repos">its own page</a>.
@@ -23,28 +23,28 @@ layout: default
   {%- for c in changes %}
   {% include changeentry.html change=c %}
   {%- else %}
-  <p class="postlist__item--empty">Nothing merged yet.</p>
+  <p class="ui-postlist__item--empty">Nothing merged yet.</p>
   {%- endfor %}
 </div>
 
 {%- if page.total_pages > 1 %}
-<nav class="pager" aria-label="Pagination">
+<nav class="ui-pager" aria-label="Pagination">
   {%- if page.page_num > 1 %}
   {%- assign prev = page.page_num | minus: 1 %}
-  <a class="ui-btn pager__prev" href="{% if prev == 1 %}{{ '/changelog/' | relative_url }}{% else %}{{ '/changelog/page' | append: prev | append: '/' | relative_url }}{% endif %}">← Newer</a>
-  {%- else %}<span class="pager__spacer"></span>{% endif %}
+  <a class="ui-btn ui-pager__prev" href="{% if prev == 1 %}{{ '/changelog/' | relative_url }}{% else %}{{ '/changelog/page' | append: prev | append: '/' | relative_url }}{% endif %}">← Newer</a>
+  {%- else %}<span class="ui-pager__spacer"></span>{% endif %}
 
-  <span class="ui-label pager__count">Page {{ page.page_num }} of {{ page.total_pages }}</span>
+  <span class="ui-label ui-pager__count">Page {{ page.page_num }} of {{ page.total_pages }}</span>
 
   {%- if page.page_num < page.total_pages %}
   {%- assign next = page.page_num | plus: 1 %}
-  <a class="ui-btn pager__next" href="{{ '/changelog/page' | append: next | append: '/' | relative_url }}">Older →</a>
-  {%- else %}<span class="pager__spacer"></span>{% endif %}
+  <a class="ui-btn ui-pager__next" href="{{ '/changelog/page' | append: next | append: '/' | relative_url }}">Older →</a>
+  {%- else %}<span class="ui-pager__spacer"></span>{% endif %}
 </nav>
 {%- endif %}
 
 <section class="repos" id="repos" aria-labelledby="repos-title">
-  <h2 class="ui-label main__heading" id="repos-title">Repositories</h2>
+  <h2 class="ui-label ui-main__heading" id="repos-title">Repositories</h2>
   <ul class="repos__list">
     {%- for r in site.data.repos %}
     {%- assign n = site.data.changelog | where: "repo", r.name %}

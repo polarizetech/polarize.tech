@@ -14,7 +14,7 @@
   {%- if c == k -%}{%- assign num = forloop.index -%}{%- endif -%}
 {%- endfor -%}
 {%- if num -%}
-<sup class="cite"><a href="#ref-{{ k }}" id="cite-{{ k }}-{{ num }}" title="{{ site.data.citations[k].title | escape }}">{{ num }}</a></sup>
+<sup class="ui-cite"><a href="#ref-{{ k }}" id="cite-{{ k }}-{{ num }}" title="{{ site.data.citations[k].title | escape }}">{{ num }}</a></sup>
 {%- else -%}
-<sup class="cite cite--broken" title="Citation key not declared in front matter">[?{{ k }}]</sup>
+<sup class="ui-cite ui-cite--broken" title="Citation key not declared in front matter">[?{{ k }}]</sup>
 {%- endif -%}

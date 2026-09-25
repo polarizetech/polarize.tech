@@ -11,20 +11,20 @@ description: >-
   page until 2026-09-25; the home page is now a three-section summary.
 {%- endcomment -%}
 
-<h1 class="ui-label main__heading">Latest research notes</h1>
+<h1 class="ui-label ui-main__heading">Latest research notes</h1>
 
 {% include postlist.html posts=paginator.posts %}
 
 {%- if paginator.total_pages > 1 %}
-<nav class="pager" aria-label="Pagination">
+<nav class="ui-pager" aria-label="Pagination">
   {%- if paginator.previous_page %}
-  <a class="ui-btn pager__prev" href="{{ paginator.previous_page_path | relative_url }}">← Newer</a>
-  {%- else %}<span class="pager__spacer"></span>{% endif %}
+  <a class="ui-btn ui-pager__prev" href="{{ paginator.previous_page_path | relative_url }}">← Newer</a>
+  {%- else %}<span class="ui-pager__spacer"></span>{% endif %}
 
-  <span class="ui-label pager__count">Page {{ paginator.page }} of {{ paginator.total_pages }}</span>
+  <span class="ui-label ui-pager__count">Page {{ paginator.page }} of {{ paginator.total_pages }}</span>
 
   {%- if paginator.next_page %}
-  <a class="ui-btn pager__next" href="{{ paginator.next_page_path | relative_url }}">Older →</a>
-  {%- else %}<span class="pager__spacer"></span>{% endif %}
+  <a class="ui-btn ui-pager__next" href="{{ paginator.next_page_path | relative_url }}">Older →</a>
+  {%- else %}<span class="ui-pager__spacer"></span>{% endif %}
 </nav>
 {%- endif %}

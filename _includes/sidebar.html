@@ -3,25 +3,25 @@
   itself: on desktop this sits under it, but on mobile the brand stays at the
   top of the page and all of this moves below the content.
 {%- endcomment -%}
-<aside class="side">
+<aside class="ui-sidebar">
 
   {%- if site.author %}
-  <div class="side__section">
-    <p class="ui-label side__heading">{% include icon.html name="note" %} About</p>
+  <div class="ui-sidebar__section">
+    <p class="ui-label ui-sidebar__heading">{% include icon.html name="note" %} About</p>
 
     {%- comment -%}
       Avatar on the left, with name, place and the contact link stacked to its
       right. The description sits below the whole group, flush to the avatar's
       left edge rather than indented beside it.
     {%- endcomment -%}
-    <div class="side__ident">
+    <div class="ui-sidebar__ident">
       {%- if site.author.avatar %}
-      <img class="side__avatar" src="{{ site.author.avatar | relative_url }}"
+      <img class="ui-sidebar__avatar" src="{{ site.author.avatar | relative_url }}"
            alt="" width="56" height="56" loading="lazy" onerror="this.remove()" />
       {%- endif %}
-      <span class="side__who">
-        {%- if site.author.name %}<span class="side__name">{{ site.author.name }}</span>{% endif %}
-        {%- if site.author.location %}<span class="side__place">{{ site.author.location }}</span>{% endif %}
+      <span class="ui-sidebar__who">
+        {%- if site.author.name %}<span class="ui-sidebar__name">{{ site.author.name }}</span>{% endif %}
+        {%- if site.author.location %}<span class="ui-sidebar__place">{{ site.author.location }}</span>{% endif %}
         {%- comment -%}
           The contact page only goes anywhere once `contact_endpoint` is set —
           until then its form can't post. So while it is empty the link is a
@@ -29,15 +29,15 @@
           endpoint is deployed. Either way the address is never the link text.
         {%- endcomment -%}
         {%- if site.contact_endpoint and site.contact_endpoint != "" %}
-        <a class="side__contact" href="{{ '/contact/' | relative_url }}">{% include icon.html name="mail" %} Get in touch</a>
+        <a class="ui-sidebar__contact" href="{{ '/contact/' | relative_url }}">{% include icon.html name="mail" %} Get in touch</a>
         {%- elsif site.contact_email %}
-        <a class="side__contact" href="mailto:{{ site.contact_email }}">{% include icon.html name="mail" %} Get in touch</a>
+        <a class="ui-sidebar__contact" href="mailto:{{ site.contact_email }}">{% include icon.html name="mail" %} Get in touch</a>
         {%- endif %}
       </span>
     </div>
 
     {%- if site.author.note %}
-    <p class="side__note">{{ site.author.note }}</p>
+    <p class="ui-sidebar__note">{{ site.author.note }}</p>
     {%- endif %}
   </div>
   {%- endif %}
@@ -46,27 +46,27 @@
     The site menu: home, then the three sections. `section` is set per page (front matter, or the
     defaults in _config.yml) and marks the current one; the home page has none.
   {%- endcomment -%}
-  <nav class="side__topics" aria-label="Menu">
-    <p class="ui-label side__heading">{% include icon.html name="note" %} Menu</p>
-    <ul class="side__list">
+  <nav class="ui-sidebar__topics" aria-label="Menu">
+    <p class="ui-label ui-sidebar__heading">{% include icon.html name="note" %} Menu</p>
+    <ul class="ui-sidebar__list">
       <li>
-        <a class="side__link{% if page.url == '/' %} is-current{% endif %}"
+        <a class="ui-sidebar__link{% if page.url == '/' %} is-current{% endif %}"
            href="{{ '/' | relative_url }}">Home</a>
       </li>
       <li>
-        <a class="side__link{% if page.section == 'blog' %} is-current{% endif %}"
+        <a class="ui-sidebar__link{% if page.section == 'blog' %} is-current{% endif %}"
            href="{{ '/blog/' | relative_url }}">Posts
-          <span class="side__count">{{ site.posts | size }}</span></a>
+          <span class="ui-sidebar__count">{{ site.posts | size }}</span></a>
       </li>
       <li>
-        <a class="side__link{% if page.section == 'rants' %} is-current{% endif %}"
+        <a class="ui-sidebar__link{% if page.section == 'rants' %} is-current{% endif %}"
            href="{{ '/rants/' | relative_url }}">Rants
-          <span class="side__count">{{ site.essays | size }}</span></a>
+          <span class="ui-sidebar__count">{{ site.essays | size }}</span></a>
       </li>
       <li>
-        <a class="side__link{% if page.section == 'changelog' %} is-current{% endif %}"
+        <a class="ui-sidebar__link{% if page.section == 'changelog' %} is-current{% endif %}"
            href="{{ '/changelog/' | relative_url }}">Changelog
-          <span class="side__count">{{ site.data.changelog | size }}</span></a>
+          <span class="ui-sidebar__count">{{ site.data.changelog | size }}</span></a>
       </li>
     </ul>
   </nav>
@@ -77,19 +77,19 @@
     instead; the home page and rants get neither.
   {%- endcomment -%}
   {%- if page.section == 'changelog' %}
-  <nav class="side__topics" aria-label="Repositories">
-    <p class="ui-label side__heading">{% include icon.html name="tag" %} Repositories</p>
-    <ul class="side__list">
+  <nav class="ui-sidebar__topics" aria-label="Repositories">
+    <p class="ui-label ui-sidebar__heading">{% include icon.html name="tag" %} Repositories</p>
+    <ul class="ui-sidebar__list">
       <li>
-        <a class="side__link{% if page.repo == nil %} is-current{% endif %}" href="{{ '/changelog/' | relative_url }}">All changes
-          <span class="side__count">{{ site.data.changelog | size }}</span></a>
+        <a class="ui-sidebar__link{% if page.repo == nil %} is-current{% endif %}" href="{{ '/changelog/' | relative_url }}">All changes
+          <span class="ui-sidebar__count">{{ site.data.changelog | size }}</span></a>
       </li>
       {%- for r in site.data.repos %}
       {%- assign n = site.data.changelog | where: "repo", r.name %}
       <li>
-        <a class="side__link{% if page.repo == r.name %} is-current{% endif %}"
+        <a class="ui-sidebar__link{% if page.repo == r.name %} is-current{% endif %}"
            href="{{ '/changelog/' | append: r.name | append: '/' | relative_url }}">{{ r.name }}
-          <span class="side__count">{{ n.size }}</span></a>
+          <span class="ui-sidebar__count">{{ n.size }}</span></a>
       </li>
       {%- endfor %}
     </ul>
@@ -97,22 +97,22 @@
   {%- endif %}
 
   {%- if page.section == 'blog' %}
-  <nav class="side__topics" aria-label="Topics">
-    <p class="ui-label side__heading">{% include icon.html name="tag" %} Topics</p>
-    <ul class="side__list">
+  <nav class="ui-sidebar__topics" aria-label="Topics">
+    <p class="ui-label ui-sidebar__heading">{% include icon.html name="tag" %} Topics</p>
+    <ul class="ui-sidebar__list">
       <li>
-        <a class="side__link{% if page.section == 'blog' and page.topic == nil %} is-current{% endif %}"
+        <a class="ui-sidebar__link{% if page.section == 'blog' and page.topic == nil %} is-current{% endif %}"
            href="{{ '/blog/' | relative_url }}">All posts
-          <span class="side__count">{{ site.posts | size }}</span></a>
+          <span class="ui-sidebar__count">{{ site.posts | size }}</span></a>
       </li>
       {%- for pair in site.projects %}
       {%- assign slug = pair[0] %}
       {%- assign in_topic = site.posts | where: "project", slug %}
       {%- if in_topic.size > 0 %}
       <li>
-        <a class="side__link{% if page.topic == slug %} is-current{% endif %}"
+        <a class="ui-sidebar__link{% if page.topic == slug %} is-current{% endif %}"
            href="{{ '/blog/topics/' | append: slug | append: '/' | relative_url }}">{{ pair[1].label }}
-          <span class="side__count">{{ in_topic.size }}</span></a>
+          <span class="ui-sidebar__count">{{ in_topic.size }}</span></a>
       </li>
       {%- endif %}
       {%- endfor %}
@@ -128,15 +128,15 @@
     be extended here. Both carry an accessible name — an icon-only link with no
     label is unusable with a screen reader.
   {%- endcomment -%}
-  <nav class="side__meta" aria-label="Elsewhere">
-    <a class="side__meta-link" href="{{ '/blog/feed.xml' | relative_url }}" aria-label="RSS feed" title="RSS">
+  <nav class="ui-sidebar__meta" aria-label="Elsewhere">
+    <a class="ui-sidebar__meta-link" href="{{ '/blog/feed.xml' | relative_url }}" aria-label="RSS feed" title="RSS">
       <svg class="ui-icon" viewBox="0 0 256 256" aria-hidden="true" focusable="false">
         <circle cx="68" cy="188" r="20"/>
         <path fill="none" stroke="currentColor" stroke-width="20" stroke-linecap="round"
               d="M48 108a100 100 0 0 1 100 100M48 48a160 160 0 0 1 160 160"/>
       </svg>
     </a>
-    <a class="side__meta-link" href="https://github.com/polarizetech" rel="noopener"
+    <a class="ui-sidebar__meta-link" href="https://github.com/polarizetech" rel="noopener"
        aria-label="GitHub organisation" title="GitHub">
       <svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
         <path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.9 18.3 5.2 18.3 5.2c.6 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3z"/>

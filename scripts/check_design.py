@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """DESIGN GATE — does this site still obey the monorepo's design system?
 
-The look is defined in polarizetech/audio-projects -> tools/design, vendored
-here under design/. That folder has its own dev_check.py; this one checks the
+The look is defined in polarizetech/polarize-ui, mounted here as the design/
+submodule (the monorepo mounts the same repo at tools/design). That folder has its own dev_check.py; this one checks the
 part it cannot see: the SITE's own styles.css and markup.
 
 It enforces the rules that were set on the shared system and are easy to break
@@ -24,8 +24,9 @@ by hand (design/CLAUDE.md, operator 2026-08-19/20):
   RULE 5  No raw colour. styles.css is a project layer over the tokens; a hex
           literal here is a value that escaped design/tokens.json.
 
-  RULE 6  The vendored copy is not edited. design/ must match the monorepo
-          byte for byte, or it is a fork nobody is maintaining.
+  RULE 6  design/ is the polarize-ui submodule, pinned to a release tag, with no
+          local edits. A patched copy is a fork nobody is maintaining; changes go
+          upstream to github.com/polarizetech/polarize-ui and come back as a new tag.
 
   RULE 8  Stylesheets are cache-busted. GitHub Pages caches on the URL, so a
           deploy that keeps /styles.css unchanged serves a returning visitor the
@@ -35,10 +36,10 @@ by hand (design/CLAUDE.md, operator 2026-08-19/20):
   RULE 7  A tier badge carries a word AND a glyph, never colour alone — the
           five epistemic families fail an all-pairs colour-blindness check.
 
-Usage:  python3 scripts/check_design.py [--monorepo PATH]
+Usage:  python3 scripts/check_design.py
 """
 import argparse
-import filecmp
+import subprocess
 import re
 import sys
 from pathlib import Path
@@ -57,7 +58,6 @@ def strip_at_font_face(css):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument('--monorepo', default=str(Path.home() / 'Sites' / 'audio-projects'))
     args = ap.parse_args()
 
     css = (SITE / 'styles.css').read_text()
@@ -99,17 +99,25 @@ def main():
     for m in re.finditer(r'#[0-9a-fA-F]{3,8}\b', css):
         fail(5, f'hex literal {m.group(0)} in styles.css — use a token from design/tokens.json')
 
-    # ---- RULE 6 — the vendored copy is untouched --------------------------
-    src = Path(args.monorepo) / 'tools' / 'design'
-    if not src.is_dir():
-        print(f'note: monorepo not at {src}; skipping RULE 6', file=sys.stderr)
-    else:
-        for rel in ('design.css', 'design.js', 'tokens.json'):
-            a, b = SITE / 'design' / rel, src / rel
-            if not a.exists():
-                fail(6, f'design/{rel} is missing from the vendored copy')
-            elif not filecmp.cmp(a, b, shallow=False):
-                fail(6, f'design/{rel} differs from the monorepo — re-copy, never patch')
+    # ---- RULE 6 — design/ is the polarize-ui submodule, untouched -------
+    def git(*a):
+        r = subprocess.run(['git', *a], cwd=SITE, capture_output=True, text=True)
+        return r.returncode, r.stdout.strip()
+    code, mode = git('ls-files', '-s', 'design')
+    if code or not mode.startswith('160000'):
+        fail(6, 'design/ is not a git submodule — it must be github.com/polarizetech/polarize-ui')
+    code, url = git('config', '-f', '.gitmodules', 'submodule.design.url')
+    if 'polarizetech/polarize-ui' not in url:
+        fail(6, f'design/ points at {url or "nothing"}, not polarizetech/polarize-ui')
+    for rel in ('design.css', 'publication.css', 'design.js', 'tokens.json'):
+        if not (SITE / 'design' / rel).exists():
+            fail(6, f'design/{rel} is missing — run `git submodule update --init design`')
+    code, dirty = git('-C', 'design', 'status', '--porcelain', '--untracked-files=no')
+    if dirty:
+        fail(6, 'design/ has local edits — change polarize-ui upstream, never patch it here')
+    code, tag = git('-C', 'design', 'describe', '--tags', '--exact-match')
+    if code:
+        fail(6, 'design/ is not pinned to a polarize-ui release tag')
 
     # ---- RULE 7 — a badge is never colour alone ---------------------------
     tier = SITE / '_includes' / 'tier.html'
@@ -125,7 +133,7 @@ def main():
 
     # ---- RULE 8 — the stylesheet URL changes when the deploy does ---------
     layout = (SITE / '_layouts' / 'default.html').read_text()
-    for asset in ('design.css', 'styles.css'):
+    for asset in ('design.css', 'publication.css', 'styles.css'):
         line = next((l for l in layout.splitlines() if asset in l and 'rel="stylesheet"' in l), None)
         if line is None:
             fail(8, f'{asset} is not linked from _layouts/default.html')
@@ -138,7 +146,7 @@ def main():
     if FAILS:
         print(f'\n{len(FAILS)} design violation(s).', file=sys.stderr)
         return 1
-    print('OK    site matches the monorepo design system.')
+    print('OK    site matches the polarize-ui design system.')
     return 0
 
 

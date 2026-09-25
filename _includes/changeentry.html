@@ -18,7 +18,7 @@
     <h2 class="change__title">{{ c.title }}</h2>
   </header>
   {%- if c.body and c.body != "" %}
-  <div class="prose change__body">{{ c.body | markdownify }}</div>
+  <div class="ui-prose change__body">{{ c.body | markdownify }}</div>
   {%- endif %}
   <p class="change__link"><a href="{{ c.url }}" rel="noopener">Pull request on GitHub →</a></p>
 </article>
