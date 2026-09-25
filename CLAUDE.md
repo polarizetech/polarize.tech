@@ -25,7 +25,7 @@ everything on this site, and an error must not be able to survive a commit.
 | `blog/index.html` | The paginated post list (`paginate_path: /blog/page:num/` — jekyll-paginate v1 pages only the `index.html` in that directory). |
 | `_essays/`, `rants/index.html` | **Rants** — short dictated pieces, served at `/rants/`. A separate collection (`essays`), not posts: no claims, no citations, always tier SPEC, never in `site.posts` or the topic pages. The gate's RULE E enforces all of it. |
 | `changelog/`, `_layouts/changelog.html`, `_layouts/repo.html` | The paginated changelog (merged PRs in public polarizetech repos, each entry in full) and one feature page per public repo at `/changelog/<repo>/`. **Every `index.html` under `changelog/` is a generated stub** — never edit or add one by hand. |
-| `_data/changelog.json`, `_data/repos.json` | **Generated** by `scripts/sync_changelog.py` from GitHub (public repos only), together with the stubs above. `.github/workflows/changelog.yml` re-runs it every 3 hours. |
+| `_data/changelog.json`, `_data/repos.json` | **Generated** by `scripts/sync_changelog.py` from GitHub (public repos only), together with the stubs above. `.github/workflows/changelog.yml` re-runs it once a day (and on demand). |
 | `_data/history.json`, `_includes/history.html` | **Generated** by `scripts/sync_history.py` from git: every revision of every post and rant, with word-level diffs and an LLM co-author flag (from `Co-Authored-By` trailers only). Rendered as the version drawer at the foot of each page and the `vN` in its meta line. `.github/workflows/history.yml` regenerates it after every push touching `_posts/` or `_essays/`. |
 | `_posts/` | Published posts. `YYYY-MM-DD-slug.md`. |
 | `_drafts/` | Work in progress. Never deployed. |

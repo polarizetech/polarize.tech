@@ -1,5 +1,13 @@
 [
  {
+  "repo": "polarize.tech",
+  "number": 2,
+  "title": "Use polarize-ui for the design system and blog components",
+  "body": "## What changes\n- `design/` becomes the public [polarize-ui](https://github.com/polarizetech/polarize-ui) submodule, pinned at `v0.3.0`, instead of a vendored copy. `design.css`, `design.js` and `tokens.json` are byte-identical to the old copy.\n- The site's components moved upstream into polarize-ui's `publication.css`: shell, sidebar, post list, article, prose, source card, cite, claims, references, parts, pager, form and footer. The markup is renamed to the `ui-*` classes.\n- `styles.css` keeps only the site layer: homepage sections, contact width, the bone-conduction figure and the category pill.\n- `check_design.py` RULE 6 now checks the submodule (it must be polarize-ui, on a tag, with no local edits). RULE 8 now covers `publication.css` too.\n- `_config.yml` excludes polarize-ui's React source, Storybook and scripts from the build.\n\n## Verified\n- The post gate passes (14 posts). The design gate passes.\n- Rendered layout is identical to the previous build. I compared every element's position, size, colour and font on the home page, a post, the gear post, a topic page and the contact page at 1280px, and on the home page and a post at 390px.\n\n## Before merging\n- `main` has uncommitted changelog / rant-card work in the main checkout. It uses the old class names (`postlist__*`, `side__*`, …) and will need renaming when it lands.\n- GitHub Pages fetches public submodules itself. The first deploy after merging is the real check.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
+  "url": "https://github.com/polarizetech/polarize.tech/pull/2",
+  "merged_at": "2026-09-25T15:37:47Z"
+ },
+ {
   "repo": "sim-neural-memory",
   "number": 4,
   "title": "Conversation log",
@@ -30,5 +38,13 @@
   "body": "Preregistered experiment E02 (KIT Adaptive Preregistration). Design and the research behind it: `docs/E02/RESEARCH.md`; plan: `experiments/E02-local-negative-image/PREREG.md`. Runs against model-v0.2.0. Tag receipts are posted below as each tag is made.\n\nNothing runs until the operator approves the preregistration.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
   "url": "https://github.com/polarizetech/sim-neural-memory/pull/2",
   "merged_at": "2026-09-25T04:53:15Z"
+ },
+ {
+  "repo": "polarize.tech",
+  "number": 1,
+  "title": "Draft: Can a $70 board tell me I'm wrong?",
+  "body": "First real post, in `_drafts/` with `status: draft` so it does not deploy — the human commentary goes in before it publishes.\n\nRests on `AEP-0005` at tier `C`, cites `goldwyn2014`. Gate: **0 failures, 1 warning** (`validate_posts.py --drafts --strict`).\n\n## Three accuracy corrections against the supplied text\n\n**The full-text claim was wrong and had to go.** The draft ended with *\"The Goldwyn spike-independence point is read at full text.\"* The research corpus records `full_text_read: false` for `goldwyn2014` in every claim citing it, and this repo's RULE 8 forbids stating what an unread paper found.\n\nRather than soften it into vagueness, the prose now says what is actually verifiable: the authors' **released model** (ModelDB 152112, mirrored in `simulators/mso-neurophonic/reference/`) contains **no sodium conductance and no axon** — checked directly in the MATLAB, not taken from the paper's prose — and reproduces the far-field without any spike-generating machinery. That is a stronger footing than a full-text claim, and a reader can check it.\n\n**Inline author-and-year attribution replaced with a keyed citation**, per RULE 4.\n\n**The 22% alpha result is now citable.** It was registered in the research repo as a `[C-n1]` probe (`553c248`); it had been quoted inside a mechanisms document for weeks without ever being recorded as data. The post now also states that the registration is retroactive and the figure approximate, because the sessions were never logged at that granularity.\n\n## Two additions from measured corpus figures\n\nBoth aimed at the methods audience this post is written for:\n\n- The rig's **median in-band noise at 40 Hz: 238 nV**, range 65–750 nV across eight sessions. An 11× spread on the same hardware — electrode prep dominates everything the software does.\n- **Why the analog ceiling is fatal rather than inconvenient**: the filter is in silicon ahead of the converter, so a 100 Hz fundamental has zero harmonics in the passband and no dwell, averaging, or choice of stimulus frequency recovers it.\n\n## Also fixed\n\n`sync_research.py`'s default research path was `~/Sites/research`, which no longer exists — the corpus is now a submodule at `~/Sites/audio-projects/research`. Updated in the script and throughout `CLAUDE.md`.\n\n## Before merging\n\nThe figure placeholders (FIGURE 1–4) from the source document are **not** in the draft — they were art-direction notes rather than content. The PSD plot in particular is described in the source as the most persuasive object in the post, and it needs a real render.",
+  "url": "https://github.com/polarizetech/polarize.tech/pull/1",
+  "merged_at": "2026-08-26T21:35:35Z"
  }
 ]
