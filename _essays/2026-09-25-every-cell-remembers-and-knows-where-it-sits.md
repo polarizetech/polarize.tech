@@ -8,40 +8,31 @@ tier: SPEC
 published: false
 ---
 
-There are two things I need to understand. The first is habituation, and whether it is in
-fact the way every single cell stores information. I want to show that one cell can hold
-long-term information, in whatever format a cell is capable of holding it. My guess is that
-the format is habituation.
+There are two things I need to understand. The first is habituation, and whether it is the way
+every single cell stores information. My guess is that one cell can hold long-term information,
+and that habituation is the format it holds it in.
 
 The second is what happens when that is extrapolated outward: to different kinds of cells, to
-neurons, to photoreceptors that specialise in light. My working picture is
-that the body is a system in which every cell stores memory, and the whole distributes that
-memory like a decentralised network. The network coordinates the information it needs, when it
-needs it. But the processing itself (attending to a live stimulus, to memory, to gene
-expression) has a byproduct, and I think that byproduct is long-term, multisensory memory.
+neurons, to photoreceptors that specialise in light. My working picture is that every cell in
+the body stores memory, and the whole distributes that memory like a decentralised network,
+coordinating the information it needs when it needs it. The processing itself (attending to a
+live stimulus, to memory, to gene expression) has a byproduct, and I think that byproduct is
+long-term, multisensory memory.
 
-I also suspect that the way a single cell saves habituation, and salience, which is roughly
-meaning, is coordinated automatically by some morphogenetic rule: a kind of mathematics tied
-to the number of cells in a system, and to the coordination it takes to hold them together.
-There would be an automatic process for identifying the peripheral cells of a system. And it
-would not only be specialised cells and neurons that track where the periphery is relative to
-their own location. Every cell would carry an embedded sense of where it sits in the whole.
+I also suspect that the way a cell saves habituation, and salience, which is roughly meaning,
+is coordinated automatically by some morphogenetic rule: a kind of mathematics tied to the
+number of cells in a system and the coordination it takes to hold them together. Part of that
+rule would be identifying the cells at the periphery. And every cell, not only specialised
+ones, would carry an embedded sense of where it sits in the whole. I think that may be a
+requirement rather than a feature: once cells are coordinated, memory and spatial awareness
+come built in.
 
-I think that may be a mathematical requirement rather than a feature: once cells are
-coordinated, memory and spatial awareness come built in. A single cell probably meets its
-surroundings in much the same way whether it is alone or not. But grouped with thousands or
-millions of others, there are network effects that fall out of the way a cell works. A cell
-that polarises, exchanges ions and carries a small electric field affects its
-surroundings by definition. Packed densely enough, it is forced to pass what it holds on to
-its network.
-
-So the pieces I want to simulate, or falsify, are these:
-
-- single cells save information;
-- they coordinate it;
-- alongside it, each cell has to know its own context and position in the network;
-- the network is forced to propagate, or perturb, all of that memory in a way that turns it
-  into something like replay.
+A single cell probably meets its surroundings in much the same way whether it is alone or not.
+But grouped with thousands or millions of others, network effects fall out of the way a cell
+works. A cell that polarises, exchanges ions and carries a small electric field affects its
+surroundings by definition. Packed densely enough, it is forced to pass what it holds on to its
+network, and the network is forced to propagate that memory until it becomes something like
+replay.
 
 The comparison I keep coming back to is honeybees and other colonies. A system gets big enough
 that it has to communicate, and there seems to be a threshold, morphological and mathematical,
@@ -62,7 +53,8 @@ coherence.
 
 ## Where I'd start
 
-What I want is a way to show, or rule out, that a system is mathematically required to enter
-this kind of communication protocol once it crosses a threshold of size, structure, geometry
-and complexity. The places to look are the networks that either did or did not cross it:
-slime mould, honeybees, ant and termite colonies, robot swarms.
+The pieces to simulate, or falsify: that single cells save information; that they coordinate
+it; that each cell knows its position in the network; and that past some threshold of size,
+structure, geometry and complexity, a network is mathematically required to start communicating
+like this. The places to look are the networks that did or did not cross it: slime mould,
+honeybees, ant and termite colonies, robot swarms.
