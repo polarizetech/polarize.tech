@@ -4,7 +4,7 @@ description: >-
   A small, biologically grounded network was asked to store sounds and play them back. It could
   not. Along the way it showed which habituation mechanisms keep a stimulus-specific memory, and
   where a published single-cell model parts ways with the cell it describes.
-date: 2026-09-25 09:00:00 -0600
+date: 2026-09-25 07:00:00 -0600
 project: audio-evoked-potentials
 status: published
 tier: SPEC
