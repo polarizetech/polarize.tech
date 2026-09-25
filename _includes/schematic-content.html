@@ -1,0 +1,47 @@
+{%- comment -%}
+  Renders a post's content with ONE schematic plate (_data/schematics.yml)
+  inserted at the section break nearest the middle — a visual pause in a long
+  post. Only for posts of at least 800 words and 4 `##` sections; never more
+  than one plate; rants do not use this include.
+
+  Which plate: `schematic: <id>` in front matter; `schematic: none` for none.
+  Otherwise one of the plates whose `projects` include the post's project,
+  picked by the day of the year it was published — stable across builds, and
+  spread across posts.
+
+  Usage: {% include schematic-content.html content=content %}
+{%- endcomment -%}
+{%- assign body = include.content %}
+{%- assign parts = body | split: "<h2" %}
+{%- assign sections = parts.size | minus: 1 %}
+{%- assign words = body | strip_html | number_of_words %}
+{%- assign plate = nil %}
+{%- if page.schematic != "none" and page.schematic != false and sections >= 4 and words >= 800 %}
+  {%- if page.schematic %}
+    {%- assign plate = site.data.schematics | where: "id", page.schematic | first %}
+  {%- else %}
+    {%- assign pool = site.data.schematics | where_exp: "s", "s.projects contains page.project" %}
+    {%- if pool.size == 0 %}{% assign pool = site.data.schematics %}{% endif %}
+    {%- assign pick = page.date | date: "%j" | plus: 0 | modulo: pool.size %}
+    {%- assign plate = pool[pick] %}
+  {%- endif %}
+{%- endif %}
+{%- if plate %}
+{%- assign at = sections | divided_by: 2 | plus: 1 %}
+{%- for part in parts %}
+{%- if forloop.index0 == at %}
+<figure class="schematic">
+  <img src="{{ '/assets/schematics/' | append: plate.id | append: '.jpg' | relative_url }}"
+       alt="Decorative illustration: {{ plate.subject }}, drawn in the style of an old scientific atlas."
+       loading="lazy" />
+  <figcaption class="schematic__caption">
+    <span class="ui-label">Illustration</span>
+    AI-generated and decorative. Its labels and scales are not data, and it is not a figure from any source.
+  </figcaption>
+</figure>
+{%- endif %}
+{%- unless forloop.first %}<h2{% endunless %}{{ part }}
+{%- endfor %}
+{%- else %}
+{{ body }}
+{%- endif %}

@@ -142,6 +142,7 @@ exclude:
   - .claude/
   - .github/
   - vendor/
+  - docs/          # working notes, e.g. the schematic-visual prompt; not pages
   - .tools/        # local Ruby toolchain for previews (git-ignored)
   # design/ is the polarize-ui submodule. Only design.css, publication.css,
   # design.js, tokens.json, fonts/ and icons/ are served; its React source,

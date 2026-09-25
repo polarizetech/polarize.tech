@@ -66,7 +66,7 @@ layout: default
   {%- endif %}
 
   <div class="ui-prose">
-    {{ content }}
+    {% include schematic-content.html content=content %}
   </div>
 
   {%- if page.claims and page.claims.size > 0 %}

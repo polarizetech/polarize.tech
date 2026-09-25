@@ -248,3 +248,15 @@ body.ui { margin: 0; }
 .diff__row--mod { color: var(--foreground); border-left-color: var(--accent); }
 .diff ins { text-decoration: underline; text-underline-offset: 2px; color: var(--foreground); background: color-mix(in srgb, var(--accent) 22%, transparent); }
 .diff del { text-decoration: line-through; color: var(--faint-foreground); background: var(--muted); }
+
+/* ---------- Schematic plates ----------
+   One decorative plate inside a long post (_includes/schematic-content.html).
+   Full column width, a thin frame, and a caption that always says what it is:
+   an AI-generated illustration, not a figure from a source. */
+.schematic { margin: var(--space-7) 0; }
+.schematic img {
+  display: block; width: 100%; height: auto;
+  border: 1px solid var(--border); border-radius: var(--radius-base);
+}
+.schematic__caption { margin-top: var(--space-2); font-size: var(--text-sm); line-height: 1.5; color: var(--faint-foreground); }
+.schematic__caption .ui-label { margin-right: var(--space-2); }

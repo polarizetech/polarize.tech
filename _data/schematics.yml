@@ -1,0 +1,35 @@
+# Schematic plates — decorative illustrations placed inside longer posts by
+# _includes/schematic-content.html. ONE per post at most, never in rants.
+#
+# PROVENANCE: every plate here is AI-GENERATED in the style of an archival
+# scientific atlas. The labels, figure numbers and scales on them are decoration,
+# not data, and none of them is a figure from any source. The page says so in the
+# caption. A plate made from a real archival schematic would record its source
+# and licence here instead. How to make new ones: docs/schematic-visuals.md.
+#
+#   id        the file is assets/schematics/<id>.jpg (1600 px wide, JPEG q80)
+#   subject   what it shows, for the alt text
+#   projects  the post `project:` values it suits; a post picks among the plates
+#             that list its project (all plates when none do)
+#
+# A post can choose its plate with `schematic: <id>` or opt out with
+# `schematic: none` in its front matter.
+
+- id: pyramidal-neuron
+  subject: a pyramidal neuron with its dendrites, axon and an enlarged synapse inset
+  projects: [audio-evoked-potentials, biosignal-translation, invasive-species-bioelectric, method]
+- id: brain-sagittal
+  subject: a sagittal section of the brain on a measured drafting grid
+  projects: [bioem-propagation, biosignal-translation, method]
+- id: brain-sagittal-b
+  subject: a sagittal section of the brain with construction arcs and a small inset
+  projects: [bioem-propagation, method]
+- id: plates-six
+  subject: six small plates — brain sections, a neuron, a synapse, a head in profile and EEG bands
+  projects: [bioem-propagation, biosignal-translation, invasive-species-bioelectric, method]
+- id: cochlea
+  subject: the cochlea in cross-section beside basilar-membrane displacement traces
+  projects: [audio-evoked-potentials]
+- id: ear-to-cochlea
+  subject: the path of sound from the outer ear through the ossicles to the uncoiled cochlea
+  projects: [audio-evoked-potentials, bioem-propagation]
