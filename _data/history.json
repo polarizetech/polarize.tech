@@ -6056,6 +6056,34 @@
  ],
  "_posts/2026-09-25-a-network-built-to-lose.md": [
   {
+   "sha": "89c559d220ceef13ce54a9475f3c131024f0df9c",
+   "author": "Joshua Anderton",
+   "date": "2026-09-25T13:01:37-07:00",
+   "subject": "Post: link neural-memory (renamed from sim-neural-memory)",
+   "llm": true,
+   "llm_name": "Claude Opus 5.5",
+   "short": "89c559d",
+   "first": false,
+   "hunks": [
+    [
+     {
+      "t": "ctx",
+      "h": "---"
+     },
+     {
+      "t": "mod",
+      "h": "Everything below is a result about a computer model with chosen parameters. None of it is a measurement of a brain, an animal or a cell, and the tier says so. The code, every preregistered plan and every raw output are in a public repository: [polarizetech/<del>sim-</del>neural-memory](https://github.com/polarizetech/<del>sim-</del>neural-memory)."
+     },
+     {
+      "t": "ctx",
+      "h": "## The question"
+     }
+    ]
+   ],
+   "added": 0,
+   "removed": 2
+  },
+  {
    "sha": "e294818877d659cfa4f22e8ac2f7aaa078ea8878",
    "author": "Joshua Anderton",
    "date": "2026-09-25T08:52:21-07:00",
