@@ -1,34 +1,48 @@
 # Schematic plates on polarize.tech
 
-How the site uses them, then the original brief (below the rule) for making more.
+How the site uses them, how to add one, then the original brief (below the rule).
 
-## What is on the site now
+## What is on the site
 
-Six plates in `assets/schematics/`, registered in `_data/schematics.yml`. **All six are
-AI-generated** in the style of an archival atlas — see the provenance note in the brief. Their
-labels, figure numbers and scales are decoration, not data, and every placement says so in its
-caption. The full-resolution PNG masters are not in this repo; the site copies are 1600 px JPEGs.
+Six **real archival drawings** — Cajal, Galvani, Duverney, Milton, Vicq-d'Azyr — in
+`assets/schematics/`, each registered in `_data/schematics.yml` with its source record, the exact
+file downloaded, its licence and the crop used. All are public domain or CC BY. Nothing in them is
+drawn or generated here: `scripts/prepare_schematic.py` only crops, flattens the paper, inverts,
+tones to the site's charcoal-and-bone palette, and adds grain and a vignette.
+
+(A first set of six plates, added 2026-09-25, turned out to be AI-generated in an archival style —
+the brief below says so itself. They were removed the same day and replaced with these.)
 
 Placement is automatic (`_includes/schematic-content.html`, used by `_layouts/post.html`):
 
 - only posts with at least 800 words and 4 `##` sections get one;
 - at most **one** plate per post, at the section break nearest the middle;
-- the plate is one whose `projects` list includes the post's project, chosen stably from its publication date;
+- the plate is one whose `projects` list includes the post's project, chosen stably from its
+  publication date;
 - `schematic: <id>` in a post's front matter picks the plate; `schematic: none` opts out;
 - rants never get one (their layout does not use the include).
 
+Each caption names the maker, work and date, and links the licence to the source record.
+
 ## Adding a plate
 
-1. Make it with the prompt below — preferably around a real public-domain schematic, and record
-   that source and its licence in `_data/schematics.yml` if you do.
-2. Export 16:9 (3:2 works too), then `sips -s format jpeg -s formatOptions 80 -Z 1600 in.png
-   --out assets/schematics/<id>.jpg`.
-3. Add an entry to `_data/schematics.yml`: `id`, `subject` (it becomes the alt text) and the
-   `projects` it suits.
+1. Find a real schematic you are allowed to show: public domain, CC0 or CC BY. Wellcome
+   Collection (look for the Public Domain Mark) and Wikimedia Commons are the best sources; the
+   brief below lists more. Check the licence on the individual file, not the collection.
+2. Download the largest file (for Wellcome, the IIIF URL `…/full/2400,/0/default.jpg`).
+3. Run the treatment, choosing a crop that frames one figure or a clean group:
+   `uv run --with pillow --with numpy python3 scripts/prepare_schematic.py SRC
+   assets/schematics/<id>.jpg --crop L,T,R,B`
+4. Add the entry to `_data/schematics.yml` with every field filled in.
 
-The same plates suit repo READMEs and social cards; reuse them from `assets/schematics/`.
+**Never generate the anatomy.** An image model may not redraw or invent a schematic for this site;
+if one is ever used for surrounding texture, the plate must say so in its caption.
+
+The same plates suit repo READMEs and social cards; reuse them from `assets/schematics/` with the
+same credit.
 
 ---
+
 
 # Polarize.tech Scientific Schematic Visual System
 

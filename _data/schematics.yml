@@ -1,35 +1,69 @@
-# Schematic plates — decorative illustrations placed inside longer posts by
-# _includes/schematic-content.html. ONE per post at most, never in rants.
+# Schematic plates — real archival anatomical and physiological drawings,
+# placed inside longer posts by _includes/schematic-content.html. ONE per post
+# at most, never in rants.
 #
-# PROVENANCE: every plate here is AI-GENERATED in the style of an archival
-# scientific atlas. The labels, figure numbers and scales on them are decoration,
-# not data, and none of them is a figure from any source. The page says so in the
-# caption. A plate made from a real archival schematic would record its source
-# and licence here instead. How to make new ones: docs/schematic-visuals.md.
+# Every plate is a real historical figure, public domain or openly licensed,
+# run through scripts/prepare_schematic.py (crop, invert, tone, grain). Nothing
+# in them is drawn or generated here. Each entry records where the source is,
+# its licence, and the exact crop, so every plate can be rebuilt and checked.
 #
-#   id        the file is assets/schematics/<id>.jpg (1600 px wide, JPEG q80)
-#   subject   what it shows, for the alt text
-#   projects  the post `project:` values it suits; a post picks among the plates
-#             that list its project (all plates when none do)
+#   id           the file is assets/schematics/<id>.jpg (1600 x 1067)
+#   subject      what it shows — becomes the alt text
+#   credit       who made it, what, when (shown in the caption; may hold HTML)
+#   license      shown in the caption, linked to source_url
+#   source_url   the record the image came from
+#   source_file  the exact file or IIIF image that was downloaded
+#   crop         the --crop given to prepare_schematic.py
+#   projects     the post `project:` values it suits; a post picks among these
 #
 # A post can choose its plate with `schematic: <id>` or opt out with
-# `schematic: none` in its front matter.
+# `schematic: none`. How to add one: docs/schematic-visuals.md.
 
-- id: pyramidal-neuron
-  subject: a pyramidal neuron with its dendrites, axon and an enlarged synapse inset
-  projects: [audio-evoked-potentials, biosignal-translation, invasive-species-bioelectric, method]
-- id: brain-sagittal
-  subject: a sagittal section of the brain on a measured drafting grid
+- id: cajal-retina
+  subject: the layers of the retina, with its receptor, bipolar and ganglion cells drawn one by one
+  credit: Santiago Ramón y Cajal, drawing of the retina (Tafel III)
+  license: CC BY 4.0, Wellcome Collection
+  source_url: https://commons.wikimedia.org/wiki/File:Line_drawing_of_the_retina_Wellcome_L0040596.jpg
+  source_file: https://upload.wikimedia.org/wikipedia/commons/c/cd/Line_drawing_of_the_retina_Wellcome_L0040596.jpg
+  crop: "0.01,0.02,0.99,0.97"
   projects: [bioem-propagation, biosignal-translation, method]
-- id: brain-sagittal-b
-  subject: a sagittal section of the brain with construction arcs and a small inset
-  projects: [bioem-propagation, method]
-- id: plates-six
-  subject: six small plates — brain sections, a neuron, a synapse, a head in profile and EEG bands
+- id: cajal-vestibular
+  subject: vestibular nerve fibres ending on the giant cells of a bird's tangential nucleus
+  credit: Santiago Ramón y Cajal, Fig. 135, the vestibular nerve's contacts in the tangential nucleus of birds
+  license: Public domain
+  source_url: https://commons.wikimedia.org/wiki/File:Vestibular_neural_connections.jpg
+  source_file: https://upload.wikimedia.org/wikipedia/commons/a/a1/Vestibular_neural_connections.jpg
+  crop: "0.29,0.0,0.71,0.78"
+  projects: [audio-evoked-potentials, biosignal-translation, invasive-species-bioelectric]
+- id: duverney-ossicles-1737
+  subject: the bones of the middle ear, dissected and drawn from several angles
+  credit: Joseph-Guichard Duverney, <i>A Treatise of the Organ of Hearing</i> (London, 1737), plate VI
+  license: Public domain, Wellcome Collection
+  source_url: https://wellcomecollection.org/works/ajkjkqnf
+  source_file: https://iiif.wellcomecollection.org/image/L0015615/full/2400,/0/default.jpg
+  crop: "0.02,0.04,0.98,0.97"
+  projects: [audio-evoked-potentials, invasive-species-bioelectric]
+- id: galvani-frog-1792
+  subject: Galvani's frog legs connected by a metal arc, the experiment behind animal electricity
+  credit: Luigi Galvani, <i>De viribus electricitatis in motu musculari</i> (Modena, 1792), fig. 14
+  license: Public domain, Wellcome Collection
+  source_url: https://wellcomecollection.org/works/rnbddkf5
+  source_file: https://iiif.wellcomecollection.org/image/L0029688/full/2400,/0/default.jpg
+  crop: "0.1,0.12,0.97,0.93"
   projects: [bioem-propagation, biosignal-translation, invasive-species-bioelectric, method]
-- id: cochlea
-  subject: the cochlea in cross-section beside basilar-membrane displacement traces
+- id: milton-ear-1808
+  subject: the outer ear, the eardrum and the coiled inner ear in several views
+  credit: The human ear, engraving by T. Milton, 1808
+  license: Public domain, Wellcome Collection
+  source_url: https://wellcomecollection.org/works/gqp8hgtf
+  source_file: https://iiif.wellcomecollection.org/image/V0008058FA/full/2400,/0/default.jpg
+  crop: "0.04,0.07,0.97,0.6"
   projects: [audio-evoked-potentials]
-- id: ear-to-cochlea
-  subject: the path of sound from the outer ear through the ossicles to the uncoiled cochlea
-  projects: [audio-evoked-potentials, bioem-propagation]
+- id: vicq-dazyr-brain-1798
+  subject: a horizontal section through the brain, its folds and ventricles lettered
+  credit: The brain in section, line engraving by A. Bell after F. Vicq-d'Azyr, 1798
+  license: Public domain, Wellcome Collection
+  source_url: https://wellcomecollection.org/works/gpf9pr6k
+  source_file: https://iiif.wellcomecollection.org/image/V0008011EL/full/2400,/0/default.jpg
+  crop: "0.08,0.04,0.63,0.5"
+  projects: [bioem-propagation, biosignal-translation, method]

@@ -1,5 +1,5 @@
 {%- comment -%}
-  Renders a post's content with ONE schematic plate (_data/schematics.yml)
+  Renders a post's content with ONE archival schematic plate (_data/schematics.yml)
   inserted at the section break nearest the middle — a visual pause in a long
   post. Only for posts of at least 800 words and 4 `##` sections; never more
   than one plate; rants do not use this include.
@@ -32,11 +32,9 @@
 {%- if forloop.index0 == at %}
 <figure class="schematic">
   <img src="{{ '/assets/schematics/' | append: plate.id | append: '.jpg' | relative_url }}"
-       alt="Decorative illustration: {{ plate.subject }}, drawn in the style of an old scientific atlas."
-       loading="lazy" />
+       alt="Historical drawing: {{ plate.subject }}." loading="lazy" width="1600" height="1067" />
   <figcaption class="schematic__caption">
-    <span class="ui-label">Illustration</span>
-    AI-generated and decorative. Its labels and scales are not data, and it is not a figure from any source.
+    {{ plate.credit }}. <a href="{{ plate.source_url }}" rel="noopener">{{ plate.license }}</a>. Inverted and toned for this site.
   </figcaption>
 </figure>
 {%- endif %}
