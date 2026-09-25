@@ -5587,6 +5587,62 @@
  ],
  "_posts/2026-09-24-adaptive-preregistration-predict-first-then-run-the-code.md": [
   {
+   "sha": "9d7928852475f1dfab92b26b507c43f8edae718f",
+   "author": "Joshua Anderton",
+   "date": "2026-09-25T13:23:54-07:00",
+   "subject": "Post: conversation recording is no longer part of the protocol",
+   "llm": true,
+   "llm_name": "Claude Opus 5.5",
+   "short": "9d79288",
+   "first": false,
+   "hunks": [
+    [
+     {
+      "t": "ctx",
+      "h": "Each experiment gets its own branch and draft pull request. Tagging a milestone posts a receipt to the pull request with the commit and a checksum of the plan and the lockfile. The comment&#x27;s timestamp comes from the hosting service, not from the machine that made the commit, so it shows the plan existed by then."
+     },
+     {
+      "t": "del",
+      "h": "When the work is done with a coding assistant, the conversation is recorded too: each prompt and reply is posted to the same pull request and committed beside the experiment, with secrets redacted."
+     },
+     {
+      "t": "ctx",
+      "h": "## Rules for whoever runs it"
+     }
+    ],
+    [
+     {
+      "t": "ctx",
+      "h": "- an optional commit guard refuses outputs for an experiment that has no preregistration tag, and refuses any change to a plan after it is tagged (like any git hook, it can be bypassed);"
+     },
+     {
+      "t": "mod",
+      "h": "- where the tools support hooks, the current experiment&#x27;s plan status is surfaced on every session<del>, and assistant conversations are logged automatically</del>;"
+     },
+     {
+      "t": "ctx",
+      "h": "- at the start of a session, the project checks whether the protocol has changed upstream, and reports it without updating on its own."
+     }
+    ],
+    [
+     {
+      "t": "ctx",
+      "h": "After a methods review, the protocol was tightened, and this post was revised to match. It now describes: the registry of attempts, uncertainty in the pass criteria, a justified run count, a sensitivity rule fixed in advance, a section on prior knowledge and calibration (eleven sections, previously ten), and decision rules for adaptive stages. The limits section now says more about what the record can and can&#x27;t prove. Previously the post said a pass that depends on an arbitrary parameter does not count; the rule is now that a pass which flips within a preregistered range is reported as not robust."
+     },
+     {
+      "t": "add",
+      "h": "## Update — 2026-09-25"
+     },
+     {
+      "t": "add",
+      "h": "Recording coding-assistant conversations is no longer part of the protocol, and the kit no longer installs it. The post previously said each prompt and reply was posted to the experiment&#x27;s pull request and committed beside it; that paragraph and the matching line under &quot;How it reaches every project&quot; were removed. The kit&#x27;s repository was also renamed, and its links here point to the new address."
+     }
+    ]
+   ],
+   "added": 72,
+   "removed": 39
+  },
+  {
    "sha": "e294818877d659cfa4f22e8ac2f7aaa078ea8878",
    "author": "Joshua Anderton",
    "date": "2026-09-25T08:52:21-07:00",
