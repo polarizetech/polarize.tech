@@ -6,7 +6,7 @@
   actually has an image — no placeholder, no reserved column — so a row without
   one is simply full-width text rather than text with a hole beside it.
 
-  Usage: {% include postitem.html post=post %}
+  Usage: {% include postitem.html post=post %}  (optional: hide_project=true)
 {%- endcomment -%}
 {%- assign p = include.post -%}
 {%- assign proj = site.projects[p.project] -%}
@@ -21,8 +21,10 @@
         {%- endif %}
       </span>
       <span class="postlist__meta">
+        {%- unless include.hide_project %}
         {%- if p.category %}<span class="ui-pill ui-pill--cat">{{ p.category | replace: "-", " " }}</span>{% endif -%}
         {%- if proj %}<span class="ui-pill">{{ proj.label }}</span>{% endif -%}
+        {%- endunless %}
         {%- include tier.html tier=p.tier -%}
         {%- if p.citations and p.citations.size > 0 %}<span class="ui-pill">{{ p.citations | size }} src</span>{% endif -%}
       </span>

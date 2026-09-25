@@ -1,0 +1,50 @@
+name: version history
+
+# Regenerates _data/history.json (every post's and rant's revisions, with
+# diffs) after any push that changes a post or rant, and commits it. A commit
+# cannot contain its own hash, so this has to run after the change lands.
+# The bot's own push uses GITHUB_TOKEN, which does not re-trigger this workflow.
+
+on:
+  push:
+    branches: [main]
+    paths: ["_posts/**", "_essays/**"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+
+concurrency:
+  group: version-history
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # the whole history, or there is nothing to diff
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Sync version history
+        run: python3 scripts/sync_history.py
+
+      - name: Commit and rebuild Pages if changed
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if git diff --quiet -- _data/history.json; then
+            echo "No changes."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "History: sync version history" -- _data/history.json
+          git pull --rebase
+          git push
+          gh api -X POST "repos/${GITHUB_REPOSITORY}/pages/builds" || true

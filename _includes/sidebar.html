@@ -4,7 +4,6 @@
   top of the page and all of this moves below the content.
 {%- endcomment -%}
 <aside class="side">
-  <p class="side__tagline">Reading and writing the body electric</p>
 
   {%- if site.author %}
   <div class="side__section">
@@ -43,12 +42,67 @@
   </div>
   {%- endif %}
 
+  {%- comment -%}
+    The site menu: home, then the three sections. `section` is set per page (front matter, or the
+    defaults in _config.yml) and marks the current one; the home page has none.
+  {%- endcomment -%}
+  <nav class="side__topics" aria-label="Menu">
+    <p class="ui-label side__heading">{% include icon.html name="note" %} Menu</p>
+    <ul class="side__list">
+      <li>
+        <a class="side__link{% if page.url == '/' %} is-current{% endif %}"
+           href="{{ '/' | relative_url }}">Home</a>
+      </li>
+      <li>
+        <a class="side__link{% if page.section == 'blog' %} is-current{% endif %}"
+           href="{{ '/blog/' | relative_url }}">Posts
+          <span class="side__count">{{ site.posts | size }}</span></a>
+      </li>
+      <li>
+        <a class="side__link{% if page.section == 'rants' %} is-current{% endif %}"
+           href="{{ '/rants/' | relative_url }}">Rants
+          <span class="side__count">{{ site.essays | size }}</span></a>
+      </li>
+      <li>
+        <a class="side__link{% if page.section == 'changelog' %} is-current{% endif %}"
+           href="{{ '/changelog/' | relative_url }}">Changelog
+          <span class="side__count">{{ site.data.changelog | size }}</span></a>
+      </li>
+    </ul>
+  </nav>
+
+  {%- comment -%}
+    Topics are the posts' `project:` labels, so they show only in the blog
+    section (/blog/, topic pages, posts). The changelog gets its repositories
+    instead; the home page and rants get neither.
+  {%- endcomment -%}
+  {%- if page.section == 'changelog' %}
+  <nav class="side__topics" aria-label="Repositories">
+    <p class="ui-label side__heading">{% include icon.html name="tag" %} Repositories</p>
+    <ul class="side__list">
+      <li>
+        <a class="side__link{% if page.repo == nil %} is-current{% endif %}" href="{{ '/changelog/' | relative_url }}">All changes
+          <span class="side__count">{{ site.data.changelog | size }}</span></a>
+      </li>
+      {%- for r in site.data.repos %}
+      {%- assign n = site.data.changelog | where: "repo", r.name %}
+      <li>
+        <a class="side__link{% if page.repo == r.name %} is-current{% endif %}"
+           href="{{ '/changelog/' | append: r.name | append: '/' | relative_url }}">{{ r.name }}
+          <span class="side__count">{{ n.size }}</span></a>
+      </li>
+      {%- endfor %}
+    </ul>
+  </nav>
+  {%- endif %}
+
+  {%- if page.section == 'blog' %}
   <nav class="side__topics" aria-label="Topics">
     <p class="ui-label side__heading">{% include icon.html name="tag" %} Topics</p>
     <ul class="side__list">
       <li>
-        <a class="side__link{% if page.topic == nil and page.url != '/blog/' and page.section != 'essays' and page.collection != 'essays' %} is-current{% endif %}"
-           href="{{ '/' | relative_url }}">All posts
+        <a class="side__link{% if page.section == 'blog' and page.topic == nil %} is-current{% endif %}"
+           href="{{ '/blog/' | relative_url }}">All posts
           <span class="side__count">{{ site.posts | size }}</span></a>
       </li>
       {%- for pair in site.projects %}
@@ -64,23 +118,8 @@
       {%- endfor %}
     </ul>
   </nav>
-
-  {%- comment -%}
-    Essays are a separate collection, not a topic: they are not research posts
-    and are not counted in "All posts".
-  {%- endcomment -%}
-  {%- if site.essays.size > 0 %}
-  <nav class="side__topics" aria-label="Essays">
-    <p class="ui-label side__heading">{% include icon.html name="note" %} Essays / rants</p>
-    <ul class="side__list">
-      <li>
-        <a class="side__link{% if page.section == 'essays' or page.collection == 'essays' %} is-current{% endif %}"
-           href="{{ '/essays/' | relative_url }}">Thinking out loud
-          <span class="side__count">{{ site.essays | size }}</span></a>
-      </li>
-    </ul>
-  </nav>
   {%- endif %}
+
 
   {%- comment -%}
     Inlined rather than pulled from design/icons/polarize-icons.svg: that sprite

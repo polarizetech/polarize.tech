@@ -3,8 +3,8 @@
   "configurations": [
     {
       "name": "polarize",
-      "runtimeExecutable": "bundle",
-      "runtimeArgs": ["exec", "jekyll", "serve", "--drafts", "--port", "4321"],
+      "runtimeExecutable": "bash",
+      "runtimeArgs": ["-c", "if [ -x .tools/ruby/bin/ruby ]; then export PATH=$PWD/.tools/ruby/bin:$PWD/.tools/gems/bin:$PATH GEM_HOME=$PWD/.tools/gems; fi; exec bundle exec jekyll serve --drafts --unpublished --port 4321"],
       "port": 4321
     }
   ]

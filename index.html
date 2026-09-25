@@ -6,21 +6,56 @@ description: >-
   potentials, magnetometry, and the instruments in between. Falsification-first,
   citation-gated, and open about what the instruments cannot hear.
 ---
+{%- comment -%}
+  The home page: the latest few of each section. The full lists live at /blog/
+  (paginated), /rants/ and /changelog/.
+{%- endcomment -%}
 
-<h1 class="ui-label main__heading">Latest research notes</h1>
+{%- assign latest_posts = site.posts | slice: 0, 4 %}
+<section class="home__section" aria-labelledby="home-posts">
+  <header class="home__head">
+    <h2 class="ui-label main__heading" id="home-posts">Posts</h2>
+    <a class="home__more ui-label" href="{{ '/blog/' | relative_url }}">All posts →</a>
+  </header>
+  {% include postlist.html posts=latest_posts hide_project=true %}
+</section>
 
-{% include postlist.html posts=paginator.posts %}
+{%- assign latest_rants = site.essays | sort: "date" | reverse | slice: 0, 4 %}
+<section class="home__section" aria-labelledby="home-rants">
+  <header class="home__head">
+    <h2 class="ui-label main__heading" id="home-rants">Rants</h2>
+    <a class="home__more ui-label" href="{{ '/rants/' | relative_url }}">All rants →</a>
+  </header>
+  {% include rantcards.html rants=latest_rants row=true %}
+</section>
 
-{%- if paginator.total_pages > 1 %}
-<nav class="pager" aria-label="Pagination">
-  {%- if paginator.previous_page %}
-  <a class="ui-btn pager__prev" href="{{ paginator.previous_page_path | relative_url }}">← Newer</a>
-  {%- else %}<span class="pager__spacer"></span>{% endif %}
-
-  <span class="ui-label pager__count">Page {{ paginator.page }} of {{ paginator.total_pages }}</span>
-
-  {%- if paginator.next_page %}
-  <a class="ui-btn pager__next" href="{{ paginator.next_page_path | relative_url }}">Older →</a>
-  {%- else %}<span class="pager__spacer"></span>{% endif %}
-</nav>
-{%- endif %}
+{%- comment -%}
+  The changelog, as repos: the most recently active public repos, each with its
+  latest merged PR. The full, paginated changelog is /changelog/.
+{%- endcomment -%}
+{%- assign active_repos = site.data.repos | sort: "active_at" | reverse | slice: 0, 4 %}
+<section class="home__section" aria-labelledby="home-changelog">
+  <header class="home__head">
+    <h2 class="ui-label main__heading" id="home-changelog">Changelog</h2>
+    <a class="home__more ui-label" href="{{ '/changelog/' | relative_url }}">Full changelog →</a>
+  </header>
+  <ul class="repos__list repos__list--home">
+    {%- for r in active_repos %}
+    <li>
+      <a class="repocard" href="{{ '/changelog/' | append: r.name | append: '/' | relative_url }}">
+        <span class="repocard__name">{{ r.name }}</span>
+        <span class="repocard__desc">{{ r.description }}</span>
+        <span class="repocard__latest">
+          {%- if r.latest_change %}
+          <span class="repocard__label">Latest · {{ r.latest_change.merged_at | date: "%Y-%m-%d" }}</span>
+          <span class="repocard__change"><span class="changelog__num">#{{ r.latest_change.number }}</span> {{ r.latest_change.title }}</span>
+          {%- else %}
+          <span class="repocard__label">Updated · {{ r.active_at | date: "%Y-%m-%d" }}</span>
+          <span class="repocard__change repocard__change--none">No merged pull requests yet</span>
+          {%- endif %}
+        </span>
+      </a>
+    </li>
+    {%- endfor %}
+  </ul>
+</section>

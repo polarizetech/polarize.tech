@@ -1,18 +1,17 @@
 ---
 layout: default
-title: Essays / rants
-section: essays
-published: false
+title: Rants
+section: rants
 description: >-
   Short pieces, dictated and tidied. Thinking out loud: hunches and speculation,
   not findings. Nothing here is cited or tested.
 ---
 
 <header class="doc__head">
-  <p class="ui-label">Essays / rants</p>
+  <p class="ui-label">Rants</p>
   <h1 class="ui-display ui-display--2">Thinking out loud.</h1>
   <p class="doc__lede">{{ page.description }}</p>
 </header>
 
-{%- assign essays = site.essays | sort: "date" | reverse %}
-{% include postlist.html posts=essays %}
+{%- assign rants = site.essays | sort: "date" | reverse %}
+{% include rantcards.html rants=rants %}

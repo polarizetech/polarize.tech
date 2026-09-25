@@ -1,0 +1,24 @@
+{%- comment -%}
+  One merged pull request in full — the changelog has no page per entry, so the
+  entry IS the post: title, repo, number, date, and the PR description rendered.
+  Data from _data/changelog.json (scripts/sync_changelog.py).
+
+  Usage: {% include changeentry.html change=c %}  (optional: hide_repo=true)
+{%- endcomment -%}
+{%- assign c = include.change -%}
+<article class="change" id="{{ c.repo }}-{{ c.number }}">
+  <header class="change__head">
+    <p class="change__meta">
+      <span class="change__date">{{ c.merged_at | date: "%Y-%m-%d" }}</span>
+      {%- unless include.hide_repo %}
+      <a class="changelog__repo" href="{{ '/changelog/' | append: c.repo | append: '/' | relative_url }}">{{ c.repo }}</a>
+      {%- endunless %}
+      <a class="changelog__num" href="{{ c.url }}" rel="noopener">#{{ c.number }}</a>
+    </p>
+    <h2 class="change__title">{{ c.title }}</h2>
+  </header>
+  {%- if c.body and c.body != "" %}
+  <div class="prose change__body">{{ c.body | markdownify }}</div>
+  {%- endif %}
+  <p class="change__link"><a href="{{ c.url }}" rel="noopener">Pull request on GitHub →</a></p>
+</article>

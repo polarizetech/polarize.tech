@@ -8,6 +8,8 @@ layout: default
       {{ page.date | date: "%B %-d, %Y" }}
       {%- assign proj = site.projects[page.project] %}
       {%- if proj %} · <a class="post__topic" href="{{ '/blog/topics/' | append: page.project | append: '/' | relative_url }}">{{ proj.label }}</a>{% endif %}
+      {%- assign revs = site.data.history[page.path] %}
+      {%- if revs and revs.size > 0 %} · <a class="post__topic" href="#history" title="Version {{ revs.size }} — see what changed">v{{ revs.size }}</a>{% endif %}
     </p>
     <h1 class="ui-display ui-display--1">{{ page.title }}</h1>
     {%- if page.description %}
@@ -99,5 +101,7 @@ layout: default
   {%- unless page.inline_sources %}
   {% include references.html %}
   {%- endunless %}
+
+  {% include history.html %}
 
 </article>

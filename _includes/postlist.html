@@ -1,10 +1,11 @@
 {%- comment -%}
   The post list. `include.posts` is the collection to render — paginator.posts on
   the home page, a filtered set on a topic page, site.posts on /blog/.
+  `hide_project=true` drops the topic badge (the home page shows none).
 {%- endcomment -%}
 <ul class="postlist">
   {%- for post in include.posts %}
-  {%- include postitem.html post=post %}
+  {%- include postitem.html post=post hide_project=include.hide_project %}
   {%- else %}
   <li class="postlist__item postlist__item--empty">Nothing published yet.</li>
   {%- endfor %}

@@ -24,10 +24,17 @@
 <body class="ui page">
 
   <div class="shell">
-    <a class="brand shell__brand" href="{{ '/' | relative_url }}">
-      <span class="brand__mark"></span>
-      <span class="brand__word">POLARIZE</span>
-    </a>
+    {%- comment -%}
+      Brand and tagline together, so on mobile the tagline stays at the top of
+      the page with the logo instead of falling below the content with the sidebar.
+    {%- endcomment -%}
+    <div class="shell__brand">
+      <a class="brand" href="{{ '/' | relative_url }}">
+        <span class="brand__mark"></span>
+        <span class="brand__word">POLARIZE</span>
+      </a>
+      <p class="shell__tagline">{{ site.tagline }}</p>
+    </div>
     {% include sidebar.html %}
     <main class="main">
       {{ content }}

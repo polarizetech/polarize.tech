@@ -71,7 +71,7 @@ body.ui { margin: 0; }
   text-transform: uppercase;
   color: var(--foreground);
 }
-.side__tagline {
+.shell__tagline {
   font-family: var(--font-display);
   font-size: var(--display-3);
   line-height: 1.2;
@@ -197,6 +197,21 @@ a.ui-btn { text-decoration: none; }
 .notes__lede { font-size: var(--text-lg); line-height: 1.6; color: var(--muted-foreground); margin: var(--space-4) 0 0; }
 .notes .postlist__item:first-child { border-top: 1px solid var(--border); }
 .notes__more { display: flex; align-items: center; gap: var(--space-5); margin: var(--space-6) 0 0; }
+
+/* ---------- Home page: three sections ---------- */
+.home__section + .home__section { margin-top: var(--space-8); }
+/* The rule under the heading moves to the whole head row, so it runs under the
+   "All … →" link too. */
+.home__head {
+  display: flex; align-items: baseline; justify-content: space-between; gap: var(--space-4);
+  margin: 0 0 var(--space-4);
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid var(--border);
+}
+.home__head .main__heading { margin: 0; padding: 0; border: 0; }
+.home__head + .postlist .postlist__item:first-child .postlist__link { padding-top: var(--space-5); }
+.home__more { color: var(--faint-foreground); text-decoration: none; }
+.home__more:hover { color: var(--accent); }
 
 /* ---------- Post index ---------- */
 .postlist { list-style: none; margin: 0; padding: 0; }
@@ -666,3 +681,112 @@ a.ui-btn { text-decoration: none; }
    from the project pill so a reader can tell "what kind of post" from "which
    programme" at a glance. */
 .ui-pill--cat { text-transform: lowercase; opacity: .85; }
+
+/* ---------- Rants: portrait cards ----------
+   Story-shaped on purpose, so a rant never reads as a research note: no tier
+   badge, no topic, a looser excerpt. Wraps into a grid on /rants/; on the home
+   page (.rants--row) it is one row that scrolls sideways when it runs out. */
+.rants {
+  list-style: none; margin: 0; padding: var(--space-5) 0 0;
+  display: grid; gap: var(--space-4);
+  grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr));
+}
+.rants--row {
+  grid-template-columns: none;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(11rem, 14rem);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: var(--space-2);
+}
+.rants__item { scroll-snap-align: start; }
+.rant {
+  display: flex; flex-direction: column; gap: var(--space-3);
+  aspect-ratio: 9 / 16;
+  padding: var(--space-5) var(--space-4);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--card);
+  color: var(--card-foreground);
+  text-decoration: none;
+  overflow: hidden;
+  transition: border-color var(--motion-base) ease;
+}
+.rant:hover { border-color: var(--accent); }
+.rant__date {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--faint-foreground);
+}
+.rant__title {
+  font-family: var(--font-display);
+  font-size: var(--display-3);
+  line-height: 1.15;
+  color: var(--foreground);
+}
+.rant__excerpt {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: hidden;
+  font-size: var(--text-sm);
+  line-height: 1.55;
+  color: var(--muted-foreground);
+  -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent);
+          mask-image: linear-gradient(to bottom, black 70%, transparent);
+}
+.rant__more {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+/* PR identifiers in the changelog: monospace, so they scan like a log. */
+.changelog__repo,
+.changelog__num {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  text-decoration: none;
+}
+.changelog__repo { color: var(--muted-foreground); }
+.changelog__num { color: var(--accent); }
+.changelog__repo:hover,
+.changelog__num:hover { text-decoration: underline; }
+
+/* A changelog entry in full — /changelog/ and the repo pages. */
+.change { padding: var(--space-6) 0; border-bottom: 1px solid var(--border); }
+.change__meta { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--space-3); margin: 0 0 var(--space-2); }
+.change__date {
+  font-family: var(--font-mono); font-size: var(--text-xs); letter-spacing: .1em;
+  text-transform: uppercase; color: var(--faint-foreground);
+}
+.change__title { margin: 0; font-family: var(--font-display); font-size: var(--display-2); font-weight: 400; line-height: 1.25; color: var(--foreground); }
+.change__body { margin-top: var(--space-4); }
+.change__link { margin: var(--space-4) 0 0; font-size: var(--text-sm); }
+.change__link a { color: var(--accent); text-decoration: none; }
+
+/* Repository cards at the foot of /changelog/, and the repo feature page. */
+.repos { margin-top: var(--space-8); }
+.repos__list { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-4); grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr)); }
+.repocard {
+  display: flex; flex-direction: column; gap: var(--space-2); height: 100%;
+  padding: var(--space-5); border: 1px solid var(--border); border-radius: var(--radius-lg);
+  background: var(--card); text-decoration: none; transition: border-color var(--motion-base) ease;
+}
+.repocard:hover { border-color: var(--accent); }
+.repocard__name { font-family: var(--font-mono); font-size: var(--text-base); color: var(--foreground); }
+.repocard__desc { flex: 1 1 auto; font-size: var(--text-sm); line-height: 1.55; color: var(--muted-foreground); }
+.repocard__meta { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+.repos__list--home { padding-top: var(--space-5); grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr)); }
+.repocard__latest { display: flex; flex-direction: column; gap: var(--space-1); padding-top: var(--space-3); border-top: 1px solid var(--border); }
+.repocard__label {
+  font-family: var(--font-mono); font-size: var(--text-xs); letter-spacing: .1em;
+  text-transform: uppercase; color: var(--faint-foreground);
+}
+.repocard__change { font-size: var(--text-sm); line-height: 1.5; color: var(--foreground); }
+.repocard__change--none { color: var(--faint-foreground); }
+.repo__actions { display: flex; flex-wrap: wrap; gap: var(--space-3); margin: var(--space-5) 0 0; }
+.repo__readme, .repo__changes { margin-top: var(--space-8); }

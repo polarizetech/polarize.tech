@@ -11,7 +11,9 @@ layout: default
   <header class="post__head">
     <p class="ui-label">
       {{ page.date | date: "%B %-d, %Y" }} ·
-      <a class="post__topic" href="{{ '/essays/' | relative_url }}">Essays / rants</a>
+      <a class="post__topic" href="{{ '/rants/' | relative_url }}">Rants</a>
+      {%- assign revs = site.data.history[page.path] %}
+      {%- if revs and revs.size > 0 %} · <a class="post__topic" href="#history" title="Version {{ revs.size }} — see what changed">v{{ revs.size }}</a>{% endif %}
     </p>
     <h1 class="ui-display ui-display--1">{{ page.title }}</h1>
     {%- if page.description %}
@@ -20,12 +22,14 @@ layout: default
 
     <ul class="post__badges">
       <li>{% include tier.html tier="SPEC" %}</li>
-      <li><span class="ui-pill" title="Essays carry no citations and rest on no formal claim">Essay · not a finding</span></li>
+      <li><span class="ui-pill" title="Rants carry no citations and rest on no formal claim">Rant · not a finding</span></li>
     </ul>
   </header>
 
   <div class="prose">
     {{ content }}
   </div>
+
+  {% include history.html %}
 
 </article>

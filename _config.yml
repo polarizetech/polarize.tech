@@ -4,6 +4,8 @@ description: >-
   Research notes on audio-evoked potentials, bioelectricity, neuroscience and
   neuromedicine. Falsification-first, citation-gated.
 url: https://polarize.tech
+# This site's own repository — the version history on every post links into it.
+repository_url: https://github.com/polarizetech/polarize.tech
 baseurl: ""
 
 permalink: /blog/:title/
@@ -26,11 +28,11 @@ plugins:
   - jekyll-sitemap
   - jekyll-paginate
 
-# jekyll-paginate v1 — the only paginator GitHub Pages runs. It paginates the
-# root index.html and nothing else, which is why /blog/ lists everything instead
-# of paginating too.
+# jekyll-paginate v1 — the only paginator GitHub Pages runs. It paginates ONE
+# index.html: the one in paginate_path's directory, i.e. blog/index.html. The
+# home page is a fixed three-section summary and is not paginated.
 paginate: 8
-paginate_path: "/page:num/"
+paginate_path: "/blog/page:num/"
 
 # The address behind the contact button. A plain mailto: on purpose — it opens
 # whatever the reader actually uses (Gmail in a browser, Mail.app, Outlook),
@@ -65,16 +67,17 @@ feed:
   path: /blog/feed.xml
   collections:
     essays:
-      path: /essays/feed.xml
+      path: /rants/feed.xml
 
-# Essays / rants: short dictated pieces, thinking out loud. Deliberately a
-# separate collection, not posts: they carry no claims and no citations, so they
-# never enter site.posts, the topic pages or the research feed. Always tier SPEC;
-# the gate (validate_posts.py, essays check) enforces all three.
+# Rants (the `essays` collection, served under /rants/): short dictated pieces,
+# thinking out loud. Deliberately a separate collection, not posts: they carry no
+# claims and no citations, so they never enter site.posts, the topic pages or the
+# research feed. Always tier SPEC; the gate (validate_posts.py, RULE E) enforces
+# all three.
 collections:
   essays:
     output: true
-    permalink: /essays/:title/
+    permalink: /rants/:title/
 
 # Human labels for the `project:` front-matter key. This is the only place a
 # project's display name and blurb are written; the homepage and the blog index
@@ -116,12 +119,19 @@ defaults:
       type: posts
     values:
       layout: post
+      section: blog
   - scope:
       path: ""
       type: essays
     values:
       layout: essay
       tier: SPEC
+      section: rants
+  # /blog/ and the topic pages. `section` drives the sidebar's current marker.
+  - scope:
+      path: "blog"
+    values:
+      section: blog
 
 exclude:
   - README.md
@@ -132,3 +142,4 @@ exclude:
   - .claude/
   - .github/
   - vendor/
+  - .tools/        # local Ruby toolchain for previews (git-ignored)

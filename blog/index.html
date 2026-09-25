@@ -1,16 +1,30 @@
 ---
 layout: default
-title: Research
+title: Posts
 description: >-
-  Every post, newest first — audio-evoked potentials, bioelectromagnetic
-  propagation, and the method behind both.
+  Working notes on bioelectric sensing and stimulation — audio-evoked
+  potentials, magnetometry, and the instruments in between. Falsification-first,
+  citation-gated, and open about what the instruments cannot hear.
 ---
+{%- comment -%}
+  The paginated post list (paginate_path: /blog/page:num/). This was the home
+  page until 2026-09-25; the home page is now a three-section summary.
+{%- endcomment -%}
 
-<header class="doc__head">
-  <h1 class="ui-display ui-display--2">Everything, newest first.</h1>
-  <p class="doc__lede">
-    The home page shows these a page at a time. This is the whole list.
-  </p>
-</header>
+<h1 class="ui-label main__heading">Latest research notes</h1>
 
-{% include postlist.html posts=site.posts %}
+{% include postlist.html posts=paginator.posts %}
+
+{%- if paginator.total_pages > 1 %}
+<nav class="pager" aria-label="Pagination">
+  {%- if paginator.previous_page %}
+  <a class="ui-btn pager__prev" href="{{ paginator.previous_page_path | relative_url }}">← Newer</a>
+  {%- else %}<span class="pager__spacer"></span>{% endif %}
+
+  <span class="ui-label pager__count">Page {{ paginator.page }} of {{ paginator.total_pages }}</span>
+
+  {%- if paginator.next_page %}
+  <a class="ui-btn pager__next" href="{{ paginator.next_page_path | relative_url }}">Older →</a>
+  {%- else %}<span class="pager__spacer"></span>{% endif %}
+</nav>
+{%- endif %}

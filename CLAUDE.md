@@ -17,18 +17,23 @@ everything on this site, and an error must not be able to survive a commit.
 
 | Path | What it is |
 |---|---|
-| `index.html` | The home page — **now a normal Jekyll page** (`layout: home`), not a standalone file. It is the paginated post list. The hand-built one-pager, its hero canvas and `app.js` were removed on 2026-08-31 when the site became a blog; the earlier "don't Jekyll-ify it" rule died with the page it protected. |
+| `index.html` | The home page — **now a normal Jekyll page** (`layout: home`), not a standalone file. Since 2026-09-25 it is a three-section summary: the latest posts (no topic badges), the latest rants as portrait cards, and the most recently active repos with their latest merged PR. It is **not** paginated; `/blog/` is. The hand-built one-pager, its hero canvas and `app.js` were removed on 2026-08-31 when the site became a blog; the earlier "don't Jekyll-ify it" rule died with the page it protected. |
 | `_layouts/`, `_includes/` | `default.html` is the sidebar + main shell. `sidebar.html` (brand, author note, topics, RSS/GitHub), `postlist.html`, `postitem.html`, `tier.html`, `cite.html`, `references.html`. |
-| `blog/topics/*.html` | One page per `project:`. **Written by hand because GitHub Pages runs no plugin that can generate them** — `jekyll-paginate` v1 is the only paginator available and it paginates the root index and nothing else. Add a page whenever you add a project. |
+| `blog/topics/*.html` | One page per `project:` (the sidebar shows Topics only in the blog section). **Written by hand because GitHub Pages runs no plugin that can generate them** — `jekyll-paginate` v1 is the only paginator available and it paginates the root index and nothing else. Add a page whenever you add a project. |
 | `design/` | **Vendored, never edited.** A verbatim copy of the monorepo's shared design system (`polarizetech/audio-projects` → `tools/design`, theme INSTRUMENT): `design.css` generated from `tokens.json`, the self-hosted Instrument Serif / Inter / IBM Plex Mono faces, and the icon sprite. Update by re-copying; `scripts/check_design.py` fails if this copy has drifted. |
 | `styles.css` | The **project layer only** — what a research blog needs and `design/` does not already provide. No hex literals, no font stacks, no palette: everything is a token. |
-| `blog/index.html` | Every post, unpaginated — the home page shows the same list a page at a time. |
+| `blog/index.html` | The paginated post list (`paginate_path: /blog/page:num/` — jekyll-paginate v1 pages only the `index.html` in that directory). |
+| `_essays/`, `rants/index.html` | **Rants** — short dictated pieces, served at `/rants/`. A separate collection (`essays`), not posts: no claims, no citations, always tier SPEC, never in `site.posts` or the topic pages. The gate's RULE E enforces all of it. |
+| `changelog/`, `_layouts/changelog.html`, `_layouts/repo.html` | The paginated changelog (merged PRs in public polarizetech repos, each entry in full) and one feature page per public repo at `/changelog/<repo>/`. **Every `index.html` under `changelog/` is a generated stub** — never edit or add one by hand. |
+| `_data/changelog.json`, `_data/repos.json` | **Generated** by `scripts/sync_changelog.py` from GitHub (public repos only), together with the stubs above. `.github/workflows/changelog.yml` re-runs it every 3 hours. |
+| `_data/history.json`, `_includes/history.html` | **Generated** by `scripts/sync_history.py` from git: every revision of every post and rant, with word-level diffs and an LLM co-author flag (from `Co-Authored-By` trailers only). Rendered as the version drawer at the foot of each page and the `vN` in its meta line. `.github/workflows/history.yml` regenerates it after every push touching `_posts/` or `_essays/`. |
 | `_posts/` | Published posts. `YYYY-MM-DD-slug.md`. |
 | `_drafts/` | Work in progress. Never deployed. |
 | `_config.yml` → `projects:` | Hand-written display labels for the `project:` front-matter key, shown as a badge on each post row. **Not a citation surface** — nothing in it is machine-resolved, and nothing in it may assert a finding. A post whose `project:` has no entry here still lists normally, just without the badge. |
 | `_data/citations.yml` | **Generated.** Bibliography, machine-copied from the research ledger. |
 | `_data/claims.yml` | **Generated.** Claim tiers + statements from the research repo. |
 | `scripts/sync_research.py` | The only path by which research data enters this repo. |
+| `scripts/sync_changelog.py`, `scripts/sync_history.py` | The only paths by which changelog/repo data and version history enter this repo. Stdlib only. |
 | `scripts/validate_posts.py` | The publication gate. |
 | `scripts/check_design.py` | The design gate — no CDN, never-bold, uppercase-is-mono, never-tracked-sans, no raw colour, vendored copy untouched, and a tier badge that carries a glyph as well as a hue. |
 

@@ -1,0 +1,21 @@
+{%- comment -%}
+  Rants as portrait cards, story-style: less formal than a post row, no tier
+  badge (the rant page itself still carries SPEC). `row=true` lays them out as a
+  single scrolling row (the home page); otherwise they wrap into a grid.
+
+  Usage: {% include rantcards.html rants=list %}  (optional: row=true)
+{%- endcomment -%}
+<ul class="rants{% if include.row %} rants--row{% endif %}">
+  {%- for r in include.rants %}
+  <li class="rants__item">
+    <a class="rant" href="{{ r.url | relative_url }}">
+      <span class="rant__date">{{ r.date | date: "%b %-d" }}</span>
+      <span class="rant__title">{{ r.title }}</span>
+      <span class="rant__excerpt">{{ r.content | strip_html | normalize_whitespace | truncatewords: 34 }}</span>
+      <span class="rant__more">Read →</span>
+    </a>
+  </li>
+  {%- else %}
+  <li class="postlist__item--empty">Nothing yet.</li>
+  {%- endfor %}
+</ul>
