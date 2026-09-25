@@ -5,7 +5,6 @@ description: >-
   and what it remembers from the fields around it.
 date: 2026-09-25 06:30:00 -0600
 tier: SPEC
-published: false
 ---
 
 I feel that there's something about the pieces of this system that tell more about the whole.

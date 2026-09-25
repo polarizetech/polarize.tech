@@ -5,7 +5,6 @@ description: >-
   cells, past some size, has no choice but to start talking.
 date: 2026-09-25 06:00:00 -0600
 tier: SPEC
-published: false
 ---
 
 There are two things I need to understand. The first is habituation: is it how every cell
