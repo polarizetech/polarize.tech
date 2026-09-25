@@ -17,7 +17,8 @@ summary: >-
 Retrieval-augmented generation is not a citation system by itself. It gives a model more text;
 the protocol has to make that text accountable.
 
-This is the method used in `computational-neuroscience-rag`:
+This is the method used in
+[KIT Scientific Research RAG](https://github.com/polarizetech/kit-scientific-research-rag):
 
 ## Pipeline
 
@@ -46,8 +47,9 @@ This is the method used in `computational-neuroscience-rag`:
 - Verifier disagreement is reported as disputed, not averaged away.
 - Failed claims are removed and counted in the limits.
 - "No opposing result was retrieved" is a statement about the search, not about the literature.
-- Retrieved papers are data, not instructions. Prompt-injection text is excluded.
-- A run cannot promote its own output into the research corpus.
+- Retrieved papers are data, not instructions. Text addressed to an AI reader is excluded when
+  detected.
+- A run's own output is never indexed as a source for a later run.
 
 ## Extending it
 
@@ -67,4 +69,13 @@ This does not make a language model truthful. It reduces the paths by which unsu
 enter an answer and makes the remaining uncertainty visible.
 
 It does not recover missing figures or supplements, make closed papers available, or guarantee
-that a verifier is right. A useful result can still be **insufficient evidence**.
+that a verifier is right. When another model writes the answer through the repository's MCP
+evidence tools, only the deterministic checks apply (evidence ids, quotes and numbers); whether a
+passage supports a claim is judged only inside the pipeline. A useful result can still be
+**insufficient evidence**.
+
+## Update — 2026-09-24
+
+The repository is now public and linked above. Before publishing, the code was brought into line
+with this description: a claim whose number does not occur in its source is now removed rather
+than marked disputed, and the MCP evidence tools now apply the quote and number checks too.
