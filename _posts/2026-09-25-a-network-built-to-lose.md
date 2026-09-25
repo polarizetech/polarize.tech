@@ -18,6 +18,14 @@ summary: >-
   In simulation, synaptic depletion never kept a sound-specific memory, and only plasticity gated
   by the receiving cell did. A published receptor model drained untrained responses under a
   protein-synthesis block, where the real cell does not.
+image: /assets/posts/golgi-pyramidal-neuron.jpg
+image_alt: >-
+  A Golgi-stained pyramidal neuron from the human hippocampus at 40x magnification: a dark
+  cell body with spine-covered dendrites branching across the field.
+image_credit: MethoxyRoxy
+image_license: CC BY-SA 2.5
+image_license_url: https://creativecommons.org/licenses/by-sa/2.5/
+image_source_url: https://commons.wikimedia.org/wiki/File:Pyramidal_hippocampal_neuron_40x.jpg
 ---
 
 Everything below is a result about a computer model with chosen parameters. None of it is a

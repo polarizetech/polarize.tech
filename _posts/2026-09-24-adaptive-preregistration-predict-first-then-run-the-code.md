@@ -14,6 +14,14 @@ summary: >-
   Write the prediction and the pass criteria first, tag them, then run. Plans may change, but
   every change is dated, says whether the result was already known, and cannot turn a fail
   into a pass.
+image: /assets/posts/darwin-notebook-b-tree.jpg
+image_alt: >-
+  A page from Charles Darwin's 1837 notebook: the words "I think" above a hand-drawn
+  branching tree of species, with handwritten notes beneath.
+image_credit: >-
+  Charles Darwin, Notebook B (1837), page 36.
+  <a href="https://commons.wikimedia.org/wiki/File:Darwin_Tree_1837.png" rel="noopener">Public domain</a>.
+  Desaturated for this site.
 ---
 
 A simulation can be tuned until it agrees with you. Each choice is small: a seed, a threshold,
