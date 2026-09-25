@@ -616,6 +616,80 @@
  ],
  "_posts/2026-08-25-can-a-70-dollar-board-tell-me-im-wrong.md": [
   {
+   "sha": "e43fbba58fa546a9c4466aa882af10a83e7a7c21",
+   "author": "Joshua Anderton",
+   "date": "2026-09-25T13:41:31-07:00",
+   "subject": "$70 board post: link the public olimex-shield repo, state the scale's provenance",
+   "llm": true,
+   "llm_name": "Claude Opus 5.5",
+   "short": "e43fbba",
+   "first": false,
+   "hunks": [
+    [
+     {
+      "t": "ctx",
+      "h": "- **Not explained by electrode prep.** The one capture the app scored good-contact (alpha SNR 36) has the highest value, 750 nV. The one it flagged no-scalp-contact gives 238 nV. The spread is unexplained."
+     },
+     {
+      "t": "mod",
+      "h": "- **Not absolutely calibrated.** Counts convert at 7.9 µV/count, <del>measured</del><ins>derived</ins> from the shield&#x27;s <ins>built-in </ins>calibration signal<ins> at its nominal amplitude; no external signal has been injected to check it</ins>. The datasheet implies 1.72. That 4.6× disagreement is unresolved, and every nV figure here inherits it."
+     },
+     {
+      "t": "ctx",
+      "h": "## Broadband RMS overstates in-band noise 3.5–24×"
+     }
+    ],
+    [
+     {
+      "t": "ctx",
+      "h": "Board and microcontroller about C$75; the whole rig about C$106, at listing prices on 2026-09-13."
+     },
+     {
+      "t": "add",
+      "h": "The firmware, the bridge and the recording workbench are public: [olimex-shield](https://github.com/polarizetech/olimex-shield)."
+     },
+     {
+      "t": "ctx",
+      "h": "| parameter | value |"
+     }
+    ],
+    [
+     {
+      "t": "ctx",
+      "h": "| gain | ≈2848, set by a hardware trimmer |"
+     },
+     {
+      "t": "mod",
+      "h": "| scale | 7.9 µV/count <del>measured</del><ins>from the built-in cal signal (nominal amplitude, not externally checked)</ins>; datasheet implies 1.72 |"
+     },
+     {
+      "t": "ctx",
+      "h": "| input-referred noise | **not measured** |"
+     }
+    ],
+    [
+     {
+      "t": "ctx",
+      "h": "A paragraph noting that beta-band and dichotic runs had no producible records was removed rather than kept as anecdote. The post was restructured to lead with the instrument characterisation."
+     },
+     {
+      "t": "add",
+      "h": "## Update — 2026-09-25"
+     },
+     {
+      "t": "add",
+      "h": "The rig&#x27;s code is now public and linked from the parts list. The scale is described more exactly:"
+     },
+     {
+      "t": "add",
+      "h": "7.9 µV/count comes from the shield&#x27;s built-in calibration signal at its nominal amplitude, not from an externally injected signal."
+     }
+    ]
+   ],
+   "added": 91,
+   "removed": 2
+  },
+  {
    "sha": "ded42f58e80c9fcafa29be2c71cf6ac02f883484",
    "author": "Joshua Anderton",
    "date": "2026-09-25T08:23:13-07:00",
