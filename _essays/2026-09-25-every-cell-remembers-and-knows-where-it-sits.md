@@ -14,14 +14,14 @@ long-term information, in whatever format a cell is capable of holding it. My gu
 the format is habituation.
 
 The second is what happens when that is extrapolated outward: to different kinds of cells, to
-neurons, to cells that specialise in keeping information about light. My working picture is
+neurons, to photoreceptors that specialise in light. My working picture is
 that the body is a system in which every cell stores memory, and the whole distributes that
 memory like a decentralised network. The network coordinates the information it needs, when it
 needs it. But the processing itself (attending to a live stimulus, to memory, to gene
 expression) has a byproduct, and I think that byproduct is long-term, multisensory memory.
 
 I also suspect that the way a single cell saves habituation, and salience, which is roughly
-meaning, is coordinated automatically by some kind of morphogenetic mathematics. Something tied
+meaning, is coordinated automatically by some morphogenetic rule: a kind of mathematics tied
 to the number of cells in a system, and to the coordination it takes to hold them together.
 There would be an automatic process for identifying the peripheral cells of a system. And it
 would not only be specialised cells and neurons that track where the periphery is relative to
@@ -31,7 +31,7 @@ I think that may be a mathematical requirement rather than a feature: once cells
 coordinated, memory and spatial awareness come built in. A single cell probably meets its
 surroundings in much the same way whether it is alone or not. But grouped with thousands or
 millions of others, there are network effects that fall out of the way a cell works. A cell
-that polarises, exchanges ions and carries a small electromagnetic field affects its
+that polarises, exchanges ions and carries a small electric field affects its
 surroundings by definition. Packed densely enough, it is forced to pass what it holds on to
 its network.
 
@@ -54,7 +54,7 @@ dancer's.
 The last piece is the periphery. I think the outer cells become the first line of defence.
 They pick out external reward, external stimulus, and external information that can be
 habituated, which is to say silenced. Silencing may be one of their most important jobs,
-because once the outside is ruled out, the system can find deviants inside itself. It can
+because once the outside is ruled out, the system can find deviant signals inside itself. It can
 coordinate its own timing and structure so that every cell, not just the peripheral ones, can
 isolate what differs from what it expects to experience: vibration, bioelectric signalling,
 coupling, firing. All of that has to be damped, or the system feeds back on itself and loses
