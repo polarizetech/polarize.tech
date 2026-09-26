@@ -43,7 +43,7 @@ description: >-
     {%- for r in active_repos %}
     <li>
       <a class="repocard" href="{{ '/work/' | append: r.name | append: '/' | relative_url }}">
-        <span class="repocard__name">{{ r.name }}</span>
+        <span class="repocard__name">{% include repo-icon.html repo=r.name %}{{ r.name }}</span>
         <span class="repocard__desc">{{ r.description }}</span>
         <span class="repocard__latest">
           {%- if r.latest_change %}

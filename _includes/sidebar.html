@@ -5,39 +5,16 @@
 {%- endcomment -%}
 <aside class="ui-sidebar">
 
-  {%- if site.author %}
+  {%- if site.contact_email %}
   <div class="ui-sidebar__section">
-    <p class="ui-label ui-sidebar__heading">{% include icon.html name="note" %} About</p>
-
     {%- comment -%}
-      Avatar on the left, with name, place and the contact link stacked to its
-      right. The description sits below the whole group, flush to the avatar's
-      left edge rather than indented beside it.
+      Keep contact available while the author bio is hidden. The contact page
+      only works once `contact_endpoint` is set; until then this is a mailto.
     {%- endcomment -%}
-    <div class="ui-sidebar__ident">
-      {%- if site.author.avatar %}
-      <img class="ui-sidebar__avatar" src="{{ site.author.avatar | relative_url }}"
-           alt="" width="56" height="56" loading="lazy" onerror="this.remove()" />
-      {%- endif %}
-      <span class="ui-sidebar__who">
-        {%- if site.author.name %}<span class="ui-sidebar__name">{{ site.author.name }}</span>{% endif %}
-        {%- if site.author.location %}<span class="ui-sidebar__place">{{ site.author.location }}</span>{% endif %}
-        {%- comment -%}
-          The contact page only goes anywhere once `contact_endpoint` is set —
-          until then its form can't post. So while it is empty the link is a
-          plain mailto:, and it switches to /contact/ by itself when an
-          endpoint is deployed. Either way the address is never the link text.
-        {%- endcomment -%}
-        {%- if site.contact_endpoint and site.contact_endpoint != "" %}
-        <a class="ui-sidebar__contact" href="{{ '/contact/' | relative_url }}">{% include icon.html name="mail" %} Get in touch</a>
-        {%- elsif site.contact_email %}
-        <a class="ui-sidebar__contact" href="mailto:{{ site.contact_email }}">{% include icon.html name="mail" %} Get in touch</a>
-        {%- endif %}
-      </span>
-    </div>
-
-    {%- if site.author.note %}
-    <p class="ui-sidebar__note">{{ site.author.note }}</p>
+    {%- if site.contact_endpoint and site.contact_endpoint != "" %}
+    <a class="ui-sidebar__contact" href="{{ '/contact/' | relative_url }}">{% include icon.html name="mail" %} Get in touch</a>
+    {%- else %}
+    <a class="ui-sidebar__contact" href="mailto:{{ site.contact_email }}">{% include icon.html name="mail" %} Get in touch</a>
     {%- endif %}
   </div>
   {%- endif %}

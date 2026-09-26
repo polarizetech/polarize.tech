@@ -17,7 +17,7 @@ layout: default
     <p class="ui-label">
       <a class="ui-article__topic" href="{{ '/work/' | relative_url }}">Work</a> · Repository
     </p>
-    <h1 class="ui-display ui-display--1">{{ repo.name }}</h1>
+    <h1 class="ui-display ui-display--1 repo__title">{% include repo-icon.html repo=repo.name %}{{ repo.name }}</h1>
     {%- if repo.description != "" %}
     <p class="ui-standfirst">{{ repo.description }}</p>
     {%- endif %}

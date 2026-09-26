@@ -7,11 +7,12 @@ description: >-
   explain it, its latest changes, and the code.
 ---
 {%- comment -%}
-  A bento board of every public polarizetech repo (_data/repos.json, synced by
+  A bento board of every public polarizetech work repo (_data/repos.json, synced by
   scripts/sync_changelog.py). Each tile leads with the posts about the repo —
   the short version — then its latest merged change, then links to its page
   (/work/<repo>/) and to GitHub. Repos with posts come first and get the bigger
-  tiles; the rest follow by recent activity.
+  tiles; the rest follow by recent activity. The icon is _includes/repo-icon.html;
+  a post's lead image, when it has one, heads its card.
 {%- endcomment -%}
 
 <header class="ui-doc__head">
@@ -37,7 +38,7 @@ description: >-
   {%- if repo_posts.size > 0 %}{% if forloop.index == 1 %}{% assign size = "lg" %}{% else %}{% assign size = "md" %}{% endif %}{% endif %}
   <li class="bento__tile bento__tile--{{ size }}">
     <div class="bento__head">
-      <a class="bento__name" href="{{ '/work/' | append: r.name | append: '/' | relative_url }}">{{ r.name }}</a>
+      <a class="bento__name" href="{{ '/work/' | append: r.name | append: '/' | relative_url }}">{% include repo-icon.html repo=r.name %}{{ r.name }}</a>
       {%- if r.language != "" %}<span class="ui-pill">{{ r.language }}</span>{% endif %}
     </div>
     {%- if r.description != "" %}<p class="bento__desc">{{ r.description }}</p>{% endif %}
@@ -47,7 +48,10 @@ description: >-
       {%- assign shown = 1 %}{% if size == "lg" %}{% assign shown = 2 %}{% endif %}
       {%- for p in repo_posts limit: shown %}
       <li>
-        <a class="bento__post" href="{{ p.url | relative_url }}">
+        <a class="bento__post{% if p.image %} bento__post--image{% endif %}" href="{{ p.url | relative_url }}">
+          {%- if p.image %}
+          <span class="bento__post-image"><img src="{{ p.image | relative_url }}" alt="" loading="lazy" /></span>
+          {%- endif %}
           <span class="bento__post-label">Post · {{ p.date | date: "%Y-%m-%d" }}</span>
           <span class="bento__post-title">{{ p.title }}</span>
           <span class="bento__post-tldr">{{ p.summary | default: p.description | strip_html | strip_newlines | truncatewords: 40 }}</span>

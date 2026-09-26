@@ -92,27 +92,6 @@
   "active_at": "2026-09-25T20:08:24Z"
  },
  {
-  "name": "polarize.tech",
-  "description": "",
-  "url": "https://github.com/polarizetech/polarize.tech",
-  "homepage": "",
-  "language": "Python",
-  "license": "",
-  "stars": 0,
-  "topics": [],
-  "branch": "main",
-  "created_at": "2026-06-08T22:15:39Z",
-  "pushed_at": "2026-09-25T20:41:43Z",
-  "readme": "Two things live here:\n\n1. **The landing page** (`/`) — a single-page, dark-themed introduction to\n   **bioelectricity** and **cellular polarization**, with four hand-built\n   `<canvas>` animations and zero dependencies.\n2. **Research notes** (`/blog/`) — published excerpts from an ongoing\n   falsification-first research program on audio-evoked potentials,\n   bioelectricity, neuroscience and neuromedicine.\n\nBuilt by GitHub Pages' own Jekyll. Custom domain: `polarize.tech`.\n\n## The landing page\n\nFour canvas animations, no libraries:\n\n1. **Hero ion field** — drifting positive/negative ions connected by a faint bioelectric field.\n2. **Polarization, Live** *(the centerpiece)* — an interactive slice of cell membrane. Press **Stimulate** to fire a wave of **depolarization**: voltage-gated channels open, Na⁺ floods inward, and the membrane potential flips from the resting −70 mV toward +40 mV before repolarizing.\n3. **Action-potential trace** — a live voltage-over-time graph synced to the membrane.\n4. **Signal propagation** — a self-renewing depolarization wave racing down a nerve fibre.\n\nRespects `prefers-reduced-motion` and scales to mobile.\n\n## Research notes\n\nPosts are markdown in `_posts/`. They are **not** free-form: every source is cited\nby a key that resolves to a machine-verified entry in the citation ledger of\n[`polarizetech/research`](https://github.com/polarizetech/research), and every post\ncarries a confidence tier copied from the claims it rests on.\n\nTwo scripts enforce that, both stdlib-only Python:\n\n```bash\n# Pull citation + claim metadata from the research repo into _data/\npython3 scripts/sync_research.py --research ~/Sites/research\n\n# The publication gate — run before every commit\npython3 scripts/validate_posts.py --strict\n```\n\nThe gate rejects hand-typed DOIs, inline author-year citations, undeclared or\nunused citation keys, unresolved sources, missing claims, and any post asserting a\nconfidence tier stronger than the claims beneath it. CI re-runs it on every push\nagainst the committed `_data/`, without access to the private research repo.\n\n**Read [CLAUDE.md](https://github.com/polarizetech/polarize.tech/blob/main/CLAUDE.md) before adding or editing a post.** It is the\nauthoring protocol, including the manual fact-validation pass the gate cannot do.\n\n## Run locally\n\n```bash\nbundle install\nbundle exec jekyll serve --drafts\n# then open http://localhost:4321\n```\n\n## Files\n\n| Path | |\n|---|---|\n| `index.html`, `app.js` | Landing page. Plain HTML, no front matter — Jekyll copies it verbatim. |\n| `design/` | The [polarize-ui](https://github.com/polarizetech/polarize-ui) submodule: `design.css`, `publication.css` (the blog components), fonts, icons. Clone with `--recurse-submodules`. |\n| `styles.css` | The site layer only — homepage sections, contact width, one figure. Components live in `design/publication.css`. |\n| `blog/index.html` | Post index. |\n| `_posts/`, `_drafts/` | Research notes. |\n| `_layouts/`, `_includes/` | Page shell, post layout, citation includes. |\n| `_data/` | **Generated** — never hand-edited. |\n| `scripts/` | Sync + publication gate. |\n| `CLAUDE.md` | Authoring protocol. |\n\n## Brand\n\n| | |\n|---|---|\n| Background | near-black `#06080c` |\n| Accent | white `#ffffff` |\n| Polarized / resting | cyan `#3fe0ff` |\n| Depolarized | warm `#ff7a3c` |\n| Type | Familjen Grotesk |\n\nTier badges reuse those tokens: `A` cyan, `B` white, `C` warm, `SPEC` magenta.\n\n*An educational exploration. Figures are illustrative, not to scale.*\n",
-  "latest_change": {
-   "number": 2,
-   "title": "Use polarize-ui for the design system and blog components",
-   "url": "https://github.com/polarizetech/polarize.tech/pull/2",
-   "merged_at": "2026-09-25T15:37:47Z"
-  },
-  "active_at": "2026-09-25T15:37:47Z"
- },
- {
   "name": "scientific-research-rag",
   "description": "Evidence-first literature RAG for small local models: code controls search, evidence, verification and the run log",
   "url": "https://github.com/polarizetech/scientific-research-rag",
