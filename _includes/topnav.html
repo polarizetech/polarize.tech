@@ -1,0 +1,29 @@
+{%- comment -%}
+  The site's top bar (polarize-ui landing.css: .ui-topnav). On a phone the links
+  fold into a <details> menu, so it works without script. `section` (front matter
+  or the defaults in _config.yml) marks the current link.
+{%- endcomment -%}
+{%- capture topnav_links -%}
+  <a class="ui-topnav__link" href="{{ '/#process' | relative_url }}">Process</a>
+  <a class="ui-topnav__link{% if page.section == 'work' %} is-current{% endif %}" href="{{ '/work/' | relative_url }}"{% if page.section == 'work' %} aria-current="page"{% endif %}>Projects</a>
+  <a class="ui-topnav__link{% if page.section == 'blog' %} is-current{% endif %}" href="{{ '/blog/' | relative_url }}"{% if page.section == 'blog' %} aria-current="page"{% endif %}>Findings</a>
+  <a class="ui-topnav__link{% if page.section == 'rants' or page.section == 'speculations' %} is-current{% endif %}" href="{{ speculations_href }}"{% if page.section == 'rants' or page.section == 'speculations' %} aria-current="page"{% endif %}>Speculations</a>
+  <a class="ui-topnav__link{% if page.section == 'changelog' %} is-current{% endif %}" href="{{ '/changelog/' | relative_url }}"{% if page.section == 'changelog' %} aria-current="page"{% endif %}>Changelog</a>
+{%- endcapture -%}
+{%- capture topnav_actions -%}
+  <a class="ui-topnav__link ui-topnav__icon" href="https://github.com/polarizetech" rel="noopener">
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="currentColor"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.9 18.3 5.2 18.3 5.2c.6 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3z"/></svg>GitHub</a>
+  <a class="ui-cta ui-cta--solid" href="{{ contact_href }}"><span class="ui-cta__text">Get in touch</span></a>
+{%- endcapture -%}
+<header class="ui-topnav">
+  <a class="ui-brand" href="{{ '/' | relative_url }}" aria-label="Polarize, home">
+    <span class="ui-brand__mark"></span>
+    <span class="ui-brand__word">Polarize</span>
+  </a>
+  <nav class="ui-topnav__links" aria-label="Main">{{ topnav_links }}</nav>
+  <div class="ui-topnav__actions">{{ topnav_actions }}</div>
+  <details class="ui-topnav__menu">
+    <summary aria-label="Menu"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></summary>
+    <nav class="ui-topnav__panel" aria-label="Menu">{{ topnav_links }}{{ topnav_actions }}</nav>
+  </details>
+</header>
