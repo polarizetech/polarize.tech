@@ -27,6 +27,8 @@ plugins:
   - jekyll-feed
   - jekyll-sitemap
   - jekyll-paginate
+  # Old /rants/ URLs keep working after the 2026-09-28 rename to /speculations/.
+  - jekyll-redirect-from
 
 # jekyll-paginate v1 — the only paginator GitHub Pages runs. It paginates ONE
 # index.html: the one in paginate_path's directory, i.e. blog/index.html. The
@@ -67,9 +69,9 @@ feed:
   path: /blog/feed.xml
   collections:
     essays:
-      path: /rants/feed.xml
+      path: /speculations/feed.xml
 
-# Rants (the `essays` collection, served under /rants/): short dictated pieces,
+# Speculations (the `essays` collection, served under /speculations/): short dictated pieces,
 # thinking out loud. Deliberately a separate collection, not posts: they carry no
 # claims and no citations, so they never enter site.posts, the topic pages or the
 # research feed. Always tier SPEC; the gate (validate_posts.py, RULE E) enforces
@@ -77,7 +79,7 @@ feed:
 collections:
   essays:
     output: true
-    permalink: /rants/:title/
+    permalink: /speculations/:title/
 
 # Human labels for the `project:` front-matter key. This is the only place a
 # project's display name and blurb are written; the homepage and the blog index
@@ -126,7 +128,7 @@ defaults:
     values:
       layout: essay
       tier: SPEC
-      section: rants
+      section: speculations
   # /blog/ and the topic pages. `section` drives the sidebar's current marker.
   - scope:
       path: "blog"

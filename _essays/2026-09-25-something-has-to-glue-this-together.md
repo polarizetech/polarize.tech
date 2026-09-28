@@ -1,4 +1,5 @@
 ---
+redirect_from: /rants/something-has-to-glue-this-together/
 title: "Something has to glue this together"
 description: >-
   On polarity, the body's many fallback channels, and whether a cell can read where it sits
