@@ -11,6 +11,8 @@ description: >-
 # The homepage's own copy. Everything else on the page (posts, essays, repos,
 # the changelog) is read from the site's data, so it stays current by itself.
 # Findings are never written here: a project's finding is its post's summary.
+# Each highlighted repo links to the article on why and how it was made; the
+# article links on to the repository.
 process:
   - num: "01"
     stage: Before anything runs
@@ -32,6 +34,7 @@ process:
       a CLI that scaffolds new ones and checks existing ones against it — with
       the preregistration kit installed from the first commit.
     files: [STUDY.toml, apps/vN-*, model-vX.Y.Z tags, scaffold check]
+    post: one-question-per-study
   - num: "03"
     stage: What the literature says
     repo: scientific-research-rag
@@ -85,8 +88,10 @@ toolkit: [paper-library]
   <ol class="ui-steps">
     {%- for s in page.process %}
     {%- assign r = site.data.repos | where: "name", s.repo | first %}
+    {%- assign sp = nil %}
+    {%- if s.post %}{% assign sp = site.posts | where_exp: "p", "p.url contains s.post" | first %}{% endif %}
     <li>
-      <a class="ui-step" href="https://github.com/polarizetech/{{ s.repo }}" rel="noopener">
+      <a class="ui-step" href="{% if sp %}{{ sp.url | relative_url }}{% else %}https://github.com/polarizetech/{{ s.repo }}{% endif %}">
         <span class="ui-step__head"><span class="ui-step__num">{{ s.num }}</span><span class="ui-label">{{ s.stage }}</span></span>
         <span class="ui-step__repo">{{ s.repo }}{% if r %}<span class="ui-label">{{ r.language }}</span>{% endif %}</span>
         <h3 class="ui-step__title">{{ s.title }}</h3>
@@ -104,13 +109,13 @@ toolkit: [paper-library]
         </span>
         {%- endif %}
         <span class="ui-step__foot">
-          {%- if s.post %}
-          {%- assign sp = site.posts | where_exp: "p", "p.url contains s.post" | first %}
-          <span>Read: {{ sp.title }} →</span>
+          {%- if sp %}
+          <span>Why and how we built it →</span>
+          <span class="ui-label">Article</span>
           {%- else %}
           <span>Read the protocol →</span>
-          {%- endif %}
           <span class="ui-label">GitHub ↗</span>
+          {%- endif %}
         </span>
       </a>
     </li>
@@ -140,7 +145,8 @@ toolkit: [paper-library]
   {%- assign post = site.posts | where_exp: "p", "p.url contains pr.post" | first %}
   {%- assign plate = site.data.schematics | where: "id", pr.plate | first %}
   {%- assign changes = site.data.changelog | where: "repo", pr.repo | sort: "merged_at" | reverse %}
-  <a class="ui-project{% if pr.flip %} ui-project--flip{% endif %}" href="{{ '/work/' | append: pr.repo | append: '/' | relative_url }}">
+  {%- capture project_href %}{% if post %}{{ post.url | relative_url }}{% else %}{{ '/work/' | append: pr.repo | append: '/' | relative_url }}{% endif %}{% endcapture %}
+  <a class="ui-project{% if pr.flip %} ui-project--flip{% endif %}" href="{{ project_href | strip }}">
     <div class="ui-project__body">
       <div class="ui-project__meta">
         <span class="ui-project__repo">{{ pr.repo }}</span>
@@ -230,7 +236,10 @@ toolkit: [paper-library]
       <a class="ui-cta" href="{{ '/blog/' | relative_url }}"><span class="ui-cta__text">All {{ site.posts | size }} articles →</span></a>
     </div>
   </div>
-  {%- assign lead = site.posts | first %}
+  {%- comment -%} Posts marked `findings: false` (about the site, not the research) are left out. The lead is the newest post with an image; the grid is the next six after it, image or not. {%- endcomment -%}
+  {%- assign findings = site.posts | where_exp: "p", "p.findings != false" %}
+  {%- assign with_images = findings | where_exp: "p", "p.image" %}
+  {%- assign lead = with_images | first %}
   {%- assign lead_proj = site.projects[lead.project] %}
   <a class="ui-feature" href="{{ lead.url | relative_url }}">
     {%- if lead.image %}
@@ -247,7 +256,8 @@ toolkit: [paper-library]
     </div>
   </a>
   <div class="ui-cards">
-    {%- for p in site.posts offset: 1 limit: 6 %}
+    {%- assign rest = findings | where_exp: "p", "p.url != lead.url" %}
+    {%- for p in rest limit: 6 %}
     {%- assign proj = site.projects[p.project] %}
     <a class="ui-articlecard" href="{{ p.url | relative_url }}">
       {%- if p.image %}
