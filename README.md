@@ -44,6 +44,14 @@ unused citation keys, unresolved sources, missing claims, and any post asserting
 confidence tier stronger than the claims beneath it. CI re-runs it on every push
 against the committed `_data/`, without access to the private research repo.
 
+This repository also vendors the
+[KIT Adaptive Preregistration](https://github.com/polarizetech/adaptive-preregistration)
+`core` and `prereg` modules. Any analysis, benchmark, simulation, measurement or site
+experiment run here to support a public claim must be entered in `EXPERIMENTS.md` and
+preregistered before its scoring run. Ordinary builds, previews, content syncs and
+validation gates are maintenance and do not require an experiment ID. Results imported
+from another repository keep their registration there.
+
 **Read [CLAUDE.md](CLAUDE.md) before adding or editing a post.** It is the
 authoring protocol, including the manual fact-validation pass the gate cannot do.
 

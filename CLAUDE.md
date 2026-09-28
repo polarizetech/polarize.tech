@@ -1,3 +1,5 @@
+@AGENTS.md
+
 # CLAUDE.md — polarize.tech publishing protocol
 
 Read this before touching `_posts/`, `_drafts/`, or `_data/`.
