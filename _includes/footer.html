@@ -1,10 +1,36 @@
-<footer class="ui-footer">
-  <a class="ui-footer__brand ui-brand" href="{{ '/' | relative_url }}">
-    <span class="ui-brand__mark"></span>
-    <span class="ui-brand__word">POLARIZE</span>
-  </a>
-  <p class="ui-footer__fine ui-label">
-    An ongoing, falsification-first research program on bioelectric sensing
-    &amp; stimulation · polarize.tech
-  </p>
+{%- comment -%}
+  The site footer (polarize-ui landing.css: .ui-sitefooter): a closing call to
+  action, the section links and the wordmark. `contact_href` and
+  `speculations_href` are set in _layouts/default.html.
+{%- endcomment -%}
+<footer class="ui-sitefooter" id="contact">
+  <div class="ui-sitefooter__cta">
+    <div>
+      <h2 class="ui-sitefooter__title">Follow the work as it happens.</h2>
+      <p class="ui-sitefooter__lede">New posts, speculations and merged changes, as they land. Questions, corrections and collaborations are welcome.</p>
+    </div>
+    <div class="ui-sitefooter__actions">
+      <a class="ui-cta" href="{{ '/blog/feed.xml' | relative_url }}">
+        <span class="ui-cta__icon"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M5 5a14 14 0 0 1 14 14M5 11a8 8 0 0 1 8 8"/><circle cx="6" cy="18" r="1"/></svg></span>
+        <span class="ui-cta__text">Subscribe via RSS</span>
+      </a>
+      <a class="ui-cta ui-cta--solid" href="{{ contact_href }}"><span class="ui-cta__text">Get in touch</span></a>
+    </div>
+  </div>
+  <div class="ui-sitefooter__nav">
+    <nav class="ui-sitefooter__links" aria-label="Footer">
+      <a class="ui-sitefooter__link" href="{{ '/work/' | relative_url }}">Projects</a>
+      <a class="ui-sitefooter__link" href="{{ '/blog/' | relative_url }}">Findings</a>
+      <a class="ui-sitefooter__link" href="{{ speculations_href }}">Speculations</a>
+      <a class="ui-sitefooter__link" href="{{ '/changelog/' | relative_url }}">Changelog</a>
+      <a class="ui-sitefooter__link" href="https://polarizetech.github.io/polarize-ui/" rel="noopener">Design system</a>
+      <a class="ui-sitefooter__link" href="https://github.com/polarizetech" rel="noopener">GitHub</a>
+    </nav>
+    <span class="ui-label">Falsification-first · citation-gated</span>
+  </div>
+  <div class="ui-sitefooter__word" aria-hidden="true">Polarize</div>
+  <div class="ui-sitefooter__fine">
+    <span class="ui-label">© {{ site.time | date: "%Y" }} Polarize · {{ site.author.location }}</span>
+    <span class="ui-label">{{ site.tagline }}</span>
+  </div>
 </footer>

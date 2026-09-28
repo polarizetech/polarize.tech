@@ -1,57 +1,13 @@
 {%- comment -%}
-  Everything in the left column EXCEPT the brand, which the layout places
-  itself: on desktop this sits under it, but on mobile the brand stays at the
-  top of the page and all of this moves below the content.
+  The left column on section pages: topics (blog) or repositories (work,
+  changelog), and the feed/GitHub links. On a phone it drops below the content.
 {%- endcomment -%}
 <aside class="ui-sidebar">
 
-  {%- if site.contact_email %}
-  <div class="ui-sidebar__section">
-    {%- comment -%}
-      Keep contact available while the author bio is hidden. The contact page
-      only works once `contact_endpoint` is set; until then this is a mailto.
-    {%- endcomment -%}
-    {%- if site.contact_endpoint and site.contact_endpoint != "" %}
-    <a class="ui-sidebar__contact" href="{{ '/contact/' | relative_url }}">{% include icon.html name="mail" %} Get in touch</a>
-    {%- else %}
-    <a class="ui-sidebar__contact" href="mailto:{{ site.contact_email }}">{% include icon.html name="mail" %} Get in touch</a>
-    {%- endif %}
-  </div>
-  {%- endif %}
-
   {%- comment -%}
-    The site menu: home, then the sections. `section` is set per page (front matter, or the
-    defaults in _config.yml) and marks the current one; the home page has none.
+    Contact and the section menu live in the top bar (_includes/topnav.html).
+    The sidebar keeps what is specific to the section: topics or repositories.
   {%- endcomment -%}
-  <nav class="ui-sidebar__topics" aria-label="Menu">
-    <p class="ui-label ui-sidebar__heading">{% include icon.html name="note" %} Menu</p>
-    <ul class="ui-sidebar__list">
-      <li>
-        <a class="ui-sidebar__link{% if page.url == '/' %} is-current{% endif %}"
-           href="{{ '/' | relative_url }}">Home</a>
-      </li>
-      <li>
-        <a class="ui-sidebar__link{% if page.section == 'blog' %} is-current{% endif %}"
-           href="{{ '/blog/' | relative_url }}">Posts
-          <span class="ui-sidebar__count">{{ site.posts | size }}</span></a>
-      </li>
-      <li>
-        <a class="ui-sidebar__link{% if page.section == 'rants' %} is-current{% endif %}"
-           href="{{ '/rants/' | relative_url }}">Rants
-          <span class="ui-sidebar__count">{{ site.essays | size }}</span></a>
-      </li>
-      <li>
-        <a class="ui-sidebar__link{% if page.section == 'work' %} is-current{% endif %}"
-           href="{{ '/work/' | relative_url }}">Work
-          <span class="ui-sidebar__count">{{ site.data.repos | size }}</span></a>
-      </li>
-      <li>
-        <a class="ui-sidebar__link{% if page.section == 'changelog' %} is-current{% endif %}"
-           href="{{ '/changelog/' | relative_url }}">Changelog
-          <span class="ui-sidebar__count">{{ site.data.changelog | size }}</span></a>
-      </li>
-    </ul>
-  </nav>
 
   {%- comment -%}
     Topics are the posts' `project:` labels, so they show only in the blog

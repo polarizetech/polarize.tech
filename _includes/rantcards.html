@@ -1,18 +1,35 @@
 {%- comment -%}
-  Rants as portrait cards, story-style: less formal than a post row, no tier
-  badge (the rant page itself still carries SPEC). `row=true` lays them out as a
-  single scrolling row (the home page); otherwise they wrap into a grid.
+  Speculations as story cards (polarize-ui landing.css: .ui-story): portrait,
+  told like a post, the words at the bottom. Each card is backed by one of the
+  archival plates in _data/schematics.yml, in turn. No findings here: the badge
+  is always SPEC.
 
-  Usage: {% include rantcards.html rants=list %}  (optional: row=true)
+  Usage: {% include rantcards.html rants=list %}  (optional: row=true for a
+  single scrolling row, as on the home page; otherwise a wrapping grid)
 {%- endcomment -%}
-<ul class="rants{% if include.row %} rants--row{% endif %}">
+{%- assign plates = site.data.schematics %}
+<ul class="ui-stories{% unless include.row %} ui-stories--grid{% endunless %}">
   {%- for r in include.rants %}
-  <li class="rants__item">
-    <a class="rant" href="{{ r.url | relative_url }}">
-      <span class="rant__date">{{ r.date | date: "%b %-d" }}</span>
-      <span class="rant__title">{{ r.title }}</span>
-      <span class="rant__excerpt">{{ r.content | strip_html | normalize_whitespace | truncatewords: 34 }}</span>
-      <span class="rant__more">Read →</span>
+  {%- assign pi = forloop.index0 | modulo: plates.size %}
+  {%- assign plate = plates[pi] %}
+  {%- assign words = r.content | number_of_words %}
+  {%- assign mins = words | divided_by: 200.0 | ceil %}
+  <li>
+    <a class="ui-story" href="{{ r.url | relative_url }}">
+      <img class="ui-story__bg ui-plate__img" src="{{ '/assets/schematics/' | append: plate.id | append: '.jpg' | relative_url }}"
+           alt="" loading="lazy" />
+      <span class="ui-story__head">
+        <span class="ui-story__avatar" aria-hidden="true"></span>
+        <span class="ui-story__who">Polarize<span class="ui-story__when">{{ r.date | date: "%b %-d, %Y" }}</span></span>
+        {% include tier.html tier="SPEC" %}
+      </span>
+      <span class="ui-story__body">
+        <span class="ui-story__title">{{ r.title }}</span>
+        {%- if r.description %}
+        <span class="ui-story__excerpt">{{ r.description }}</span>
+        {%- endif %}
+        <span class="ui-story__foot"><span>Keep reading →</span><span class="ui-story__time">{{ mins }} min read</span></span>
+      </span>
     </a>
   </li>
   {%- else %}

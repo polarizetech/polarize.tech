@@ -1,61 +1,322 @@
 ---
 layout: home
 title: null
+full_bleed: true
+cellfield: true
 description: >-
-  Working notes on bioelectric sensing and stimulation — audio-evoked
-  potentials, magnetometry, and the instruments in between. Falsification-first,
-  citation-gated, and open about what the instruments cannot hear.
+  An independent research lab building open instruments and software for
+  bioelectric sensing — and publishing what they find, including when the
+  answer is no.
+
+# The homepage's own copy. Everything else on the page (posts, essays, repos,
+# the changelog) is read from the site's data, so it stays current by itself.
+# Findings are never written here: a project's finding is its post's summary.
+process:
+  - num: "01"
+    stage: Before anything runs
+    repo: adaptive-preregistration
+    title: Predict first, then run the code.
+    body: >-
+      Predictions and pass criteria are written down and tagged in git before
+      the code runs. The plan can change between stages, but every change is
+      dated, says whether the result was already known, and can't turn a fail
+      into a pass.
+    files: [PREREG.md, DEVIATIONS.md, RESULTS.md, -prereg tags]
+    post: adaptive-preregistration-predict-first-then-run-the-code
+  - num: "02"
+    stage: How a study is laid out
+    repo: scientific-research-scaffold
+    title: One question per study, and a check that it's kept.
+    body: >-
+      A protocol for laying out studies and simulators across repositories, and
+      a CLI that scaffolds new ones and checks existing ones against it — with
+      the preregistration kit installed from the first commit.
+    files: [STUDY.toml, apps/vN-*, model-vX.Y.Z tags, scaffold check]
+  - num: "03"
+    stage: What the literature says
+    repo: scientific-research-rag
+    title: Evidence first, so the model can't make it up.
+    body: >-
+      Code controls search, evidence, verification and the run log; the model
+      only fills in narrow forms. Every claim cites a verbatim passage, and
+      claims that fail a check are removed and counted, not softened.
+    files: [answer.md, run.json, verbatim quotes, null-result search]
+    post: a-rag-tool-that-keeps-the-model-in-check
+projects:
+  - repo: neural-memory
+    question: Can a network of neurons hold on to a sound?
+    post: a-network-built-to-lose
+    plate: vicq-dazyr-brain-1798
+  - repo: olimex-shield
+    question: What can a $70 amplifier actually hear?
+    post: can-a-70-dollar-board-tell-me-im-wrong
+    plate: galvani-frog-1792
+    flip: true
+toolkit: [paper-library]
 ---
 {%- comment -%}
-  The home page: the latest few of each section. The full lists live at /blog/
-  (paginated), /rants/ and /changelog/.
+  The homepage, built from polarize-ui's landing layer (design/landing.css,
+  design/cellfield.js). The page is full-bleed (`full_bleed` in the front
+  matter) and draws the cell field behind itself (`cellfield`).
 {%- endcomment -%}
+<ui-cellfield hero="#home-hero" density="0.75" intensity="0.9"></ui-cellfield>
 
-{%- assign latest_posts = site.posts | slice: 0, 4 %}
-<section class="home__section" aria-labelledby="home-posts">
-  <header class="home__head">
-    <h2 class="ui-label ui-main__heading" id="home-posts">Posts</h2>
-    <a class="home__more ui-label" href="{{ '/blog/' | relative_url }}">All posts →</a>
-  </header>
-  {% include postlist.html posts=latest_posts hide_project=true %}
+<section class="ui-hero" id="home-hero">
+  <h1 class="ui-hero__title ui-reveal">Reading and writing the <em>body electric.</em></h1>
+  <p class="ui-hero__lede ui-reveal ui-reveal--3">{{ page.description }}</p>
+  <div class="ui-hero__actions ui-reveal ui-reveal--4">
+    <a class="ui-cta" href="#process">
+      <span class="ui-cta__icon"><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false" fill="currentColor"><circle cx="5" cy="6" r="1.8"/><circle cx="12" cy="4" r="1.3"/><circle cx="9" cy="11" r="2.2"/><circle cx="16" cy="10" r="1.4"/><circle cx="11" cy="17" r="1.6"/></svg></span>
+      <span class="ui-cta__text">Our process</span>
+    </a>
+    <a class="ui-cta ui-cta--solid" href="{{ contact_href }}"><span class="ui-cta__text">Get in touch</span></a>
+  </div>
 </section>
 
-{%- assign latest_rants = site.essays | sort: "date" | reverse | slice: 0, 4 %}
-<section class="home__section" aria-labelledby="home-rants">
-  <header class="home__head">
-    <h2 class="ui-label ui-main__heading" id="home-rants">Rants</h2>
-    <a class="home__more ui-label" href="{{ '/rants/' | relative_url }}">All rants →</a>
-  </header>
-  {% include rantcards.html rants=latest_rants row=true %}
-</section>
-
-{%- comment -%}
-  The changelog, as repos: the most recently active public repos, each with its
-  latest merged PR. The full, paginated changelog is /changelog/.
-{%- endcomment -%}
-{%- assign active_repos = site.data.repos | sort: "active_at" | reverse | slice: 0, 4 %}
-<section class="home__section" aria-labelledby="home-changelog">
-  <header class="home__head">
-    <h2 class="ui-label ui-main__heading" id="home-changelog">Changelog</h2>
-    <a class="home__more ui-label" href="{{ '/changelog/' | relative_url }}">Full changelog →</a>
-  </header>
-  <ul class="repos__list repos__list--home">
-    {%- for r in active_repos %}
+{%- comment -%} Process: the three repositories that keep results honest. {%- endcomment -%}
+<section class="ui-section" id="process" aria-labelledby="process-title">
+  <div class="ui-section__head">
+    <div class="ui-section__titles">
+      <p class="ui-section__eyebrow">Process</p>
+      <h2 class="ui-section__title" id="process-title">Built to show where we were wrong.</h2>
+    </div>
+    <p class="ui-section__lede">Every study borrows the discipline of a clinical trial: the inputs and the predictions are preregistered before anything runs, so a result can fail in public and stay on the record. These three repositories are how that works.</p>
+  </div>
+  <ol class="ui-steps">
+    {%- for s in page.process %}
+    {%- assign r = site.data.repos | where: "name", s.repo | first %}
     <li>
-      <a class="repocard" href="{{ '/work/' | append: r.name | append: '/' | relative_url }}">
-        <span class="repocard__name">{% include repo-icon.html repo=r.name %}{{ r.name }}</span>
-        <span class="repocard__desc">{{ r.description }}</span>
-        <span class="repocard__latest">
+      <a class="ui-step" href="https://github.com/polarizetech/{{ s.repo }}" rel="noopener">
+        <span class="ui-step__head"><span class="ui-step__num">{{ s.num }}</span><span class="ui-label">{{ s.stage }}</span></span>
+        <span class="ui-step__repo">{{ s.repo }}{% if r %}<span class="ui-label">{{ r.language }}</span>{% endif %}</span>
+        <h3 class="ui-step__title">{{ s.title }}</h3>
+        <p class="ui-step__body">{{ s.body }}</p>
+        <span class="ui-step__files" aria-label="Leaves behind">
+          {%- for f in s.files %}<span class="ui-step__file">{{ f }}</span>{% endfor -%}
+        </span>
+        {%- if r %}
+        <span class="ui-step__latest">
           {%- if r.latest_change %}
-          <span class="repocard__label">Latest · {{ r.latest_change.merged_at | date: "%Y-%m-%d" }}</span>
-          <span class="repocard__change"><span class="changelog__num">#{{ r.latest_change.number }}</span> {{ r.latest_change.title }}</span>
+          <span class="ui-label">Latest · {{ r.latest_change.merged_at | date: "%b %-d" }}</span><span>{{ r.latest_change.title }}</span>
           {%- else %}
-          <span class="repocard__label">Updated · {{ r.active_at | date: "%Y-%m-%d" }}</span>
-          <span class="repocard__change repocard__change--none">No merged pull requests yet</span>
+          <span class="ui-label">Updated · {{ r.active_at | date: "%b %-d, %Y" }}</span>
           {%- endif %}
+        </span>
+        {%- endif %}
+        <span class="ui-step__foot">
+          {%- if s.post %}
+          {%- assign sp = site.posts | where_exp: "p", "p.url contains s.post" | first %}
+          <span>Read: {{ sp.title }} →</span>
+          {%- else %}
+          <span>Read the protocol →</span>
+          {%- endif %}
+          <span class="ui-label">GitHub ↗</span>
         </span>
       </a>
     </li>
     {%- endfor %}
-  </ul>
+  </ol>
+  <div class="ui-promises">
+    <div class="ui-promise"><p class="ui-promise__title">Failures stay on the record</p><p class="ui-promise__text">A prediction that fails is reported as a fail. Mostly negative results are still results.</p></div>
+    <div class="ui-promise"><p class="ui-promise__title">Every change to a plan is dated</p><p class="ui-promise__text">Plans may change, but each change says whether the result was already known.</p></div>
+    <div class="ui-promise"><p class="ui-promise__title">No claim without its source</p><p class="ui-promise__text">Every claim cites a verbatim passage; claims that fail a check are removed and counted.</p></div>
+  </div>
+  {%- assign gate = site.posts | where_exp: "p", "p.url contains 'how-research-gets-published-here'" | first %}
+  {%- unless gate %}{% assign gate = site.posts | last %}{% endunless %}
+  <p class="home__gate">Then the publication gate: every citation machine-fetched, every claim tiered, every revision kept. <a href="{{ gate.url | relative_url }}">{{ gate.title }} →</a></p>
+</section>
+
+{%- comment -%} Projects: each leads with its question; the finding is its post's own summary. {%- endcomment -%}
+<section class="ui-section" id="projects" aria-labelledby="projects-title">
+  <div class="ui-section__head ui-section__head--stack">
+    <div class="ui-section__titles">
+      <p class="ui-section__eyebrow">Projects</p>
+      <h2 class="ui-section__title" id="projects-title">What we're building, in the open.</h2>
+      <p class="ui-section__lede">Every project is a public repository — its plans, code and raw outputs. Each one gets written up when it has something to report, including when the answer is no.</p>
+    </div>
+  </div>
+  {%- for pr in page.projects %}
+  {%- assign r = site.data.repos | where: "name", pr.repo | first %}
+  {%- assign post = site.posts | where_exp: "p", "p.url contains pr.post" | first %}
+  {%- assign plate = site.data.schematics | where: "id", pr.plate | first %}
+  {%- assign changes = site.data.changelog | where: "repo", pr.repo | sort: "merged_at" | reverse %}
+  <a class="ui-project{% if pr.flip %} ui-project--flip{% endif %}" href="{{ '/work/' | append: pr.repo | append: '/' | relative_url }}">
+    <div class="ui-project__body">
+      <div class="ui-project__meta">
+        <span class="ui-project__repo">{{ pr.repo }}</span>
+        {%- if r %}<span class="ui-label">{{ r.language }}</span>{% if r.license %}<span class="ui-label">{{ r.license }}</span>{% endif %}{% endif %}
+        {%- if changes.size > 0 %}<span class="ui-label">{{ changes.size }} merged PR{% if changes.size != 1 %}s{% endif %}</span>{% endif %}
+      </div>
+      <h3 class="ui-project__question">{{ pr.question }}</h3>
+      {%- if r %}<p class="ui-project__desc">{{ r.description }}</p>{% endif %}
+      {%- if post %}
+      <div class="ui-project__finding">
+        <div class="ui-project__finding-head"><span class="ui-label">Latest write-up</span>{% include tier.html tier=post.tier %}</div>
+        <p class="ui-project__finding-text">{{ post.summary | default: post.description }}</p>
+        <span class="ui-arrowlink">Read: {{ post.title }} →</span>
+      </div>
+      {%- endif %}
+      <div class="home__changes">
+        <p class="ui-label">Latest changes</p>
+        <ul class="ui-project__changes">
+          {%- for c in changes limit: 3 %}
+          <li><span class="ui-project__date">{{ c.merged_at | date: "%b %-d" }}</span><span class="ui-project__num">#{{ c.number }}</span><span>{{ c.title }}</span></li>
+          {%- else %}
+          <li><span class="ui-project__date">{{ r.active_at | date: "%b %-d" }}</span><span class="ui-project__num">—</span><span>Updated; no merged pull requests yet</span></li>
+          {%- endfor %}
+        </ul>
+      </div>
+    </div>
+    {%- if plate %}
+    <figure class="ui-plate ui-project__media">
+      <div class="ui-plate__frame"><img class="ui-plate__img" src="{{ '/assets/schematics/' | append: plate.id | append: '.jpg' | relative_url }}" alt="Historical drawing: {{ plate.subject }}." loading="lazy" /></div>
+      <figcaption class="ui-plate__caption">{{ plate.credit | strip_html }} · {{ plate.license }}</figcaption>
+    </figure>
+    {%- endif %}
+  </a>
+  {%- endfor %}
+  <div class="home__toolkit">
+    <div class="home__toolkit-head"><p class="ui-label">Also in the toolkit</p><a class="ui-arrowlink" href="{{ '/work/' | relative_url }}">All projects →</a></div>
+    <div class="ui-repocards">
+      {%- for name in page.toolkit %}
+      {%- assign r = site.data.repos | where: "name", name | first %}
+      {%- if r %}
+      <a class="ui-repocard" href="{{ '/work/' | append: r.name | append: '/' | relative_url }}">
+        <span class="ui-repocard__head"><span class="ui-repocard__name">{{ r.name }}</span><span class="ui-label">{{ r.language }}</span></span>
+        <p class="ui-repocard__desc">{{ r.description }}</p>
+        <span class="ui-repocard__latest"><span class="ui-label">Updated · {{ r.active_at | date: "%b %-d, %Y" }}</span></span>
+      </a>
+      {%- endif %}
+      {%- endfor %}
+    </div>
+  </div>
+</section>
+
+{%- comment -%} The changelog as a feed: the latest merged pull requests across the public repos. {%- endcomment -%}
+<section class="ui-section" id="changelog" aria-labelledby="changelog-title">
+  <div class="ui-split">
+    <div class="ui-section__titles">
+      <p class="ui-section__eyebrow">Changelog</p>
+      <h2 class="ui-section__title" id="changelog-title">Recently merged.</h2>
+      <p class="ui-section__lede">Every merged change to a public repository, as it lands. The work moves in small, reviewable steps.</p>
+      <a class="ui-cta home__start" href="{{ '/changelog/' | relative_url }}"><span class="ui-cta__text">Full changelog →</span></a>
+    </div>
+    {%- assign feed = site.data.changelog | sort: "merged_at" | reverse %}
+    <ul class="ui-changes">
+      {%- for c in feed limit: 8 %}
+      <li>
+        <a class="ui-change" href="{{ c.url }}" rel="noopener">
+          <span class="ui-change__date">{{ c.merged_at | date: "%b %-d" }}</span>
+          <span class="ui-change__repo">{{ c.repo }}</span>
+          <span class="ui-change__kind">PR #{{ c.number }}</span>
+          <span class="ui-change__title">{{ c.title }}</span>
+          <span class="ui-change__go" aria-hidden="true">→</span>
+        </a>
+      </li>
+      {%- endfor %}
+    </ul>
+  </div>
+</section>
+
+{%- comment -%} Findings: the latest posts, with their own images and credits. {%- endcomment -%}
+<section class="ui-section" id="findings" aria-labelledby="findings-title">
+  <div class="ui-section__head">
+    <div class="ui-section__titles">
+      <p class="ui-section__eyebrow">Findings</p>
+      <h2 class="ui-section__title" id="findings-title">What the work turned up.</h2>
+    </div>
+    <div class="ui-section__side">
+      <p class="ui-section__lede">Articles written from the repositories: the question, what was tried, and what the result can and cannot support.</p>
+      <a class="ui-cta" href="{{ '/blog/' | relative_url }}"><span class="ui-cta__text">All {{ site.posts | size }} articles →</span></a>
+    </div>
+  </div>
+  {%- assign lead = site.posts | first %}
+  {%- assign lead_proj = site.projects[lead.project] %}
+  <a class="ui-feature" href="{{ lead.url | relative_url }}">
+    {%- if lead.image %}
+    <figure class="ui-plate ui-feature__media">
+      <div class="ui-plate__frame"><img class="ui-plate__img ui-plate__img--photo" src="{{ lead.image | relative_url }}" alt="{{ lead.image_alt | strip_newlines }}" loading="lazy" /></div>
+      {%- if lead.image_credit %}<figcaption class="ui-plate__caption">Photograph: {{ lead.image_credit | strip_html | strip_newlines }}</figcaption>{% endif %}
+    </figure>
+    {%- endif %}
+    <div class="ui-feature__body">
+      <div class="ui-metaline">{% include tier.html tier=lead.tier %}<span class="ui-metaline__text">{{ lead.date | date: "%b %-d, %Y" }}{% if lead_proj %} · {{ lead_proj.label }}{% endif %}</span></div>
+      <h3 class="ui-feature__title">{{ lead.title }}</h3>
+      <p class="ui-feature__summary">{{ lead.summary | default: lead.description }}</p>
+      <span class="ui-feature__foot"><span class="ui-feature__from">{% if lead.citations.size > 0 %}{{ lead.citations | size }} sources{% endif %}</span><span>Read the article →</span></span>
+    </div>
+  </a>
+  <div class="ui-cards">
+    {%- for p in site.posts offset: 1 limit: 6 %}
+    {%- assign proj = site.projects[p.project] %}
+    <a class="ui-articlecard" href="{{ p.url | relative_url }}">
+      {%- if p.image %}
+      <figure class="ui-plate ui-articlecard__media">
+        <div class="ui-plate__frame"><img class="ui-plate__img ui-plate__img--photo" src="{{ p.image | relative_url }}" alt="{{ p.image_alt | strip_newlines }}" loading="lazy" /></div>
+      </figure>
+      {%- else %}
+      <p class="ui-articlecard__pull">“{{ p.summary | default: p.description | truncatewords: 26 }}”</p>
+      {%- endif %}
+      <span class="ui-articlecard__body">
+        <span class="ui-metaline">{% include tier.html tier=p.tier %}<span class="ui-metaline__text">{{ p.date | date: "%b %-d" }}{% if proj %} · {{ proj.label }}{% endif %}</span></span>
+        <span class="ui-articlecard__title">{{ p.title }}</span>
+        <span class="ui-articlecard__desc">{{ p.description }}</span>
+        {%- if p.image_credit %}<span class="ui-articlecard__credit">Photograph: {{ p.image_credit | strip_html | strip_newlines | truncatewords: 12 }}</span>{% endif %}
+      </span>
+    </a>
+    {%- endfor %}
+  </div>
+</section>
+
+{%- comment -%} Speculations: the founder's dictated pieces, as story cards. {%- endcomment -%}
+<section class="ui-section" id="speculations" aria-labelledby="speculations-title">
+  <div class="ui-storyrow">
+    <div class="ui-storyrow__intro">
+      <div class="ui-section__titles">
+        <p class="ui-section__eyebrow">Speculations</p>
+        <h2 class="ui-section__title" id="speculations-title">Thinking out loud.</h2>
+        <p class="ui-storyrow__lede">Short dictated pieces from the founder — hunches the projects are trying to test, or trying to kill. No claims, no citations.</p>
+      </div>
+      <a class="ui-cta home__start" href="{{ speculations_href }}"><span class="ui-cta__text">All speculations →</span></a>
+    </div>
+    {%- assign essays = site.essays | sort: "date" | reverse %}
+    {% include rantcards.html rants=essays row=true %}
+  </div>
+</section>
+
+{%- comment -%} polarize-ui: the design system these pages are built with. {%- endcomment -%}
+<section class="ui-section" id="design-system" aria-labelledby="ds-title">
+  <div class="home__ds">
+    <div class="ui-section__titles">
+      <p class="ui-section__eyebrow">Design system</p>
+      <p class="ui-project__meta"><span class="ui-project__repo">polarize-ui</span><span class="ui-label">TypeScript + zero-build CSS</span><span class="ui-label">MIT</span></p>
+      <h2 class="ui-section__title" id="ds-title">Science is beautiful. Its web presence should be too.</h2>
+      <p class="ui-section__lede">The design system behind these pages, built for interfaces that show scientific data honestly. Every measured, modelled or speculative value carries a label, and the label can never be hidden.</p>
+      <dl class="home__ds-list">
+        <div><dt class="ui-label">Charts</dt><dd>A threshold is drawn on the axes it judges; a log axis says so in its label.</dd></div>
+        <div><dt class="ui-label">Signals</dt><dd>Heatmap and Waveform on a one-hue ramp, with clipping counted, not hidden.</dd></div>
+        <div><dt class="ui-label">Statistics</dt><dd>An observed statistic against its null, the permutation p printed with its count.</dd></div>
+        <div><dt class="ui-label">Evidence</dt><dd>Tier, Value and Readout: measured and predicted are never styled alike.</dd></div>
+      </dl>
+      <div class="home__ds-actions">
+        <a class="ui-cta" href="https://polarizetech.github.io/polarize-ui/" rel="noopener"><span class="ui-cta__text">Live Storybook ↗</span></a>
+        <a class="ui-arrowlink" href="https://github.com/polarizetech/polarize-ui" rel="noopener">GitHub ↗</a>
+      </div>
+    </div>
+    {% include fig-ui-specimen.html %}
+  </div>
+</section>
+
+<section class="ui-section" aria-label="The labelling rule">
+  <div class="ui-principle">
+    <p class="ui-principle__text">A label may never be hidden. <em>Its explanation must be.</em></p>
+    <p class="ui-principle__note">Measured and predicted are never styled alike, and every badge ships a word and a glyph with its colour — so the distinction survives colour blindness, greyscale print and a skimming reader.</p>
+    <div class="ui-tierlegend">
+      <div class="ui-tierlegend__item"><ui-tier tier="MEASURED"></ui-tier><p class="ui-tierlegend__text">Read off the actual render or a real instrument.</p></div>
+      <div class="ui-tierlegend__item"><ui-tier tier="PREDICTED"></ui-tier><p class="ui-tierlegend__text">Output of a model. Never styled like a measurement.</p></div>
+      <div class="ui-tierlegend__item"><ui-tier tier="EXPLORATORY"></ui-tier><p class="ui-tierlegend__text">An open question being actively tried. Carries a how-to-kill-it.</p></div>
+      <div class="ui-tierlegend__item"><ui-tier tier="SPEC"></ui-tier><p class="ui-tierlegend__text">A stated guess. Never evidence.</p></div>
+      <div class="ui-tierlegend__item"><ui-tier tier="REFUTED"></ui-tier><p class="ui-tierlegend__text">A claim this project explicitly does not make.</p></div>
+    </div>
+  </div>
 </section>
