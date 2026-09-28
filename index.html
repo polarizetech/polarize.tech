@@ -236,8 +236,9 @@ toolkit: [paper-library]
       <a class="ui-cta" href="{{ '/blog/' | relative_url }}"><span class="ui-cta__text">All {{ site.posts | size }} articles →</span></a>
     </div>
   </div>
-  {%- comment -%} The lead is the newest post with an image; the grid is the next six after it, image or not. {%- endcomment -%}
-  {%- assign with_images = site.posts | where_exp: "p", "p.image" %}
+  {%- comment -%} Posts marked `findings: false` (about the site, not the research) are left out. The lead is the newest post with an image; the grid is the next six after it, image or not. {%- endcomment -%}
+  {%- assign findings = site.posts | where_exp: "p", "p.findings != false" %}
+  {%- assign with_images = findings | where_exp: "p", "p.image" %}
   {%- assign lead = with_images | first %}
   {%- assign lead_proj = site.projects[lead.project] %}
   <a class="ui-feature" href="{{ lead.url | relative_url }}">
@@ -255,7 +256,7 @@ toolkit: [paper-library]
     </div>
   </a>
   <div class="ui-cards">
-    {%- assign rest = site.posts | where_exp: "p", "p.url != lead.url" %}
+    {%- assign rest = findings | where_exp: "p", "p.url != lead.url" %}
     {%- for p in rest limit: 6 %}
     {%- assign proj = site.projects[p.project] %}
     <a class="ui-articlecard" href="{{ p.url | relative_url }}">

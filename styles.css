@@ -251,3 +251,19 @@ body.ui { margin: 0; }
 }
 .home__changes .ui-label { margin-bottom: var(--space-3); }
 .home__start { align-self: flex-start; }
+
+/* ---------- Screenshot figures in posts (2026-09-28) ----------
+   For posts about the site itself. .shot--wide breaks out of the prose measure
+   to the right, .shot--pair sets two phone shots side by side, .shot--strip
+   scrolls sideways on a narrow screen. */
+.shot { margin: var(--space-6) 0; }
+.shot img { display: block; width: 100%; height: auto; border: 1px solid var(--border-strong); border-radius: var(--radius-xs); }
+.shot a { display: block; }
+.shot figcaption { margin-top: var(--space-2); font-size: var(--text-sm); line-height: 1.5; color: var(--faint-foreground); }
+/* Wide figures size against the main column (a container), not the viewport. */
+.ui-main { container-type: inline-size; }
+.ui-prose .shot--wide, .ui-prose .shot--strip { width: min(64rem, 100cqw); max-width: none; }
+.shot--pair { display: grid; grid-template-columns: repeat(2, minmax(0, 13rem)); gap: var(--space-4); }
+.shot--pair figcaption { grid-column: 1 / -1; }
+.shot__scroll { overflow-x: auto; }
+@media (max-width: 700px) { .shot__scroll img { width: 1200px; max-width: none; } }
