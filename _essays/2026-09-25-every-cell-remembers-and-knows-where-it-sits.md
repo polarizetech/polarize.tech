@@ -1,5 +1,4 @@
 ---
-redirect_from: /rants/every-cell-remembers-and-knows-where-it-sits/
 title: "Every cell remembers, and knows where it sits"
 description: >-
   A hunch that habituation is how a single cell stores information, and that a network of

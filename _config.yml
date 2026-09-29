@@ -27,8 +27,6 @@ plugins:
   - jekyll-feed
   - jekyll-sitemap
   - jekyll-paginate
-  # Old /rants/ URLs keep working after the 2026-09-28 rename to /speculations/.
-  - jekyll-redirect-from
 
 # jekyll-paginate v1 — the only paginator GitHub Pages runs. It paginates ONE
 # index.html: the one in paginate_path's directory, i.e. blog/index.html. The
