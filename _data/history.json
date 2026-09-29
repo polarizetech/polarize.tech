@@ -6411,6 +6411,34 @@
  ],
  "_essays/2026-09-25-every-cell-remembers-and-knows-where-it-sits.md": [
   {
+   "sha": "ee0d9c6c37990602296a2f21dbb4369677922ac4",
+   "author": "Joshua Anderton",
+   "date": "2026-09-29T05:24:41-07:00",
+   "subject": "Remove legacy redirects and footer wordmark",
+   "llm": false,
+   "llm_name": null,
+   "short": "ee0d9c6",
+   "first": false,
+   "hunks": [
+    [
+     {
+      "t": "ctx",
+      "h": "---"
+     },
+     {
+      "t": "del",
+      "h": "redirect_from: /rants/every-cell-remembers-and-knows-where-it-sits/"
+     },
+     {
+      "t": "ctx",
+      "h": "title: &quot;Every cell remembers, and knows where it sits&quot;"
+     }
+    ]
+   ],
+   "added": 0,
+   "removed": 10
+  },
+  {
    "sha": "bb624190d8ed8994295bebf0f4d88813e74f906f",
    "author": "Joshua Anderton",
    "date": "2026-09-28T16:20:30-07:00",
@@ -6709,6 +6737,34 @@
   }
  ],
  "_essays/2026-09-25-something-has-to-glue-this-together.md": [
+  {
+   "sha": "ee0d9c6c37990602296a2f21dbb4369677922ac4",
+   "author": "Joshua Anderton",
+   "date": "2026-09-29T05:24:41-07:00",
+   "subject": "Remove legacy redirects and footer wordmark",
+   "llm": false,
+   "llm_name": null,
+   "short": "ee0d9c6",
+   "first": false,
+   "hunks": [
+    [
+     {
+      "t": "ctx",
+      "h": "---"
+     },
+     {
+      "t": "del",
+      "h": "redirect_from: /rants/something-has-to-glue-this-together/"
+     },
+     {
+      "t": "ctx",
+      "h": "title: &quot;Something has to glue this together&quot;"
+     }
+    ]
+   ],
+   "added": 0,
+   "removed": 8
+  },
   {
    "sha": "bb624190d8ed8994295bebf0f4d88813e74f906f",
    "author": "Joshua Anderton",
