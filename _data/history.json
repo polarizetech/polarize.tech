@@ -5689,6 +5689,52 @@
  ],
  "_posts/2026-09-24-adaptive-preregistration-predict-first-then-run-the-code.md": [
   {
+   "sha": "ee47fcd7b30fd646b8e3edcde04fb1b5aa4a49cd",
+   "author": "Joshua Anderton",
+   "date": "2026-09-30T12:04:43-07:00",
+   "subject": "Post: claim first, and preregistration per piece of work",
+   "llm": true,
+   "llm_name": "Claude Opus 5.5",
+   "short": "ee47fcd",
+   "first": false,
+   "hunks": [
+    [
+     {
+      "t": "ctx",
+      "h": "This is the protocol used for model experiments here. It adapts published work on adaptive preregistration for model-based research and on reporting deviations from a preregistered plan. It is written for simulations, analysis pipelines and research software, whoever or whatever is doing the running. The full protocol, with its sources and how deeply each was read, is in the [protocol document](https://github.com/polarizetech/adaptive-preregistration/blob/main/modules/prereg/protocols/PREREG_PROTOCOL.md)."
+     },
+     {
+      "t": "mod",
+      "h": "## The <del>five </del>rules"
+     },
+     {
+      "t": "add",
+      "h": "- **Claim first.** Every piece of work, whether an app, a simulation, a tool or a calculator, starts with a falsifiable claim, settled in the author&#x27;s own words together with what would count against it, before anything is built."
+     },
+     {
+      "t": "ctx",
+      "h": "- **No run before the preregistration.** A run whose result a report will cite may not execute until `PREREG.md` is complete and tagged."
+     }
+    ],
+    [
+     {
+      "t": "ctx",
+      "h": "Recording coding-assistant conversations is no longer part of the protocol, and the kit no longer installs it. The post previously said each prompt and reply was posted to the experiment&#x27;s pull request and committed beside it; that paragraph and the matching line under &quot;How it reaches every project&quot; were removed. The kit&#x27;s repository was also renamed, and its links here point to the new address."
+     },
+     {
+      "t": "add",
+      "h": "## Update — 2026-09-30"
+     },
+     {
+      "t": "add",
+      "h": "The protocol gained a rule that comes before the others: every piece of work starts with a falsifiable claim, stated with what would count against it, before anything is built. Settling it means saying what the claim&#x27;s terms mean, how it will be measured, the smallest effect that would matter, and what a test of it assumes. The section above was previously titled &quot;The five rules&quot;. Preregistration now also works per piece of work: a project holding several apps, simulations, tools or calculators gives each its own claim, experiments and versions."
+     }
+    ]
+   ],
+   "added": 135,
+   "removed": 1
+  },
+  {
    "sha": "9d7928852475f1dfab92b26b507c43f8edae718f",
    "author": "Joshua Anderton",
    "date": "2026-09-25T13:23:54-07:00",
