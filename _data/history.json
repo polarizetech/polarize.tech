@@ -5522,6 +5522,34 @@
  ],
  "_posts/2026-09-24-a-rag-tool-that-keeps-the-model-in-check.md": [
   {
+   "sha": "4fc93efb33188554c760ba1b3c9060b734ad902c",
+   "author": "Joshua Anderton",
+   "date": "2026-09-30T07:40:01-07:00",
+   "subject": "Rename scientific-research-rag to retrieval-augmented-generation",
+   "llm": true,
+   "llm_name": "Claude Opus 5.5",
+   "short": "4fc93ef",
+   "first": false,
+   "hunks": [
+    [
+     {
+      "t": "ctx",
+      "h": "Retrieval-augmented generation is not a citation system by itself. It gives a model more text; the protocol has to make that text accountable."
+     },
+     {
+      "t": "mod",
+      "h": "This is the method used in [KIT <del>Scientific</del><ins>Retrieval-Augmented</ins> <del>Research RAG</del><ins>Generation</ins>](https://github.com/polarizetech/<del>scientific</del><ins>retrieval</ins>-<del>research</del><ins>augmented</ins>-<del>rag</del><ins>generation</ins>):"
+     },
+     {
+      "t": "ctx",
+      "h": "## Pipeline"
+     }
+    ]
+   ],
+   "added": 6,
+   "removed": 6
+  },
+  {
    "sha": "434b16edb984fe8426975bc796ca60bf662019a9",
    "author": "Joshua Anderton",
    "date": "2026-09-25T07:42:53-07:00",
