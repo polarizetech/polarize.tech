@@ -39,8 +39,11 @@ plan. It is written for simulations, analysis pipelines and research software, w
 whatever is doing the running. The full protocol, with its sources and how deeply each was read,
 is in the [protocol document](https://github.com/polarizetech/adaptive-preregistration/blob/main/modules/prereg/protocols/PREREG_PROTOCOL.md).
 
-## The five rules
+## The rules
 
+- **Claim first.** Every piece of work, whether an app, a simulation, a tool or a calculator,
+  starts with a falsifiable claim, settled in the author's own words together with what would
+  count against it, before anything is built.
 - **No run before the preregistration.** A run whose result a report will cite may not
   execute until `PREREG.md` is complete and tagged.
 - **The environment is part of the plan.** The preregistration names the model version it runs
@@ -177,3 +180,12 @@ installs it. The post previously said each prompt and reply was posted to the ex
 request and committed beside it; that paragraph and the matching line under "How it reaches every
 project" were removed. The kit's repository was also renamed, and its links here point to the new
 address.
+
+## Update — 2026-09-30
+
+The protocol gained a rule that comes before the others: every piece of work starts with a
+falsifiable claim, stated with what would count against it, before anything is built. Settling it
+means saying what the claim's terms mean, how it will be measured, the smallest effect that would
+matter, and what a test of it assumes. The section above was previously titled "The five rules".
+Preregistration now also works per piece of work: a project holding several apps, simulations,
+tools or calculators gives each its own claim, experiments and versions.
