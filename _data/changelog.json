@@ -1,5 +1,29 @@
 [
  {
+  "repo": "retrieval-augmented-generation",
+  "number": 1,
+  "title": "Gateway: a server section names an instance and can drop the built-in tools",
+  "body": "One gateway binary can now front a different set of upstreams under its own name. A second instance (the org-status MCP `scientific-research-news`) can then reuse the OAuth server instead of copying `oauth.py`.\n\n- **New optional `server` section** in the gateway config: `name`, `instructions`, and `builtin_tools`. With `builtin_tools: false` the instance drops `web__search` and the `rag__*` tools, so it lists only `gateway_status` and its upstreams.\n- **Omitting the section keeps today's behaviour exactly.**\n- **Tests:** one new test in `tests/test_gateway.py`; 9/9 pass. Ruff is clean. Documented in `docs/mcp-clients.md`.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
+  "url": "https://github.com/polarizetech/retrieval-augmented-generation/pull/1",
+  "merged_at": "2026-09-29T13:55:24Z"
+ },
+ {
+  "repo": "paper-fetch",
+  "number": 1,
+  "title": "Bring over CLAUDE.md, HARVEST.md and INTEGRATION.md from the monorepo",
+  "body": "## Summary\n\nBrings over the three docs from the audio-projects monorepo's `tools/paper-library` (package `paperlib`), which is being replaced by this repo (polarizetech/audio-projects#26). dataset-fetch keeps the same three files at its root:\n\n- `CLAUDE.md`: measured facts, gotchas and design decisions, with their dates.\n- `HARVEST.md`: the procedure for bulk-collecting a topic into the library.\n- `INTEGRATION.md`: how a consumer depends on paper-fetch. It covers the install from git with a pinned commit, setting up the S3/Spaces store through `PAPER_FETCH_*` in `~/.config/paper-fetch/*.env`, the Python API and the MCP server.\n\nNames, commands, env vars and APIs are rewritten to paper-fetch's own and checked against `src/paper_fetch/`. Behaviour that has changed since the monorepo copy is described as it is now:\n\n- **Catalogue writes:** since `bee1bfe` a save merges this process's changes instead of the last writer winning.\n- **Cache:** it lives under `PAPER_FETCH_CACHE` and applies only to the S3 store.\n- **`load_env()`:** `Library.default()` does not call it, so Python consumers must.\n\nMonorepo-only material is dropped: the `tools/.venv-sci` commands, `sync.py` and the generated copy, mcpkit envelopes, and REGISTRY/ORG-PROTOCOL references. Live measurements from the monorepo copy are kept, dated and labelled as such.\n\nDocs only; no code changes.\n\n## Test plan\n\n- [x] Every command, flag and env var named in the docs exists in `src/paper_fetch/`.\n- [x] `uv run pytest` passes (214 tests).\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
+  "url": "https://github.com/polarizetech/paper-fetch/pull/1",
+  "merged_at": "2026-09-29T12:33:11Z"
+ },
+ {
+  "repo": "polarize-ui",
+  "number": 1,
+  "title": "feat: landing layer and cell field",
+  "body": "A lab's front door, in both renderers, drawn from the polarize.tech homepage redesign.\n\n## What's added\n- **`landing.css`** (zero-build) and **`src/components/landing.tsx`** (React), rendering the same classes: `TopNav`, `Hero`, `Cta`, `Section`, `ProcessSteps`, `Promises`, `ProjectFeature`, `RepoCard`, `ChangeFeed`, `FeaturedArticle`, `ArticleCard`, `MetaLine`, `StoryCard` / `StoryRow` / `StoryGrid`, `Plate`, `Principle`, `TierLegend`, `SiteFooter`. Responsive to phone width; the top bar folds into a `<details>` menu with no script.\n- **`cellfield.js`**: `<ui-cellfield>`, a WebGL speck field (clusters at different depths, per-cell polarisation, occasional coordinated waves, an optional hero cell). Decoration only: `aria-hidden`, no fetch, one still frame under `prefers-reduced-motion`. React: `<CellField>`, same engine, typed by `cellfield.d.ts`.\n- **Token:** `radius.xs` (4px).\n- **Checks:** `dev_check.py` holds `landing.css` to the publication.css rules (generalised as `check_layer`) and checks `cellfield.js`; `scripts/api_surface.py` lists both files.\n- **Storybook:** *General UI/Landing*: the full homepage at desktop and phone, plus each part.\n\n## Versioning\nAdditive only: nothing renamed or removed (`api_surface.py --removed v0.5.5` is empty), so this is a patch release.\n\n## Checks\n- `python3 dev_check.py`: 309/309\n- `build_css.py --check`, `build_shadcn.py --check`: up to date\n- `tsc -p .`: clean\n\npolarize.tech adopts it in polarizetech/polarize.tech (branch `home-redesign`) once this is released.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
+  "url": "https://github.com/polarizetech/polarize-ui/pull/1",
+  "merged_at": "2026-09-28T20:15:54Z"
+ },
+ {
   "repo": "neural-memory",
   "number": 8,
   "title": "singlecell: labile recycling factor and k_deg_scale switches (default = published), reusable R1-R8 gate",

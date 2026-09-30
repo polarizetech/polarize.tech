@@ -18,7 +18,7 @@ Retrieval-augmented generation is not a citation system by itself. It gives a mo
 the protocol has to make that text accountable.
 
 This is the method used in
-[KIT Scientific Research RAG](https://github.com/polarizetech/scientific-research-rag):
+[KIT Retrieval-Augmented Generation](https://github.com/polarizetech/retrieval-augmented-generation):
 
 ## Pipeline
 
