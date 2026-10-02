@@ -1,5 +1,37 @@
 [
  {
+  "repo": "paper-fetch",
+  "number": 6,
+  "title": "Do not index reference lists that have no heading paragraph",
+  "body": "Found in a live run of retrieval-augmented-generation: a bibliography entry from a PDF was retrieved as a passage. The chunker only cut at a paragraph that was exactly \"References\". PDF text often has the heading on a line inside a paragraph, or loses it altogether.\n\n**Detection** (`references_start`)\n- A heading on a line of its own (\"References\", \"6. References\", \"Literature Cited\"), past the first third of the text.\n- Or, with no heading: a run of at least 8 consecutively numbered entries starting at 1 that begins in the second half of the text, reaches its last tenth, and mostly carries publication years.\n- Numbered lists in the body are kept. That covers lists that are short, early, have no years, or do not start at 1.\n\n**Measured on 80 held papers:** 11 of 12 PDFs are now cut (none were before), every cut I read lands at the start of the list, and the 68 JATS and TEI texts are unaffected. An unnumbered author-year list with no heading is still not recognised.\n\n**Existing indexes**\n- The chunker has a version (`CHUNKER = 2`), kept in a new `chunked` table next to the `indexed_at` of the row it describes.\n- The `papers` table is unchanged, so servers still running older code and sharing the file keep working. A paper one of them re-indexes counts as stale again.\n- `has()` is false for a stale paper, so it is re-chunked the next time it is indexed. Passages whose text did not change keep their vectors, so only new text is embedded.\n- `status` reports `stale`.\n\n**Tested:** 287 tests pass, including the detector's positive and negative cases, vector reuse, an index from before versions existed, and a row rewritten by older code. ruff and pyright are clean.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
+  "url": "https://github.com/polarizetech/paper-fetch/pull/6",
+  "merged_at": "2026-10-02T13:52:53Z"
+ },
+ {
+  "repo": "paper-fetch",
+  "number": 5,
+  "title": "Accept the library's own work ids; skip bad records when indexing and collecting",
+  "body": "## Problems\n1. Works the library creates itself (\\`pmcid-PMC5519140\\`, \\`doi-10.1214%2F12-aoas565supp\\`) were rejected by \\`index\\`, \\`collect\\` and the MCP \\`index\\`/\\`collect\\` tools with \"unrecognised identifier\". One bad id also failed a whole batch.\n2. \\`paper-fetch index\\` with no arguments aborted on the first unparseable record, leaving later works unindexed.\n\n## Changes\n- \\`ids.normalize\\` parses \\`doi-\\`/\\`pmcid-\\`/\\`pmid-\\`/\\`arxiv-\\` work ids, including percent-encoded DOIs. Behaviour for ordinary DOI / OpenAlex / PMID / PMCID inputs is unchanged and junk is still refused.\n- \\`index_works\\` reads text from the catalogue row (no re-parse) and skips and reports unreadable records under \\`skipped\\`; the CLI prints each with its reason and a count.\n- \\`collect\\` returns a \\`rejected\\` list instead of failing the batch.\n- When OpenAlex has no record, \\`fetch\\` fills title, year, authors and DOI from Europe PMC (never fatal).\n- Existing library records are not rewritten; already-stored metadata-less works are only enriched on a new \\`fetch\\`.\n\n## Tests\n\\`tests/test_own_work_ids.py\\`: 12 of its 19 cases fail on main and all pass here; full suite 278 passed, ruff and pyright clean.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
+  "url": "https://github.com/polarizetech/paper-fetch/pull/5",
+  "merged_at": "2026-10-02T13:30:14Z"
+ },
+ {
+  "repo": "retrieval-augmented-generation",
+  "number": 4,
+  "title": "Library reranking, per-item failures, fetch and quote fixes, companion tools",
+  "body": "Four changes that came out of live runs, plus the first companion tool.\n\n**One model call with no answer costs that item, not the run** (follow-up to #3)\n- Reading a passage: it is dropped with the flag `no_answer_from_model` and counted in Limits.\n- Classifying a paper: it is graded `unclear` for this run, and that is not cached.\n- Planning, synthesis and critique still end the run, as does an unreachable model.\n\n**Reranking is the paper library's**\n- The local-model reranker is removed. In a live run the 4B model spent 4.9 of 5.7 hours reranking.\n- The library's cross-encoder (`PAPER_FETCH_RERANK_MODEL`) ranks passages. The pipeline keeps that order and only caps passages per paper and per sub-question.\n- Without the setting, passages are read in retrieval order, and the run notes say so.\n\n**Two bugs from that run**\n- Fetch ordering now puts papers reported as open access first and papers reported as closed last. All six fetches had gone to closed papers.\n- An exact quote match that stops inside a word or number is widened to the whole token. A stored quote read \"5.\" where the passage said \"5.9 mmHg\".\n\n**Companion tools** (`research_pipeline/companions.py`)\n- With a companion configured under `companions` in the gateway config, the plan's schema gains a `tools` field restricted to the configured keys.\n- Code calls each requested tool once, within set bounds, and prints the tool's own records in the answer. No model writes that section, and it never becomes evidence.\n- A companion that fails is reported and the run goes on. Offline runs call none.\n- First companion: `datasets`, which speaks dataset-fetch's MCP contract.\n  - It searches every catalogue that takes a free-text query, with Zenodo restricted to dataset-typed records.\n  - It reads the data cards, and counts documents-only records instead of listing them.\n  - It orders the rest by the library's `relevance`.\n- Adding another companion is one registry entry.\n\n**Also**\n- A generic `Upstream` MCP client; `PaperLibrary` is now one use of it.\n- The design doc notes the planned \"own endpoint\" backend for private runs.\n\n**Tested:**\n- 237 tests pass. ruff and pyright are clean.\n- Live against the real services: the library reranker returned on-topic passages, and the dataset companion searched three catalogues and read ten cards in 14 s.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
+  "url": "https://github.com/polarizetech/retrieval-augmented-generation/pull/4",
+  "merged_at": "2026-10-02T13:30:11Z"
+ },
+ {
+  "repo": "neural-memory",
+  "number": 9,
+  "title": "E03-synthesis-block: can the receptor model hold Rajan 2026's synthesis-block results?",
+  "body": "Preregistration in progress. Stops at the -prereg tag for the operator to hear predictions before any run.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
+  "url": "https://github.com/polarizetech/neural-memory/pull/9",
+  "merged_at": "2026-10-02T00:57:08Z"
+ },
+ {
   "repo": "retrieval-augmented-generation",
   "number": 3,
   "title": "A verifier call with no answer fails that check, not the run",
