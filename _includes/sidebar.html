@@ -1,89 +1,29 @@
 {%- comment -%}
-  The left column on section pages: topics (blog) or repositories (work,
-  changelog), and the feed/GitHub links. On a phone it drops below the content.
+  The left column on the changelog: the repositories, and the feed/GitHub links.
+  On a phone it drops below the content.
+
+  Since 2026-10-04 this is the ONLY page with this sidebar. /blog/ has a filter
+  panel instead (_includes/filterpanel.html) and every other page is a single
+  centred column (_layouts/default.html).
 {%- endcomment -%}
 <aside class="ui-sidebar">
-
-  {%- comment -%}
-    Contact and the section menu live in the top bar (_includes/topnav.html).
-    The sidebar keeps what is specific to the section: topics or repositories.
-  {%- endcomment -%}
-
-  {%- comment -%}
-    Topics are the posts' `project:` labels, so they show only in the blog
-    section (/blog/, topic pages, posts). Work and the changelog get the
-    repositories instead; the home page and rants get neither.
-  {%- endcomment -%}
-  {%- if page.section == 'work' or page.section == 'changelog' %}
   <nav class="ui-sidebar__topics" aria-label="Repositories">
     <p class="ui-label ui-sidebar__heading">{% include icon.html name="tag" %} Repositories</p>
     <ul class="ui-sidebar__list">
       <li>
-        {%- if page.section == 'work' %}
-        <a class="ui-sidebar__link{% if page.repo == nil %} is-current{% endif %}" href="{{ '/work/' | relative_url }}">All work
-          <span class="ui-sidebar__count">{{ site.data.repos | size }}</span></a>
-        {%- else %}
         <a class="ui-sidebar__link is-current" href="{{ '/changelog/' | relative_url }}">All changes
           <span class="ui-sidebar__count">{{ site.data.changelog | size }}</span></a>
-        {%- endif %}
       </li>
       {%- for r in site.data.repos %}
       {%- assign n = site.data.changelog | where: "repo", r.name %}
       <li>
-        <a class="ui-sidebar__link{% if page.repo == r.name %} is-current{% endif %}"
+        <a class="ui-sidebar__link"
            href="{{ '/work/' | append: r.name | append: '/' | relative_url }}">{{ r.name }}
           <span class="ui-sidebar__count">{{ n.size }}</span></a>
       </li>
       {%- endfor %}
     </ul>
   </nav>
-  {%- endif %}
 
-  {%- if page.section == 'blog' %}
-  <nav class="ui-sidebar__topics" aria-label="Topics">
-    <p class="ui-label ui-sidebar__heading">{% include icon.html name="tag" %} Topics</p>
-    <ul class="ui-sidebar__list">
-      <li>
-        <a class="ui-sidebar__link{% if page.section == 'blog' and page.topic == nil %} is-current{% endif %}"
-           href="{{ '/blog/' | relative_url }}">All posts
-          <span class="ui-sidebar__count">{{ site.posts | size }}</span></a>
-      </li>
-      {%- for pair in site.projects %}
-      {%- assign slug = pair[0] %}
-      {%- assign in_topic = site.posts | where: "project", slug %}
-      {%- if in_topic.size > 0 %}
-      <li>
-        <a class="ui-sidebar__link{% if page.topic == slug %} is-current{% endif %}"
-           href="{{ '/blog/topics/' | append: slug | append: '/' | relative_url }}">{{ pair[1].label }}
-          <span class="ui-sidebar__count">{{ in_topic.size }}</span></a>
-      </li>
-      {%- endif %}
-      {%- endfor %}
-    </ul>
-  </nav>
-  {%- endif %}
-
-
-  {%- comment -%}
-    Inlined rather than pulled from design/icons/polarize-icons.svg: that sprite
-    ships 15 audio-UI glyphs and has no rss or github mark, and the vendored copy
-    is byte-identical to the monorepo by rule (check_design RULE 6), so it cannot
-    be extended here. Both carry an accessible name — an icon-only link with no
-    label is unusable with a screen reader.
-  {%- endcomment -%}
-  <nav class="ui-sidebar__meta" aria-label="Elsewhere">
-    <a class="ui-sidebar__meta-link" href="{{ '/blog/feed.xml' | relative_url }}" aria-label="RSS feed" title="RSS">
-      <svg class="ui-icon" viewBox="0 0 256 256" aria-hidden="true" focusable="false">
-        <circle cx="68" cy="188" r="20"/>
-        <path fill="none" stroke="currentColor" stroke-width="20" stroke-linecap="round"
-              d="M48 108a100 100 0 0 1 100 100M48 48a160 160 0 0 1 160 160"/>
-      </svg>
-    </a>
-    <a class="ui-sidebar__meta-link" href="https://github.com/polarizetech" rel="noopener"
-       aria-label="GitHub organisation" title="GitHub">
-      <svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-        <path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.9 18.3 5.2 18.3 5.2c.6 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3z"/>
-      </svg>
-    </a>
-  </nav>
+  {% include elsewhere.html %}
 </aside>

@@ -23,6 +23,9 @@
   {%- if page.cellfield %}
   <script type="module" src="{{ '/design/cellfield.js' | relative_url }}?v={{ v }}"></script>
   {%- endif %}
+  {%- if page.filter %}
+  <script type="module" src="{{ '/design/filter.js' | relative_url }}?v={{ v }}"></script>
+  {%- endif %}
   {%- feed_meta %}
   {%- include analytics.html %}
 </head>
@@ -47,9 +50,26 @@
   <main class="home ui-cellfield-host" id="main">
     {{ content }}
   </main>
-  {%- else %}
+  {%- elsif page.filter %}
+  {%- comment -%} An index you can filter: the panel is the sidebar (/blog/). {%- endcomment -%}
+  <div class="ui-shell ui-shell--filter">
+    <aside class="ui-sidebar">
+      {% include filterpanel.html %}
+    </aside>
+    <main class="ui-main" id="main">
+      {{ content }}
+    </main>
+  </div>
+  {%- elsif page.section == 'changelog' %}
   <div class="ui-shell">
     {% include sidebar.html %}
+    <main class="ui-main" id="main">
+      {{ content }}
+    </main>
+  </div>
+  {%- else %}
+  {%- comment -%} Everything else: one centred column, no sidebar. {%- endcomment -%}
+  <div class="ui-shell ui-shell--single">
     <main class="ui-main" id="main">
       {{ content }}
     </main>

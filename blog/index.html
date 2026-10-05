@@ -1,30 +1,29 @@
 ---
 layout: default
 title: Posts
+filter: true
 description: >-
   Working notes on bioelectric sensing and stimulation — audio-evoked
   potentials, magnetometry, and the instruments in between. Falsification-first,
   citation-gated, and open about what the instruments cannot hear.
 ---
 {%- comment -%}
-  The paginated post list (paginate_path: /blog/page:num/). This was the home
-  page until 2026-09-25; the home page is now a three-section summary.
+  Every post on one page, with the filter panel beside it (`filter: true` makes
+  _layouts/default.html render _includes/filterpanel.html as the sidebar).
+
+  Not paginated since 2026-10-04: the filter runs in the browser and can only
+  see the posts that are on the page. /blog/page2/ redirects here.
 {%- endcomment -%}
 
-<h1 class="ui-label ui-main__heading">Latest research notes</h1>
+<div class="ui-results__head">
+  <h1 class="ui-label ui-main__heading" data-filter-heading data-default="Latest research notes" data-filtered="Research notes">Latest research notes</h1>
+  <div class="ui-chips" aria-live="polite" data-filter-chips></div>
+</div>
 
-{% include postlist.html posts=paginator.posts %}
+{% include postlist.html posts=site.posts %}
 
-{%- if paginator.total_pages > 1 %}
-<nav class="ui-pager" aria-label="Pagination">
-  {%- if paginator.previous_page %}
-  <a class="ui-btn ui-pager__prev" href="{{ paginator.previous_page_path | relative_url }}">← Newer</a>
-  {%- else %}<span class="ui-pager__spacer"></span>{% endif %}
-
-  <span class="ui-label ui-pager__count">Page {{ paginator.page }} of {{ paginator.total_pages }}</span>
-
-  {%- if paginator.next_page %}
-  <a class="ui-btn ui-pager__next" href="{{ paginator.next_page_path | relative_url }}">Older →</a>
-  {%- else %}<span class="ui-pager__spacer"></span>{% endif %}
-</nav>
-{%- endif %}
+<div class="ui-results__empty" data-filter-empty hidden>
+  <p class="ui-results__empty-title">No notes match these filters</p>
+  <p>Remove a filter, or clear them all to see every note.</p>
+  <button type="button" class="ui-btn" data-filter-reset>Clear filters</button>
+</div>

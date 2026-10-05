@@ -6,11 +6,13 @@
   actually has an image — no placeholder, no reserved column — so a row without
   one is simply full-width text rather than text with a hole beside it.
 
+  The data- attributes are what the /blog/ filter (design/filter.js) reads.
+
   Usage: {% include postitem.html post=post %}  (optional: hide_project=true)
 {%- endcomment -%}
 {%- assign p = include.post -%}
 {%- assign proj = site.projects[p.project] -%}
-<li class="ui-postlist__item">
+<li class="ui-postlist__item" data-topic="{{ p.project }}" data-tier="{{ p.tier | upcase }}" data-date="{{ p.date | date: '%Y-%m-%d' }}" data-src="{{ p.citations | size }}">
   <a class="ui-postlist__link" href="{{ p.url | relative_url }}">
     <span class="ui-postlist__main">
       <span class="ui-postlist__date">{{ p.date | date: "%Y-%m-%d" }}</span>

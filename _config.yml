@@ -26,13 +26,9 @@ kramdown:
 plugins:
   - jekyll-feed
   - jekyll-sitemap
-  - jekyll-paginate
 
-# jekyll-paginate v1 — the only paginator GitHub Pages runs. It paginates ONE
-# index.html: the one in paginate_path's directory, i.e. blog/index.html. The
-# home page is a fixed three-section summary and is not paginated.
-paginate: 8
-paginate_path: "/blog/page:num/"
+# /blog/ is NOT paginated (2026-10-04): its filter runs in the browser and can
+# only see the posts on the page. blog/page2/ is a redirect stub for old links.
 
 # The address behind the contact button. A plain mailto: on purpose — it opens
 # whatever the reader actually uses (Gmail in a browser, Mail.app, Outlook),

@@ -1,0 +1,133 @@
+{%- comment -%}
+  The filter panel beside the post list on /blog/ (polarize-ui: .ui-filter in
+  publication.css, behaviour in design/filter.js).
+
+  Without script the topic rows are links to the topic pages and everything
+  marked data-filter-js stays hidden. With it the list filters in place and the
+  view is kept in the query string (?topic=&tier=A,C&month=2026-09&cited=1&q=&sort=src).
+
+  Every count printed here is the unfiltered one; filter.js rewrites them as
+  filters change. It only sees the posts on the page, which is why /blog/ is not
+  paginated.
+{%- endcomment -%}
+{%- assign posts = site.posts -%}
+{%- assign total = posts | size -%}
+<nav class="ui-filter" aria-label="Filter notes" data-ui-filter data-target=".ui-postlist" data-noun="notes">
+  <div class="ui-filter__head">
+    <p class="ui-label">Filter</p>
+    <span class="ui-filter__tally" aria-live="polite" data-filter-tally><b>{{ total }}</b> / {{ total }} notes</span>
+  </div>
+
+  <label class="ui-filter__search" data-filter-js hidden>
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+    <input type="search" aria-label="Search notes" placeholder="Search titles and summaries" data-search />
+  </label>
+
+  <section class="ui-filter__section">
+    <div class="ui-filter__section-head">
+      <p class="ui-label">Topic</p>
+    </div>
+    <ul class="ui-facet" aria-label="Topic">
+      <li class="ui-facet__item">
+        <a class="ui-facet__btn" href="{{ '/blog/' | relative_url }}" aria-current="page" data-topic="all" data-label="All notes" style="--share: 1">
+          <span class="ui-facet__row">
+            <span class="ui-facet__name"><span class="ui-facet__mark"></span>All notes</span>
+            <span class="ui-facet__count">{{ total }}</span>
+          </span>
+          <span class="ui-facet__bar" aria-hidden="true"><span class="ui-facet__fill"></span></span>
+        </a>
+      </li>
+      {%- for pair in site.projects %}
+      {%- assign slug = pair[0] %}
+      {%- assign in_topic = posts | where: "project", slug %}
+      {%- if in_topic.size > 0 %}
+      <li class="ui-facet__item">
+        <a class="ui-facet__btn" href="{{ '/blog/topics/' | append: slug | append: '/' | relative_url }}" data-topic="{{ slug }}" data-label="{{ pair[1].label | escape }}" style="--share: {{ in_topic.size | times: 1.0 | divided_by: total | round: 3 }}">
+          <span class="ui-facet__row">
+            <span class="ui-facet__name"><span class="ui-facet__mark"></span>{{ pair[1].label }}</span>
+            <span class="ui-facet__count">{{ in_topic.size }}</span>
+          </span>
+          <span class="ui-facet__bar" aria-hidden="true"><span class="ui-facet__fill"></span></span>
+        </a>
+      </li>
+      {%- endif %}
+      {%- endfor %}
+    </ul>
+  </section>
+
+  {%- comment -%}
+    The same badge as in the list (_includes/tier.html): glyph, word and family.
+    The meanings are the ones in design/tokens.json → epistemic.tiers.
+  {%- endcomment -%}
+  <section class="ui-filter__section" data-filter-js hidden>
+    <div class="ui-filter__section-head">
+      <p class="ui-label">Confidence tier</p>
+      <span class="ui-filter__hint">Any of</span>
+    </div>
+    <div class="ui-filter__tiers">
+      {%- assign tiers = "A|measured|◆|Established, textbook-derivable, or measured here.;B|predicted|▲|Supported by primary literature, with caveats.;C|exploring|●|Exploratory, weak, or contested.;SPEC|spec|◇|Speculative. A stated guess, never evidence." | split: ";" %}
+      {%- for row in tiers %}
+      {%- assign t = row | split: "|" %}
+      {%- assign n = posts | where: "tier", t[0] | size %}
+      {%- if n > 0 %}
+      <button type="button" class="ui-tier ui-tier--toggle" data-family="{{ t[1] }}" data-tier="{{ t[0] }}" aria-pressed="false"
+              title="{{ t[3] }}" aria-label="Tier {{ t[0] }}: {{ t[3] }}">
+        <span class="ui-tier__glyph" aria-hidden="true">{{ t[2] }}</span>[{{ t[0] }}]
+        <span class="ui-tier__count">{{ n }}</span>
+      </button>
+      {%- endif %}
+      {%- endfor %}
+    </div>
+    <p class="ui-filter__note">Tiers are computed in the research ledger, never asserted here.</p>
+  </section>
+
+  <section class="ui-filter__section" data-filter-js hidden>
+    <div class="ui-filter__section-head">
+      <p class="ui-label">Sources</p>
+    </div>
+    {%- assign cited = posts | where_exp: "p", "p.citations.size > 0" %}
+    <button type="button" class="ui-check" aria-pressed="false" data-cited data-label="Cites sources">
+      <span class="ui-check__box"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>
+      <span class="ui-check__label">Cites sources</span>
+      <span class="ui-check__count">{{ cited | size }}</span>
+    </button>
+  </section>
+
+  {%- comment -%} The six most recent months that have a post, oldest first. {%- endcomment -%}
+  {%- assign months = posts | group_by_exp: "p", "p.date | date: '%Y-%m'" | sort: "name" | reverse %}
+  {%- assign month_max = 1 %}
+  {%- for m in months limit: 6 %}{% if m.items.size > month_max %}{% assign month_max = m.items.size %}{% endif %}{% endfor %}
+  {%- assign n_months = months | size | at_most: 6 %}
+  {%- if n_months > 1 %}
+  <section class="ui-filter__section" data-filter-js hidden>
+    <div class="ui-filter__section-head">
+      <p class="ui-label">Published</p>
+    </div>
+    <div class="ui-histo" style="--buckets: {{ n_months }}">
+      {%- assign shown_months = months | slice: 0, 6 | reverse %}
+      {%- for m in shown_months %}
+      {%- assign first = m.items | first %}
+      <button type="button" class="ui-histo__btn" aria-pressed="false" data-month="{{ m.name }}" data-label="{{ first.date | date: '%B %Y' }}"
+              aria-label="{{ first.date | date: '%B %Y' }}, {{ m.items.size }} notes" style="--share: {{ m.items.size | times: 1.0 | divided_by: month_max | round: 3 }}">
+        <span class="ui-histo__plot"><span class="ui-histo__bar"></span></span>
+        <span class="ui-histo__axis"><span>{{ first.date | date: '%b' }}</span><span data-month-count>{{ m.items.size }}</span></span>
+      </button>
+      {%- endfor %}
+    </div>
+  </section>
+  {%- endif %}
+
+  <section class="ui-filter__section" data-filter-js hidden>
+    <div class="ui-filter__section-head">
+      <p class="ui-label">Order</p>
+    </div>
+    <div class="ui-seg" role="group" aria-label="Order" style="--segments: 2">
+      <button type="button" class="ui-seg__btn" aria-pressed="true" data-sort="new">Newest</button>
+      <button type="button" class="ui-seg__btn" aria-pressed="false" data-sort="src">Most sources</button>
+    </div>
+  </section>
+
+  <div class="ui-filter__foot">
+    {% include elsewhere.html %}
+  </div>
+</nav>
