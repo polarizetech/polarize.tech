@@ -41,9 +41,11 @@ is in the [protocol document](https://github.com/polarizetech/adaptive-preregist
 
 ## The rules
 
-- **Claim first.** Every piece of work, whether an app, a simulation, a tool or a calculator,
-  starts with a falsifiable claim, settled in the author's own words together with what would
-  count against it, before anything is built.
+- **A claim, or an exploratory label.** Every piece of work, whether an app, a simulation, a tool
+  or a calculator, starts with a falsifiable claim, settled in the author's own words together
+  with what would count against it. Work the author marks as exploratory may be built without
+  one: it is recorded and labelled as exploratory, nothing it shows counts as a finding, and it
+  gets its claim before its first experiment is preregistered.
 - **No run before the preregistration.** A run whose result a report will cite may not
   execute until `PREREG.md` is complete and tagged.
 - **The environment is part of the plan.** The preregistration names the model version it runs
@@ -189,3 +191,13 @@ means saying what the claim's terms mean, how it will be measured, the smallest 
 matter, and what a test of it assumes. The section above was previously titled "The five rules".
 Preregistration now also works per piece of work: a project holding several apps, simulations,
 tools or calculators gives each its own claim, experiments and versions.
+
+## Update — 2026-10-07
+
+The first rule changed. It previously said every piece of work starts with a falsifiable claim
+before anything is built. Work can now be marked exploratory instead: it is built from a short
+note of what is being built and what is already known, it is labelled exploratory, and nothing it
+shows counts as a finding. Its claim is settled before its first experiment is preregistered.
+Settling a claim before building now means stating the claim and what would count against it.
+What its terms mean, how it will be measured, the smallest effect that would matter and what a
+test of it assumes are stated in the first preregistration, not before building.
