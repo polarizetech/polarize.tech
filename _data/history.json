@@ -5689,6 +5689,48 @@
  ],
  "_posts/2026-09-24-adaptive-preregistration-predict-first-then-run-the-code.md": [
   {
+   "sha": "69604025740933eee3ce8bb837674cd7fb0f6843",
+   "author": "Joshua Anderton",
+   "date": "2026-10-07T10:02:26-07:00",
+   "subject": "Post: update adaptive-preregistration post for kit_ap 179dc7b (0.9.0)",
+   "llm": true,
+   "llm_name": "Claude Opus 5.5",
+   "short": "6960402",
+   "first": false,
+   "hunks": [
+    [
+     {
+      "t": "ctx",
+      "h": "## The rules"
+     },
+     {
+      "t": "mod",
+      "h": "- **<del>Claim</del><ins>A</ins> <del>first</del><ins>claim, or an exploratory label</ins>.** Every piece of work, whether an app, a simulation, a tool or a calculator, starts with a falsifiable claim, settled in the author&#x27;s own words together with what would count against it<ins>. Work the author marks as exploratory may be built without one: it is recorded and labelled as exploratory</ins>,<ins> nothing it shows counts as a finding, and it gets its claim</ins> before <del>anything</del><ins>its first experiment</ins> is <del>built</del><ins>preregistered</ins>."
+     },
+     {
+      "t": "ctx",
+      "h": "- **No run before the preregistration.** A run whose result a report will cite may not execute until `PREREG.md` is complete and tagged."
+     }
+    ],
+    [
+     {
+      "t": "ctx",
+      "h": "The protocol gained a rule that comes before the others: every piece of work starts with a falsifiable claim, stated with what would count against it, before anything is built. Settling it means saying what the claim&#x27;s terms mean, how it will be measured, the smallest effect that would matter, and what a test of it assumes. The section above was previously titled &quot;The five rules&quot;. Preregistration now also works per piece of work: a project holding several apps, simulations, tools or calculators gives each its own claim, experiments and versions."
+     },
+     {
+      "t": "add",
+      "h": "## Update — 2026-10-07"
+     },
+     {
+      "t": "add",
+      "h": "The first rule changed. It previously said every piece of work starts with a falsifiable claim before anything is built. Work can now be marked exploratory instead: it is built from a short note of what is being built and what is already known, it is labelled exploratory, and nothing it shows counts as a finding. Its claim is settled before its first experiment is preregistered. Settling a claim before building now means stating the claim and what would count against it. What its terms mean, how it will be measured, the smallest effect that would matter and what a test of it assumes are stated in the first preregistration, not before building."
+     }
+    ]
+   ],
+   "added": 157,
+   "removed": 4
+  },
+  {
    "sha": "ee47fcd7b30fd646b8e3edcde04fb1b5aa4a49cd",
    "author": "Joshua Anderton",
    "date": "2026-09-30T12:04:43-07:00",
