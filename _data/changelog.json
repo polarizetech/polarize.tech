@@ -1,5 +1,21 @@
 [
  {
+  "repo": "adaptive-preregistration",
+  "number": 1,
+  "title": "scope-status finds an app version at apps/<slug>/<version>",
+  "body": "The scaffold is moving apps to `apps/<slug>/vN/`, one folder per app and one inside it per version (polarizetech/scientific-research-scaffold#2). The kit names that layout in one place: the default folder `scope-status` uses for a `[[apps]]` entry in `STUDY.toml` that has no `path`.\n\n- An app entry is now looked for at `apps/<slug>/<version>`, then at the earlier `apps/<version>-<slug>`.\n- Nothing else in the kit depends on where apps live. Preregistrations are found by their `preregistrations/` folder wherever the unit is, and `PREREG_PROTOCOL.md` already says the layout is the organisation's convention.\n- A project on the earlier layout behaves as before.\n\nNo release in this PR: the changelog entry is under \"Unreleased\".\n\nTests: 51 pass; the manifest test now covers an app in each layout.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
+  "url": "https://github.com/polarizetech/adaptive-preregistration/pull/1",
+  "merged_at": "2026-10-13T14:01:16Z"
+ },
+ {
+  "repo": "scientific-research-scaffold",
+  "number": 2,
+  "title": "Apps are laid out as apps/<slug>/vN, each app numbered from v1",
+  "body": "An app's versions now sit together: `apps/entropy-media/v1/`, `apps/entropy-media/v2/`. Before, a study had one number sequence and folders named `apps/vN-<slug>/`, which put unrelated apps side by side in number order and split one app's versions apart.\n\n## What changes\n\n- `scaffold new app <slug>` writes `apps/<slug>/vN/`. A new slug starts at `v1`; a slug that exists gets its next version.\n- `check` looks for an `[[apps]]` entry with no `path` at `apps/<slug>/<version>/`, then at the earlier `apps/<version>-<slug>/`. Repos on the earlier layout pass unchanged (checked against `cochlear-mirror` and `tinnitus`).\n- The app template's `serve.py` looks one folder further up for the design system.\n- `PROTOCOL.md` § 1, 2, 3, 5, 6, `README.md`, `ADOPTING.md` and the study template's `apps/README.md` describe the new layout.\n\n## Not in this PR\n\n- No release: the changelog entry is under \"Unreleased\", and `SCAFFOLD_REF`, `UPGRADING.md` and the generated CI ref are untouched.\n- No migration command. Existing repos keep their folders; `world-seeding` already uses the new layout through `path` entries.\n- The preregistration kit reads the same default in polarizetech/adaptive-preregistration (its own PR). Until both are released, a repo on the new layout needs `path` in each entry for the kit to find its apps.\n\nTests: 73 pass (2 new: per-app version numbers, and the earlier layout passing `check`).\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
+  "url": "https://github.com/polarizetech/scientific-research-scaffold/pull/2",
+  "merged_at": "2026-10-13T14:01:12Z"
+ },
+ {
   "repo": "polarize-ui",
   "number": 2,
   "title": "feat: trajectory3d.js, a 3-D path with a time marker (zero-build)",
