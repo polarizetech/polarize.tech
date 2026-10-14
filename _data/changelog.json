@@ -1,5 +1,29 @@
 [
  {
+  "repo": "retrieval-augmented-generation",
+  "number": 9,
+  "title": "Document how to add a paid patent service for the pipeline alone",
+  "body": "Documentation only; no code changes.\n\npatent-fetch asks its paid providers (SerpApi) only when they are named. The patents companion's config entry already passes an `env` to the command it starts, so naming the provider set there adds one for the pipeline alone:\n\n```json\n\"env\": {\"PATENT_FETCH_SEARCH_PROVIDERS\": \"europepmc,epo-ops,lens,serpapi\"}\n```\n\nA search from patent-fetch's own command line still asks its usual set.\n\n- `config/mcp-gateway.example.json`: an empty `env` on the patents companion and an `_env_comment` saying what it is for, what it needs, and what it costs (one paid search per planner query, up to seven more when a query matches nothing and is retried).\n- `docs/research-pipeline.md`: a paragraph on the same, with what a live check on 2026-10-13 returned. The patents paragraph above it is rewrapped; it had lines over 100 columns and its text is unchanged.\n\nChecked: the example config still parses and the companion still loads from it; 252 tests pass.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
+  "url": "https://github.com/polarizetech/retrieval-augmented-generation/pull/9",
+  "merged_at": "2026-10-13T19:52:51Z"
+ },
+ {
+  "repo": "retrieval-augmented-generation",
+  "number": 8,
+  "title": "Patents companion: short queries, a fallback for empty ones, room for recent patents",
+  "body": "The \"Existing patents on this\" section of a run on 2026-10-13 showed only patents from 1996 to 2001, although the patent services hold ones from 2024 and 2025 on the same subject.\n\n**Cause.** A patent service returns only records with *every* word of a query in the title or abstract. The planner had been asked for queries \"naming the invention and what it does the way a patent title would\", and wrote a six-word one that matched nothing at either service; the other matched only patents using an older term.\n\n**Changes**, all in `research_pipeline/companions.py`:\n\n- The planner is asked for 1-3 queries of 2 to 4 words each, and told that every extra word finds fewer patents (`max_queries` 2 → 3).\n- A query of 3 to 7 words that matches nothing is asked again with one word left out at a time. The answer's limits name the query, say why it matched nothing, and say how many records asking again found.\n- Of the six entries listed, four are the closest titles and two are the most recent of the rest, so old patents whose titles repeat the question cannot fill every place. The section's first line says this.\n\n**Checked against the live services** with the two queries from that run: the six-word query now recovers 10 records through the fallback, and the section lists patents from 2025, 2024, 2016 and 2014 beside those from 1999 and 2011. Tests: 252 pass; `ruff`, `pyright` clean.\n\nNot checked: a full pipeline run with a model writing queries to the new instruction.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
+  "url": "https://github.com/polarizetech/retrieval-augmented-generation/pull/8",
+  "merged_at": "2026-10-13T18:53:26Z"
+ },
+ {
+  "repo": "retrieval-augmented-generation",
+  "number": 7,
+  "title": "Patents companion: list an invention once, with its other publications",
+  "body": "patent-fetch now folds the publications of one invention (an application, its grant, the same filing at other offices) into one hit and names the others in `also_published_as` ([polarizetech/patent-fetch@9552d1f](https://github.com/polarizetech/patent-fetch/commit/9552d1f)).\n\nThis makes the patents companion use that:\n\n- Two planner queries can each keep a different publication of the same invention, so a hit counts as already listed when its number, or any number it was also published under, was listed before.\n- The \"Existing patents on this\" section prints `Also published as ...` after an entry (four numbers, then a count).\n\nWhy: a pipeline run on 2026-10-13 listed five patents, of which four were the US, EP, WO and CA publications of one Cochlear patent. The same two queries now list two inventions.\n\nOlder patent-fetch versions send no `also_published_as`; the companion then behaves as before.\n\nChecked: `ruff`, `pyright`, 250 tests; and the companion run against the live patent services with the queries from that run.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
+  "url": "https://github.com/polarizetech/retrieval-augmented-generation/pull/7",
+  "merged_at": "2026-10-13T18:45:14Z"
+ },
+ {
   "repo": "adaptive-preregistration",
   "number": 1,
   "title": "scope-status finds an app version at apps/<slug>/<version>",
