@@ -1,5 +1,21 @@
 [
  {
+  "repo": "polarize-ui",
+  "number": 4,
+  "title": "feat!: remove the cell field; the homepage story is the shipped page",
+  "body": "Removes the animated cell field (`<ui-cellfield>`, `CellField`, `./cellfield.js`, `.ui-cellfield*`) at the operator's request, and rebuilds the Landing homepage story as the page polarize.tech now ships (fieldguide). Adds an optional `media` prop to `ProjectFeature`.\n\n**Breaking.** `api_surface.py --removed v0.5.19` lists exactly the cell field's surface. No consumer uses it: polarize.tech dropped it in v0.5.19; joshuaanderton.ca and the monorepo never used it.\n\nChecks: dev_check 491/491, build_css/build_shadcn --check, tsc; Storybook homepage story renders with no errors.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
+  "url": "https://github.com/polarizetech/polarize-ui/pull/4",
+  "merged_at": "2026-10-15T22:04:48Z"
+ },
+ {
+  "repo": "polarize-ui",
+  "number": 3,
+  "title": "feat: fieldguide theme — white, magenta, Geist",
+  "body": "Opt-in `fieldguide` theme (white page, magenta accent, Geist sans) and additive landing components for polarize.tech's restyle: `.ui-action`, `.ui-stats`, `.ui-steps--rows`, `.ui-topics`, `.ui-specimen-tile`, `.ui-plate--ink`, and the crab/neuron/magnet specimens.\n\nNon-breaking: existing themes render unchanged (cards read `--landing-radius`/`--landing-fill` with the old values as fallbacks); `api_surface.py --removed v0.5.18` is empty. dev_check 497/497, build_css/build_shadcn --check, tsc pass.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
+  "url": "https://github.com/polarizetech/polarize-ui/pull/3",
+  "merged_at": "2026-10-15T20:51:08Z"
+ },
+ {
   "repo": "retrieval-augmented-generation",
   "number": 9,
   "title": "Document how to add a paid patent service for the pipeline alone",
