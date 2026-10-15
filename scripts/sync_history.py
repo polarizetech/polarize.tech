@@ -21,7 +21,7 @@ renames), newest first, with:
 A post can withhold passages from its own history with `history_redact:` in its
 current front matter, a list of strings. Any diff paragraph containing one of them
 (case-insensitive) is left out of the history and replaced by a single note saying a
-passage was withheld. Use it only when text had to come off the site for a reason
+passage was withheld; a commit subject naming one is replaced too. Use it only when text had to come off the site for a reason
 other than a correction (a takedown request, say): corrections stay visible.
 
 Keyed by the file's current path, which is what Jekyll exposes as page.path.
@@ -205,6 +205,10 @@ def redactions(path):
             for l in block.group(1).splitlines() if l.strip()]
 
 
+# A commit subject that names a withheld term is replaced, like a withheld passage.
+SUBJECT_WITHHELD = 'Revision (subject withheld on request)'
+
+
 def redact(hunks, terms):
     """Drop every diff row that mentions a withheld term; keep a note where it was."""
     if not terms:
@@ -239,6 +243,8 @@ def build():
             prev = revs[i + 1] if i + 1 < len(revs) else None
             entry = {k: r[k] for k in ('sha', 'author', 'date', 'subject', 'llm', 'llm_name')}
             entry['short'] = r['sha'][:7]
+            if any(t in entry['subject'].lower() for t in terms):
+                entry['subject'] = SUBJECT_WITHHELD
             if prev is None:
                 entry.update(first=True, hunks=[], added=0, removed=0)
             else:

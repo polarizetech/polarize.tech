@@ -1,8 +1,8 @@
 ---
 title: "Redesigning the homepage, one version at a time"
 description: >-
-  Five versions of the polarize.tech homepage and the restyle that replaced the
-  one that shipped, from a post list in a sidebar to a white page with magenta
+  Three versions of the polarize.tech homepage and the one that shipped, from a
+  post list in a sidebar to a white page with magenta
   buttons and specimen drawings: what each one tried, what was kept, and how the
   result became components in the design system.
 date: 2026-09-28 10:00:00 -0600
@@ -17,12 +17,22 @@ findings: false
 # Passages removed from this post on request are also withheld from its version history.
 history_redact:
   - brutalis
+  - hybrid
+  - cell field
+  - cellfield
+  - WebGL
+  - specks
+  - polarising cells
+  - 06-live
+  - homepage-redesign.jpg
+  - fourteen passes
+  - v0.5.6
 summary: >-
-  The homepage went through five versions in a day, each one kept. The first tried a
-  familiar product-site layout, the third threw out every rule, and the one that
-  shipped took pieces from all of them. A later restyle went back to the first: its
-  spacing, cards, drawings and numbers, on a white page with magenta. What survived
-  became polarize-ui's landing layer, so every page on the site uses it.
+  The homepage went through several versions, each one kept. The first tried a
+  familiar product-site layout and the third threw out every rule. The one that
+  shipped took the first one's spacing, cards, drawings and numbers onto a white
+  page with magenta. It became polarize-ui's landing layer, so every page on the
+  site uses it.
 image: /assets/posts/homepage-redesign-fieldguide.jpg
 image_alt: >-
   The current polarize.tech homepage: the heading "Reading and writing the body
@@ -41,11 +51,11 @@ was accurate, and it said nothing about what this lab is for.
 </figure>
 
 The redesign was done in the open, in conversation with Claude on a design canvas where every
-version stayed side by side. Then it was built with Claude Code. Five directions, oldest first, then fourteen passes on the last one, and later a restyle that went back to the first:
+version stayed side by side. Then it was built with Claude Code. Three directions, oldest first, and then the one that shipped:
 
 <figure class="shot shot--strip">
-  <div class="shot__scroll"><a href="{{ '/assets/posts/homepage-redesign/08-filmstrip.jpg' | relative_url }}"><img src="{{ '/assets/posts/homepage-redesign/08-filmstrip.jpg' | relative_url }}" alt="The top of the homepage versions side by side: the old post list, the light version, the dark version, the no-rules version and the current white page with magenta buttons." loading="lazy" /></a></div>
-  <figcaption>The top of each version, oldest first: before, light, dark, no rules, and the page as it is now. Scroll sideways on a phone.</figcaption>
+  <div class="shot__scroll"><a href="{{ '/assets/posts/homepage-redesign/07-filmstrip.jpg' | relative_url }}"><img src="{{ '/assets/posts/homepage-redesign/07-filmstrip.jpg' | relative_url }}" alt="The top of the homepage versions side by side: the old post list, the light version, the dark version, the no-rules version and the current white page with magenta buttons." loading="lazy" /></a></div>
+  <figcaption>The top of each version, oldest first: before, light, dark, no rules, and the one that shipped. Scroll sideways on a phone.</figcaption>
 </figure>
 
 ## 1. A familiar front door
@@ -68,7 +78,7 @@ the page kept the rule every page here follows: a label may never be hidden.
 ## 2. Dark
 
 The same page in the design system's dark palette. It was an easy change, because every colour
-is a token. It was also the first sign that the lab reads better at night.
+is a token.
 
 <figure class="shot shot--wide">
   <a href="{{ '/assets/posts/homepage-redesign/02-dark.jpg' | relative_url }}"><img src="{{ '/assets/posts/homepage-redesign/02-dark.jpg' | relative_url }}" alt="Version two: the same layout in a dark palette with a teal accent." loading="lazy" /></a>
@@ -91,117 +101,32 @@ whole page. Those cells fire on their own, set off their neighbours, and sometim
 as waves, synchronised colonies or rhythmic bursts. A live counter in the top bar says how many
 are firing, and the footer says it is a simulation.
 
-It was the loudest version and the least like the lab, but the cells stayed.
+It was the loudest version and the least like the lab.
 
 <figure class="shot shot--wide">
   <a href="{{ '/assets/posts/homepage-redesign/04-no-rules.jpg' | relative_url }}"><img src="{{ '/assets/posts/homepage-redesign/04-no-rules.jpg' | relative_url }}" alt="Version three: an enormous condensed uppercase headline in white and acid green, a grid of mono labels, and clusters of green squares firing in the background." loading="lazy" /></a>
   <figcaption>Version three: no rules. The top bar counts how many simulated cells are firing.</figcaption>
 </figure>
 
-## 4. The hybrid
+## 4. The one that shipped
 
-The fourth version took something from each of the others. It has the dark palette, the design
-system's type, hard rules and square-ish corners, and the first version's charts. The cells moved into a single WebGL field behind the entire page, one
-that looks like cells polarising rather than confetti. They are small, white, dim, sometimes
-grouped, occasionally firing together. The bracketed tags went, and so did the background fills
-on cards.
+The version that shipped took the most from the first. It kept that version's spacing, cards,
+line drawings and numbers, and set them on a white page with magenta where the first had teal.
+Nothing moves in the background. The display serif stayed. The running text moved from Inter to
+[Geist](https://vercel.com/font), self-hosted like the other faces. The mono labels stayed too,
+because a tier badge is always set in mono.
+
+The numbers sit in a strip under the heading: posts, research topics, public repositories and
+merged changes, each counted when the site is built. The process is a set of numbered rows, and
+each research topic has a numbered card with its drawing. The archival plates the site already
+had are still used, inked dark for a light page.
 
 The content changed more than the look. Looking at how other labs present themselves helped,
 especially [Michael Levin's lab site](https://drmichaellevin.org) and his separate essay site,
 [Thoughtforms](https://thoughtforms.life). They pointed to an order: lead with the work, let the
-articles report what it found, and give speculation its own quieter room. So the homepage now opens
+articles report what it found, and give speculation its own quieter room. So the homepage opens
 with the process that keeps results honest. Then come the projects, the changelog, the findings,
 the speculations and the design system.
-
-<figure class="shot shot--wide">
-  <a href="{{ '/assets/posts/homepage-redesign/05-hybrid.jpg' | relative_url }}"><img src="{{ '/assets/posts/homepage-redesign/05-hybrid.jpg' | relative_url }}" alt="Version four on the canvas: the centred serif headline over a field of faint white specks." loading="lazy" /></a>
-  <figcaption>The hybrid, as it stood on the canvas. It shipped first, on September 28.</figcaption>
-</figure>
-
-### Fourteen passes on the hybrid
-
-The hybrid itself changed fourteen times before it shipped, one request at a time. These are all
-of them, in order, each shown where it changed the page.
-
-<div class="shot-grid">
-  <figure class="shot">
-    <a href="{{ '/assets/posts/homepage-redesign/hybrid/h01-hero.jpg' | relative_url }}"><img src="{{ '/assets/posts/homepage-redesign/hybrid/h01-hero.jpg' | relative_url }}" alt="Step 4.1 of the hybrid homepage: The first hybrid: the dark palette and specks, with the first version's charts." loading="lazy" /></a>
-    <figcaption><strong>4.1</strong> · The first hybrid: the dark palette and specks, with the first version's charts.</figcaption>
-  </figure>
-  <figure class="shot">
-    <a href="{{ '/assets/posts/homepage-redesign/hybrid/h02-focus.jpg' | relative_url }}"><img src="{{ '/assets/posts/homepage-redesign/hybrid/h02-focus.jpg' | relative_url }}" alt="Step 4.2 of the hybrid homepage: Corners down to 4px." loading="lazy" /></a>
-    <figcaption><strong>4.2</strong> · Corners down to 4px.</figcaption>
-  </figure>
-  <figure class="shot">
-    <a href="{{ '/assets/posts/homepage-redesign/hybrid/h03-focus.jpg' | relative_url }}"><img src="{{ '/assets/posts/homepage-redesign/hybrid/h03-focus.jpg' | relative_url }}" alt="Step 4.3 of the hybrid homepage: The specimen drawings replaced by the archival plates the site already had." loading="lazy" /></a>
-    <figcaption><strong>4.3</strong> · The specimen drawings replaced by the archival plates the site already had.</figcaption>
-  </figure>
-  <figure class="shot">
-    <a href="{{ '/assets/posts/homepage-redesign/hybrid/h04-focus.jpg' | relative_url }}"><img src="{{ '/assets/posts/homepage-redesign/hybrid/h04-focus.jpg' | relative_url }}" alt="Step 4.4 of the hybrid homepage: Background fills taken off the cards." loading="lazy" /></a>
-    <figcaption><strong>4.4</strong> · Background fills taken off the cards.</figcaption>
-  </figure>
-  <figure class="shot">
-    <a href="{{ '/assets/posts/homepage-redesign/hybrid/h05-focus.jpg' | relative_url }}"><img src="{{ '/assets/posts/homepage-redesign/hybrid/h05-focus.jpg' | relative_url }}" alt="Step 4.5 of the hybrid homepage: Rebuilt around the repositories: projects first, then the changelog, findings and notes." loading="lazy" /></a>
-    <figcaption><strong>4.5</strong> · Rebuilt around the repositories: projects first, then the changelog, findings and notes.</figcaption>
-  </figure>
-  <figure class="shot">
-    <a href="{{ '/assets/posts/homepage-redesign/hybrid/h06-focus.jpg' | relative_url }}"><img src="{{ '/assets/posts/homepage-redesign/hybrid/h06-focus.jpg' | relative_url }}" alt="Step 4.6 of the hybrid homepage: “Merged this week” became “Recently merged”." loading="lazy" /></a>
-    <figcaption><strong>4.6</strong> · “Merged this week” became “Recently merged”.</figcaption>
-  </figure>
-  <figure class="shot">
-    <a href="{{ '/assets/posts/homepage-redesign/hybrid/h07-focus.jpg' | relative_url }}"><img src="{{ '/assets/posts/homepage-redesign/hybrid/h07-focus.jpg' | relative_url }}" alt="Step 4.7 of the hybrid homepage: One WebGL field behind the whole page. At first the cells looked like bubbles." loading="lazy" /></a>
-    <figcaption><strong>4.7</strong> · One WebGL field behind the whole page. At first the cells looked like bubbles.</figcaption>
-  </figure>
-  <figure class="shot">
-    <a href="{{ '/assets/posts/homepage-redesign/hybrid/h08-focus.jpg' | relative_url }}"><img src="{{ '/assets/posts/homepage-redesign/hybrid/h08-focus.jpg' | relative_url }}" alt="Step 4.8 of the hybrid homepage: Back to specks: smaller, clustered, of varying density." loading="lazy" /></a>
-    <figcaption><strong>4.8</strong> · Back to specks: smaller, clustered, of varying density.</figcaption>
-  </figure>
-  <figure class="shot">
-    <a href="{{ '/assets/posts/homepage-redesign/hybrid/h09-focus.jpg' | relative_url }}"><img src="{{ '/assets/posts/homepage-redesign/hybrid/h09-focus.jpg' | relative_url }}" alt="Step 4.9 of the hybrid homepage: One colour: a faded white that polarises in opacity only." loading="lazy" /></a>
-    <figcaption><strong>4.9</strong> · One colour: a faded white that polarises in opacity only.</figcaption>
-  </figure>
-  <figure class="shot">
-    <a href="{{ '/assets/posts/homepage-redesign/hybrid/h10-focus.jpg' | relative_url }}"><img src="{{ '/assets/posts/homepage-redesign/hybrid/h10-focus.jpg' | relative_url }}" alt="Step 4.10 of the hybrid homepage: Quieter still: lower peaks, softer firing." loading="lazy" /></a>
-    <figcaption><strong>4.10</strong> · Quieter still: lower peaks, softer firing.</figcaption>
-  </figure>
-  <figure class="shot">
-    <a href="{{ '/assets/posts/homepage-redesign/hybrid/h11-hero.jpg' | relative_url }}"><img src="{{ '/assets/posts/homepage-redesign/hybrid/h11-hero.jpg' | relative_url }}" alt="Step 4.11 of the hybrid homepage: The bracketed corner tags removed." loading="lazy" /></a>
-    <figcaption><strong>4.11</strong> · The bracketed corner tags removed.</figcaption>
-  </figure>
-  <figure class="shot">
-    <a href="{{ '/assets/posts/homepage-redesign/hybrid/h12-focus.jpg' | relative_url }}"><img src="{{ '/assets/posts/homepage-redesign/hybrid/h12-focus.jpg' | relative_url }}" alt="Step 4.12 of the hybrid homepage: A Process section: three repositories that keep results honest." loading="lazy" /></a>
-    <figcaption><strong>4.12</strong> · A Process section: three repositories that keep results honest.</figcaption>
-  </figure>
-  <figure class="shot">
-    <a href="{{ '/assets/posts/homepage-redesign/hybrid/h13-hero.jpg' | relative_url }}"><img src="{{ '/assets/posts/homepage-redesign/hybrid/h13-hero.jpg' | relative_url }}" alt="Step 4.13 of the hybrid homepage: A simpler, centred hero; the numbers strip gone." loading="lazy" /></a>
-    <figcaption><strong>4.13</strong> · A simpler, centred hero; the numbers strip gone.</figcaption>
-  </figure>
-  <figure class="shot">
-    <a href="{{ '/assets/posts/homepage-redesign/hybrid/h13-focus.jpg' | relative_url }}"><img src="{{ '/assets/posts/homepage-redesign/hybrid/h13-focus.jpg' | relative_url }}" alt="Step 4.13 of the hybrid homepage: The charts moved into a section for polarize-ui." loading="lazy" /></a>
-    <figcaption><strong>4.13</strong> · The charts moved into a section for polarize-ui.</figcaption>
-  </figure>
-  <figure class="shot">
-    <a href="{{ '/assets/posts/homepage-redesign/hybrid/h14-hero.jpg' | relative_url }}"><img src="{{ '/assets/posts/homepage-redesign/hybrid/h14-hero.jpg' | relative_url }}" alt="Step 4.14 of the hybrid homepage: A dedicated cell turning behind the heading, with buttons for the process and for getting in touch." loading="lazy" /></a>
-    <figcaption><strong>4.14</strong> · A dedicated cell turning behind the heading, with buttons for the process and for getting in touch.</figcaption>
-  </figure>
-  <figure class="shot">
-    <a href="{{ '/assets/posts/homepage-redesign/hybrid/h14-focus.jpg' | relative_url }}"><img src="{{ '/assets/posts/homepage-redesign/hybrid/h14-focus.jpg' | relative_url }}" alt="Step 4.14 of the hybrid homepage: Speculations as story cards, told like posts." loading="lazy" /></a>
-    <figcaption><strong>4.14</strong> · Speculations as story cards, told like posts.</figcaption>
-  </figure>
-</div>
-
-## 5. Back to the first version
-
-On October 15 the hybrid was replaced. The cell field went, and so did the dark palette. The page
-went back to the first version's spacing, cards, drawings and numbers, on a white page with
-magenta where that version had teal. The display serif stayed. The running text moved from Inter
-to [Geist](https://vercel.com/font), self-hosted like the other faces. The mono labels stayed
-too, because a tier badge is always set in mono.
-
-The numbers came back as a strip under the heading: posts, research topics, public repositories
-and merged changes, each counted when the site is built. The process became numbered rows, and
-each research topic got a numbered card with one of the specimen drawings that pass 4.3 had
-swapped for archival plates. The plates are still used, inked dark for a light page.
 
 <figure class="shot shot--wide">
   <a href="{{ '/assets/posts/homepage-redesign/08-live-hero.jpg' | relative_url }}"><img src="{{ '/assets/posts/homepage-redesign/08-live-hero.jpg' | relative_url }}" alt="The current homepage: the centred serif heading on white with a magenta “body electric.”, a solid magenta and an outlined button, and the top of the four counts." loading="lazy" /></a>
@@ -224,25 +149,19 @@ swapped for archival plates. The plates are still used, inked dark for a light p
   <figcaption>On a phone: the hero, and the process rows stacked.</figcaption>
 </figure>
 
-## 6. From canvas to components
+## 5. From canvas to components
 
 A design that lives only on a canvas has to be rebuilt by hand for every page, and it drifts. So
-it went into polarize-ui as components, in both of its forms: a zero-build stylesheet and custom
-element for plain HTML sites like this one, and React components that render the same classes.
+it went into polarize-ui as components, in both of its forms: a zero-build stylesheet for plain
+HTML sites like this one, and React components that render the same classes.
 
-The new landing layer covers the top bar, hero, section heads, process steps, project features,
-repository cards, the changelog feed, article cards, story cards, archival plates and the footer.
-The cell field is `<ui-cellfield>`. It draws nothing a reader needs, and it stops for anyone who
-has asked their system to reduce motion. The design system's own checks hold the new stylesheet
-to the same rules as the rest: no raw colours, never bold, and uppercase only in the mono face.
+The landing layer covers the top bar, hero, section heads, the counts strip, the numbered process
+rows, project features, topic cards, repository cards, the changelog feed, article cards, story
+cards, archival plates and the footer. The look itself is a theme, `fieldguide`: white, magenta
+and Geist. The design system's own checks hold the new stylesheet to the same rules as the rest:
+no raw colours, never bold, and uppercase only in the mono face.
 
-It shipped as polarize-ui v0.5.6, and this site then adopted it everywhere. Every page got the
-new top bar, the new footer and the dark palette, and the speculations page uses the new story
-cards.
-
-The restyle went the same way. It is a theme in polarize-ui, `fieldguide`, with a few new
-components: the buttons, the counts strip, the numbered rows and the topic cards. It shipped as
-polarize-ui v0.5.19, and the other themes are unchanged.
+It shipped as polarize-ui v0.5.19, and every page on this site uses it.
 
 ## What was kept
 
@@ -256,8 +175,6 @@ first looked. These are the ones that survived:
 - **Real content only.** Every card is built from the site's own data: posts, essays, repositories
   and the changelog. A project's finding is always its own post's summary, never a line written for
   the homepage.
-- **The first version's layout.** The restyle came back to its spacing, cards, drawings and
-  numbers. The cells, the one thing taken from the version with no rules, went with it.
+- **The first version's layout.** Its spacing, cards, drawings and numbers, on a different page.
 
-The components are in [polarize-ui](https://github.com/polarizetech/polarize-ui). Its live
-Storybook still shows the hybrid homepage at desktop and phone width.
+The components are in [polarize-ui](https://github.com/polarizetech/polarize-ui).
