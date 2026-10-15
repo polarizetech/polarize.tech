@@ -6444,13 +6444,13 @@
  ],
  "_posts/2026-09-28-redesigning-the-homepage.md": [
   {
-   "sha": "4188602edba278c1c995de920c3284b377e319de",
+   "sha": "794d1dcc32989de9b7cd2d61c2ebf3fe1c579a7f",
    "author": "Joshua Anderton",
    "date": "2026-10-15T14:31:54-07:00",
    "subject": "Revision (subject withheld on request)",
    "llm": true,
    "llm_name": "Claude Opus 5.5",
-   "short": "4188602",
+   "short": "794d1dc",
    "first": false,
    "hunks": [
     [
