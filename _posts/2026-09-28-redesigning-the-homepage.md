@@ -1,9 +1,10 @@
 ---
 title: "Redesigning the homepage, one version at a time"
 description: >-
-  Five versions of the polarize.tech homepage, from a post list in a sidebar to a
-  lab's front door drawn over a field of polarising cells: what each one tried,
-  what was kept, and how the result became components in the design system.
+  Five versions of the polarize.tech homepage and the restyle that replaced the
+  one that shipped, from a post list in a sidebar to a white page with magenta
+  buttons and specimen drawings: what each one tried, what was kept, and how the
+  result became components in the design system.
 date: 2026-09-28 10:00:00 -0600
 project: method
 status: published
@@ -19,13 +20,14 @@ history_redact:
 summary: >-
   The homepage went through five versions in a day, each one kept. The first tried a
   familiar product-site layout, the third threw out every rule, and the one that
-  shipped took pieces from all of them. What survived became polarize-ui's landing
-  layer, so every page on the site now uses it.
-image: /assets/posts/homepage-redesign.jpg
+  shipped took pieces from all of them. A later restyle went back to the first: its
+  spacing, cards, drawings and numbers, on a white page with magenta. What survived
+  became polarize-ui's landing layer, so every page on the site uses it.
+image: /assets/posts/homepage-redesign-fieldguide.jpg
 image_alt: >-
-  The redesigned polarize.tech homepage: the heading "Reading and writing the body
-  electric" centred over a faint field of specks, with "Our process" and "Get in
-  touch" buttons beneath.
+  The current polarize.tech homepage: the heading "Reading and writing the body
+  electric" centred on a white page, with "Get in touch" and "Our process" buttons
+  beneath and a row of four counts below them.
 image_credit: Screenshot of polarize.tech. Desaturated for this site.
 ---
 
@@ -39,11 +41,11 @@ was accurate, and it said nothing about what this lab is for.
 </figure>
 
 The redesign was done in the open, in conversation with Claude on a design canvas where every
-version stayed side by side. Then it was built with Claude Code. Five directions, oldest first, and then fourteen passes on the last one:
+version stayed side by side. Then it was built with Claude Code. Five directions, oldest first, then fourteen passes on the last one, and later a restyle that went back to the first:
 
 <figure class="shot shot--strip">
-  <div class="shot__scroll"><a href="{{ '/assets/posts/homepage-redesign/07-filmstrip.jpg' | relative_url }}"><img src="{{ '/assets/posts/homepage-redesign/07-filmstrip.jpg' | relative_url }}" alt="The top of every homepage version side by side: the old post list, the light version, the dark version, the no-rules version and the final hybrid." loading="lazy" /></a></div>
-  <figcaption>The top of each version, oldest first: before, light, dark, no rules, and the one that shipped. Scroll sideways on a phone.</figcaption>
+  <div class="shot__scroll"><a href="{{ '/assets/posts/homepage-redesign/08-filmstrip.jpg' | relative_url }}"><img src="{{ '/assets/posts/homepage-redesign/08-filmstrip.jpg' | relative_url }}" alt="The top of the homepage versions side by side: the old post list, the light version, the dark version, the no-rules version and the current white page with magenta buttons." loading="lazy" /></a></div>
+  <figcaption>The top of each version, oldest first: before, light, dark, no rules, and the page as it is now. Scroll sideways on a phone.</figcaption>
 </figure>
 
 ## 1. A familiar front door
@@ -96,9 +98,9 @@ It was the loudest version and the least like the lab, but the cells stayed.
   <figcaption>Version three: no rules. The top bar counts how many simulated cells are firing.</figcaption>
 </figure>
 
-## 4. The one that shipped
+## 4. The hybrid
 
-The final version took something from each of the others. It has the dark palette, the design
+The fourth version took something from each of the others. It has the dark palette, the design
 system's type, hard rules and square-ish corners, and the first version's charts. The cells moved into a single WebGL field behind the entire page, one
 that looks like cells polarising rather than confetti. They are small, white, dim, sometimes
 grouped, occasionally firing together. The bracketed tags went, and so did the background fills
@@ -113,7 +115,7 @@ the speculations and the design system.
 
 <figure class="shot shot--wide">
   <a href="{{ '/assets/posts/homepage-redesign/05-hybrid.jpg' | relative_url }}"><img src="{{ '/assets/posts/homepage-redesign/05-hybrid.jpg' | relative_url }}" alt="Version four on the canvas: the centred serif headline over a field of faint white specks." loading="lazy" /></a>
-  <figcaption>The shipped design, as it stood on the canvas.</figcaption>
+  <figcaption>The hybrid, as it stood on the canvas. It shipped first, on September 28.</figcaption>
 </figure>
 
 ### Fourteen passes on the hybrid
@@ -188,7 +190,41 @@ of them, in order, each shown where it changed the page.
   </figure>
 </div>
 
-## 5. From canvas to components
+## 5. Back to the first version
+
+On October 15 the hybrid was replaced. The cell field went, and so did the dark palette. The page
+went back to the first version's spacing, cards, drawings and numbers, on a white page with
+magenta where that version had teal. The display serif stayed. The running text moved from Inter
+to [Geist](https://vercel.com/font), self-hosted like the other faces. The mono labels stayed
+too, because a tier badge is always set in mono.
+
+The numbers came back as a strip under the heading: posts, research topics, public repositories
+and merged changes, each counted when the site is built. The process became numbered rows, and
+each research topic got a numbered card with one of the specimen drawings that pass 4.3 had
+swapped for archival plates. The plates are still used, inked dark for a light page.
+
+<figure class="shot shot--wide">
+  <a href="{{ '/assets/posts/homepage-redesign/08-live-hero.jpg' | relative_url }}"><img src="{{ '/assets/posts/homepage-redesign/08-live-hero.jpg' | relative_url }}" alt="The current homepage: the centred serif heading on white with a magenta “body electric.”, a solid magenta and an outlined button, and the top of the four counts." loading="lazy" /></a>
+  <figcaption>Live: the heading, the two buttons and the counts beneath them.</figcaption>
+</figure>
+
+<figure class="shot shot--wide">
+  <a href="{{ '/assets/posts/homepage-redesign/08-live-process.jpg' | relative_url }}"><img src="{{ '/assets/posts/homepage-redesign/08-live-process.jpg' | relative_url }}" alt="The Process section as numbered rows: a large magenta 01 and 02, each with its repository, a heading, a description, its files and its latest change." loading="lazy" /></a>
+  <figcaption>Live: the process as numbered rows.</figcaption>
+</figure>
+
+<figure class="shot shot--wide">
+  <a href="{{ '/assets/posts/homepage-redesign/08-live-topics.jpg' | relative_url }}"><img src="{{ '/assets/posts/homepage-redesign/08-live-topics.jpg' | relative_url }}" alt="The Findings section: numbered cards for each research topic, each with a line drawing of an oscilloscope, a horseshoe magnet, a bee, a crab or a stack of papers." loading="lazy" /></a>
+  <figcaption>Live: Findings opens with the research topics, numbered, each with its drawing and post count.</figcaption>
+</figure>
+
+<figure class="shot shot--pair">
+  <a href="{{ '/assets/posts/homepage-redesign/08-live-mobile.jpg' | relative_url }}"><img src="{{ '/assets/posts/homepage-redesign/08-live-mobile.jpg' | relative_url }}" alt="The current homepage on a phone: the heading, description, two buttons and the first counts." loading="lazy" /></a>
+  <a href="{{ '/assets/posts/homepage-redesign/08-live-mobile-process.jpg' | relative_url }}"><img src="{{ '/assets/posts/homepage-redesign/08-live-mobile-process.jpg' | relative_url }}" alt="The Process section on a phone: the 01 row stacked in one column." loading="lazy" /></a>
+  <figcaption>On a phone: the hero, and the process rows stacked.</figcaption>
+</figure>
+
+## 6. From canvas to components
 
 A design that lives only on a canvas has to be rebuilt by hand for every page, and it drifts. So
 it went into polarize-ui as components, in both of its forms: a zero-build stylesheet and custom
@@ -200,28 +236,13 @@ The cell field is `<ui-cellfield>`. It draws nothing a reader needs, and it stop
 has asked their system to reduce motion. The design system's own checks hold the new stylesheet
 to the same rules as the rest: no raw colours, never bold, and uppercase only in the mono face.
 
-It shipped as polarize-ui v0.5.6, and this site then adopted it everywhere. Every page now has the
+It shipped as polarize-ui v0.5.6, and this site then adopted it everywhere. Every page got the
 new top bar, the new footer and the dark palette, and the speculations page uses the new story
 cards.
 
-<figure class="shot shot--wide">
-  <a href="{{ '/assets/posts/homepage-redesign/06-live-process.jpg' | relative_url }}"><img src="{{ '/assets/posts/homepage-redesign/06-live-process.jpg' | relative_url }}" alt="The live Process section: three numbered cards for adaptive-preregistration, scientific-research-scaffold and scientific-research-rag, joined by arrows." loading="lazy" /></a>
-  <figcaption>Live: the Process section, three repositories that keep results honest.</figcaption>
-</figure>
-
-<figure class="shot shot--wide">
-  <a href="{{ '/assets/posts/homepage-redesign/06-live-findings.jpg' | relative_url }}"><img src="{{ '/assets/posts/homepage-redesign/06-live-findings.jpg' | relative_url }}" alt="The live Findings section: a featured article with its photograph beside its title and summary." loading="lazy" /></a>
-  <figcaption>Live: Findings, built from the posts themselves, with their own images and credits.</figcaption>
-</figure>
-
-The same components hold up on a phone. The top bar folds into a menu that works without script,
-the process steps stack with downward arrows, and the story cards scroll sideways.
-
-<figure class="shot shot--pair">
-  <a href="{{ '/assets/posts/homepage-redesign/06-live-mobile.jpg' | relative_url }}"><img src="{{ '/assets/posts/homepage-redesign/06-live-mobile.jpg' | relative_url }}" alt="The live homepage on a phone: the heading, description and two buttons over the cell field." loading="lazy" /></a>
-  <a href="{{ '/assets/posts/homepage-redesign/06-live-mobile-process.jpg' | relative_url }}"><img src="{{ '/assets/posts/homepage-redesign/06-live-mobile-process.jpg' | relative_url }}" alt="The Process section on a phone: one numbered card per row." loading="lazy" /></a>
-  <figcaption>On a phone: the hero, and the process steps stacked.</figcaption>
-</figure>
+The restyle went the same way. It is a theme in polarize-ui, `fieldguide`, with a few new
+components: the buttons, the counts strip, the numbered rows and the topic cards. It shipped as
+polarize-ui v0.5.19, and the other themes are unchanged.
 
 ## What was kept
 
@@ -235,7 +256,8 @@ first looked. These are the ones that survived:
 - **Real content only.** Every card is built from the site's own data: posts, essays, repositories
   and the changelog. A project's finding is always its own post's summary, never a line written for
   the homepage.
-- **The cells.** Only these came from the version with no rules.
+- **The first version's layout.** The restyle came back to its spacing, cards, drawings and
+  numbers. The cells, the one thing taken from the version with no rules, went with it.
 
-The components are in [polarize-ui](https://github.com/polarizetech/polarize-ui), and the live
-Storybook shows the whole homepage at desktop and phone width.
+The components are in [polarize-ui](https://github.com/polarizetech/polarize-ui). Its live
+Storybook still shows the hybrid homepage at desktop and phone width.
