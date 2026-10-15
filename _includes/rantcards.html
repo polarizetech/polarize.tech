@@ -8,7 +8,7 @@
   single scrolling row, as on the home page; otherwise a wrapping grid)
 {%- endcomment -%}
 {%- assign plates = site.data.schematics %}
-<ul class="ui-stories{% unless include.row %} ui-stories--grid{% endunless %}">
+<ul class="ui-stories ui-plate--ink{% unless include.row %} ui-stories--grid{% endunless %}">
   {%- for r in include.rants %}
   {%- assign pi = forloop.index0 | modulo: plates.size %}
   {%- assign plate = plates[pi] %}

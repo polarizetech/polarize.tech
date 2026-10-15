@@ -2,7 +2,6 @@
 layout: home
 title: null
 full_bleed: true
-cellfield: true
 description: >-
   An independent research lab building open instruments and software for
   bioelectric sensing — and publishing what they find, including when the
@@ -49,31 +48,43 @@ projects:
   - repo: neural-memory
     question: Can a network of neurons hold on to a sound?
     post: a-network-built-to-lose
-    plate: vicq-dazyr-brain-1798
+    specimen: neuron
   - repo: olimex-shield
     question: What can a $70 amplifier actually hear?
     post: can-a-70-dollar-board-tell-me-im-wrong
-    plate: galvani-frog-1792
+    specimen: iron
     flip: true
 toolkit: [paper-fetch]
+# One specimen per research topic (site.projects), in the topic grid.
+topic_specimens:
+  audio-evoked-potentials: scope
+  bioem-propagation: magnet
+  biosignal-translation: bee
+  invasive-species-bioelectric: crab
+  method: paper
 ---
 {%- comment -%}
-  The homepage, built from polarize-ui's landing layer (design/landing.css,
-  design/cellfield.js). The page is full-bleed (`full_bleed` in the front
-  matter) and draws the cell field behind itself (`cellfield`).
+  The homepage, built from polarize-ui's landing layer (design/landing.css) in the
+  fieldguide theme: white, magenta, Geist. Full-bleed (`full_bleed`); no animation.
 {%- endcomment -%}
-<ui-cellfield hero="#home-hero" density="0.75" intensity="0.9"></ui-cellfield>
-
 <section class="ui-hero" id="home-hero">
-  <h1 class="ui-hero__title ui-reveal">Reading and writing the <em>body electric.</em></h1>
-  <p class="ui-hero__lede ui-reveal ui-reveal--3">{{ page.description }}</p>
-  <div class="ui-hero__actions ui-reveal ui-reveal--4">
-    <a class="ui-cta" href="#process">
-      <span class="ui-cta__icon"><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false" fill="currentColor"><circle cx="5" cy="6" r="1.8"/><circle cx="12" cy="4" r="1.3"/><circle cx="9" cy="11" r="2.2"/><circle cx="16" cy="10" r="1.4"/><circle cx="11" cy="17" r="1.6"/></svg></span>
-      <span class="ui-cta__text">Our process</span>
-    </a>
-    <a class="ui-cta ui-cta--solid" href="{{ contact_href }}"><span class="ui-cta__text">Get in touch</span></a>
+  <h1 class="ui-hero__title">Reading and writing the <em>body electric.</em></h1>
+  <p class="ui-hero__lede">{{ page.description }}</p>
+  <div class="ui-hero__actions">
+    <a class="ui-action" href="{{ contact_href }}">Get in touch</a>
+    <a class="ui-action ui-action--outline" href="#process">Our process</a>
   </div>
+</section>
+
+{%- comment -%} Counts, computed at build from the site's own data — never typed in. {%- endcomment -%}
+<section class="home__stats" aria-label="The lab in numbers">
+  <div class="ui-stats">
+    <div class="ui-stat"><span class="ui-stat__num">{{ site.posts | size }}</span><span class="ui-stat__label">articles, each with its sources</span></div>
+    <div class="ui-stat"><span class="ui-stat__num">{{ site.projects | size }}</span><span class="ui-stat__label">research topics</span></div>
+    <div class="ui-stat"><span class="ui-stat__num">{{ site.data.repos | size }}</span><span class="ui-stat__label">public repositories</span></div>
+    <div class="ui-stat"><span class="ui-stat__num">{{ site.data.changelog | size }}</span><span class="ui-stat__label">merged changes</span></div>
+  </div>
+  <p class="ui-stats__note">Counted when the site was built, {{ site.time | date: "%B %-d, %Y" }}.</p>
 </section>
 
 {%- comment -%} Process: the three repositories that keep results honest. {%- endcomment -%}
@@ -85,7 +96,7 @@ toolkit: [paper-fetch]
     </div>
     <p class="ui-section__lede">Every study borrows the discipline of a clinical trial: the inputs and the predictions are preregistered before anything runs, so a result can fail in public and stay on the record. These three repositories are how that works.</p>
   </div>
-  <ol class="ui-steps">
+  <ol class="ui-steps ui-steps--rows">
     {%- for s in page.process %}
     {%- assign r = site.data.repos | where: "name", s.repo | first %}
     {%- assign sp = nil %}
@@ -143,7 +154,6 @@ toolkit: [paper-fetch]
   {%- for pr in page.projects %}
   {%- assign r = site.data.repos | where: "name", pr.repo | first %}
   {%- assign post = site.posts | where_exp: "p", "p.url contains pr.post" | first %}
-  {%- assign plate = site.data.schematics | where: "id", pr.plate | first %}
   {%- assign changes = site.data.changelog | where: "repo", pr.repo | sort: "merged_at" | reverse %}
   {%- capture project_href %}{% if post %}{{ post.url | relative_url }}{% else %}{{ '/work/' | append: pr.repo | append: '/' | relative_url }}{% endif %}{% endcapture %}
   <a class="ui-project{% if pr.flip %} ui-project--flip{% endif %}" href="{{ project_href | strip }}">
@@ -173,11 +183,8 @@ toolkit: [paper-fetch]
         </ul>
       </div>
     </div>
-    {%- if plate %}
-    <figure class="ui-plate ui-project__media">
-      <div class="ui-plate__frame"><img class="ui-plate__img" src="{{ '/assets/schematics/' | append: plate.id | append: '.jpg' | relative_url }}" alt="Historical drawing: {{ plate.subject }}." loading="lazy" /></div>
-      <figcaption class="ui-plate__caption">{{ plate.credit | strip_html }} · {{ plate.license }}</figcaption>
-    </figure>
+    {%- if pr.specimen %}
+    <div class="ui-project__media ui-specimen-tile">{% include specimen.html name=pr.specimen %}</div>
     {%- endif %}
   </a>
   {%- endfor %}
@@ -205,7 +212,7 @@ toolkit: [paper-fetch]
       <p class="ui-section__eyebrow">Changelog</p>
       <h2 class="ui-section__title" id="changelog-title">Recently merged.</h2>
       <p class="ui-section__lede">Every merged change to a public repository, as it lands. The work moves in small, reviewable steps.</p>
-      <a class="ui-cta home__start" href="{{ '/changelog/' | relative_url }}"><span class="ui-cta__text">Full changelog →</span></a>
+      <a class="ui-action ui-action--outline home__start" href="{{ '/changelog/' | relative_url }}">Full changelog →</a>
     </div>
     {%- assign feed = site.data.changelog | sort: "merged_at" | reverse %}
     <ul class="ui-changes">
@@ -233,8 +240,25 @@ toolkit: [paper-fetch]
     </div>
     <div class="ui-section__side">
       <p class="ui-section__lede">Articles written from the repositories: the question, what was tried, and what the result can and cannot support.</p>
-      <a class="ui-cta" href="{{ '/blog/' | relative_url }}"><span class="ui-cta__text">All {{ site.posts | size }} articles →</span></a>
+      <a class="ui-action ui-action--outline" href="{{ '/blog/' | relative_url }}">All {{ site.posts | size }} articles →</a>
     </div>
+  </div>
+  {%- comment -%} The research topics, numbered, each with its specimen and post count. {%- endcomment -%}
+  <div class="ui-topics home__topics">
+    {%- for pair in site.projects %}
+    {%- assign slug = pair[0] %}
+    {%- assign in_topic = site.posts | where: "project", slug %}
+    {%- assign spec = page.topic_specimens[slug] %}
+    <a class="ui-topic{% if forloop.index <= 2 %} ui-topic--wide{% endif %}" href="{{ '/blog/topics/' | append: slug | append: '/' | relative_url }}">
+      {%- if spec %}<div class="ui-topic__media ui-specimen-tile">{% include specimen.html name=spec %}</div>{% endif %}
+      <div class="ui-topic__body">
+        <p class="ui-topic__meta">{{ forloop.index | prepend: "0" | slice: -2, 2 }} · {{ in_topic.size }} post{% if in_topic.size != 1 %}s{% endif %}</p>
+        <h3 class="ui-topic__title">{{ pair[1].label }}</h3>
+        <p class="ui-topic__text">{{ pair[1].blurb }}</p>
+        <span class="ui-topic__go">Read the posts →</span>
+      </div>
+    </a>
+    {%- endfor %}
   </div>
   {%- comment -%} Posts marked `findings: false` (about the site, not the research) are left out. The lead is the newest post with an image; the grid is the next six after it, image or not. {%- endcomment -%}
   {%- assign findings = site.posts | where_exp: "p", "p.findings != false" %}
@@ -287,7 +311,7 @@ toolkit: [paper-fetch]
         <h2 class="ui-section__title" id="speculations-title">Thinking out loud.</h2>
         <p class="ui-storyrow__lede">Short dictated pieces from the founder — hunches the projects are trying to test, or trying to kill. No claims, no citations.</p>
       </div>
-      <a class="ui-cta home__start" href="{{ speculations_href }}"><span class="ui-cta__text">All speculations →</span></a>
+      <a class="ui-action ui-action--outline home__start" href="{{ speculations_href }}">All speculations →</a>
     </div>
     {%- assign essays = site.essays | sort: "date" | reverse %}
     {% include rantcards.html rants=essays row=true %}
@@ -309,7 +333,7 @@ toolkit: [paper-fetch]
         <div><dt class="ui-label">Evidence</dt><dd>Tier, Value and Readout: measured and predicted are never styled alike.</dd></div>
       </dl>
       <div class="home__ds-actions">
-        <a class="ui-cta" href="https://polarizetech.github.io/polarize-ui/" rel="noopener"><span class="ui-cta__text">Live Storybook ↗</span></a>
+        <a class="ui-action ui-action--outline" href="https://polarizetech.github.io/polarize-ui/" rel="noopener">Live Storybook ↗</a>
         <a class="ui-arrowlink" href="https://github.com/polarizetech/polarize-ui" rel="noopener">GitHub ↗</a>
       </div>
     </div>

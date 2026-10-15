@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="instrument-dark">
+<html lang="en" data-theme="fieldguide">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -18,11 +18,9 @@
   <link rel="stylesheet" href="{{ '/design/design.css' | relative_url }}?v={{ v }}" />
   <link rel="stylesheet" href="{{ '/design/publication.css' | relative_url }}?v={{ v }}" />
   <link rel="stylesheet" href="{{ '/design/landing.css' | relative_url }}?v={{ v }}" />
+  <link rel="stylesheet" href="{{ '/design/specimens.css' | relative_url }}?v={{ v }}" />
   <link rel="stylesheet" href="{{ '/styles.css' | relative_url }}?v={{ v }}" />
   <script type="module" src="{{ '/design/design.js' | relative_url }}?v={{ v }}"></script>
-  {%- if page.cellfield %}
-  <script type="module" src="{{ '/design/cellfield.js' | relative_url }}?v={{ v }}"></script>
-  {%- endif %}
   {%- if page.filter %}
   <script type="module" src="{{ '/design/filter.js' | relative_url }}?v={{ v }}"></script>
   {%- endif %}
@@ -47,7 +45,7 @@
   {% include topnav.html %}
 
   {%- if page.full_bleed %}
-  <main class="home ui-cellfield-host" id="main">
+  <main class="home" id="main">
     {{ content }}
   </main>
   {%- elsif page.filter %}

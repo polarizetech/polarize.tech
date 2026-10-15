@@ -133,6 +133,7 @@ body.ui { margin: 0; }
    frame (the plate's own dark ground and vignette are the edge), and a caption
    naming the source and its licence, like the lead images. */
 .schematic { margin: var(--space-7) 0; }
+:root[data-theme^="fieldguide"] .schematic img { filter: invert(1) grayscale(1) contrast(1.1); mix-blend-mode: multiply; }
 .schematic img { display: block; width: 100%; height: auto; border-radius: var(--radius-base); }
 .schematic__caption { margin-top: var(--space-2); font-size: var(--text-sm); line-height: 1.5; color: var(--faint-foreground); }
 .schematic__caption a { color: inherit; }
@@ -203,7 +204,9 @@ body.ui { margin: 0; }
    layer (design/landing.css); this is only the glue for this page.
    ============================================================ */
 .home { display: block; }
-.home .ui-hero { min-height: min(84vh, 800px); }
+.home .ui-hero { padding-block: var(--space-9) var(--space-7); }
+.home__stats { padding-inline: var(--landing-gutter, var(--space-5)); margin-bottom: var(--space-9); }
+.home__topics { margin-bottom: var(--space-8); }
 .home .ui-steps + .ui-promises + .home__gate { margin-top: var(--space-5); }
 .home__gate { margin: var(--space-5) 0 0; font-size: var(--text-base); color: var(--muted-foreground); }
 .home__gate a { color: var(--accent); }
