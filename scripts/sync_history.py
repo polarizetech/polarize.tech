@@ -18,6 +18,12 @@ renames), newest first, with:
                          inside a changed paragraph the words marked <ins>/<del>.
                          The first revision has no diff — it IS the original.
 
+A post can withhold passages from its own history with `history_redact:` in its
+current front matter, a list of strings. Any diff paragraph containing one of them
+(case-insensitive) is left out of the history and replaced by a single note saying a
+passage was withheld. Use it only when text had to come off the site for a reason
+other than a correction (a takedown request, say): corrections stay visible.
+
 Keyed by the file's current path, which is what Jekyll exposes as page.path.
 The page renders it with _includes/history.html. Never edit the output by hand.
 
@@ -183,6 +189,42 @@ def diff(old_text, new_text):
     return [h for h in hunks if any(r['t'] != 'ctx' for r in h)], added, removed
 
 
+WITHHELD = '<em>A passage was withheld from this history.</em>'
+
+
+def redactions(path):
+    """The `history_redact:` strings in a file's current front matter, lower-cased."""
+    text = path.read_text()
+    m = re.match(r'---\n(.*?)\n---', text, re.S)
+    if not m:
+        return []
+    block = re.search(r'^history_redact:\s*\n((?:[ \t]+-[^\n]*\n?)+)', m.group(1) + '\n', re.M)
+    if not block:
+        return []
+    return [re.sub(r'^\s*-\s*', '', l).strip().strip('"\'').lower()
+            for l in block.group(1).splitlines() if l.strip()]
+
+
+def redact(hunks, terms):
+    """Drop every diff row that mentions a withheld term; keep a note where it was."""
+    if not terms:
+        return hunks
+    out = []
+    for hunk in hunks:
+        rows, hit = [], False
+        for row in hunk:
+            plain = html.unescape(re.sub(r'<[^>]+>', '', row['h'])).lower()
+            if any(t in plain for t in terms):
+                if not hit:
+                    rows.append({'t': 'ctx', 'h': WITHHELD})
+                hit = True
+                continue
+            rows.append(row)
+        if any(r['t'] != 'ctx' for r in rows):
+            out.append(rows)
+    return out
+
+
 def build():
     files = sorted(SITE.glob('_posts/*.md')) + sorted(SITE.glob('_essays/*.md'))
     data = {}
@@ -191,6 +233,7 @@ def build():
         revs = revisions(rel)
         if not revs:
             continue                                  # not committed yet
+        terms = redactions(f)
         out = []
         for i, r in enumerate(revs):
             prev = revs[i + 1] if i + 1 < len(revs) else None
@@ -202,7 +245,7 @@ def build():
                 new = git('show', f'{r["sha"]}:{r["path"]}')
                 old = git('show', f'{prev["sha"]}:{prev["path"]}')
                 hunks, added, removed = diff(old, new)
-                entry.update(first=False, hunks=hunks, added=added, removed=removed)
+                entry.update(first=False, hunks=redact(hunks, terms), added=added, removed=removed)
             out.append(entry)
         data[rel] = out
     return json.dumps(data, indent=1, ensure_ascii=False) + '\n'
