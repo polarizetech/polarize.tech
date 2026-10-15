@@ -6444,6 +6444,228 @@
  ],
  "_posts/2026-09-28-redesigning-the-homepage.md": [
   {
+   "sha": "d79a0ec753dad06192a0a497d3f7b620725a574c",
+   "author": "Joshua Anderton",
+   "date": "2026-10-15T14:25:32-07:00",
+   "subject": "Post: show the current homepage in \"Redesigning the homepage\"",
+   "llm": true,
+   "llm_name": "Claude Opus 5.5",
+   "short": "d79a0ec",
+   "first": false,
+   "hunks": [
+    [
+     {
+      "t": "ctx",
+      "h": "description: &gt;-"
+     },
+     {
+      "t": "mod",
+      "h": "  Five versions of the polarize.tech homepage<del>,</del> <del>from</del><ins>and</ins> <del>a</del><ins>the</ins> <del>post</del><ins>restyle</ins> <del>list</del><ins>that</ins> <del>in</del><ins>replaced</ins> <del>a sidebar to a</del><ins>the</ins>"
+     },
+     {
+      "t": "del",
+      "h": "  lab&#x27;s front door drawn over a field of polarising cells: what each one tried,"
+     },
+     {
+      "t": "add",
+      "h": "  one that shipped, from a post list in a sidebar to a white page with magenta"
+     },
+     {
+      "t": "add",
+      "h": "  buttons and specimen drawings: what each one tried, what was kept, and how the"
+     },
+     {
+      "t": "mod",
+      "h": "  <del>what was kept, and how the </del>result became components in the design system."
+     },
+     {
+      "t": "ctx",
+      "h": "date: 2026-09-28 10:00:00 -0600"
+     }
+    ],
+    [
+     {
+      "t": "ctx",
+      "h": "  familiar product-site layout, the third threw out every rule, and the one that"
+     },
+     {
+      "t": "mod",
+      "h": "  shipped took pieces from all of them. <del>What</del><ins>A</ins> <del>survived</del><ins>later</ins> <del>became</del><ins>restyle</ins> <del>polarize-ui&#x27;s</del><ins>went</ins> <del>landing</del><ins>back to the first: its</ins>"
+     },
+     {
+      "t": "add",
+      "h": "  spacing, cards, drawings and numbers, on a white page with magenta. What survived"
+     },
+     {
+      "t": "mod",
+      "h": "  <ins>became polarize-ui&#x27;s landing </ins>layer, so every page on the site <del>now </del>uses it."
+     },
+     {
+      "t": "mod",
+      "h": "image: /assets/posts/homepage-redesign<ins>-fieldguide</ins>.jpg"
+     },
+     {
+      "t": "ctx",
+      "h": "image_alt: &gt;-"
+     },
+     {
+      "t": "mod",
+      "h": "  The <del>redesigned</del><ins>current</ins> polarize.tech homepage: the heading &quot;Reading and writing the body"
+     },
+     {
+      "t": "mod",
+      "h": "  electric&quot; centred <del>over</del><ins>on</ins> a <del>faint</del><ins>white</ins> <del>field of specks</del><ins>page</ins>, with<ins> &quot;Get in touch&quot; and</ins> &quot;Our process&quot; <del>and &quot;Get in</del><ins>buttons</ins>"
+     },
+     {
+      "t": "del",
+      "h": "  touch&quot; buttons beneath."
+     },
+     {
+      "t": "add",
+      "h": "  beneath and a row of four counts below them."
+     },
+     {
+      "t": "ctx",
+      "h": "image_credit: Screenshot of polarize.tech. Desaturated for this site."
+     }
+    ],
+    [
+     {
+      "t": "ctx",
+      "h": "&lt;figure class=&quot;shot shot--wide&quot;&gt; &lt;a href=&quot;{{ &#x27;/assets/posts/homepage-redesign/00-before.jpg&#x27; | relative_url }}&quot;&gt;&lt;img src=&quot;{{ &#x27;/assets/posts/homepage-redesign/00-before.jpg&#x27; | relative_url }}&quot; alt=&quot;The old homepage: a sidebar with the brand, a menu and counts, beside a list of the latest posts with thumbnails.&quot; loading=&quot;lazy&quot; /&gt;&lt;/a&gt; &lt;figcaption&gt;Before: the homepage as a post list inside the blog&#x27;s sidebar layout.&lt;/figcaption&gt; &lt;/figure&gt;"
+     },
+     {
+      "t": "mod",
+      "h": "The redesign was done in the open, in conversation with Claude on a design canvas where every version stayed side by side. Then it was built with Claude Code. Five directions, oldest first, <del>and </del>then fourteen passes on the last one<ins>, and later a restyle that went back to the first</ins>:"
+     },
+     {
+      "t": "mod",
+      "h": "&lt;figure class=&quot;shot shot--strip&quot;&gt; &lt;div class=&quot;shot__scroll&quot;&gt;&lt;a href=&quot;{{ &#x27;/assets/posts/homepage-redesign/<del>07</del><ins>08</ins>-filmstrip.jpg&#x27; | relative_url }}&quot;&gt;&lt;img src=&quot;{{ &#x27;/assets/posts/homepage-redesign/<del>07</del><ins>08</ins>-filmstrip.jpg&#x27; | relative_url }}&quot; alt=&quot;The top of <del>every</del><ins>the</ins> homepage <del>version</del><ins>versions</ins> side by side: the old post list, the light version, the dark version, the no-rules version and the <del>final</del><ins>current</ins> <del>hybrid</del><ins>white page with magenta buttons</ins>.&quot; loading=&quot;lazy&quot; /&gt;&lt;/a&gt;&lt;/div&gt; &lt;figcaption&gt;The top of each version, oldest first: before, light, dark, no rules, and the <del>one</del><ins>page</ins> <del>that</del><ins>as</ins> <del>shipped</del><ins>it is now</ins>. Scroll sideways on a phone.&lt;/figcaption&gt; &lt;/figure&gt;"
+     },
+     {
+      "t": "ctx",
+      "h": "## 1. A familiar front door"
+     }
+    ],
+    [
+     {
+      "t": "ctx",
+      "h": "&lt;figure class=&quot;shot shot--wide&quot;&gt; &lt;a href=&quot;{{ &#x27;/assets/posts/homepage-redesign/04-no-rules.jpg&#x27; | relative_url }}&quot;&gt;&lt;img src=&quot;{{ &#x27;/assets/posts/homepage-redesign/04-no-rules.jpg&#x27; | relative_url }}&quot; alt=&quot;Version three: an enormous condensed uppercase headline in white and acid green, a grid of mono labels, and clusters of green squares firing in the background.&quot; loading=&quot;lazy&quot; /&gt;&lt;/a&gt; &lt;figcaption&gt;Version three: no rules. The top bar counts how many simulated cells are firing.&lt;/figcaption&gt; &lt;/figure&gt;"
+     },
+     {
+      "t": "mod",
+      "h": "## 4. The <del>one that shipped</del><ins>hybrid</ins>"
+     },
+     {
+      "t": "mod",
+      "h": "The <del>final</del><ins>fourth</ins> version took something from each of the others. It has the dark palette, the design system&#x27;s type, hard rules and square-ish corners, and the first version&#x27;s charts. The cells moved into a single WebGL field behind the entire page, one that looks like cells polarising rather than confetti. They are small, white, dim, sometimes grouped, occasionally firing together. The bracketed tags went, and so did the background fills on cards."
+     },
+     {
+      "t": "ctx",
+      "h": "The content changed more than the look. Looking at how other labs present themselves helped, especially [Michael Levin&#x27;s lab site](https://drmichaellevin.org) and his separate essay site, [Thoughtforms](https://thoughtforms.life). They pointed to an order: lead with the work, let the articles report what it found, and give speculation its own quieter room. So the homepage now opens with the process that keeps results honest. Then come the projects, the changelog, the findings, the speculations and the design system."
+     },
+     {
+      "t": "mod",
+      "h": "&lt;figure class=&quot;shot shot--wide&quot;&gt; &lt;a href=&quot;{{ &#x27;/assets/posts/homepage-redesign/05-hybrid.jpg&#x27; | relative_url }}&quot;&gt;&lt;img src=&quot;{{ &#x27;/assets/posts/homepage-redesign/05-hybrid.jpg&#x27; | relative_url }}&quot; alt=&quot;Version four on the canvas: the centred serif headline over a field of faint white specks.&quot; loading=&quot;lazy&quot; /&gt;&lt;/a&gt; &lt;figcaption&gt;The <del>shipped design</del><ins>hybrid</ins>, as it stood on the canvas.<ins> It shipped first, on September 28.</ins>&lt;/figcaption&gt; &lt;/figure&gt;"
+     },
+     {
+      "t": "ctx",
+      "h": "### Fourteen passes on the hybrid"
+     }
+    ],
+    [
+     {
+      "t": "ctx",
+      "h": "&lt;div class=&quot;shot-grid&quot;&gt; &lt;figure class=&quot;shot&quot;&gt; &lt;a href=&quot;{{ &#x27;/assets/posts/homepage-redesign/hybrid/h01-hero.jpg&#x27; | relative_url }}&quot;&gt;&lt;img src=&quot;{{ &#x27;/assets/posts/homepage-redesign/hybrid/h01-hero.jpg&#x27; | relative_url }}&quot; alt=&quot;Step 4.1 of the hybrid homepage: The first hybrid: the dark palette and specks, with the first version&#x27;s charts.&quot; loading=&quot;lazy&quot; /&gt;&lt;/a&gt; &lt;figcaption&gt;&lt;strong&gt;4.1&lt;/strong&gt; · The first hybrid: the dark palette and specks, with the first version&#x27;s charts.&lt;/figcaption&gt; &lt;/figure&gt; &lt;figure class=&quot;shot&quot;&gt; &lt;a href=&quot;{{ &#x27;/assets/posts/homepage-redesign/hybrid/h02-focus.jpg&#x27; | relative_url }}&quot;&gt;&lt;img src=&quot;{{ &#x27;/assets/posts/homepage-redesign/hybrid/h02-focus.jpg&#x27; | relative_url }}&quot; alt=&quot;Step 4.2 of the hybrid homepage: Corners down to 4px.&quot; loading=&quot;lazy&quot; /&gt;&lt;/a&gt; &lt;figcaption&gt;&lt;strong&gt;4.2&lt;/strong&gt; · Corners down to 4px.&lt;/figcaption&gt; &lt;/figure&gt; &lt;figure class=&quot;shot&quot;&gt; &lt;a href=&quot;{{ &#x27;/assets/posts/homepage-redesign/hybrid/h03-focus.jpg&#x27; | relative_url }}&quot;&gt;&lt;img src=&quot;{{ &#x27;/assets/posts/homepage-redesign/hybrid/h03-focus.jpg&#x27; | relative_url }}&quot; alt=&quot;Step 4.3 of the hybrid homepage: The specimen drawings replaced by the archival plates the site already had.&quot; loading=&quot;lazy&quot; /&gt;&lt;/a&gt; &lt;figcaption&gt;&lt;strong&gt;4.3&lt;/strong&gt; · The specimen drawings replaced by the archival plates the site already had.&lt;/figcaption&gt; &lt;/figure&gt; &lt;figure class=&quot;shot&quot;&gt; &lt;a href=&quot;{{ &#x27;/assets/posts/homepage-redesign/hybrid/h04-focus.jpg&#x27; | relative_url }}&quot;&gt;&lt;img src=&quot;{{ &#x27;/assets/posts/homepage-redesign/hybrid/h04-focus.jpg&#x27; | relative_url }}&quot; alt=&quot;Step 4.4 of the hybrid homepage: Background fills taken off the cards.&quot; loading=&quot;lazy&quot; /&gt;&lt;/a&gt; &lt;figcaption&gt;&lt;strong&gt;4.4&lt;/strong&gt; · Background fills taken off the cards.&lt;/figcaption&gt; &lt;/figure&gt; &lt;figure class=&quot;shot&quot;&gt; &lt;a href=&quot;{{ &#x27;/assets/posts/homepage-redesign/hybrid/h05-focus.jpg&#x27; | relative_url }}&quot;&gt;&lt;img src=&quot;{{ &#x27;/assets/posts/homepage-redesign/hybrid/h05-focus.jpg&#x27; | relative_url }}&quot; alt=&quot;Step 4.5 of the hybrid homepage: Rebuilt around the repositories: projects first, then the changelog, findings and notes.&quot; loading=&quot;lazy&quot; /&gt;&lt;/a&gt; &lt;figcaption&gt;&lt;strong&gt;4.5&lt;/strong&gt; · Rebuilt around the repositories: projects first, then the changelog, findings and notes.&lt;/figcaption&gt; &lt;/figure&gt; &lt;figure class=&quot;shot&quot;&gt; &lt;a href=&quot;{{ &#x27;/assets/posts/homepage-redesign/hybrid/h06-focus.jpg&#x27; | relative_url }}&quot;&gt;&lt;img src=&quot;{{ &#x27;/assets/posts/homepage-redesign/hybrid/h06-focus.jpg&#x27; | relative_url }}&quot; alt=&quot;Step 4.6 of the hybrid homepage: “Merged this week” became “Recently merged”.&quot; loading=&quot;lazy&quot; /&gt;&lt;/a&gt; &lt;figcaption&gt;&lt;strong&gt;4.6&lt;/strong&gt; · “Merged this week” became “Recently merged”.&lt;/figcaption&gt; &lt;/figure&gt; &lt;figure class=&quot;shot&quot;&gt; &lt;a href=&quot;{{ &#x27;/assets/posts/homepage-redesign/hybrid/h07-focus.jpg&#x27; | relative_url }}&quot;&gt;&lt;img src=&quot;{{ &#x27;/assets/posts/homepage-redesign/hybrid/h07-focus.jpg&#x27; | relative_url }}&quot; alt=&quot;Step 4.7 of the hybrid homepage: One WebGL field behind the whole page. At first the cells looked like bubbles.&quot; loading=&quot;lazy&quot; /&gt;&lt;/a&gt; &lt;figcaption&gt;&lt;strong&gt;4.7&lt;/strong&gt; · One WebGL field behind the whole page. At first the cells looked like bubbles.&lt;/figcaption&gt; &lt;/figure&gt; &lt;figure class=&quot;shot&quot;&gt; &lt;a href=&quot;{{ &#x27;/assets/posts/homepage-redesign/hybrid/h08-focus.jpg&#x27; | relative_url }}&quot;&gt;&lt;img src=&quot;{{ &#x27;/assets/posts/homepage-redesign/hybrid/h08-focus.jpg&#x27; | relative_url }}&quot; alt=&quot;Step 4.8 of the hybrid homepage: Back to specks: smaller, clustered, of varying density.&quot; loading=&quot;lazy&quot; /&gt;&lt;/a&gt; &lt;figcaption&gt;&lt;strong&gt;4.8&lt;/strong&gt; · Back to specks: smaller, clustered, of varying density.&lt;/figcaption&gt; &lt;/figure&gt; &lt;figure class=&quot;shot&quot;&gt; &lt;a href=&quot;{{ &#x27;/assets/posts/homepage-redesign/hybrid/h09-focus.jpg&#x27; | relative_url }}&quot;&gt;&lt;img src=&quot;{{ &#x27;/assets/posts/homepage-redesign/hybrid/h09-focus.jpg&#x27; | relative_url }}&quot; alt=&quot;Step 4.9 of the hybrid homepage: One colour: a faded white that polarises in opacity only.&quot; loading=&quot;lazy&quot; /&gt;&lt;/a&gt; &lt;figcaption&gt;&lt;strong&gt;4.9&lt;/strong&gt; · One colour: a faded white that polarises in opacity only.&lt;/figcaption&gt; &lt;/figure&gt; &lt;figure class=&quot;shot&quot;&gt; &lt;a href=&quot;{{ &#x27;/assets/posts/homepage-redesign/hybrid/h10-focus.jpg&#x27; | relative_url }}&quot;&gt;&lt;img src=&quot;{{ &#x27;/assets/posts/homepage-redesign/hybrid/h10-focus.jpg&#x27; | relative_url }}&quot; alt=&quot;Step 4.10 of the hybrid homepage: Quieter still: lower peaks, softer firing.&quot; loading=&quot;lazy&quot; /&gt;&lt;/a&gt; &lt;figcaption&gt;&lt;strong&gt;4.10&lt;/strong&gt; · Quieter still: lower peaks, softer firing.&lt;/figcaption&gt; &lt;/figure&gt; &lt;figure class=&quot;shot&quot;&gt; &lt;a href=&quot;{{ &#x27;/assets/posts/homepage-redesign/hybrid/h11-hero.jpg&#x27; | relative_url }}&quot;&gt;&lt;img src=&quot;{{ &#x27;/assets/posts/homepage-redesign/hybrid/h11-hero.jpg&#x27; | relative_url }}&quot; alt=&quot;Step 4.11 of the hybrid homepage: The bracketed corner tags removed.&quot; loading=&quot;lazy&quot; /&gt;&lt;/a&gt; &lt;figcaption&gt;&lt;strong&gt;4.11&lt;/strong&gt; · The bracketed corner tags removed.&lt;/figcaption&gt; &lt;/figure&gt; &lt;figure class=&quot;shot&quot;&gt; &lt;a href=&quot;{{ &#x27;/assets/posts/homepage-redesign/hybrid/h12-focus.jpg&#x27; | relative_url }}&quot;&gt;&lt;img src=&quot;{{ &#x27;/assets/posts/homepage-redesign/hybrid/h12-focus.jpg&#x27; | relative_url }}&quot; alt=&quot;Step 4.12 of the hybrid homepage: A Process section: three repositories that keep results honest.&quot; loading=&quot;lazy&quot; /&gt;&lt;/a&gt; &lt;figcaption&gt;&lt;strong&gt;4.12&lt;/strong&gt; · A Process section: three repositories that keep results honest.&lt;/figcaption&gt; &lt;/figure&gt; &lt;figure class=&quot;shot&quot;&gt; &lt;a href=&quot;{{ &#x27;/assets/posts/homepage-redesign/hybrid/h13-hero.jpg&#x27; | relative_url }}&quot;&gt;&lt;img src=&quot;{{ &#x27;/assets/posts/homepage-redesign/hybrid/h13-hero.jpg&#x27; | relative_url }}&quot; alt=&quot;Step 4.13 of the hybrid homepage: A simpler, centred hero; the numbers strip gone.&quot; loading=&quot;lazy&quot; /&gt;&lt;/a&gt; &lt;figcaption&gt;&lt;strong&gt;4.13&lt;/strong&gt; · A simpler, centred hero; the numbers strip gone.&lt;/figcaption&gt; &lt;/figure&gt; &lt;figure class=&quot;shot&quot;&gt; &lt;a href=&quot;{{ &#x27;/assets/posts/homepage-redesign/hybrid/h13-focus.jpg&#x27; | relative_url }}&quot;&gt;&lt;img src=&quot;{{ &#x27;/assets/posts/homepage-redesign/hybrid/h13-focus.jpg&#x27; | relative_url }}&quot; alt=&quot;Step 4.13 of the hybrid homepage: The charts moved into a section for polarize-ui.&quot; loading=&quot;lazy&quot; /&gt;&lt;/a&gt; &lt;figcaption&gt;&lt;strong&gt;4.13&lt;/strong&gt; · The charts moved into a section for polarize-ui.&lt;/figcaption&gt; &lt;/figure&gt; &lt;figure class=&quot;shot&quot;&gt; &lt;a href=&quot;{{ &#x27;/assets/posts/homepage-redesign/hybrid/h14-hero.jpg&#x27; | relative_url }}&quot;&gt;&lt;img src=&quot;{{ &#x27;/assets/posts/homepage-redesign/hybrid/h14-hero.jpg&#x27; | relative_url }}&quot; alt=&quot;Step 4.14 of the hybrid homepage: A dedicated cell turning behind the heading, with buttons for the process and for getting in touch.&quot; loading=&quot;lazy&quot; /&gt;&lt;/a&gt; &lt;figcaption&gt;&lt;strong&gt;4.14&lt;/strong&gt; · A dedicated cell turning behind the heading, with buttons for the process and for getting in touch.&lt;/figcaption&gt; &lt;/figure&gt; &lt;figure class=&quot;shot&quot;&gt; &lt;a href=&quot;{{ &#x27;/assets/posts/homepage-redesign/hybrid/h14-focus.jpg&#x27; | relative_url }}&quot;&gt;&lt;img src=&quot;{{ &#x27;/assets/posts/homepage-redesign/hybrid/h14-focus.jpg&#x27; | relative_url }}&quot; alt=&quot;Step 4.14 of the hybrid homepage: Speculations as story cards, told like posts.&quot; loading=&quot;lazy&quot; /&gt;&lt;/a&gt; &lt;figcaption&gt;&lt;strong&gt;4.14&lt;/strong&gt; · Speculations as story cards, told like posts.&lt;/figcaption&gt; &lt;/figure&gt; &lt;/div&gt;"
+     },
+     {
+      "t": "mod",
+      "h": "## 5. <del>From canvas</del><ins>Back</ins> to <del>components</del><ins>the first version</ins>"
+     },
+     {
+      "t": "add",
+      "h": "On October 15 the hybrid was replaced. The cell field went, and so did the dark palette. The page went back to the first version&#x27;s spacing, cards, drawings and numbers, on a white page with magenta where that version had teal. The display serif stayed. The running text moved from Inter to [Geist](https://vercel.com/font), self-hosted like the other faces. The mono labels stayed too, because a tier badge is always set in mono."
+     },
+     {
+      "t": "add",
+      "h": "The numbers came back as a strip under the heading: posts, research topics, public repositories and merged changes, each counted when the site is built. The process became numbered rows, and each research topic got a numbered card with one of the specimen drawings that pass 4.3 had swapped for archival plates. The plates are still used, inked dark for a light page."
+     },
+     {
+      "t": "add",
+      "h": "&lt;figure class=&quot;shot shot--wide&quot;&gt; &lt;a href=&quot;{{ &#x27;/assets/posts/homepage-redesign/08-live-hero.jpg&#x27; | relative_url }}&quot;&gt;&lt;img src=&quot;{{ &#x27;/assets/posts/homepage-redesign/08-live-hero.jpg&#x27; | relative_url }}&quot; alt=&quot;The current homepage: the centred serif heading on white with a magenta “body electric.”, a solid magenta and an outlined button, and the top of the four counts.&quot; loading=&quot;lazy&quot; /&gt;&lt;/a&gt; &lt;figcaption&gt;Live: the heading, the two buttons and the counts beneath them.&lt;/figcaption&gt; &lt;/figure&gt;"
+     },
+     {
+      "t": "add",
+      "h": "&lt;figure class=&quot;shot shot--wide&quot;&gt; &lt;a href=&quot;{{ &#x27;/assets/posts/homepage-redesign/08-live-process.jpg&#x27; | relative_url }}&quot;&gt;&lt;img src=&quot;{{ &#x27;/assets/posts/homepage-redesign/08-live-process.jpg&#x27; | relative_url }}&quot; alt=&quot;The Process section as numbered rows: a large magenta 01 and 02, each with its repository, a heading, a description, its files and its latest change.&quot; loading=&quot;lazy&quot; /&gt;&lt;/a&gt; &lt;figcaption&gt;Live: the process as numbered rows.&lt;/figcaption&gt; &lt;/figure&gt;"
+     },
+     {
+      "t": "add",
+      "h": "&lt;figure class=&quot;shot shot--wide&quot;&gt; &lt;a href=&quot;{{ &#x27;/assets/posts/homepage-redesign/08-live-topics.jpg&#x27; | relative_url }}&quot;&gt;&lt;img src=&quot;{{ &#x27;/assets/posts/homepage-redesign/08-live-topics.jpg&#x27; | relative_url }}&quot; alt=&quot;The Findings section: numbered cards for each research topic, each with a line drawing of an oscilloscope, a horseshoe magnet, a bee, a crab or a stack of papers.&quot; loading=&quot;lazy&quot; /&gt;&lt;/a&gt; &lt;figcaption&gt;Live: Findings opens with the research topics, numbered, each with its drawing and post count.&lt;/figcaption&gt; &lt;/figure&gt;"
+     },
+     {
+      "t": "add",
+      "h": "&lt;figure class=&quot;shot shot--pair&quot;&gt; &lt;a href=&quot;{{ &#x27;/assets/posts/homepage-redesign/08-live-mobile.jpg&#x27; | relative_url }}&quot;&gt;&lt;img src=&quot;{{ &#x27;/assets/posts/homepage-redesign/08-live-mobile.jpg&#x27; | relative_url }}&quot; alt=&quot;The current homepage on a phone: the heading, description, two buttons and the first counts.&quot; loading=&quot;lazy&quot; /&gt;&lt;/a&gt; &lt;a href=&quot;{{ &#x27;/assets/posts/homepage-redesign/08-live-mobile-process.jpg&#x27; | relative_url }}&quot;&gt;&lt;img src=&quot;{{ &#x27;/assets/posts/homepage-redesign/08-live-mobile-process.jpg&#x27; | relative_url }}&quot; alt=&quot;The Process section on a phone: the 01 row stacked in one column.&quot; loading=&quot;lazy&quot; /&gt;&lt;/a&gt; &lt;figcaption&gt;On a phone: the hero, and the process rows stacked.&lt;/figcaption&gt; &lt;/figure&gt;"
+     },
+     {
+      "t": "add",
+      "h": "## 6. From canvas to components"
+     },
+     {
+      "t": "ctx",
+      "h": "A design that lives only on a canvas has to be rebuilt by hand for every page, and it drifts. So it went into polarize-ui as components, in both of its forms: a zero-build stylesheet and custom element for plain HTML sites like this one, and React components that render the same classes."
+     },
+     {
+      "t": "ctx",
+      "h": "The new landing layer covers the top bar, hero, section heads, process steps, project features, repository cards, the changelog feed, article cards, story cards, archival plates and the footer. The cell field is `&lt;ui-cellfield&gt;`. It draws nothing a reader needs, and it stops for anyone who has asked their system to reduce motion. The design system&#x27;s own checks hold the new stylesheet to the same rules as the rest: no raw colours, never bold, and uppercase only in the mono face."
+     },
+     {
+      "t": "mod",
+      "h": "It shipped as polarize-ui v0.5.6, and this site then adopted it everywhere. Every page <del>now has</del><ins>got</ins> the new top bar, the new footer and the dark palette, and the speculations page uses the new story cards."
+     },
+     {
+      "t": "del",
+      "h": "&lt;figure class=&quot;shot shot--wide&quot;&gt; &lt;a href=&quot;{{ &#x27;/assets/posts/homepage-redesign/06-live-process.jpg&#x27; | relative_url }}&quot;&gt;&lt;img src=&quot;{{ &#x27;/assets/posts/homepage-redesign/06-live-process.jpg&#x27; | relative_url }}&quot; alt=&quot;The live Process section: three numbered cards for adaptive-preregistration, scientific-research-scaffold and scientific-research-rag, joined by arrows.&quot; loading=&quot;lazy&quot; /&gt;&lt;/a&gt; &lt;figcaption&gt;Live: the Process section, three repositories that keep results honest.&lt;/figcaption&gt; &lt;/figure&gt;"
+     },
+     {
+      "t": "del",
+      "h": "&lt;figure class=&quot;shot shot--wide&quot;&gt; &lt;a href=&quot;{{ &#x27;/assets/posts/homepage-redesign/06-live-findings.jpg&#x27; | relative_url }}&quot;&gt;&lt;img src=&quot;{{ &#x27;/assets/posts/homepage-redesign/06-live-findings.jpg&#x27; | relative_url }}&quot; alt=&quot;The live Findings section: a featured article with its photograph beside its title and summary.&quot; loading=&quot;lazy&quot; /&gt;&lt;/a&gt; &lt;figcaption&gt;Live: Findings, built from the posts themselves, with their own images and credits.&lt;/figcaption&gt; &lt;/figure&gt;"
+     },
+     {
+      "t": "del",
+      "h": "The same components hold up on a phone. The top bar folds into a menu that works without script, the process steps stack with downward arrows, and the story cards scroll sideways."
+     },
+     {
+      "t": "del",
+      "h": "&lt;figure class=&quot;shot shot--pair&quot;&gt; &lt;a href=&quot;{{ &#x27;/assets/posts/homepage-redesign/06-live-mobile.jpg&#x27; | relative_url }}&quot;&gt;&lt;img src=&quot;{{ &#x27;/assets/posts/homepage-redesign/06-live-mobile.jpg&#x27; | relative_url }}&quot; alt=&quot;The live homepage on a phone: the heading, description and two buttons over the cell field.&quot; loading=&quot;lazy&quot; /&gt;&lt;/a&gt; &lt;a href=&quot;{{ &#x27;/assets/posts/homepage-redesign/06-live-mobile-process.jpg&#x27; | relative_url }}&quot;&gt;&lt;img src=&quot;{{ &#x27;/assets/posts/homepage-redesign/06-live-mobile-process.jpg&#x27; | relative_url }}&quot; alt=&quot;The Process section on a phone: one numbered card per row.&quot; loading=&quot;lazy&quot; /&gt;&lt;/a&gt; &lt;figcaption&gt;On a phone: the hero, and the process steps stacked.&lt;/figcaption&gt; &lt;/figure&gt;"
+     },
+     {
+      "t": "add",
+      "h": "The restyle went the same way. It is a theme in polarize-ui, `fieldguide`, with a few new components: the buttons, the counts strip, the numbered rows and the topic cards. It shipped as polarize-ui v0.5.19, and the other themes are unchanged."
+     },
+     {
+      "t": "ctx",
+      "h": "## What was kept"
+     }
+    ],
+    [
+     {
+      "t": "ctx",
+      "h": "- **Real content only.** Every card is built from the site&#x27;s own data: posts, essays, repositories and the changelog. A project&#x27;s finding is always its own post&#x27;s summary, never a line written for the homepage."
+     },
+     {
+      "t": "mod",
+      "h": "- **The <del>cells</del><ins>first version&#x27;s layout</ins>.** <del>Only</del><ins>The</ins> <del>these</del><ins>restyle</ins> came<ins> back to its spacing, cards, drawings and numbers. The cells, the one thing taken</ins> from the version with no rules<ins>, went with it</ins>."
+     },
+     {
+      "t": "mod",
+      "h": "The components are in [polarize-ui](https://github.com/polarizetech/polarize-ui)<del>,</del><ins>.</ins> <del>and the</del><ins>Its</ins> live Storybook <ins>still </ins>shows the <del>whole</del><ins>hybrid</ins> homepage at desktop and phone width."
+     }
+    ]
+   ],
+   "added": 656,
+   "removed": 334
+  },
+  {
    "sha": "45de132fd745dfd1905b3eee8ed381a2bf1de614",
    "author": "Joshua Anderton",
    "date": "2026-10-15T11:01:20-07:00",
