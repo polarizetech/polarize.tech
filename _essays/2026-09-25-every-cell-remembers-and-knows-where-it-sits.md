@@ -20,7 +20,7 @@ long-term memory across the senses.
 I also suspect this is coordinated by a morphogenetic rule: some mathematics tied to how many
 cells there are and what it takes to hold them together. That rule would pick out the cells at
 the edge, and give every cell a sense of where it sits in the whole. If so, memory and spatial
-awareness aren't extras. They come built in once cells are coordinated.
+awareness might not be extras. They could come built in once cells are coordinated.
 
 Alone, a cell probably meets the world much as it does in a crowd. But pack in thousands or
 millions, and network effects appear. Every cell polarises, trades ions and carries a small

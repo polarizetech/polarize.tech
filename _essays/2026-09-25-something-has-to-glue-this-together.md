@@ -8,17 +8,16 @@ tier: SPEC
 ---
 
 I feel that there's something about the pieces of this system that tell more about the whole.
-And there's something about polarity and polarization that I think has not been tapped into
-yet, is not fully understood, and will shed an inordinate amount of light on how the system has
+I keep wondering whether polarity and polarization could say something about how the system has
 to be communicating. You can actually run experiments on living neurons through software
 nowadays, which is interesting, and I'm wondering what would be the correct way to go about
 this.
 
-I think that for a system this complex, that still seems to work so well in so many cases, if
-we can understand this, then we can understand the obvious ways that we're causing
-dysregulation of the systems. For example, we as a society have so quickly adopted all of these
-different wavelengths and electromagnetic devices. We're concerned about the chemical pollution
-of the planet. But we're not concerned about electromagnetic pollution and what it implies.
+I think that for a system this complex, that still seems to work so well in so many cases,
+understanding this might also help us see how we could be dysregulating it. For example, we as a
+society have so quickly adopted all of these different wavelengths and electromagnetic devices.
+We think about the chemical pollution of the planet. I wonder whether we should think about
+electromagnetic exposure in the same way, and what it might imply.
 
 I'm just wondering about cells, which in one form or another make up all living things. We can
 see that they use bioelectricity as one of the many ways they run. I'm not talking about
@@ -54,5 +53,5 @@ it's dampened, or the shape of the signal has changed. And so then it rearranges
 and fires in such a way that sends another message.
 
 Cells also have mechanical and electrical resonances. And so these are all relay systems. They
-fire and can be fired by those same frequencies, and there's a cascading that happens. It's not
-all random. There has to be something that glues this together.
+fire and can be fired by those same frequencies, and there's a cascading that happens. It
+doesn't feel all random to me. I suspect something has to glue this together.

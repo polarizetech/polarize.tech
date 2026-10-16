@@ -116,6 +116,25 @@ each one:
 
 ---
 
+## Speculations — tone and scope (operator, 2026-10-06)
+
+Speculations (`_essays/`) are exploration: ideation and thought experiments, in the operator's
+dictated voice. When tidying or writing one:
+
+- **Never imply novelty, priority or superiority.** No "maybe this is the first time", "not
+  tapped into yet", "nobody has noticed", "obvious", "inordinate", and no contrast with what
+  others do or fail to do. Humble-sounding versions of the same claim ("maybe I'm the first")
+  count. Say what the idea is, not where it ranks.
+- **Hypotheses stay hypotheses.** Hedge with the operator's own "I think", "I wonder", "might";
+  do not turn a hunch into a statement of fact while tidying.
+- **Speculate only about what is not yet established.** Before a speculation is published,
+  check its empirical assertions against the literature (and the research repo). A point already
+  falsified is cut or reframed as a question; a point already established is stated plainly or
+  cut as unneeded. Report what was checked and how deep. Do not cite in the piece (RULE E).
+- Keep the operator's voice and argument. Remove fillers; do not add content.
+
+---
+
 ## Adding a post — the process
 
 ### 1. Establish what is actually being claimed
