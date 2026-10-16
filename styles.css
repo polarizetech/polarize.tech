@@ -16,12 +16,58 @@
 
    Rules, enforced by scripts/check_design.py:
      · Display  — Instrument Serif, headings only, NEVER uppercased
-     · Body     — Inter, running text, NEVER bold, NEVER tracked
+     · Body     — DM Sans, running text, NEVER bold, NEVER tracked
      · Label    — IBM Plex Mono, uppercase + tracked; uppercase is ALWAYS mono
      · No hex: every colour is a token
    ============================================================ */
 
+/* DM Sans from Google Fonts, self-hosted so the published site keeps its
+   no-CDN guarantee. The OFL licence is in assets/fonts/DM-SANS-OFL.txt. */
+@font-face {
+  font-family: "DM Sans";
+  font-style: normal;
+  font-weight: 100 1000;
+  font-display: swap;
+  src: url("/assets/fonts/dm-sans-latin-variable.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "DM Sans";
+  font-style: normal;
+  font-weight: 100 1000;
+  font-display: swap;
+  src: url("/assets/fonts/dm-sans-latin-ext-variable.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "DM Sans";
+  font-style: italic;
+  font-weight: 100 1000;
+  font-display: swap;
+  src: url("/assets/fonts/dm-sans-latin-italic-variable.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "DM Sans";
+  font-style: italic;
+  font-weight: 100 1000;
+  font-display: swap;
+  src: url("/assets/fonts/dm-sans-latin-ext-italic-variable.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+:root[data-theme^="fieldguide"] {
+  --font-primary: "DM Sans", ui-sans-serif, -apple-system, "Segoe UI", sans-serif;
+  --font-sans: "DM Sans", ui-sans-serif, -apple-system, "Segoe UI", sans-serif;
+}
+
 body.ui { margin: 0; }
+
+/* The site header is intentionally lighter than the design-system default. */
+.ui-topnav { min-height: 58px; border-bottom: 0; }
+.ui-action { min-height: 42px; padding-inline: var(--space-4); }
+.ui-action--sm { min-height: 34px; padding-inline: var(--space-3); }
+@media (max-width: 900px) { .ui-topnav { min-height: 56px; } }
 
 /* The topics block in the sidebar sits further down than the other sections. */
 .ui-sidebar__topics { margin-top: var(--space-7); }
@@ -205,7 +251,6 @@ body.ui { margin: 0; }
    ============================================================ */
 .home { display: block; }
 .home .ui-hero { padding-block: var(--space-9) var(--space-7); }
-.home__stats { padding-inline: var(--landing-gutter, var(--space-5)); margin-bottom: var(--space-9); }
 .home__topics { margin-bottom: var(--space-8); }
 .home .ui-steps + .ui-promises + .home__gate { margin-top: var(--space-5); }
 .home__gate { margin: var(--space-5) 0 0; font-size: var(--text-base); color: var(--muted-foreground); }

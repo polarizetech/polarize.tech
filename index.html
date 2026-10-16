@@ -65,7 +65,7 @@ topic_specimens:
 ---
 {%- comment -%}
   The homepage, built from polarize-ui's landing layer (design/landing.css) in the
-  fieldguide theme: white, magenta, Geist. Full-bleed (`full_bleed`); no animation.
+  fieldguide theme: white, magenta, DM Sans. Full-bleed (`full_bleed`); no animation.
 {%- endcomment -%}
 <section class="ui-hero" id="home-hero">
   <h1 class="ui-hero__title">Reading and writing the <em>body electric.</em></h1>
@@ -74,17 +74,6 @@ topic_specimens:
     <a class="ui-action" href="{{ contact_href }}">Get in touch</a>
     <a class="ui-action ui-action--outline" href="#process">Our process</a>
   </div>
-</section>
-
-{%- comment -%} Counts, computed at build from the site's own data — never typed in. {%- endcomment -%}
-<section class="home__stats" aria-label="The lab in numbers">
-  <div class="ui-stats">
-    <div class="ui-stat"><span class="ui-stat__num">{{ site.posts | size }}</span><span class="ui-stat__label">articles, each with its sources</span></div>
-    <div class="ui-stat"><span class="ui-stat__num">{{ site.projects | size }}</span><span class="ui-stat__label">research topics</span></div>
-    <div class="ui-stat"><span class="ui-stat__num">{{ site.data.repos | size }}</span><span class="ui-stat__label">public repositories</span></div>
-    <div class="ui-stat"><span class="ui-stat__num">{{ site.data.changelog | size }}</span><span class="ui-stat__label">merged changes</span></div>
-  </div>
-  <p class="ui-stats__note">Counted when the site was built, {{ site.time | date: "%B %-d, %Y" }}.</p>
 </section>
 
 {%- comment -%} Process: the three repositories that keep results honest. {%- endcomment -%}
