@@ -6941,6 +6941,34 @@
  ],
  "_essays/2026-09-25-every-cell-remembers-and-knows-where-it-sits.md": [
   {
+   "sha": "6c53aaa393349b52bd421bb10c6744d9662bf1a9",
+   "author": "Joshua Anderton",
+   "date": "2026-10-16T06:39:45-07:00",
+   "subject": "Refine speculations and homepage feature list",
+   "llm": false,
+   "llm_name": null,
+   "short": "6c53aaa",
+   "first": false,
+   "hunks": [
+    [
+     {
+      "t": "ctx",
+      "h": "The second is what happens when that scales up, to neurons and to specialised cells like photoreceptors. My picture is that every cell in the body stores memory, and the body shares it like a decentralised network, pulling up what it needs when it needs it. The work of attending to a stimulus, recalling, or expressing genes leaves a byproduct, and I think that byproduct is long-term memory across the senses."
+     },
+     {
+      "t": "mod",
+      "h": "I also suspect this is coordinated by a morphogenetic rule: some mathematics tied to how many cells there are and what it takes to hold them together. That rule would pick out the cells at the edge, and give every cell a sense of where it sits in the whole. If so, memory and spatial awareness <del>aren&#x27;t</del><ins>might not be</ins> extras. They<ins> could</ins> come built in once cells are coordinated."
+     },
+     {
+      "t": "ctx",
+      "h": "Alone, a cell probably meets the world much as it does in a crowd. But pack in thousands or millions, and network effects appear. Every cell polarises, trades ions and carries a small electric field, so it can&#x27;t help affecting its neighbours. Packed densely enough, it has to pass on what it holds, and the network keeps passing it on until it looks like replay."
+     }
+    ]
+   ],
+   "added": 4,
+   "removed": 2
+  },
+  {
    "sha": "ee0d9c6c37990602296a2f21dbb4369677922ac4",
    "author": "Joshua Anderton",
    "date": "2026-09-29T05:24:41-07:00",
@@ -7268,6 +7296,48 @@
  ],
  "_essays/2026-09-25-something-has-to-glue-this-together.md": [
   {
+   "sha": "6c53aaa393349b52bd421bb10c6744d9662bf1a9",
+   "author": "Joshua Anderton",
+   "date": "2026-10-16T06:39:45-07:00",
+   "subject": "Refine speculations and homepage feature list",
+   "llm": false,
+   "llm_name": null,
+   "short": "6c53aaa",
+   "first": false,
+   "hunks": [
+    [
+     {
+      "t": "ctx",
+      "h": "---"
+     },
+     {
+      "t": "mod",
+      "h": "I feel that there&#x27;s something about the pieces of this system that tell more about the whole. <del>And</del><ins>I</ins> <del>there&#x27;s</del><ins>keep</ins> <del>something</del><ins>wondering</ins> <del>about</del><ins>whether</ins> polarity and polarization <del>that</del><ins>could</ins> <del>I</del><ins>say</ins> <del>think</del><ins>something</ins> <del>has not been tapped into yet, is not fully understood, and will shed an inordinate amount of light on</del><ins>about</ins> how the system has to be communicating. You can actually run experiments on living neurons through software nowadays, which is interesting, and I&#x27;m wondering what would be the correct way to go about this."
+     },
+     {
+      "t": "mod",
+      "h": "I think that for a system this complex, that still seems to work so well in so many cases, <del>if</del><ins>understanding this might also help us see how</ins> we <del>can</del><ins>could</ins> <del>understand</del><ins>be</ins> <del>this,</del><ins>dysregulating</ins> <del>then we can understand the obvious ways that we&#x27;re causing dysregulation of the systems</del><ins>it</ins>. For example, we as a society have so quickly adopted all of these different wavelengths and electromagnetic devices. We<del>&#x27;re</del> <del>concerned</del><ins>think</ins> about the chemical pollution of the planet. <del>But</del><ins>I wonder whether</ins> we<del>&#x27;re</del> <del>not</del><ins>should</ins> <del>concerned</del><ins>think</ins> about electromagnetic <del>pollution</del><ins>exposure in the same way,</ins> and what it <del>implies</del><ins>might imply</ins>."
+     },
+     {
+      "t": "ctx",
+      "h": "I&#x27;m just wondering about cells, which in one form or another make up all living things. We can see that they use bioelectricity as one of the many ways they run. I&#x27;m not talking about magnetoreception or electroreception. I&#x27;m strictly talking about a cell reading its own bioelectric field and its neighboring cells, which are descendants of the same cell, and being able to know the status and the position of another part of the body, and then infer things from that. Maybe memory. Maybe history."
+     }
+    ],
+    [
+     {
+      "t": "ctx",
+      "h": "And the extracellular activity that we&#x27;re seeing is actually not just cells firing in unison, but rearranging as well. Maybe if we could see at that level: when the heart emits a frequency that the neurons in the nucleus of the solitary tract (NTS) or in the insula recognize, they know it as one of the parts of the salience network. It knows that part. It knows how long it took for that signal to get there, and it also knows that it took a little bit too long, or it&#x27;s dampened, or the shape of the signal has changed. And so then it rearranges the neurons and fires in such a way that sends another message."
+     },
+     {
+      "t": "mod",
+      "h": "Cells also have mechanical and electrical resonances. And so these are all relay systems. They fire and can be fired by those same frequencies, and there&#x27;s a cascading that happens. It<ins> doesn</ins>&#x27;<del>s</del><ins>t</ins> <del>not</del><ins>feel</ins> all random<ins> to me</ins>. <del>There</del><ins>I suspect something</ins> has to <del>be something that glues</del><ins>glue</ins> this together."
+     }
+    ]
+   ],
+   "added": 42,
+   "removed": 61
+  },
+  {
    "sha": "ee0d9c6c37990602296a2f21dbb4369677922ac4",
    "author": "Joshua Anderton",
    "date": "2026-09-29T05:24:41-07:00",
@@ -7407,6 +7477,21 @@
    "llm": true,
    "llm_name": "Claude Opus 5.5",
    "short": "7e2253f",
+   "first": true,
+   "hunks": [],
+   "added": 0,
+   "removed": 0
+  }
+ ],
+ "_essays/2026-10-06-what-a-neuron-is-waiting-for.md": [
+  {
+   "sha": "6c53aaa393349b52bd421bb10c6744d9662bf1a9",
+   "author": "Joshua Anderton",
+   "date": "2026-10-16T06:39:45-07:00",
+   "subject": "Refine speculations and homepage feature list",
+   "llm": false,
+   "llm_name": null,
+   "short": "6c53aaa",
    "first": true,
    "hunks": [],
    "added": 0,
