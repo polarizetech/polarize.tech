@@ -1,5 +1,29 @@
 [
  {
+  "repo": "scientific-research-scaffold",
+  "number": 3,
+  "title": "Pin agents v0.4.0 (stricter designer)",
+  "body": "Bumps the agents submodule to v0.4.0: the designer brief gains an Originality section and an Audit mode.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
+  "url": "https://github.com/polarizetech/scientific-research-scaffold/pull/3",
+  "merged_at": "2026-10-18T14:49:05Z"
+ },
+ {
+  "repo": "polarize-ui",
+  "number": 5,
+  "title": "Add reusable 3D node-link network view",
+  "body": "## Summary\n- add a dependency-free mountNetwork3D renderer with orbit, zoom, depth sorting, token colours, and accessible keyboard controls\n- ship public TypeScript declarations and integration documentation\n- add a synthetic Storybook example and API/design checks\n\n## Verification\n- python3 dev_check.py: 507/507 passed\n- TypeScript: passed\n- API surface removal check against v0.6.0: passed\n\nThis is an additive public API. It contains only a standard node-link visualization and synthetic story data; Neural Field Lab's model remains in world-seeding.",
+  "url": "https://github.com/polarizetech/polarize-ui/pull/5",
+  "merged_at": "2026-10-18T14:31:38Z"
+ },
+ {
+  "repo": "scientific-research-agents",
+  "number": 1,
+  "title": "Add sensory experts and standardize agent workflows",
+  "body": "## Summary\n\n- add first-priority expert profiles for auditory evoked potentials, visual evoked potentials, and bone-conduction hearing\n- define positive and negative routing boundaries, ordered pathway tracing, stimulus-design requirements, and dissociation controls\n- require every lead and specialist agent to use the Scientific Research RAG MCP backed by `polarizetech/retrieval-augmented-generation` before any search\n- permit only service-unavailable and explicit user opt-out exceptions, requiring disclosure before fallback\n- standardize visual design on the configured design system; Polarize installations use pinned releases of `polarizetech/polarize-ui`\n- require missing reusable UI elements to be added, tested, released, and pinned from the design-system repository rather than forked locally\n- standardize small apps as zero-build `index.html` / `app.js` / `app.css` plus a Python `serve.py`\n- prefer stdlib `ThreadingHTTPServer`, named-file asset allow-lists, `PORT` support, loopback binding, explicit `/api/` contracts, and Python ownership for non-trivial backends\n- document React/framework exceptions and frontend/computational-engineer ownership boundaries\n- add focused routing, inherited-policy, and shared-app-architecture contract tests\n- bump the synchronized release metadata to 0.5.0\n\n## Validation\n\n- `python3 -m unittest discover -v tests` — 13 tests passed\n- `git diff --check` — clean\n- architecture checked against the scaffold protocol and representative apps:\n  - `audio-evoked-potentials/apps/tuning-forks`\n  - `matched-entropy-demodulation/apps/v15-visual-cortex`\n  - `world-seeding/apps/primary-elements/v1`\n- primary-literature web cross-checks completed for the initial sensory profile seeds\n- Polarize RAG/RREG and its citation checker were unavailable during initial profile creation; the scientific profiles mark unverified material accordingly\n\n## Limitations\n\n- Scientific limitations and read-depth caveats remain embedded in each sensory profile.\n- The RAG citation checker validates quotations and numbers, not entailment.\n- The Python stdlib server is a default for small research apps, not a ban on React, FastAPI, Flask, static-only hosting, or an established repository stack; deviations must name the requirement.\n- Repository-local files remain authoritative for their own current contents.\n- Private or user-supplied material is not indexed into a shared corpus without authorization.\n\n## Cross-repository pointer\n\nThe reciprocal AEP README pointer is committed separately in `polarizetech/audio-evoked-potentials` as `2981f09`, because one Git branch cannot span two repositories.",
+  "url": "https://github.com/polarizetech/scientific-research-agents/pull/1",
+  "merged_at": "2026-10-18T13:39:49Z"
+ },
+ {
   "repo": "polarize-ui",
   "number": 4,
   "title": "feat!: remove the cell field; the homepage story is the shipped page",
