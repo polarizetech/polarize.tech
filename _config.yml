@@ -69,7 +69,7 @@ feed:
     essays:
       path: /rants/feed.xml
 
-# Rants (the `essays` collection, served under /rants/): short dictated pieces,
+# Speculations (the `essays` collection, served under the legacy /rants/ path): short dictated pieces,
 # thinking out loud. Deliberately a separate collection, not posts: they carry no
 # claims and no citations, so they never enter site.posts, the topic pages or the
 # research feed. Always tier SPEC; the gate (validate_posts.py, RULE E) enforces
