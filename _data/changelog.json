@@ -1,5 +1,53 @@
 [
  {
+  "repo": "scientific-research-scaffold",
+  "number": 7,
+  "title": "Bench sims: scaffold new sim --reference, checks and make sims",
+  "body": "**Depends on #5 (`tool-comparison-units`).** This branch is built on it, so the diff against `main` includes #5's commits (02841dc, bdd5dbc) until #5 merges. Review only the last two commits: 42157bf and 35f6117.\n\nProtocol: polarizetech/adaptive-preregistration#3 (TOOL_VERSIONING.md §1b).\n\n## What it adds\n- `scaffold new sim <name> -q \"...\" --inside <tool> --reference \"NAME=OWNER/REPO@TAG[#SUBDIR],licence=L[,runs=process][,package=P][,commit=SHA][,command=C]\"` creates a **bench sim** in `sims/<name>`:\n  - It resolves the tag's commit with `git ls-remote`.\n  - It refuses a branch, an unstated licence, and GPL code that would be imported.\n  - It renders the sim from `templates/units/bench`:\n    - `SCOPE.toml`, with `kind = \"bench\"` and `[[references]]`;\n    - its own `pyproject.toml`, which pins each imported reference as `pkg @ git+URL@TAG#subdirectory=...`;\n    - an undecided `tolerances.toml`;\n    - `run.py`, which refuses to score before the tolerances are decided and committed, or against a reference at another commit. It fetches process references into an ignored cache and writes `results/<tool version>.json`;\n    - a pytest wrapper.\n  - It registers the sim under `[[comparisons]]` with `kind = \"bench\"`.\n- `scaffold check` fails when:\n  - a reference is pinned to a branch or has no full commit;\n  - a reference is missing from the sim's `pyproject.toml`, or pinned there at another tag, repo or subdirectory;\n  - a bench sim has no `tolerances.toml`, or has results from before the tolerances were decided;\n  - the latest result was scored against tolerances that have since changed;\n  - a bench sim has a `preregistrations/` folder.\n\n  It warns when GPL code is imported.\n- Tool `Makefile`:\n  - New `make sims` target. It runs only bench sims and is not in CI; run it when tagging a new version.\n  - `make check` now runs `pytest tests`, so the sims' tests stay out of the tool's own run.\n- The minimal TOML reader (Python < 3.11) now reads floats written with an exponent.\n\n## The owner's decisions (2026-10-27)\n- Keep the name sims, with no `sims/` folder by default.\n- Not meeting a tool sim's tolerances is a failure.\n- Run bench sims when tagging a new version, not automatically.\n\nTests: `python -m unittest discover tests` (86 pass on Python 3.9 and 3.12). The end-to-end `run.py` test needs Python 3.11+ and is skipped on 3.9.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
+  "url": "https://github.com/polarizetech/scientific-research-scaffold/pull/7",
+  "merged_at": "2026-10-28T16:03:36Z"
+ },
+ {
+  "repo": "adaptive-preregistration",
+  "number": 3,
+  "title": "Bench sims in tool repos (TOOL_VERSIONING.md §1b)",
+  "body": "**Depends on #2 (`tool-comparison-units`).** This branch is built on it, so the diff against `main` includes #2's commit (f6e1be5) until #2 merges. Review only the last two commits: e0c9dee and b219d8f.\n\n## What it adds\nA **bench sim** is a sim in a tool's `sims/<slug>/` whose `SCOPE.toml` says `kind = \"bench\"`. It runs like part of the test suite against reference implementations in other repos, pinned by tag.\n\n- `[[references]]` in `SCOPE.toml`: repo, tag (never a branch), the tag's full commit, subdirectory, licence, and `runs = \"python\"` (imported, pinned at the tag in the sim's own environment) or `runs = \"process\"` (a separate program, as GPL code in an MIT tool must be; never imported or copied).\n- `tolerances.toml`: the owner's bounds, decided before scoring. These are the bench sim's preregistration, so it has no `preregistrations/` folder. A later change is a recorded `[[revisions]]` entry, followed by a re-run.\n- Results stay in the unit as `results/<tool version>.json`.\n- Not run automatically. Bench sims run when a new version is tagged. A failing one blocks the release unless the CHANGELOG entry names it under `### Benches` with why.\n- `release-check` checks the declared references, that tolerances come before results, and at a released version, each bench sim's result.\n\n## The owner's decisions (2026-10-27)\n- Keep the name sims, with no `sims/` folder until the first sim.\n- Not meeting a tool sim's tolerances is a failure.\n- Run bench sims when tagging a new version, not in CI.\n\nCompanion PR: polarizetech/scientific-research-scaffold (scaffold CLI, template and checks).\n\nTests: `python3 -m unittest discover tests` (57 pass).\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
+  "url": "https://github.com/polarizetech/adaptive-preregistration/pull/3",
+  "merged_at": "2026-10-28T16:03:32Z"
+ },
+ {
+  "repo": "scientific-research-scaffold",
+  "number": 5,
+  "title": "Allow comparison units (sims/, datasets/) in tool repos",
+  "body": "The person asked for this rule change on 2026-10-24, in their own words:\n\n> `sims` and `datasets` (for dataset analysis) are allowed in a tool repo as long as they are about comparing the tool's functionality against other tools (aka preregistering predictions based on inputs and seeing if the run is correct - essentially treating these like an extension on the test suite)\n\nCompanion to polarizetech/adaptive-preregistration#2, which adds `TOOL_VERSIONING.md` §1a and the `release-check` support.\n\n**`scaffold new`**\n- `scaffold new sim <name> -q \"...\" --inside <tool> --compares \"<other> <version>\"`, and `scaffold new dataset <name> -q \"...\" --study <tool> --compares ...`, create a comparison unit.\n- The unit's `SCOPE.toml` gets `compares = [\"<tool> <version>\", \"<other> <version>\", ...]` (exploratory with `--exploratory`). The unit is registered under `[[comparisons]]` in `TOOL.toml`, and the tool gets a root `EXPERIMENTS.md`.\n- A sim comparison unit has no `RESEARCH.md`, because its results don't go to the corpus.\n\n**`scaffold check` (tool)**\n- A root `EXPERIMENTS.md` is allowed when comparison units exist.\n- Fails a comparison unit with no `compares`, or with fewer than two entries.\n- Fails one not listed under `[[comparisons]]`, a listed path that doesn't exist, and `preregistrations/` anywhere other than directly inside a comparison unit.\n\n**Docs:** `PROTOCOL.md` §8 and the check table, `agent-rules/tool.md`, the tool templates, README, CHANGELOG (Unreleased).\n\n**Tests:** 81 pass (`python3 -m unittest discover tests`), including 2 new ones.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
+  "url": "https://github.com/polarizetech/scientific-research-scaffold/pull/5",
+  "merged_at": "2026-10-28T14:59:35Z"
+ },
+ {
+  "repo": "adaptive-preregistration",
+  "number": 2,
+  "title": "Allow comparison units (sims/, datasets/) in tool repos",
+  "body": "The person asked for this rule change on 2026-10-24, in their own words:\n\n> `sims` and `datasets` (for dataset analysis) are allowed in a tool repo as long as they are about comparing the tool's functionality against other tools (aka preregistering predictions based on inputs and seeing if the run is correct - essentially treating these like an extension on the test suite)\n\n**Protocol**\n- `TOOL_VERSIONING.md` gains §1a, *Comparison units*. Rules 1 and 8, §1, §3, §8 and §9 now name the exception.\n- `SCOPE_PROTOCOL.md` §1 and `PREREG_PROTOCOL.md` §1: each comparison unit is a unit of its own, beside the tool.\n- Conditions on a comparison unit:\n  - its `SCOPE.toml` says what it `compares` (the tool and at least one other tool);\n  - it predicts tool outputs on declared inputs, never claims about the world;\n  - its preregistrations and results stay inside it;\n  - a root `EXPERIMENTS.md` lists comparison units only;\n  - its extra dependencies stay out of the tool's runtime dependencies;\n  - it is named under `### Outputs changed` when a release changes an output it predicts.\n\n**Tools**\n- `release-check` allows `preregistrations/` directly inside `sims/<slug>/` or `datasets/<slug>/`, and nowhere else. It requires `compares` with two or more entries, and allows a root `EXPERIMENTS.md` only when comparison units exist.\n- `scope-status` keeps a tool repo itself as a unit beside its comparison units.\n\n**Behaviour in installed projects:** only in tool repos, after `kit_ap update`. Studies are unchanged.\n\n**Tests:** 54 pass (`python3 -m unittest discover tests`), including 3 new ones. `ruff check` is clean.\n\nA companion PR in scientific-research-scaffold follows (`scaffold check` and `scaffold new sim --inside TOOL`). The first use is a TeeterNeuron-vs-Brian2 comparison in polarizetech/teeter-neuron.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
+  "url": "https://github.com/polarizetech/adaptive-preregistration/pull/2",
+  "merged_at": "2026-10-28T14:59:31Z"
+ },
+ {
+  "repo": "scientific-research-scaffold",
+  "number": 8,
+  "title": "CI: run the Python 3.9 job on ubuntu-24.04",
+  "body": "The `test (ubuntu-latest, 3.9)` job fails at setup: `ubuntu-latest` is now Ubuntu 26.04, which has no Python 3.9 build for `actions/setup-python`, so the job stops before any test runs.\n\nPython 3.9 stays the supported minimum (the README promises 3.9+, and it is the `python3` macOS ships), so this pins only that job to `ubuntu-24.04`. The other jobs stay on `ubuntu-latest` and `macos-latest`.\n\nUnblocks the 3.9 job on polarizetech/adaptive-preregistration#3 and polarizetech/scientific-research-scaffold#7.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
+  "url": "https://github.com/polarizetech/scientific-research-scaffold/pull/8",
+  "merged_at": "2026-10-27T18:10:22Z"
+ },
+ {
+  "repo": "adaptive-preregistration",
+  "number": 4,
+  "title": "CI: run the Python 3.9 job on ubuntu-24.04",
+  "body": "The `test (ubuntu-latest, 3.9)` job fails at setup: `ubuntu-latest` is now Ubuntu 26.04, which has no Python 3.9 build for `actions/setup-python`, so the job stops before any test runs.\n\nPython 3.9 stays the supported minimum (the README promises 3.9+, and it is the `python3` macOS ships), so this pins only that job to `ubuntu-24.04`. The other jobs stay on `ubuntu-latest` and `macos-latest`.\n\nUnblocks the 3.9 job on polarizetech/adaptive-preregistration#3 and polarizetech/scientific-research-scaffold#7.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
+  "url": "https://github.com/polarizetech/adaptive-preregistration/pull/4",
+  "merged_at": "2026-10-27T18:10:18Z"
+ },
+ {
   "repo": "polarize-ui",
   "number": 6,
   "title": "feat: controls layer (knob, faders, timeline, lane, panner) and a React Polarize theme",
