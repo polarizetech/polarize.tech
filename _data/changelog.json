@@ -1,5 +1,141 @@
 [
  {
+  "repo": "retrieval-augmented-generation",
+  "number": 23,
+  "title": "Lay out replies from an editable template file",
+  "body": "Replies (the quick `ask` reply, the queued/working reply, and the research pipeline's finished answer) are now laid out by `config/replies.default.md`. Your own copy goes in the gitignored `config/replies.md`; a template left out of it keeps the default. It's read on every reply, so edits need no restart.\n\nShorthands:\n- `{{name}}` places a block (passages, steps, limits, sources…; the file lists every block per template)\n- `{{#name}}…{{/name}}` shows only when the block has something in it; `{{^name}}…{{/name}}` only when it's empty\n- `<!-- notes -->` are dropped\n\nCode still writes every block, so quotes, evidence ids and sources are never retyped; the template only picks order, headings and what appears. An unknown name stays visible so a typo shows.\n\n**Checks:** the default template reproduces the old output exactly (9,720 relay cases and 27 answer cases, including companions, compared with the old code). The run log now stores `bottom_line` so the session capsule no longer depends on the answer's heading. Tests use only the tracked templates. Suite (415 + new), ruff and pyright pass.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
+  "url": "https://github.com/polarizetech/retrieval-augmented-generation/pull/23",
+  "merged_at": "2026-10-29T13:19:51Z"
+ },
+ {
+  "repo": "polarize-ui",
+  "number": 7,
+  "title": "Add the build-vs-reuse register",
+  "body": "Adds `reuse.toml`, this repo's build-vs-reuse register: each piece of our own scientific code, its state, and the open-source, peer-reviewed tool that does (or could do) the same job, with the test that runs them side by side where one exists.\n\nEntries: 5 (5 candidate).\n\nSeeded from the 2026-10-28 review, so treat entries as a starting point. The checker (`research-reuse` in polarizetech/retrieval-augmented-generation, [docs/reuse-register.md](https://github.com/polarizetech/retrieval-augmented-generation/blob/main/docs/reuse-register.md)) reads this file in place of its private seed once merged.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
+  "url": "https://github.com/polarizetech/polarize-ui/pull/7",
+  "merged_at": "2026-10-28T22:56:42Z"
+ },
+ {
+  "repo": "paper-fetch",
+  "number": 14,
+  "title": "Add the build-vs-reuse register",
+  "body": "Adds `reuse.toml`, this repo's build-vs-reuse register: each piece of our own scientific code, its state, and the open-source, peer-reviewed tool that does (or could do) the same job, with the test that runs them side by side where one exists.\n\nEntries: 6 (4 candidate, 2 none-found).\n\nSeeded from the 2026-10-28 review, so treat entries as a starting point. The checker (`research-reuse` in polarizetech/retrieval-augmented-generation, [docs/reuse-register.md](https://github.com/polarizetech/retrieval-augmented-generation/blob/main/docs/reuse-register.md)) reads this file in place of its private seed once merged.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
+  "url": "https://github.com/polarizetech/paper-fetch/pull/14",
+  "merged_at": "2026-10-28T22:56:33Z"
+ },
+ {
+  "repo": "olimex-shield",
+  "number": 4,
+  "title": "Add the build-vs-reuse register",
+  "body": "Adds `reuse.toml`, this repo's build-vs-reuse register: each piece of our own scientific code, its state, and the open-source, peer-reviewed tool that does (or could do) the same job, with the test that runs them side by side where one exists.\n\nEntries: 9 (6 candidate, 2 none-found, 1 tandem).\n\nSeeded from the 2026-10-28 review, so treat entries as a starting point. The checker (`research-reuse` in polarizetech/retrieval-augmented-generation, [docs/reuse-register.md](https://github.com/polarizetech/retrieval-augmented-generation/blob/main/docs/reuse-register.md)) reads this file in place of its private seed once merged.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
+  "url": "https://github.com/polarizetech/olimex-shield/pull/4",
+  "merged_at": "2026-10-28T22:56:19Z"
+ },
+ {
+  "repo": "neural-memory",
+  "number": 10,
+  "title": "Add the build-vs-reuse register",
+  "body": "Adds `reuse.toml`, this repo's build-vs-reuse register: each piece of our own scientific code, its state, and the open-source, peer-reviewed tool that does (or could do) the same job, with the test that runs them side by side where one exists.\n\nEntries: 29 (4 candidate, 24 none-found, 1 tandem).\n\nSeeded from the 2026-10-28 review, so treat entries as a starting point. The checker (`research-reuse` in polarizetech/retrieval-augmented-generation, [docs/reuse-register.md](https://github.com/polarizetech/retrieval-augmented-generation/blob/main/docs/reuse-register.md)) reads this file in place of its private seed once merged.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
+  "url": "https://github.com/polarizetech/neural-memory/pull/10",
+  "merged_at": "2026-10-28T22:56:10Z"
+ },
+ {
+  "repo": "iphone-magnetometer",
+  "number": 1,
+  "title": "Add the build-vs-reuse register",
+  "body": "Adds `reuse.toml`, this repo's build-vs-reuse register: each piece of our own scientific code, its state, and the open-source, peer-reviewed tool that does (or could do) the same job, with the test that runs them side by side where one exists.\n\nEntries: 19 (11 candidate, 8 none-found).\n\nSeeded from the 2026-10-28 review, so treat entries as a starting point. The checker (`research-reuse` in polarizetech/retrieval-augmented-generation, [docs/reuse-register.md](https://github.com/polarizetech/retrieval-augmented-generation/blob/main/docs/reuse-register.md)) reads this file in place of its private seed once merged.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
+  "url": "https://github.com/polarizetech/iphone-magnetometer/pull/1",
+  "merged_at": "2026-10-28T22:55:55Z"
+ },
+ {
+  "repo": "retrieval-augmented-generation",
+  "number": 22,
+  "title": "Build-vs-reuse register and runner",
+  "body": "Adds `research-reuse`, a runner that tracks where we wrote our own scientific code instead of using an open-source, peer-reviewed package, and which of our pieces run in tandem with one.\n\n- **Register:** each repo lists its custom scientific code in `reuse.toml` (state: tandem, candidate, none-found or replaced; the alternative; the comparison test). Until a repo has one, a private seed in `$REUSE_HOME/registers/` is used.\n- **Catalogue:** `config/reuse-catalogue.default.toml`, 34 packages with their papers (all DOIs resolve via `--check-dois`). Local additions go in the gitignored `config/reuse-catalogue.toml`.\n- **Runner:** scans local checkouts under `~/Sites` and shallow clones of the org's other repos, finds catalogue packages in dependency files and imports, checks each register entry (path exists, tandem check exists and names the alternative, alternative already a dependency), and writes `report.{json,md,html}`, a running `history.csv` and flat dashboard tables to `$REUSE_HOME`. No model is used.\n- Reports name private repositories, so they stay in `$REUSE_HOME` and are never committed here.\n\nFormat and states: `docs/reuse-register.md`.\n\nTests: `tests/test_reuse.py` (9); full suite passes (408 + new).\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
+  "url": "https://github.com/polarizetech/retrieval-augmented-generation/pull/22",
+  "merged_at": "2026-10-28T22:54:13Z"
+ },
+ {
+  "repo": "retrieval-augmented-generation",
+  "number": 19,
+  "title": "Plan the gateway as the hub, and record hosting options",
+  "body": "Docs only.\n\n- **`docs/hub-plan.md`**: the plan for the next group of work. The gateway becomes the hub every request goes through:\n  - a request ledger and board;\n  - queues, limits and deadlines;\n  - duplicate and conflict detection across sessions;\n  - health checks, circuit breakers and labelled fallbacks, with one error contract;\n  - usage meters (OpenRouter, NEAR AI, the Claude plan, ChatGPT, local) and per-step provider ladders down to a local model;\n  - project capsules and a size watcher, to keep sessions small and save credits.\n\n  It is split into four phases and ends with the decisions still open.\n- **`docs/hosting-options.md`**: a dated reference to update over time. It covers the local-first decision, the dropped droplet, GitHub Codespaces, and what Hugging Face Spaces, Inference Endpoints and Inference Providers would mean here.\n- **`docs/mcp-clients.md`** links to both.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
+  "url": "https://github.com/polarizetech/retrieval-augmented-generation/pull/19",
+  "merged_at": "2026-10-28T20:09:49Z"
+ },
+ {
+  "repo": "retrieval-augmented-generation",
+  "number": 21,
+  "title": "Hub phase 2: queues, deadlines, duplicates, stale processes",
+  "body": "Builds phase 2 of the hub plan, and brings in the plan itself (#19, which conflicted with #20 in one paragraph of `docs/mcp-clients.md`; both paragraphs are kept). Merging this marks #19 merged.\n\n## What's in it\n- **Queues and limits** (`research_mcp/hub/queue.py`): retrieval runs two at a time and the rest wait in order. A research request the pipeline turns away (`PIPELINE_MAX_RUNS`) waits in line and starts when a slot frees, for up to 2 h. Model calls are limited per provider across all runs in the pipeline process (OpenRouter 8, NEAR AI 4, local 1).\n- **Memory pressure**: retrieval and research wait while less than 10 % of memory is free (`kern.memorystatus_level` on macOS, `MemAvailable` on Linux).\n- **Reply deadline**: every `ask` answers within 45 s. Longer work replies `queued` (position and estimate, under the error contract) or `working`, carries on in the gateway, and leaves its result for `hub__result`.\n- **Duplicate research** (`research_mcp/hub/overlap.py`): the same words, or a bge-m3 similarity of 0.92 or more, attaches to the request on the go instead of starting a second run. From 0.80 the run starts with a warning naming the other request. Without embeddings only exact matches attach.\n- **Stale processes** (`research_mcp/hub/processes.py`): `hub__board` lists stdio gateways (each holding its own library copy), gateways older than the code, and orphaned upstreams. They're reported, never killed. On this Mac it currently finds five stdio gateways.\n- **Ledger**: an `attached_to` column, added to the live database on open. Run updates reach every attached request.\n- **Docs**: `docs/hub-plan.md` marks phases 1 and 2 built and records the 2026-10-28 decisions. `docs/mcp-clients.md` describes the queues and duplicates.\n\n## Decisions applied\nCode conflicts are not held: each session works in its own worktree (decided 2026-10-28). The plan's \"held\" for code conflicts is replaced by the existing mention of other sessions' work.\n\n## Checks\n- `tests/test_hub_phase2.py`: lanes, memory hold, deadline replies finishing into the ledger, a busy retrieval lane, a full pipeline queuing then starting, exact and paraphrase attaches, near-duplicate warnings, no-embeddings behaviour, ledger migration, stale-process parsing, and the one-at-a-time local model across runs.\n- 400 tests pass; ruff and `pyright --pythonpath .venv/bin/python` are clean.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
+  "url": "https://github.com/polarizetech/retrieval-augmented-generation/pull/21",
+  "merged_at": "2026-10-28T20:09:47Z"
+ },
+ {
+  "repo": "retrieval-augmented-generation",
+  "number": 20,
+  "title": "Hub phase 1: ledger, error contract, health, usage, ladders",
+  "body": "Builds phase 1 of the hub plan (`docs/hub-plan.md`, in #19).\n\n## What's in it\n- **Request ledger** (`data/pipeline/hub.sqlite`): every `ask` gets a `request_id` and a row (client, session, project, repo, route, specialist, question fingerprint, files named, status, timings, problems; for a research run, provider, tokens and cost once its calls pass through the gateway). New tools: `hub__status`, `hub__board`, `hub__result(id)`.\n- **One error contract** on every non-success reply: `status`, `component`, `what_failed`, `impact`, `fallback_used`, `options`, `recommendation`, `retry_after`. The relay shows it first in plain words. Gateway tool errors, upstream errors and the bridge's \"gateway is down\" all carry it.\n- **Health and circuit breakers** for the reranker, embeddings, paper library, model provider, verifier, upstream processes, GitHub and the corpus (3 failures, then skipped for 120 s, then probed), with the plan's labelled fallbacks.\n- **Usage meters**: OpenRouter `/api/v1/key` + `/api/v1/credits` (balance, day/week/month spend, burn per day, run-out); NEAR AI reported as \"needs a reporting token\" until `~/.config/polarize/nearai-reporting.env` exists; Ollama up/installed/loaded. Adds `hub__usage` and a cached one-line readout under each relay.\n- **Provider ladders** (`research_pipeline/ladder.py`, `config/hub.default.toml`): planning, extraction and writing go OpenRouter → NEAR AI direct → local `qwen3:4b-instruct-2507`, skipping a rung that is failing or low (USD 1 or 95 %). Each move is logged in the run's notes and ladder log. Checking stays on the local verifier.\n\n## Decisions (asked 2026-10-28)\n- Code conflict: **worktrees**. Nothing is blocked; `ask` mentions recent code work on the same repo from another session and says to use your own worktree.\n- Degraded fallbacks: **ask once per session per component**. The reply is `needs_decision`; the client passes `decisions={\"<component>\": \"fallback\"|\"stop\"}`, and that choice holds for the rest of the session.\n- Session identity: **pass it, or the gateway infers it**. The bridge sends `X-Hub-Session`/`X-Hub-Project`; inferred sessions are marked in the ledger.\n- Ladders and thresholds: **as proposed**.\n\n## Limits\n- Switching off only the reranker or only the embeddings needs `rerank`/`dense` flags on paper-fetch's `retrieve` tool. The gateway sends them as soon as the tool lists them; until then those two fall back to scholarly search, and the relay says so.\n- Inside a running pipeline, ladder moves happen automatically and are labelled; only the pre-run check asks.\n- Upstream restart with backoff is phase 3: for now a dead upstream fails with the restart command.\n- `docs/hub-plan.md` should record these decisions once #19 merges; for now they are in `docs/mcp-clients.md`.\n\n## Checks\n- `tests/test_hub.py`: fault injection for every component, plus the ledger, breakers, meters, ladders and the gateway's hub tools.\n- 388 tests pass; ruff and `pyright --pythonpath .venv/bin/python` are clean.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
+  "url": "https://github.com/polarizetech/retrieval-augmented-generation/pull/20",
+  "merged_at": "2026-10-28T19:33:17Z"
+ },
+ {
+  "repo": "retrieval-augmented-generation",
+  "number": 18,
+  "title": "Over-fetch four passages, not three times the limit",
+  "body": "`rag__retrieve_evidence` asked the paper library for `limit * 3` passages so that passages excluded by the safety scan would not shrink the result. The library reranks three candidates per passage asked for, on the CPU, at about 0.3 s each. So a default request (limit 8) reranked 72 candidates, about 20 s, and under concurrent load that timed out clients' 60 s MCP calls. Asking for `limit + 4` keeps a margin for excluded passages at a fraction of the cost.\n\nThis has been running on the live gateway since 2026-10-27. Tests pass (351), and ruff and pyright are clean.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
+  "url": "https://github.com/polarizetech/retrieval-augmented-generation/pull/18",
+  "merged_at": "2026-10-28T18:30:04Z"
+ },
+ {
+  "repo": "scientific-research-scaffold",
+  "number": 11,
+  "title": "Start studies and tools exploratory, from a goal and a rough approach",
+  "body": "The person's requirement (2026-10-28): studies and tools start exploratory by default, with \"a general goal\" and a \"rough idea of how we might get there\" instead of a strict claim. The first conversation is a back-and-forth to decide whether the goal fits one study or tool, or should be broken up.\n\n- **A study:** `scaffold new study <name> --goal \"...\" --approach \"...\"` writes:\n  - `HYPOTHESIS.toml` with `mode = \"exploratory\"`, the goal and the approach;\n  - one exploratory element holding the goal, with no counts-against needed;\n  - the goal and approach at the top of the README.\n- **A tool:** `scaffold new tool <name> --goal \"...\" --approach \"...\"` (or `--job`) writes an exploratory `SCOPE.toml` with the same fields.\n- **Sizing:** both record the decision as `scope = \"one\"` or `\"split: a, b\"` with `scope_decided`. `scaffold check` warns until it is there and fails on another value.\n- **An exploratory study stays at SKETCH** until `mode = \"hypothesis\"`.\n- **Claim-first is still there on request:** a study's `--hypothesis`, or `--claim`. A tool's `--exploratory` keeps its older meaning, a build note with no approach asked for.\n- **Docs:** the study and tool agent rules, the new-study skill, the README and PROTOCOL.md describe the sizing conversation.\n- **Existing repos are unaffected:** a `HYPOTHESIS.toml` without `mode` is a hypothesis study, as before.\n\nTests: 88 pass, two of them new. polarizetech/scientific-research-scaffold also has `claude/rag-every-question` open, which edits the same files (`bin/scaffold`, the tests and CHANGELOG \"Unreleased\"), so the second of the two to merge will need a small merge.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
+  "url": "https://github.com/polarizetech/scientific-research-scaffold/pull/11",
+  "merged_at": "2026-10-28T18:29:54Z"
+ },
+ {
+  "repo": "scientific-research-scaffold",
+  "number": 10,
+  "title": "Send every question to the retrieval tool, and let it pick the specialist",
+  "body": "The person's requirement (2026-10-28): every question in these projects, by any assistant, runs the retrieval tool, and specialists are brought in only where the tool's pipeline routes them.\n\n- **`retrieval_rule`.** When a profile names a retrieval tool, `AGENTS.md` now says every question starts with it, including one about the repo's own code: retrieve, then read the checkout. A second rule says research roles and specialists come only from `pipeline__profile_route`.\n- **`scaffold rag-hook --server NAME`.** A Claude Code `UserPromptSubmit` hook, installed beside the session hook when the profile names a tool. On every prompt it adds the rule to the context. When `$RESEARCH_RAG_URL` and `$RESEARCH_RAG_TOKEN_FILE` point at the tool's HTTP gateway, it also adds the route for the prompt: specialist, brief path and guidance.\n  - It never blocks a prompt and skips slash commands.\n  - Without the gateway it adds the rule alone.\n  - Nothing machine-specific is written into a repo.\n  - `scaffold update` adds, refreshes or removes the hook.\n- **Other assistants** have no hook; they follow the rule in `AGENTS.md`.\n\nChecked against a live gateway: a noise question was routed to the noise specialist, and a code-only prompt got no specialist. Tests: 88 pass (`python3 -m unittest tests.test_scaffold`).\n\n**Note:** the `agents` submodule is still pinned at v0.8.0, whose block keeps the older \"Retrieval before search\" section next to the new rule. Move the pin once scientific-research-agents v0.10.0 is tagged. polarizetech/scientific-research-scaffold also has `claude/exploratory-default` open, which edits the same files, so the second of the two to merge will need a small merge.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
+  "url": "https://github.com/polarizetech/scientific-research-scaffold/pull/10",
+  "merged_at": "2026-10-28T18:29:46Z"
+ },
+ {
+  "repo": "retrieval-augmented-generation",
+  "number": 17,
+  "title": "Add ask: one entry point that routes a request and runs only what it needs",
+  "body": "The goal: run research and code from the gateway, with the chat model of choice relaying what it did, and without overdoing it on each request.\n\n- **`ask(question, repo?, mode?, strictness?)`.** A built-in gateway tool. The server instructions tell clients to start every request with it and to show its `relay` unchanged.\n- **Routing** (`research_mcp/routing.py`) uses trigger words, not a model. Defaults are in `config/routing.default.toml`; the operator's own go in a gitignored `config/routing.toml`, which is re-read on every call.\n  - `quick` (the default): one retrieval of five passages.\n  - `research`: an evidence question; starts the research pipeline.\n  - `code`: a task on code or a code review. A question never recruits the coder, even about code.\n  - Prefixes force a route: `quick:`, `research:`, `deep:`, `code:`, `review:`.\n  - A plain code task skips retrieval, because the library holds papers, not code (about 10 s down to 0.1 s live).\n- **The specialist** comes from `agent_profiles.route`, or from the operator's `[profiles]` words.\n- **The relay block** says what ran and why, lists the passages with their evidence ids, gives the specialist's guidance, and ends with a Limits line.\n- **The gateway does not make code changes itself yet.** On the code route it gives context and names the `repos__` tools.\n\nTests: 332 pass, including the new `tests/test_routing.py` and `tests/test_ask.py`; ruff is clean. Checked live against the running gateway for a question and a code task. The research route is covered by tests only, so that no real run was started.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
+  "url": "https://github.com/polarizetech/retrieval-augmented-generation/pull/17",
+  "merged_at": "2026-10-28T18:24:59Z"
+ },
+ {
+  "repo": "scientific-research-agents",
+  "number": 4,
+  "title": "Retrieval first, for every question; the tool picks the specialist",
+  "body": "The person's requirement (2026-10-28): every question asked in these projects, by Claude, Codex or any other assistant, runs the Scientific Research RAG tool, and specialists join only where the tool's pipeline routes them.\n\n- **Retrieval first, for every question.** `AGENTS.md`, `COORDINATION.md` and `templates/AGENTS.block.md` replace \"Retrieval before search\". The rule now covers every question or task, including questions about the repository's own code: retrieve, then inspect the checkout, which stays the source of truth. A reply that only approves or answers the agent's own question continues the earlier request.\n- **The tool picks the specialist.** The lead calls `pipeline__profile_route` and brings in only the research roles and the specialist it returns, following its guidance. With no specialist named, the lead answers alone. Building roles are still chosen by the kind of task.\n- `templates/specialist.example.md` now points to the \"retrieval-first\" rule.\n- Bumps to 0.10.0: `VERSION`, `CHANGELOG.md`, `CITATION.cff`.\n\nTests: `python3 -m unittest discover tests` (12 pass; the retrieval test now checks the new wording in all three files).\n\nAfter merging, tag v0.10.0 so the scaffold can move its `agents` submodule off v0.8.0.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
+  "url": "https://github.com/polarizetech/scientific-research-agents/pull/4",
+  "merged_at": "2026-10-28T18:23:06Z"
+ },
+ {
+  "repo": "retrieval-augmented-generation",
+  "number": 16,
+  "title": "Harden repos__propose_files and allow a dedicated GitHub token",
+  "body": "Prepares the `repos__` tools for use from a chat client (Open WebUI) whose model may have read untrusted text, such as paper passages or web pages.\n\n## What changes\n\n- **`repos__propose_files` refuses dangerous paths** before anything is cloned:\n  - Any path with a `.git` component. Writing `.git/config` can set `core.fsmonitor` or similar settings, so the next `git add` would run a program on the host.\n  - `.github/workflows/` and `.github/actions/`. A workflow on a pushed branch runs with the repository's secrets before anyone reviews the PR.\n  - Writing through a symbolic link.\n  - Paths are compared case-insensitively, since macOS would place `.GitHub/Workflows/x.yml` inside `.github/workflows/`.\n- **Every git command** runs with `core.hooksPath=/dev/null` and `core.fsmonitor=false`. Credentials come explicitly from `gh auth git-credential`, so the tool no longer depends on the host's global git config.\n- **`GITHUB_MCP_TOKEN_FILE`** (optional) gives the tool its own token, for example a fine-grained token limited to chosen repositories with Contents and Pull requests read/write and no Workflows permission. It is passed to `gh` and git as `GH_TOKEN`, and errors name the file, never the token. Without it, behaviour is unchanged: `gh`'s login is used.\n- **`repos__auth_status`** reports the credential source (`gh login` or `GITHUB_MCP_TOKEN_FILE`) and the protected paths.\n- **Docs:** `config/rag.env.example` and `docs/mcp-clients.md` describe the token file and the protected paths. They also note the remaining exposure: a workflow that already runs on every push still runs proposed code with whatever secrets it can reach, so deploy secrets belong in GitHub environments that require approval.\n\n## Testing\n\n- 15 new tests: rejected and allowed paths, refusing symlinks, path checks running before any command, token-file handling and errors, and the git hardening flags.\n- The full suite passes locally (325 tests). Ruff is clean.\n- Checked with a fake token that `gh auth git-credential` returns `GH_TOKEN`.\n- The running gateway serves this code. `repos__auth_status` and `repos__list_repositories` work. `propose_files` has not been run against a real repository.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
+  "url": "https://github.com/polarizetech/retrieval-augmented-generation/pull/16",
+  "merged_at": "2026-10-28T18:20:58Z"
+ },
+ {
+  "repo": "scientific-research-scaffold",
+  "number": 9,
+  "title": "Keep the bench template's pyproject.toml valid TOML",
+  "body": "After #7 merged, the \"Graph Update: pip in /templates/units/bench\" run on `main` failed: Dependabot reads every `pyproject.toml` in the repo and could not parse the bench template, because its `dependencies` list held a bare `{{reference_deps}}` placeholder.\n\nThe template now says `dependencies = []`, and `scaffold new sim … --reference` fills in the pinned references after rendering. Generated bench sims are unchanged; the existing bench tests check their pins. Every `pyproject.toml` in the repo now parses as TOML.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
+  "url": "https://github.com/polarizetech/scientific-research-scaffold/pull/9",
+  "merged_at": "2026-10-28T18:00:08Z"
+ },
+ {
   "repo": "scientific-research-scaffold",
   "number": 7,
   "title": "Bench sims: scaffold new sim --reference, checks and make sims",
