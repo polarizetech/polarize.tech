@@ -1,5 +1,29 @@
 [
  {
+  "repo": "polarize-ui",
+  "number": 8,
+  "title": "feat: dashboard frames",
+  "body": "Adds generic dashboard frames: `.ui-kpis`, `.ui-panels`, `.ui-strip`, `.ui-events`, `.ui-pcell`, `.ui-disclosure`, with React components and a Storybook story.\n\n- Additive only; no existing class, token or export changes.\n- Standard layout pieces only: nothing domain-specific, no unpublished method or data. The story uses placeholder numbers.\n- `dev_check.py` 587/587, `tsc` clean, `api_surface.py` runs.\n- Needed by the noise-departures redesign in teeter-receiver, which will pin the release that includes this.\n\nMerging to main releases automatically.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
+  "url": "https://github.com/polarizetech/polarize-ui/pull/8",
+  "merged_at": "2026-10-30T13:55:23Z"
+ },
+ {
+  "repo": "scientific-research-scaffold",
+  "number": 13,
+  "title": "Release v0.12.0: exploratory work needs no LICENSE yet",
+  "body": "An exploratory study or tool shouldn't need a hypothesis or a license. That was the person's call (2026-10-29), after CI on polarizetech/audio-evoked-potentials failed on both.\n\n- **Hypothesis:** an exploratory study already skips this check on `main` (since #11), but no release has it yet. v0.11.1, which studies pin in CI, still fails.\n- **LICENSE (this PR):** `scaffold check` now warns instead of failing when the repo is exploratory. That means a study whose `HYPOTHESIS.toml` has `mode = \"exploratory\"`, or a tool or sim whose root `SCOPE.toml` has `stage = \"exploratory\"`. Claimed work still fails without a LICENSE.\n- PROTOCOL.md §14 and CHANGELOG.md are updated, and there's a new test, `test_exploratory_work_needs_no_licence_yet`.\n\n**Checks:** `python -m unittest discover tests` gives 94 OK (2 skipped). This branch's `scaffold check` on audio-evoked-potentials returns 147 ok, 0 failures.\n\n\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\n**Release:** the second commit makes this PR v0.12.0. It bumps `SCAFFOLD_REF`, both plugin manifests and `CITATION.cff`, and adds a CHANGELOG heading and an UPGRADING section. After merge, tag the merge commit `v0.12.0`, the same way v0.11.1 was tagged.",
+  "url": "https://github.com/polarizetech/scientific-research-scaffold/pull/13",
+  "merged_at": "2026-10-29T23:06:39Z"
+ },
+ {
+  "repo": "scientific-research-scaffold",
+  "number": 12,
+  "title": "Apps print their tailnet URL, ending in the version: profile default, TAILNET_URL override",
+  "body": "Scaffolded apps now say where they are viewed beyond localhost, and the URL ends in the app's version. The host is a setting, not a constant.\n\n- A new optional profile section, `[serving] tailnet_url`. The polarizetech profile names `https://joshuas-macbook-pro.tailc463ae.ts.net`; `example.toml` leaves it empty.\n- `scaffold new app` writes that value into the app's `serve.py` as the **default** of `TAILNET_URL`, which is read from the environment first. The app prints `$TAILNET_URL/<slug>/<version>/` (e.g. `…/viewer/v1/`) next to its localhost URL, and `new app` prints the same line.\n- The template's `serve.py` strips the `/<slug>` and `/<version>` prefixes, and redirects a bare `/` (or `/<slug>/`) to `<version>/`. The same relative paths therefore work locally, behind the gateway, and directly.\n- A profile without a `tailnet_url` prints nothing.\n- Existing apps are untouched, because `serve.py` belongs to the repo once it is written.\n- CHANGELOG (Unreleased) and a PROTOCOL § 6 advice line are added. Nothing new is enforced by `check`.\n\nTests: 93 pass, including when `TAILNET_URL` is already set in the runner's environment. A freshly scaffolded app was also served and checked live with curl: `/` → `v1/`, `/viewer/` → `/viewer/v1/`, and the page and `app.js` return 200.\n\nA related note for the next release: `v0.11.1` predates exploratory studies, so adopted exploratory studies (audio-evoked-potentials#5) fail CI until a release that includes them is cut.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nhttps://claude.ai/code/session_01CEu6qLoTx5uQjd61HraWe3",
+  "url": "https://github.com/polarizetech/scientific-research-scaffold/pull/12",
+  "merged_at": "2026-10-29T20:39:09Z"
+ },
+ {
   "repo": "retrieval-augmented-generation",
   "number": 23,
   "title": "Lay out replies from an editable template file",
