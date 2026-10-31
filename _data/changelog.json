@@ -1,5 +1,29 @@
 [
  {
+  "repo": "retrieval-augmented-generation",
+  "number": 27,
+  "title": "Drop reply templates; build replies as plain text in code",
+  "body": "Replies came out empty after #26: the gateway reads `config/replies.default.md` on every reply but keeps its code in memory, so a gateway still running the old code filled the new templates with blocks it never wrote.\n\nThis removes the templating altogether:\n- `research_pipeline/replies.py` is now three helpers: `bullets`, `short` (**Results**, **Next**, and **For you** only when there is something to do) and `join`.\n- `relay`, the pending reply, the short answer and `answer.md` are laid out in code, in the same order as before.\n- `config/replies.default.md` and the `config/replies.md` override are deleted; docs updated.\n\n420 tests pass; ruff check and format are clean.\n\nAfter merging, update the live checkout and restart the gateway.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
+  "url": "https://github.com/polarizetech/retrieval-augmented-generation/pull/27",
+  "merged_at": "2026-10-31T14:57:40Z"
+ },
+ {
+  "repo": "retrieval-augmented-generation",
+  "number": 26,
+  "title": "Make replies three short lists, with the detail on request",
+  "body": "Replies from the research tool were too long to read every turn. Now the person sees three short lists, one sentence per item:\n\n- **Results**: what came back, any problem, and the main limit\n- **Next**: what the assistant does next\n- **For you**: only when the person has something to do (for example, a choice after a failure)\n\nExample:\n\n```\n**Results**\n- Found 3 passage(s) from 2 paper(s); the closest is from The waggle dance encodes distance, 2019.\n- These are passages, not a checked answer.\n\n**Next**\n- The assistant answers from these passages and cites their evidence ids.\n```\n\n**Detail on request**\n- The previous layout is kept as the `ask_full` / `pending_full` templates and returned as `relay_full`. Clients show it only when the person asks for more.\n- Passages still come back in `results`, so the assistant's answer stays grounded.\n- A finished research run returns a short `relay` (up to three sentences of the bottom line plus claim counts). The full `answer` is unchanged and shown on request.\n- The gateway's server instructions and the `ask` tool description now say this.\n\n**Tests**\n- Existing tests that check detail now read `relay_full`.\n- New tests cover the short form, a decision landing under For you, and the short finished answer.\n- `pytest`: 424 passed. `ruff check` and `ruff format --check` are clean.\n\nTakes effect once merged and the gateway is restarted.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
+  "url": "https://github.com/polarizetech/retrieval-augmented-generation/pull/26",
+  "merged_at": "2026-10-31T14:05:50Z"
+ },
+ {
+  "repo": "retrieval-augmented-generation",
+  "number": 25,
+  "title": "Say why an answer is thin",
+  "body": "Two research runs on 2026-10-30 came back thin and the answer only listed symptoms under Limits. Their run logs showed the causes: OpenAlex's budget was spent (it missed all 13 searches), DOAJ was down, PubMed and CORE rate-limited the run (no API keys), the fetch cap read 12 of 155–211 candidates, most papers read gave no usable passage, and three sub-questions ended empty because every passage found was read as neutral and claims are drafted only from passages that report a result.\n\n**Change:** a \"Why this answer is thin\" section under the bottom line, written by code from the run's records (`research_pipeline/thin.py`), cause by cause with what would change it. Shown only when an answer is thin; says so when nothing technical failed.\n\n**Also:** `run.json` no longer stores credentials (the OpenRouter key was written in plain text to every run log; `runs/` is gitignored, so nothing reached git).\n\nChecked: `ruff check`, `ruff format --check`, `pytest --cov` (421 passed, 86%); replayed on the two thin runs.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
+  "url": "https://github.com/polarizetech/retrieval-augmented-generation/pull/25",
+  "merged_at": "2026-10-30T18:20:14Z"
+ },
+ {
   "repo": "polarize-ui",
   "number": 8,
   "title": "feat: dashboard frames",
