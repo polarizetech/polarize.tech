@@ -1,6 +1,30 @@
 [
  {
   "repo": "retrieval-augmented-generation",
+  "number": 39,
+  "title": "ask: send clients a compact brief to answer from",
+  "body": "## Why\n`ask` replies were long and unhelpful: each passage appeared twice (`results` and `relay_full`), and the model was told to paste `relay` verbatim instead of answering.\n\n## What\n- **`research_mcp/brief.py`** builds the client-facing brief:\n  - each passage appears once, with its evidence id, source and score;\n  - a **coverage** level from the best reranker score: strong ≥ 1, partial ≥ −1, weak below that, none;\n  - the specialist's name and guidance;\n  - `found`/`next`/`for_you` lists and the main limit;\n  - **`answer_format`**: bottom line, up to five key points each citing an evidence id, gaps, and sources. When coverage is weak or none, the reply says so first.\n- **Gateway:** `ask` replies are recorded in full in the call log, and the client gets the compact brief. `detail=\"full\"` returns the old shape.\n- **`ask()`** adds a structured `summary` to its reply; nothing else in it changes.\n- The server instructions, the `ask` description and `docs/mcp-clients.md` are updated.\n\nOn this morning's real bone-conduction reply, the client payload drops from 12.9k to 8.1k characters.\n\n## Tests\n492 passed. New tests cover coverage levels, single-copy passages, research runs and pass-through. The hub gateway test now checks that a needs-decision choice reaches the person through `for_you`.\n\nNot changed: a finished research run still returns its own `relay` and `answer`.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
+  "url": "https://github.com/polarizetech/retrieval-augmented-generation/pull/39",
+  "merged_at": "2026-11-09T14:04:34Z"
+ },
+ {
+  "repo": "retrieval-augmented-generation",
+  "number": 37,
+  "title": "math__physical_mix: physical-nonlinear-mixing's pnm as a tool",
+  "body": "Adds `math__physical_mix`, which runs [physical-nonlinear-mixing](https://github.com/polarizetech/physical-nonlinear-mixing)'s `pnm` as configured under `calculators.physical_mixing`:\n\n- `action=calc`: tones or an equation in t through a digital model (exact) or the audio interface's loop (measured, exploratory); returns every line m·f1 + n·f2 with its level.\n- `action=calibrate`: the loop's delay, polarity and gain.\n- `action=runs`: list or read the tool's recorded runs (the pickle runs among them).\n- `action=setup`: the tool's interface and device records.\n\nArguments are checked and passed as a list (no shell). Built-in tool count 20 → 21 (tests updated). Full suite: 488 passed.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
+  "url": "https://github.com/polarizetech/retrieval-augmented-generation/pull/37",
+  "merged_at": "2026-11-09T01:53:55Z"
+ },
+ {
+  "repo": "olimex-shield",
+  "number": 5,
+  "title": "0.3.0: tool kind and extensions, scaffold v0.12.0, merged with main",
+  "body": "- Commits the 0.3.0 work (tool kind, `TOOL.toml`, extension kit, experimental routes as an extension, `tests/test_contract.py`) that sat uncommitted in the main checkout since late September. Every suite in `scripts/check.py` passed on it unchanged.\n- Updates to scientific-research-scaffold v0.12.0 and KIT Adaptive Preregistration 949f0cd.\n- Merges `main` (docs site, reuse register, `spectrum()` fix). The one conflict was `CHANGELOG.md`: the fix is folded into 0.3.0, dated 2026-11-08 because 0.3.0 was never tagged; `/spectrum` is listed under Outputs changed (only the workbench draws from it).\n- Tagged `v0.3.0` (annotated) at this branch's tip.\n\nChecks: `scripts/check.py` all ok (MNE-BIDS read-back, atlas and blog-post checks skipped as before); ruff clean; `scaffold check` 37 ok, 2 warnings (folder name; no `SCOPE.toml`). Used live: physical-nonlinear-mixing's `pnm calc --via olimex` reads the shield through this bridge.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
+  "url": "https://github.com/polarizetech/olimex-shield/pull/5",
+  "merged_at": "2026-11-09T01:53:52Z"
+ },
+ {
+  "repo": "retrieval-augmented-generation",
   "number": 36,
   "title": "ask: a sky word needs a place or time before it runs sky__key",
   "body": "## Problem\n\n`ask(\"What does the Sun's position and gravity have to do with the plasmasphere?\")` matched the `sun's position` trigger, ran `sky__key` with no place, and skipped retrieval. A science question got \"give the place as decimal latitude and longitude\" instead of passages.\n\n## Change\n\n- The tool's own names (`sky key`, `sun key`, `sky clock`, `sky-clock`) still always run `sky__key`.\n- Every other sky word (`solar time`, `sunrise`, `sun's position`, …, and `[sky] triggers`) runs it only when the request also gives decimal coordinates or a time.\n- Without them, the question is retrieved as usual, and the reply's \"For you\" adds one line on how to ask for a sky key (`results[\"sky_hint\"]`).\n- `config/routing.default.toml` explains the rule.\n\n\"What is the solar time in Victoria?\" now goes to the papers with that hint, instead of only asking for coordinates. \"Sky key in Victoria\" still asks for them.\n\n## Checked\n\n- New tests: the plasmasphere question retrieves passages, doesn't call sky-clock, and shows the hint; sky words with a date or coordinates still trigger; the tool's name alone still triggers.\n- Full suite: 476 passed, 2 skipped (live sky-clock). `ruff check` and `ruff format --check` clean.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
