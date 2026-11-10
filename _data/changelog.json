@@ -1,6 +1,38 @@
 [
  {
   "repo": "retrieval-augmented-generation",
+  "number": 41,
+  "title": "Route motion, friction and drag questions to classical-mechanics",
+  "body": "Routing for the new `classical-mechanics` specialist (polarizetech/polarize-agents, the companion PR).\n\n**Anchor words:** friction, frictional, drag, incline, inclined, kinematics, tribology, stick-slip, restitution, projectile(s), free-body, coefficient-of-friction.\n\n**Guarded words:**\n- \"drag\" doesn't count beside \"drop\", so drag-and-drop UI questions stay out.\n- \"terminal\" counts only with \"velocity\".\n- \"ramp\" counts only beside something that moves on it (ball, block, cart, cylinder, roll, slide), so ramp signals stay with signal-processing.\n\n**Left out alone:** \"energy\", \"motion\", \"force\", \"momentum\" and \"rolling\". Neural, plasma, signal and optimizer questions use them too.\n\n**Tests:**\n- New: `test_classical_mechanics_routes_motion_not_ui_signals_or_optimisers`, with five positive routes and four negatives.\n- The full suite passes (495), as do ruff and pyright.\n\n**Checked against the real briefs:**\n\n| Question | Specialist |\n|---|---|\n| \"physics and conservation/transfer of energy, ramp and drag dynamics, motion and friction\" | classical-mechanics |\n| \"Build an Arduino rig with a photodiode to time a ball rolling down a ramp\" | macgyver |\n| \"Generate a ramp signal and compute its FFT\" | signal-processing |\n| \"Implement drag and drop in the web app\" | none |\n| A spheromak merging question | plasma-toroids |\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
+  "url": "https://github.com/polarizetech/retrieval-augmented-generation/pull/41",
+  "merged_at": "2026-11-10T15:18:15Z"
+ },
+ {
+  "repo": "polarize-ui",
+  "number": 9,
+  "title": "docs: sync the Claude Design System copy to v0.6.7",
+  "body": "Brings `claude-design-system/` in line with the published Polarize UI Design System artifact, which was just updated from v0.6.2 to v0.6.7.\n\n- `project/`: the stylesheet now carries the panel stack, dashboard frames and navbar; `tokens.json` says v0.6.7 (no token values changed between the two tags); `design-system.json` records the update. Every file now matches the published system byte for byte.\n- `build_tokens.py` / `build_docs.py`: find the repo from their own location (no absolute path), take the version from `package.json`, keep `createdOnFiles`, and write the Cover and Navbar cards as published, so a rebuild no longer reverts them.\n- Not breaking: the folder is not in `package.json` `files`; no export, class, token or entry point changes. `python3 dev_check.py`: 587/587 passed.\n\nMerging releases a patch, as every push to `main` does.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
+  "url": "https://github.com/polarizetech/polarize-ui/pull/9",
+  "merged_at": "2026-11-10T13:50:42Z"
+ },
+ {
+  "repo": "retrieval-augmented-generation",
+  "number": 40,
+  "title": "Route DIY rig questions to the macgyver specialist",
+  "body": "Adds routing for the new `macgyver` profile ([polarizetech/polarize-agents#9](https://github.com/polarizetech/polarize-agents/pull/9)) to `SPECIALIST_TERMS`.\n\n- **Anchors**: macgyver, diy, arduino, esp32, breadboard, homemade, household, makeshift, photodiode, contact-mic, plasma-ball and plasma-globe.\n- **Word pairs**: plasma + ball and plasma + globe also count, the way bone + conduction does, because people write them with a space.\n- **Left out**: plasma, coil, mixer and signal on their own, so spheromak and mixing-maths questions keep their specialists.\n\nTest: `test_macgyver_routes_diy_rigs_not_plasma_physics_or_mixing_maths`. Full suite: 494 passed, 2 skipped; ruff is clean.\n\nChecked against the real briefs (polarize-agents on the profile branch):\n- The user's plasma-ball mixer and pickup questions and an Arduino magnetometer question → `macgyver`.\n- Counter-helicity spheromaks → `plasma-toroids`.\n- Cubic intermodulation → `nonlinear-signal-mixing`.\n- Noise classification → `noise-engineering`.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
+  "url": "https://github.com/polarizetech/retrieval-augmented-generation/pull/40",
+  "merged_at": "2026-11-10T13:36:42Z"
+ },
+ {
+  "repo": "retrieval-augmented-generation",
+  "number": 38,
+  "title": "Route spheromak and FRC questions to the plasma-toroids specialist",
+  "body": "Adds anchor terms for the `plasma-toroids` overlay profile: spheromak(s), FRC(s), field-reversed, co-/counter-helicity, compact-toroid, plasmoid(s), toroid(s), theta-pinch.\n\n\"toroidal\" and \"helicity\" alone are deliberately left out, so questions about toroidal manifolds (e.g. grid cells) keep the general route.\n\n- New test: `test_plasma_toroids_routes_spheromaks_and_frcs_not_grid_cell_tori`\n- `tests/test_agent_profiles.py`: 11 passed; ruff check and format clean.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
+  "url": "https://github.com/polarizetech/retrieval-augmented-generation/pull/38",
+  "merged_at": "2026-11-09T20:26:06Z"
+ },
+ {
+  "repo": "retrieval-augmented-generation",
   "number": 39,
   "title": "ask: send clients a compact brief to answer from",
   "body": "## Why\n`ask` replies were long and unhelpful: each passage appeared twice (`results` and `relay_full`), and the model was told to paste `relay` verbatim instead of answering.\n\n## What\n- **`research_mcp/brief.py`** builds the client-facing brief:\n  - each passage appears once, with its evidence id, source and score;\n  - a **coverage** level from the best reranker score: strong ≥ 1, partial ≥ −1, weak below that, none;\n  - the specialist's name and guidance;\n  - `found`/`next`/`for_you` lists and the main limit;\n  - **`answer_format`**: bottom line, up to five key points each citing an evidence id, gaps, and sources. When coverage is weak or none, the reply says so first.\n- **Gateway:** `ask` replies are recorded in full in the call log, and the client gets the compact brief. `detail=\"full\"` returns the old shape.\n- **`ask()`** adds a structured `summary` to its reply; nothing else in it changes.\n- The server instructions, the `ask` description and `docs/mcp-clients.md` are updated.\n\nOn this morning's real bone-conduction reply, the client payload drops from 12.9k to 8.1k characters.\n\n## Tests\n492 passed. New tests cover coverage levels, single-copy passages, research runs and pass-through. The hub gateway test now checks that a needs-decision choice reaches the person through `for_you`.\n\nNot changed: a finished research run still returns its own `relay` and `answer`.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
@@ -742,29 +774,5 @@
   "body": "Session log entries written after the docs/findings merge.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
   "url": "https://github.com/polarizetech/neural-memory/pull/4",
   "merged_at": "2026-09-25T13:41:17Z"
- },
- {
-  "repo": "neural-memory",
-  "number": 3,
-  "title": "Findings, pre-release review, lint and MIT licence",
-  "body": "- docs/FINDINGS.md: every result across the project, and the project marked paused.\n- docs/REVIEW.md: three independent code and methods reviews; dated corrections appended to the affected reports (nothing rewritten).\n- ruff (correctness rules only) + lint workflow; the private-tool imports degrade loudly; MIT licence; public README.\n- Test suite: 100 passed. No numerical change to any committed run.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
-  "url": "https://github.com/polarizetech/neural-memory/pull/3",
-  "merged_at": "2026-09-25T13:29:12Z"
- },
- {
-  "repo": "neural-memory",
-  "number": 1,
-  "title": "E01-stentor-map: Stentor-mapped habituation constraints (SR1–SR3) on the depression cascade",
-  "body": "Preregistered experiment. See experiments/E01-stentor-map/PREREG.md and RESULTS.md.\n\n**Closed: FAIL** (`E01-stentor-map-closed`, f10f688). 90 runs, 0 failed, model-v0.1.0.\n\n| | pre-registered (efficacy) | observed (spikes) | verdict |\n|---|---|---|---|\n| SR1-std: decrement deepens as recovery slows | 0.126 → 0.494 → 0.624 → 0.728 | 0.057 → 0.418 → 0.597 → 0.765 | **PASS** |\n| SR1-std: half-point later | 4 → 6 → 6 → 7 | 4 → 5.5 → 8 → 8 | **PASS** |\n| SR1-hebb_only: predicted null | no change | D16 unchanged (≤ ±0.023); median half point 4 → 4.5 | **FAIL** (half-point clause) |\n| SR3-std: strong insert deepens | −0.21 % / −0.33 % | −0.69 % / −0.93 %, under MDE 3.5 % | **UNINTERPRETABLE** (analyse.py: FAIL) |\n| SR3-hebb_only | deepening | −0.74 % (under MDE) / **−3.46 % [−5.92, −1.00]** | **UNINTERPRETABLE** (analyse.py: FAIL) |\n| SR2: decrement–rate slope | +28.7 / +19.8 dB/decade | slow-rate decrement below the ±0.03 floor | not computable |\n\n- **Stentor's longer retention after a block:** not reproduced by the depression cascade (0 at ×1 and ×0.25; control at the floor at ×0.1 and frozen). It appears only in `hebb_only`, on shrinking n.\n- No dishabituation in any arm.\n- Deviations #1–#4 are in DEVIATIONS.md; #4 was decided with the outcome known.\n- Exploratory (fast-forward vs direct gaps) is under `exploratory/`.\n- Next EID: RESULTS.md §8.\n- Merge with a merge commit, never a squash.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
-  "url": "https://github.com/polarizetech/neural-memory/pull/1",
-  "merged_at": "2026-09-25T04:55:16Z"
- },
- {
-  "repo": "neural-memory",
-  "number": 2,
-  "title": "E02-local-negative-image: depletion's specificity map, B-vs-H removal, R&M receptor structure under a synthesis block",
-  "body": "Preregistered experiment E02 (KIT Adaptive Preregistration). Design and the research behind it: `docs/E02/RESEARCH.md`; plan: `experiments/E02-local-negative-image/PREREG.md`. Runs against model-v0.2.0. Tag receipts are posted below as each tag is made.\n\nNothing runs until the operator approves the preregistration.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
-  "url": "https://github.com/polarizetech/neural-memory/pull/2",
-  "merged_at": "2026-09-25T04:53:15Z"
  }
 ]
