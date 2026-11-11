@@ -1,6 +1,38 @@
 [
  {
   "repo": "retrieval-augmented-generation",
+  "number": 45,
+  "title": "Route instrument and string questions to musical-acoustics",
+  "body": "## What this changes\n\n- `research_pipeline/agent_profiles.py`: anchor terms for the new `musical-acoustics` specialist (guitar, violin, fretboard, strum, pluck, flageolet, soundboard, overtone, timbre and their forms).\n- \"string\" anchors it only beside a vibration word (vibrating, vibration, tension, tuning, bowed, instrument), so \"parse this string\" stays on the general route. \"musical\" needs \"instrument\".\n- \"resonance\", \"pitch\", \"note\", \"tone\" and \"harmonics\" alone are left out: hearing, neural and signal questions use them.\n- `tests/test_agent_profiles.py`: one test covering five instrument questions, three that must not route, and one that must still go to signal-processing.\n\n## Checks\n\n- `pytest tests`: 504 passed, 2 skipped.\n- `ruff check` and `ruff format --check` clean on both files.\n- Routed ten sample questions against the real brief: six instrument questions reached `musical-acoustics`, and the FFT, intermodulation, spheromak and data-type questions kept their existing routes.\n\n## Goes with\n\nThe brief itself is in a pull request on `polarizetech/polarize-agents` (branch `claude/musical-acoustics-profile`). Until that merges the terms match no profile and change nothing.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
+  "url": "https://github.com/polarizetech/retrieval-augmented-generation/pull/45",
+  "merged_at": "2026-11-11T13:04:16Z"
+ },
+ {
+  "repo": "retrieval-augmented-generation",
+  "number": 44,
+  "title": "Say nothing was retrieved when listing profiles",
+  "body": "The profile list reply ended with the quick-answer line \"These are passages, not a checked answer\", but nothing is retrieved for a list. It now says \"Nothing was retrieved.\" The ask test checks it.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
+  "url": "https://github.com/polarizetech/retrieval-augmented-generation/pull/44",
+  "merged_at": "2026-11-11T12:51:58Z"
+ },
+ {
+  "repo": "retrieval-augmented-generation",
+  "number": 43,
+  "title": "Let up to three specialists answer one question",
+  "body": "## What changes\n\n- **Up to three specialists per question.** Profiles named in the question come first. Then the best-scoring anchored profile joins, then any other anchored profile scoring within 6 of it (two shared words). The cap is three.\n- **Recruit by name.** \"ask classical-mechanics\", \"@plasma-toroids\" and \"plasma toroids\" each recruit that profile. The `[profiles]` words in `config/routing.toml` still work. Unknown names are reported in the reply.\n- **A paragraph from each.**\n  - Research runs gain a **Specialist views** section. A new `specialist_view` step writes one to three sentences per specialist, using only the verified claims.\n  - Each sentence is judged against its claims like the bottom line. A sentence that outruns its claims is dropped, and the answer says how many were dropped.\n  - Quick replies carry `brief.specialists`, and `answer_format` asks for one short paragraph per specialist.\n- **List the profiles.** \"Which profiles are available?\" (and similar, in `[profiles_list]`) returns every specialist with a one-line summary, without retrieving anything.\n- With several specialists, guidance reaches the prompts labelled by profile. With one, the prompts and the prompt-version hash are unchanged.\n\n## Checks\n\n- ruff, ruff format, pyright: clean.\n- pytest: 503 passed, including:\n  - routing across three fields;\n  - naming profiles and unknown names;\n  - the catalogue;\n  - the ask brief and the profile list;\n  - a pipeline run where one specialist sentence is dropped.\n- On the real profile checkouts, \"How does bone conduction change the auditory brainstem response latency?\" now routes to both bone-conduction-auditory and auditory-evoked-potentials.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
+  "url": "https://github.com/polarizetech/retrieval-augmented-generation/pull/43",
+  "merged_at": "2026-11-11T12:29:39Z"
+ },
+ {
+  "repo": "retrieval-augmented-generation",
+  "number": 42,
+  "title": "Follow sky-clock's rename to polarize-clock",
+  "body": "sky-clock is renamed **polarize-clock** with no compatibility alias (polarizetech/sky-clock#27, released as v0.4.0). **Merge after sky-clock#27.**\n\n## What changed\n- `SKY_CLOCK_URL` → `POLARIZE_CLOCK_URL` (the data server's address; default still `http://127.0.0.1:8803`), and the live-test switch `SKY_CLOCK_LIVE` → `POLARIZE_CLOCK_LIVE`.\n- Server instructions, the `sky__*` tool descriptions, replies, README and docs name polarize-clock and link `polarizetech/polarize-clock`. `source.tool` in replies is `\"polarize-clock\"`.\n- **Tool names kept:** `sky__key`, `sky__measure`, `sky__locate` (they name the sky, not the tool). \"sky key\" and \"sky clock\" still trigger it; \"polarize-clock\" / \"polarize clock\" now do too.\n\n## Checks\n`ruff check`, `ruff format --check`, pyright on the changed files, and `pytest`: 495 passed, 2 skipped (the live checks).\n\n## When merging: nothing goes dark if\n- **No env var to change for the gateway itself.** The deployed gateway (`com.polarizetech.research-rag` → `start.sh`) doesn't set `SKY_CLOCK_URL`; it uses the default `http://127.0.0.1:8803`. If you ever set `SKY_CLOCK_URL` elsewhere (a shell profile, an MCP client config), rename it to `POLARIZE_CLOCK_URL`: the old name is no longer read.\n- **The data server on :8803 must keep running.** It is the launchd agent `com.polarizetech.sky-clock-key`, which runs `python -m sky_clock.server` from the `sky-clock-serve` checkout. Once that checkout moves to v0.4.0 the module is `polarize_clock.server`: update the plist's `ProgramArguments` (and any `SKY_CLOCK_*` keys) and reload it at the same time, or `sky__key` answers \"polarize-clock didn't answer\".\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
+  "url": "https://github.com/polarizetech/retrieval-augmented-generation/pull/42",
+  "merged_at": "2026-11-10T21:25:29Z"
+ },
+ {
+  "repo": "retrieval-augmented-generation",
   "number": 41,
   "title": "Route motion, friction and drag questions to classical-mechanics",
   "body": "Routing for the new `classical-mechanics` specialist (polarizetech/polarize-agents, the companion PR).\n\n**Anchor words:** friction, frictional, drag, incline, inclined, kinematics, tribology, stick-slip, restitution, projectile(s), free-body, coefficient-of-friction.\n\n**Guarded words:**\n- \"drag\" doesn't count beside \"drop\", so drag-and-drop UI questions stay out.\n- \"terminal\" counts only with \"velocity\".\n- \"ramp\" counts only beside something that moves on it (ball, block, cart, cylinder, roll, slide), so ramp signals stay with signal-processing.\n\n**Left out alone:** \"energy\", \"motion\", \"force\", \"momentum\" and \"rolling\". Neural, plasma, signal and optimizer questions use them too.\n\n**Tests:**\n- New: `test_classical_mechanics_routes_motion_not_ui_signals_or_optimisers`, with five positive routes and four negatives.\n- The full suite passes (495), as do ruff and pyright.\n\n**Checked against the real briefs:**\n\n| Question | Specialist |\n|---|---|\n| \"physics and conservation/transfer of energy, ramp and drag dynamics, motion and friction\" | classical-mechanics |\n| \"Build an Arduino rig with a photodiode to time a ball rolling down a ramp\" | macgyver |\n| \"Generate a ramp signal and compute its FFT\" | signal-processing |\n| \"Implement drag and drop in the web app\" | none |\n| A spheromak merging question | plasma-toroids |\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
@@ -750,29 +782,5 @@
   "body": "Single-cell habituation package: published Stentor models (Rajan & Marshall 2025 receptor inactivation; Rajan 2022 two-state; Eckert 2024 CIFF) in Tellurium/libRoadRunner (SBML), each reproduced unmodified first, plus minimal switchable changes (two input channels, membrane readout, synthesis block, Wood gating variant) and a trace exporter. Plan: see PR description updates. No experiment runs here.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
   "url": "https://github.com/polarizetech/neural-memory/pull/7",
   "merged_at": "2026-09-25T21:13:05Z"
- },
- {
-  "repo": "neural-memory",
-  "number": 6,
-  "title": "Update KIT Adaptive Preregistration to 6841edc",
-  "body": "Vendored kit e64136a → 6841edc (`.agents/kit_ap update`). `kit_ap check` reports up to date. No experiment files touched.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
-  "url": "https://github.com/polarizetech/neural-memory/pull/6",
-  "merged_at": "2026-09-25T19:59:52Z"
- },
- {
-  "repo": "neural-memory",
-  "number": 5,
-  "title": "Drop the sim- prefix: renamed to neural-memory",
-  "body": "The repo was renamed from `sim-neural-memory` to `neural-memory` on GitHub (the old URL redirects). The kind now goes in a manifest rather than the name, per the [study protocol](https://github.com/polarizetech/scientific-research-scaffold).\n\n- README, CLAUDE.md and `docs/FINDINGS.md` now use the new name. FINDINGS.md still cites the research-corpus file `2026-09-24-sim-neural-memory-habituation.md` by its real filename.\n- `monorepo.stamp()` now records `repo.name = \"neural-memory\"` in new provenance, and `tests/test_monorepo.py` checks for it. `provenance.json` files already written keep the old name, since they are records.\n- Conversation logs are not touched.\n\nTests: 100 passed, the same as before the rename.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
-  "url": "https://github.com/polarizetech/neural-memory/pull/5",
-  "merged_at": "2026-09-25T19:59:23Z"
- },
- {
-  "repo": "neural-memory",
-  "number": 4,
-  "title": "Conversation log",
-  "body": "Session log entries written after the docs/findings merge.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
-  "url": "https://github.com/polarizetech/neural-memory/pull/4",
-  "merged_at": "2026-09-25T13:41:17Z"
  }
 ]
