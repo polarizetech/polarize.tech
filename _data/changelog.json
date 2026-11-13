@@ -1,6 +1,38 @@
 [
  {
   "repo": "retrieval-augmented-generation",
+  "number": 49,
+  "title": "Add a polarize tools step: pinned repo reads and holo renders",
+  "body": "`ask` can now answer questions about polarize-holo, -mixer, -particle, -physics and -clock from their own repos, and render audio with polarize-holo. It follows the sky and mixer pattern.\n\n**Questions**\n- Routing words in `[polarize_tools]` (`config/routing.default.toml`), one list per tool.\n- `ask` reads README.md and TOOL.toml at each named tool's newest release tag through `repos__read_file`, falling back to `git show <tag>:<path>` on the local checkout, plus a `repos__search_code` search (default branch, said in the result). Every file comes back with its tag and commit.\n- Pins found live (from the local checkouts): holo v0.4.0 (6 commits past it), mixer v0.2.0 (2 past), particle v0.1.0 (38 past), physics v0.4.0 (at HEAD). polarize-clock has no local checkout, so it's read at its default branch and the answer says it isn't pinned. A question about polarize-clock with no place no longer triggers the sky-key prompt.\n\n**Audio**\n- With holo named, an audio word and a render's name, `ask` runs that holo render. Without a render name it lists them.\n- The render folder is copied out of holo's git history with `git archive` (at the tag when it's there, else HEAD, said in the result), and holo's own `render_*.py` runs on the copy with `uv run`. Holo's checkout is never written to, and the gateway makes no sound itself.\n- The `uv` environment is cached outside the output, keyed by the render's lock file.\n- The result reports holo's version and commit, the render's tool pins, the exact command, each WAV (path, rate, bits, channels, length), any JSON settings and other outputs.\n- Script arguments come from the script's `usage:` line: OUT_DIR is the run folder; SUN_AZ_DEG comes from polarize-clock when the request gives a place.\n\n**Gateway tools:** `polarize__read`, `polarize__renders`, `polarize__render`.\n\n**Config:** paths come from `POLARIZE_TOOLS_DIR` (default: the folder beside this repo), `POLARIZE_<TOOL>_DIR`, `POLARIZE_RENDER_DIR` and `POLARIZE_UV`. No home-directory paths in code.\n\n**Tests:** 522 passed (13 new, on throwaway git repos with a uv shim); ruff and pyright are clean.\n\n**Live check:** the guitar-pluck render (HEAD, own pinned project) produced two 24-bit 48 kHz WAVs, byte-for-byte identical to holo's committed files.\n\n**Known issue, not changed here:** the running gateway's `repos__read_file` and `repos__search_code` both returned HTTP 500 (`gh` itself can read the repo), so reads currently use the local-checkout fallback.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
+  "url": "https://github.com/polarizetech/retrieval-augmented-generation/pull/49",
+  "merged_at": "2026-11-13T14:56:39Z"
+ },
+ {
+  "repo": "retrieval-augmented-generation",
+  "number": 48,
+  "title": "Add a model panel: other models read the same passages",
+  "body": "Lets OpenAI (and Gemini) run alongside the research pipeline's own model, so answers can be compared.\n\n- `PIPELINE_PANEL=openai,gemini` names hub providers (new `[providers.openai]` and `[providers.gemini]` in `config/hub.default.toml`).\n- Search, fetch and passage choice run once. Each panel model reads every passage the run's model read, in the same order, and drafts its own claims. Panel reading runs on its own API in parallel with local verification of the run's claims, then every model's claims go through the same local verifier.\n- The answer is unchanged except for a new **Model comparison** section, computed and never written by a model. It shows per-model counts, passages read in opposite directions, and each verified claim marked with the other models that reached it on the same passages.\n- Members with no key, or whose calls fail, are named and skipped. OpenAI's 30-day retention is stated in the limits of any answer it took part in. The run log keeps each member's evidence, claims, calls, tokens and cost under `panel`.\n\nLive: Gemini 4 Carbon answered through OpenRouter's zero-retention routing (served by Google, about $0.0014 a call). It rejects \"reasoning off\", so it runs with its default reasoning. OpenAI isn't tested live yet: it needs a key in `~/.config/polarize/openai.key`, and the model id `gpt-6.1-sol` is taken from OpenRouter's catalogue, not checked against OpenAI's API.\n\nTests: 515 passed; ruff and pyright are clean.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
+  "url": "https://github.com/polarizetech/retrieval-augmented-generation/pull/48",
+  "merged_at": "2026-11-13T14:56:31Z"
+ },
+ {
+  "repo": "retrieval-augmented-generation",
+  "number": 47,
+  "title": "Give the fresh scholarly search the retrieval time limit",
+  "body": "Live, the fresh scholarly search in a quick answer ran past its 25 s limit (library retrieval beside it took 16 s), so no papers were listed. This gives it the same 40 s limit as retrieval, inside the 45 s reply deadline.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
+  "url": "https://github.com/polarizetech/retrieval-augmented-generation/pull/47",
+  "merged_at": "2026-11-13T14:56:22Z"
+ },
+ {
+  "repo": "retrieval-augmented-generation",
+  "number": 46,
+  "title": "Search the indexes and the web on every request",
+  "body": "Answers said \"the library has no passage on this\" without looking anywhere else. Now every request searches outside the library:\n\n- **Quick answers (`ask`):** alongside the library retrieval, a fresh `papers__search` and a SearXNG web search run in parallel. The brief carries them as `fresh_search` (titles and links, marked unread and not citable). When coverage is partial, weak or none, the answer lists the closest as **Fresh leads** and suggests `research:`.\n- **Research runs:** after the scholarly searches, the pipeline web-searches the question and its first planned queries in SearXNG's science and general categories (`PIPELINE_WEB_QUERIES`, default 4; `PIPELINE_WEB_HITS`, default 8). Result URLs go to `papers__leads`, and every paper they link to becomes a fetch candidate. Web pages are never evidence. Web results are logged under `web`, and Limits says what the search added.\n- A search that fails or isn't configured is named, and the answer carries on.\n- `research_pipeline/web.py` is shared by `web__search`, `ask` and the pipeline.\n\nTests: 509 passed; ruff and pyright are clean. Live check: SearXNG's science category returned arXiv, Europe PMC and DOI links, and the running library's `papers__leads` read identifiers from them.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
+  "url": "https://github.com/polarizetech/retrieval-augmented-generation/pull/46",
+  "merged_at": "2026-11-13T12:17:11Z"
+ },
+ {
+  "repo": "retrieval-augmented-generation",
   "number": 45,
   "title": "Route instrument and string questions to musical-acoustics",
   "body": "## What this changes\n\n- `research_pipeline/agent_profiles.py`: anchor terms for the new `musical-acoustics` specialist (guitar, violin, fretboard, strum, pluck, flageolet, soundboard, overtone, timbre and their forms).\n- \"string\" anchors it only beside a vibration word (vibrating, vibration, tension, tuning, bowed, instrument), so \"parse this string\" stays on the general route. \"musical\" needs \"instrument\".\n- \"resonance\", \"pitch\", \"note\", \"tone\" and \"harmonics\" alone are left out: hearing, neural and signal questions use them.\n- `tests/test_agent_profiles.py`: one test covering five instrument questions, three that must not route, and one that must still go to signal-processing.\n\n## Checks\n\n- `pytest tests`: 504 passed, 2 skipped.\n- `ruff check` and `ruff format --check` clean on both files.\n- Routed ten sample questions against the real brief: six instrument questions reached `musical-acoustics`, and the FFT, intermodulation, spheromak and data-type questions kept their existing routes.\n\n## Goes with\n\nThe brief itself is in a pull request on `polarizetech/polarize-agents` (branch `claude/musical-acoustics-profile`). Until that merges the terms match no profile and change nothing.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
@@ -758,29 +790,5 @@
   "body": "## Summary\n\nBrings over the three docs from the audio-projects monorepo's `tools/paper-library` (package `paperlib`), which is being replaced by this repo (polarizetech/audio-projects#26). dataset-fetch keeps the same three files at its root:\n\n- `CLAUDE.md`: measured facts, gotchas and design decisions, with their dates.\n- `HARVEST.md`: the procedure for bulk-collecting a topic into the library.\n- `INTEGRATION.md`: how a consumer depends on paper-fetch. It covers the install from git with a pinned commit, setting up the S3/Spaces store through `PAPER_FETCH_*` in `~/.config/paper-fetch/*.env`, the Python API and the MCP server.\n\nNames, commands, env vars and APIs are rewritten to paper-fetch's own and checked against `src/paper_fetch/`. Behaviour that has changed since the monorepo copy is described as it is now:\n\n- **Catalogue writes:** since `bee1bfe` a save merges this process's changes instead of the last writer winning.\n- **Cache:** it lives under `PAPER_FETCH_CACHE` and applies only to the S3 store.\n- **`load_env()`:** `Library.default()` does not call it, so Python consumers must.\n\nMonorepo-only material is dropped: the `tools/.venv-sci` commands, `sync.py` and the generated copy, mcpkit envelopes, and REGISTRY/ORG-PROTOCOL references. Live measurements from the monorepo copy are kept, dated and labelled as such.\n\nDocs only; no code changes.\n\n## Test plan\n\n- [x] Every command, flag and env var named in the docs exists in `src/paper_fetch/`.\n- [x] `uv run pytest` passes (214 tests).\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
   "url": "https://github.com/polarizetech/paper-fetch/pull/1",
   "merged_at": "2026-09-29T12:33:11Z"
- },
- {
-  "repo": "polarize-ui",
-  "number": 1,
-  "title": "feat: landing layer and cell field",
-  "body": "A lab's front door, in both renderers, drawn from the polarize.tech homepage redesign.\n\n## What's added\n- **`landing.css`** (zero-build) and **`src/components/landing.tsx`** (React), rendering the same classes: `TopNav`, `Hero`, `Cta`, `Section`, `ProcessSteps`, `Promises`, `ProjectFeature`, `RepoCard`, `ChangeFeed`, `FeaturedArticle`, `ArticleCard`, `MetaLine`, `StoryCard` / `StoryRow` / `StoryGrid`, `Plate`, `Principle`, `TierLegend`, `SiteFooter`. Responsive to phone width; the top bar folds into a `<details>` menu with no script.\n- **`cellfield.js`**: `<ui-cellfield>`, a WebGL speck field (clusters at different depths, per-cell polarisation, occasional coordinated waves, an optional hero cell). Decoration only: `aria-hidden`, no fetch, one still frame under `prefers-reduced-motion`. React: `<CellField>`, same engine, typed by `cellfield.d.ts`.\n- **Token:** `radius.xs` (4px).\n- **Checks:** `dev_check.py` holds `landing.css` to the publication.css rules (generalised as `check_layer`) and checks `cellfield.js`; `scripts/api_surface.py` lists both files.\n- **Storybook:** *General UI/Landing*: the full homepage at desktop and phone, plus each part.\n\n## Versioning\nAdditive only: nothing renamed or removed (`api_surface.py --removed v0.5.5` is empty), so this is a patch release.\n\n## Checks\n- `python3 dev_check.py`: 309/309\n- `build_css.py --check`, `build_shadcn.py --check`: up to date\n- `tsc -p .`: clean\n\npolarize.tech adopts it in polarizetech/polarize.tech (branch `home-redesign`) once this is released.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
-  "url": "https://github.com/polarizetech/polarize-ui/pull/1",
-  "merged_at": "2026-09-28T20:15:54Z"
- },
- {
-  "repo": "neural-memory",
-  "number": 8,
-  "title": "singlecell: labile recycling factor and k_deg_scale switches (default = published), reusable R1-R8 gate",
-  "body": "Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>",
-  "url": "https://github.com/polarizetech/neural-memory/pull/8",
-  "merged_at": "2026-09-25T21:19:26Z"
- },
- {
-  "repo": "neural-memory",
-  "number": 7,
-  "title": "model-v0.3.0: single-cell habituation (Stentor) in a peer-reviewed simulator",
-  "body": "Single-cell habituation package: published Stentor models (Rajan & Marshall 2025 receptor inactivation; Rajan 2022 two-state; Eckert 2024 CIFF) in Tellurium/libRoadRunner (SBML), each reproduced unmodified first, plus minimal switchable changes (two input channels, membrane readout, synthesis block, Wood gating variant) and a trace exporter. Plan: see PR description updates. No experiment runs here.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
-  "url": "https://github.com/polarizetech/neural-memory/pull/7",
-  "merged_at": "2026-09-25T21:13:05Z"
  }
 ]
