@@ -1,6 +1,22 @@
 [
  {
   "repo": "scientific-research-scaffold",
+  "number": 18,
+  "title": "Release v0.14.0: the designer's MVP mode for exploratory work",
+  "body": "- While the work is exploratory (`mode = \"exploratory\"` in `HYPOTHESIS.toml`, `stage = \"exploratory\"` in `SCOPE.toml`, or `Tier: explore` in a scope file), the design rule in `AGENTS.md` and each new app's README now send pages through the designer's **MVP mode**: one quick pass that designs and builds the page on the design system, aiming for something workable within about an hour, with numbers and methods still from established papers.\n- **Past exploratory** (a hypothesis or claim, or `Tier: grounded`/`publication`), the full designer pass: a Claude Design from the Design artifact type (or a zero-build mockup) handed to `frontend-developer`.\n- `agents` submodule moves to scientific-research-agents v0.11.0 (polarizetech/scientific-research-agents#6); `SCAFFOLD_REF`, plugin manifests and `CITATION.cff` move to v0.14.0; `CHANGELOG.md` and `UPGRADING.md` have v0.14.0 sections.\n\nTests: `python3 -m unittest discover tests`: 107 run, OK (2 skipped).\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
+  "url": "https://github.com/polarizetech/scientific-research-scaffold/pull/18",
+  "merged_at": "2026-11-22T15:00:12Z"
+ },
+ {
+  "repo": "scientific-research-agents",
+  "number": 6,
+  "title": "Release v0.11.0: the designer's MVP mode for exploratory work",
+  "body": "- The designer works in MVP mode on exploratory work (a study's `mode = \"exploratory\"`, a unit's `stage = \"exploratory\"`, or a scope's `Tier: explore`): one quick pass that designs and builds the page from the design system's existing components and tokens, aiming for a workable page within about an hour, with no Claude Design, separate mockup, audit or hand-off. Numbers, labels and methods still come from established papers.\n- Past exploratory, it does the full pass: a Claude Design or mockup handed to the frontend-developer.\n- Bumps `VERSION`, `CHANGELOG.md` and `CITATION.cff` to 0.11.0 (also covers #5).\n\nTests: `python3 -m unittest discover tests` passes (13).\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
+  "url": "https://github.com/polarizetech/scientific-research-agents/pull/6",
+  "merged_at": "2026-11-22T14:58:34Z"
+ },
+ {
+  "repo": "scientific-research-scaffold",
   "number": 17,
   "title": "Release v0.13.0: visual work uses the profile's design system (#14, rebased)",
   "body": "## What changed\n\nThe work of #14 (branch `design-system`), rebased onto `main` at v0.12.1, plus a release commit for **v0.13.0**. The three commits from #14 are unchanged in substance; the conflicts were resolved keeping v0.12.x behaviour, including `scaffold check` skipping the `.scaffold/` CI checkout.\n\n- A profile's `[design]` table names a design system pinned by tag (`name`, `package`, `repo`, `ref`, `rules`, optional `house_rules`, `artifact`). `scaffold` refuses a `ref` that is a branch or `rules` that name another tag.\n- When a profile names one, every repo's `AGENTS.md` gets `agent-rules/design.md` and the house rules, and a new repo gets a README **Design** section and a manifest `[design]` table.\n- New apps are wired to the pinned design system (`serve.py` reads the files at the pinned tag, serves the fonts, and shows a banner when the checkout is missing). `scaffold check` warns about each page that doesn't load it, pins a branch, or hand-writes hex colours outside `allow_hex`.\n- Pages are designed first, by the `designer` agent, and carry no documentation.\n- The polarizetech profile moves polarize-ui from `v0.4.2` to **`v0.6.7`**, the tag downstream repos already pin.\n\nFull notes: `CHANGELOG.md` § v0.13.0, and `UPGRADING.md`.\n\n## Why\n\nRepos made with the scaffold already carry the design section in their `AGENTS.md`, from this branch while it was unmerged. Released scaffolds don't know it, so `scaffold update` to v0.12.1 would **delete** that section. polarize-holo's dry run showed this on 2026-11-21. Releasing this fixes the upgrade path.\n\n## For the reviewer\n\n- 107 tests pass (`pytest -q tests`).\n- polarize-holo's `scaffold update` dry run against this branch reports `AGENTS.md` as current. It would only change the CI ref (v0.12.1 → v0.13.0) and the session-hook order in `.claude/settings.json`.\n- This supersedes #14. Close #14 once this merges. Not tagged: tag `v0.13.0` after merge, following the scaffold's own release steps.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
@@ -774,22 +790,6 @@
   "body": "Opt-in `fieldguide` theme (white page, magenta accent, Geist sans) and additive landing components for polarize.tech's restyle: `.ui-action`, `.ui-stats`, `.ui-steps--rows`, `.ui-topics`, `.ui-specimen-tile`, `.ui-plate--ink`, and the crab/neuron/magnet specimens.\n\nNon-breaking: existing themes render unchanged (cards read `--landing-radius`/`--landing-fill` with the old values as fallbacks); `api_surface.py --removed v0.5.18` is empty. dev_check 497/497, build_css/build_shadcn --check, tsc pass.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
   "url": "https://github.com/polarizetech/polarize-ui/pull/3",
   "merged_at": "2026-10-15T20:51:08Z"
- },
- {
-  "repo": "retrieval-augmented-generation",
-  "number": 9,
-  "title": "Document how to add a paid patent service for the pipeline alone",
-  "body": "Documentation only; no code changes.\n\npatent-fetch asks its paid providers (SerpApi) only when they are named. The patents companion's config entry already passes an `env` to the command it starts, so naming the provider set there adds one for the pipeline alone:\n\n```json\n\"env\": {\"PATENT_FETCH_SEARCH_PROVIDERS\": \"europepmc,epo-ops,lens,serpapi\"}\n```\n\nA search from patent-fetch's own command line still asks its usual set.\n\n- `config/mcp-gateway.example.json`: an empty `env` on the patents companion and an `_env_comment` saying what it is for, what it needs, and what it costs (one paid search per planner query, up to seven more when a query matches nothing and is retried).\n- `docs/research-pipeline.md`: a paragraph on the same, with what a live check on 2026-10-13 returned. The patents paragraph above it is rewrapped; it had lines over 100 columns and its text is unchanged.\n\nChecked: the example config still parses and the companion still loads from it; 252 tests pass.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
-  "url": "https://github.com/polarizetech/retrieval-augmented-generation/pull/9",
-  "merged_at": "2026-10-13T19:52:51Z"
- },
- {
-  "repo": "retrieval-augmented-generation",
-  "number": 8,
-  "title": "Patents companion: short queries, a fallback for empty ones, room for recent patents",
-  "body": "The \"Existing patents on this\" section of a run on 2026-10-13 showed only patents from 1996 to 2001, although the patent services hold ones from 2024 and 2025 on the same subject.\n\n**Cause.** A patent service returns only records with *every* word of a query in the title or abstract. The planner had been asked for queries \"naming the invention and what it does the way a patent title would\", and wrote a six-word one that matched nothing at either service; the other matched only patents using an older term.\n\n**Changes**, all in `research_pipeline/companions.py`:\n\n- The planner is asked for 1-3 queries of 2 to 4 words each, and told that every extra word finds fewer patents (`max_queries` 2 → 3).\n- A query of 3 to 7 words that matches nothing is asked again with one word left out at a time. The answer's limits name the query, say why it matched nothing, and say how many records asking again found.\n- Of the six entries listed, four are the closest titles and two are the most recent of the rest, so old patents whose titles repeat the question cannot fill every place. The section's first line says this.\n\n**Checked against the live services** with the two queries from that run: the six-word query now recovers 10 records through the fallback, and the section lists patents from 2025, 2024, 2016 and 2014 beside those from 1999 and 2011. Tests: 252 pass; `ruff`, `pyright` clean.\n\nNot checked: a full pipeline run with a model writing queries to the new instruction.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
-  "url": "https://github.com/polarizetech/retrieval-augmented-generation/pull/8",
-  "merged_at": "2026-10-13T18:53:26Z"
  },
  {
   "repo": "retrieval-augmented-generation",
