@@ -40,6 +40,10 @@ did not weaken it on the way out. It enforces:
           nothing. RULE 4 and RULE 7 apply to them unchanged: an essay that needs
           a source is a post, not an essay.
 
+  RULE 9  No two posts share a featured image. The `image:` path is unique across
+          _posts/ (and _drafts/ with --drafts), compared after normalising case,
+          leading slash and query string. Each post gets its own picture.
+
   RULE 7  No forbidden provenance — nothing sourced from RETRACTED/ or archive/,
           no [VERIFIED] self-assertions, no unresolved TODO tiers.
 
@@ -233,6 +237,22 @@ def main():
 
     for p in found:
         check_post(p, cites, claims, rep)
+
+    # ---- RULE 9 — no two posts share a featured image ---------------------
+    by_image = {}
+    for p in found:
+        try:
+            fm, _ = split_post(p)
+        except Exception:                                 # noqa: BLE001
+            continue                                      # RULE 1 already reported it
+        img = str(fm.get('image') or '').strip().split('?')[0].lstrip('/').lower()
+        if img:
+            by_image.setdefault(img, []).append(p.name)
+    for img, names in sorted(by_image.items()):
+        if len(names) > 1:
+            for n in names:
+                rep.fail(n, 9, f'featured image {img} is also used by: '
+                               + ', '.join(m for m in names if m != n))
 
     essays = sorted((SITE / '_essays').glob('*.md')) if (SITE / '_essays').exists() else []
     for p in essays:

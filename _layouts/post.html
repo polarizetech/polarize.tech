@@ -42,7 +42,7 @@ layout: default
       {%- if page.image_license -%}
       <a href="{{ page.image_source_url }}" rel="noopener">Photograph</a> by
       {{ page.image_credit }}, <a href="{{ page.image_license_url }}" rel="noopener">{{ page.image_license }}</a>.
-      Desaturated for this site.
+      {%- if page.image_note %} {{ page.image_note }}{% endif %}
       {%- else -%}
       {{ page.image_credit }}
       {%- endif -%}

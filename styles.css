@@ -69,6 +69,13 @@ body.ui { margin: 0; }
 .ui-action--sm { min-height: 34px; padding-inline: var(--space-3); }
 @media (max-width: 900px) { .ui-topnav { min-height: 56px; } }
 
+/* The header folds up out of view while scrolling down and back when scrolling up, and is always
+   shown at the top of the page. Same motion and thresholds as polarize-ui's Navbar (design.css
+   .ui-navbar, design.js initNavbar); the script is in _includes/topnav.html. */
+.ui-topnav { transition: transform var(--motion-base) var(--ease); }
+.ui-topnav.is-hidden { transform: translateY(-100%); }
+@media (prefers-reduced-motion: reduce) { .ui-topnav { transition: none; } }
+
 /* The topics block in the sidebar sits further down than the other sections. */
 .ui-sidebar__topics { margin-top: var(--space-7); }
 

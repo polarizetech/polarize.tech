@@ -10,14 +10,14 @@ status: published
 inline_sources: true
 tier: C
 claims:
-image: /assets/posts/european-green-crab.jpg
+image: /assets/posts/european-green-crab-bucket.jpg
 image_alt: >-
-  A European green crab on wet sand, chelae raised, its carapace mottled green
-  and its walking legs spread.
-image_credit: Victor Heng
-image_license: CC0
-image_license_url: https://creativecommons.org/publicdomain/zero/1.0/
-image_source_url: https://commons.wikimedia.org/wiki/File:Carcinus_maenas_138761951.jpg
+  A male European green crab splayed out on an orange bucket lid, claws open,
+  its dark mottled carapace edged with yellow.
+image_credit: SebastianVelazquezBIOL
+image_license: CC BY-SA 4.0
+image_license_url: https://creativecommons.org/licenses/by-sa/4.0/
+image_source_url: https://commons.wikimedia.org/wiki/File:Male_European_Green_Crab_on_Bucket.jpg
 citations:
   - james2025
   - bedore2013
