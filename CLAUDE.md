@@ -57,6 +57,9 @@ possible** — that is why citations are a Liquid include and not a `{% cite %}`
   author names, no bare DOIs, no `doi.org` links in prose. The gate rejects all of them.
 - **Never edit `_data/*.yml` by hand.** Regenerate it. If a key is missing, the fix
   is in the research repo, not here.
+- **One featured image per post.** No two posts may share an `image:`. The gate fails (RULE 9)
+  on any duplicate; pick a freely licensed photo, credit it in the `image_*` keys, and keep it
+  under `assets/posts/`.
 - **Never publish from `RETRACTED/` or `archive/`.** They exist for the git record.
 - **Never write `[VERIFIED]`.** It is not a badge anyone asserts; it is a check that
   passes in the research repo.

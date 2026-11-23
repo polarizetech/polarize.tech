@@ -27,3 +27,25 @@
     <nav class="ui-topnav__panel" aria-label="Menu">{{ topnav_links }}{{ topnav_actions }}</nav>
   </details>
 </header>
+{%- comment -%}
+  Hide on scroll down, show on scroll up, always shown at the top. The same rule as
+  polarize-ui's Navbar (initNavbar in design/design.js): 6px of travel before it reacts, and
+  the bar stays shown while the phone menu is open or a link inside it has keyboard focus.
+  Without script the bar simply stays put.
+{%- endcomment -%}
+<script>
+(function () {
+  var nav = document.querySelector('.ui-topnav');
+  if (!nav) return;
+  var menu = nav.querySelector('.ui-topnav__menu');
+  var last = window.scrollY;
+  function show() { nav.classList.remove('is-hidden'); }
+  nav.addEventListener('focusin', function (e) { if (e.target.matches(':focus-visible')) show(); });
+  window.addEventListener('scroll', function () {
+    var y = Math.max(0, window.scrollY), d = y - last;
+    if (y <= 8 || (menu && menu.open) || nav.querySelector(':focus-visible')) { show(); last = y; }
+    else if (d > 6) { nav.classList.add('is-hidden'); last = y; }
+    else if (d < -6) { show(); last = y; }
+  }, { passive: true });
+})();
+</script>
