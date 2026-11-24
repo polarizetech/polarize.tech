@@ -1,6 +1,30 @@
 [
  {
   "repo": "retrieval-augmented-generation",
+  "number": 72,
+  "title": "Remove personal deployment details; placeholder plugin URL with a setup script",
+  "body": "## What\n\n- **Plugin URL:** `plugin/scientific-research-rag/.mcp.json` and `mcp.json` now ship `https://<your-gateway-host>/retrieval-augmented-generation`. New `scripts/configure_plugin.py` sets the real URL from an argument, `MCP_PUBLIC_URL`, or `config/rag.env`, and refuses an empty, non-https or placeholder value. The README's Install section (\"Point the plugin at your gateway\") explains the script and the manual edit.\n- **Provider ladders:** `config/hub.default.toml` ships OpenRouter then local. NEAR AI is still defined and joins a ladder from `config/hub.toml`. `tests/test_hub.py` and the docs (`hub-plan.md`, `mcp-clients.md`) match.\n- **Names:** a private node name removed from `docs/call-log.md`, a private repo name from a test comment.\n\n## Checks\n\n- `uv run pytest -q tests/test_hub.py tests/test_agent_profiles.py`: 59 passed\n- `ruff check` and `ruff format --check`: clean\n- `configure_plugin.py \"<x>\"` exits 2; with an https URL it rewrites both files\n- `git grep tailc463ae` is empty. `tests/test_calllog.py` still uses the example host `polarize-mcp.example.ts.net`.\n\nOperators who relied on the NEAR AI rung should add it back in their own `config/hub.toml`.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
+  "url": "https://github.com/polarizetech/retrieval-augmented-generation/pull/72",
+  "merged_at": "2026-11-24T12:52:12Z"
+ },
+ {
+  "repo": "retrieval-augmented-generation",
+  "number": 71,
+  "title": "Add PIPELINE_RANKER so the calling model can judge passage relevance",
+  "body": "## What\n\n- `PIPELINE_RANKER=library` (default, unchanged) keeps the paper library's cross-encoder.\n- `PIPELINE_RANKER=client` retrieves with `rerank=False` in `ask` (gateway) and in pipeline runs (`pool()`). Passages come back unscored, so the relevance floor and coverage levels drop out, and the `unscored` coverage note now tells the calling model to judge each passage itself. Pipeline runs note that the reranker was off.\n- Documents client-only claim checks: `PIPELINE_MCP_LLM=client` with an empty `PIPELINE_VERIFIER_MODEL` (no code change needed; runs are marked \"no independent verifier\").\n\nWhy: the local reranker (torch on MPS) and MiniCheck each take about 7 GB on the Mac and were behind 40 s retrieval timeouts. This lets the calling model do both for now, with the local models kept as options.\n\n## Checks\n\n- `uv run pytest -q tests/test_pipeline.py tests/test_ask.py`: 55 passed\n- `ruff check` and `ruff format --check`: clean\n- New test: `test_the_ranker_setting_reaches_the_library_retrieval`\n- Not covered by a test: the gateway's `client` branch itself (checked by hand that `ask` calls `retrieve(query, limit, 1800)`).\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
+  "url": "https://github.com/polarizetech/retrieval-augmented-generation/pull/71",
+  "merged_at": "2026-11-24T12:52:04Z"
+ },
+ {
+  "repo": "retrieval-augmented-generation",
+  "number": 53,
+  "title": "Make ask replies conversational, with a short tools-and-services footer",
+  "body": "## What changes\n- `answer_format` (research_mcp/brief.py): conversational replies, 2 or 3 sentences when possible, short lists when longer. No narration of what didn't match, was skipped or wasn't relevant. Ends with a footer: **Tools** (steps that ran), **Services** (provider, model, balance; plus `Library: no match` / `weak match`), and the links.\n- `brief.used` (new): the reply's progress steps minus skipped / not run / left out ones, and the usage line (plus the research model when a run is attached).\n- Coverage notes for weak and none now say \"note it in the footer\", not \"say so first\".\n- research_mcp/ask.py: the full reply carries `usage`; the three \"says no passage applies before answering\" next-steps are removed.\n- research_mcp/gateway.py: server instructions match.\n\nOut of scope: the full relay (`detail=\"full\"`) and the research pipeline's own relay.\n\n## Checks\n- `pytest`: 539 passed, 2 skipped\n- `ruff check .`: clean\n- Coder check (code-level diff check): passed\n\nThe gateway needs a restart after merge for chats to see the new format.\n\nSource: reply wording (owner's stated preference).\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
+  "url": "https://github.com/polarizetech/retrieval-augmented-generation/pull/53",
+  "merged_at": "2026-11-24T11:21:10Z"
+ },
+ {
+  "repo": "retrieval-augmented-generation",
   "number": 68,
   "title": "Route model calls through an ordered list of providers, the Mac first",
   "body": "## What changed\n\n**Models router (`deploy/models_router.py`).** The router on the droplet took one primary (Modal) and one fallback (the Mac). It now takes an ordered list of providers:\n\n- `MODELS_PROVIDERS` is a comma list of names. The default is `local,modal`, so the Mac comes first and Modal second.\n- Each provider reads `MODELS_<NAME>_URL` and, optionally, `MODELS_<NAME>_PROXY`.\n- Any provider that answers 402 or 429, or can't be reached, sits out for `MODELS_COOLDOWN_SECONDS` while the next one serves. When every provider is out, all are still tried in order.\n- `GET /router/status` now returns `order`, `using` and `out_for_seconds`.\n- The old `MODELS_PRIMARY_URL`, `MODELS_FALLBACK_URL` and `MODELS_FALLBACK_PROXY` settings still work and mean modal, then local.\n\n**Tests.** Five router tests replace the primary/fallback test. They cover the default order, the cooldown, all providers out, the legacy settings, and the error when a provider's URL is missing.\n\n**Docs.** `docs/models-service.md` describes the new settings. This branch also carries an earlier commit that adds the Mac's memory use and a Cost section (Modal plans and the DigitalOcean GPU droplet price) to the same file.\n\n## Why\n\nModal's monthly credit ran out in November and the Mac has served since. A list of providers lets the Mac be the default and lets another provider be added by configuration. The next step is DigitalOcean serverless inference for the reranker and bge-m3. On 100 real passages from the paper index, its scores matched ours: the reranker to within 1.1e-5 with the same top 5, and bge-m3 at a cosine similarity of at least 0.9996.\n\n## For reviewers\n\n- **Deploying alone changes nothing on the droplet.** It still uses the legacy settings, which keep Modal first. It goes Mac-first only once its settings switch to `MODELS_PROVIDERS`.\n- **Behaviour change:** a 402 or 429 from the last provider tried now gives the router's 503 instead of that provider's own error.\n- **Tests:** the full suite passes (540) and ruff reports nothing.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
@@ -752,36 +776,12 @@
   "merged_at": "2026-10-21T16:03:07Z"
  },
  {
-  "repo": "scientific-research-scaffold",
-  "number": 4,
-  "title": "Release scaffold v0.11.1 with agents v0.8.0",
-  "body": "## Summary\n- Pin Scientific Research Agents v0.8.0 in the scaffold submodule and release metadata.\n- Update plugin versions to 0.11.1 and explain how to install private specialist overlays only in selected repositories.\n\n## Verification\n- Scaffold test suite: 79 passed, 1 skipped.\n- `git diff --check` passed.",
-  "url": "https://github.com/polarizetech/scientific-research-scaffold/pull/4",
-  "merged_at": "2026-10-21T15:53:51Z"
- },
- {
   "repo": "retrieval-augmented-generation",
   "number": 10,
   "title": "Expand research MCP workbench and route private specialists",
   "body": "## Summary\n- Bring the existing research MCP workbench changes on `concurrent-runs` into main, including gateway sessions, strictness controls, patent/GitHub tools, and the packaged plugin.\n- Load private specialist overlays from an optional local directory and route signal processing, honeybee communication, evoked potentials, and bone conduction questions to the matching profile.\n- Feed bounded specialist guidance into research planning and synthesis while preserving the evidence-first rules.\n- Use HTTPS for GitHub PR clone operations and document the local profile configuration.\n\n## Verification\n- 268 tests passed (2 warnings).\n- Targeted profile and pipeline tests: 17 passed; Ruff and `git diff --check` passed.\n- Live MCP gateway reported all six upstreams connected and selected private profiles with guidance and provenance.",
   "url": "https://github.com/polarizetech/retrieval-augmented-generation/pull/10",
   "merged_at": "2026-10-21T15:51:45Z"
- },
- {
-  "repo": "scientific-research-agents",
-  "number": 2,
-  "title": "Keep general research roles public and install private researcher extensions",
-  "body": "Keeps the nine general roles in the public starter. Moves the three sensory specialist source briefs out of the current public branch; their existing public history remains accessible. Adds a provider-neutral specialist template, a data-only environment-file workflow, and an installer that combines private briefs with the public researcher brief and writes routing outside scaffold-managed AGENTS.md. The four specialist briefs, including honeybee communications, are in the verified private `polarizetech/polarize-agents` repository and now declare `extends: researcher`.\n\nValidation: `python3 -m unittest discover -v tests` (11 passed); `git diff --check`; integration install of all four private briefs into a temporary scaffold-style study with no unresolved placeholders.",
-  "url": "https://github.com/polarizetech/scientific-research-agents/pull/2",
-  "merged_at": "2026-10-21T13:28:01Z"
- },
- {
-  "repo": "scientific-research-scaffold",
-  "number": 3,
-  "title": "Pin agents v0.4.0 (stricter designer)",
-  "body": "Bumps the agents submodule to v0.4.0: the designer brief gains an Originality section and an Audit mode.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
-  "url": "https://github.com/polarizetech/scientific-research-scaffold/pull/3",
-  "merged_at": "2026-10-18T14:49:05Z"
  },
  {
   "repo": "polarize-ui",
