@@ -1,5 +1,93 @@
 [
  {
+  "repo": "polarize-ui",
+  "number": 19,
+  "title": "feat: spatial (VR) components and storybook section",
+  "body": "Adds a **Spatial (VR)** section to the storybook, plus the components behind it (`src/spatial/Spatial.tsx`, exported from the package).\n\n- `SpatialSpace`: panes on an arc around you. Swipe (drag), the dock, or ←/→ bring the next pane in from the side; the dock and Spaces menu trail the head (the pointer stands in for head tracking).\n- `SpatialPane`, `Lift`: pane chrome with its tier badge; components lift toward the eye on gaze and press in on pinch.\n- `Orbit`, `OrbitGraph`, `OrbitBars`: graphs as objects. Any flat chart becomes a slab with a labelled reverse side; categories become 3-D boxes. Flip / Turn / Roll / Pull out / Reset, or drag to orbit, even for 1-D and 2-D data.\n\nStories: the space, a line graph, bars, a 1-D value as a rod, components in depth. All story data is synthetic.\n\nStandard techniques only (CSS 3-D transforms, a pane carousel, rotatable charts); no findings or recordings. Additive (patch): new exports only. Depth, lag and spacing values are TASTE.\n\nChecks: `dev_check.py` 475/475, `build_css.py --check`, `build_shadcn.py --check`, `tsc`, storybook build. Tried in a desktop browser (swipe, dock, Flip); not yet on a headset.\n\nCompanion: polarize-holo's `spatial` extension (the same UI in three.js for the Cardboard viewer).\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
+  "url": "https://github.com/polarizetech/polarize-ui/pull/19",
+  "merged_at": "2026-11-25T18:22:56Z"
+ },
+ {
+  "repo": "retrieval-augmented-generation",
+  "number": 75,
+  "title": "Add an example of what the research tool sends back",
+  "body": "## What\n`docs/example-rag-response.md`: one example question taken through every call a client model makes (`ask` on the research route, `pipeline__research_continue` while running and when done, and `ask` on the quick route), in the JSON layout the code builds, with placeholder data. It ends with **Where the length comes from**, a short analysis of why replies are long (the same passages three times, a relay that reports process rather than findings, fixed boilerplate, bookkeeping fields).\n\nPersonal paths and real account balances from the original draft are replaced with placeholders (`<agents-dir>`, `~/.local/share/...`, `$XX.XX`).\n\n## Note\nThe example shows the `relay` / `relay_full` reply format from when it was written (early November 2026). `ask` now returns a compact `brief` with `answer_format`, so the Call 1 / 1b shapes are partly out of date; the length analysis is what motivated that change. Docs only.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
+  "url": "https://github.com/polarizetech/retrieval-augmented-generation/pull/75",
+  "merged_at": "2026-11-25T14:14:24Z"
+ },
+ {
+  "repo": "retrieval-augmented-generation",
+  "number": 74,
+  "title": "Document sandboxing agents with OpenShell, telemetry off",
+  "body": "## What\n- `docs/openshell.md`: what [OpenShell](https://github.com/NVIDIA/OpenShell) is, a by-hand macOS install with no Homebrew (v0.1.8 release assets, checksums, VM-driver entitlement, mTLS certs, LaunchAgent), how a sandbox reaches the research tool (`host.openshell.internal:8891`), and caveats.\n- **Hard requirement: telemetry off from the first gateway start.** Set by `OPENSHELL_TELEMETRY_ENABLED=false` plus a dead local `OPENSHELL_TELEMETRY_ENDPOINT`.\n- `scripts/openshell-telemetry-check.sh`: fails unless the env file has both settings, every running `openshell-gateway` has the switch in its environment, and no OpenShell process is connected to NVIDIA's telemetry host.\n- README: a short pointer to both.\n\nDocs and a shell check only; no code paths change. The script passes `sh -n`; it has not been run against a live gateway in this PR.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
+  "url": "https://github.com/polarizetech/retrieval-augmented-generation/pull/74",
+  "merged_at": "2026-11-25T14:14:20Z"
+ },
+ {
+  "repo": "retrieval-augmented-generation",
+  "number": 73,
+  "title": "Route research only when asked; choose providers per request",
+  "body": "Scope: `scope/smart-routing-providers.md` (Tier: explore). **Depends on polarizetech/paper-fetch#17** (deploy it first) for `embed` / `rerank` = modal, mac or droplet; the rest works without it.\n\n## Changes\n- **F1 research only when asked.** `config/routing.default.toml` research triggers are now evidence-asking phrases (\"is it true\", \"what does the evidence say\", \"systematic review\", …); bare nouns such as \"paper\", \"study\", \"cite\", \"evidence\", \"mechanism\" route to a quick retrieval. Server instructions no longer tell assistants to start runs on their own.\n- **F2 explore tier.** Claims are still checked; the bottom line and specialist views skip the verifier, are kept, and are labelled \"Explore tier: not checked against the claims.\"\n- **F3 per-step providers.** `ask` and `research_start` take `providers` = `{planning|extraction|writing|verify: <[providers.*] name> | client}`. A pinned step uses that provider alone, no fallback. `client` for the ladder steps must cover all three; `verify=client` hands only the claim checks to the caller.\n- **F4 retrieval routing.** `providers.embed` = modal | mac and `providers.rerank` = modal | mac | droplet | off, passed through to paper-fetch; `deploy/models_router.py` honours `X-Models-Route` (only the named upstream, 503 if it fails, 400 if unknown).\n- **F5 `rerank = llm`.** New `research_mcp/llm_rerank.py`: one chat call scores up to 12 passages 0–10.\n\n## Review notes\n- `llm_rerank.OFFSET = 5` maps the 0–10 mark onto the cross-encoder's logit scale so the existing relevance floor (-3) and coverage levels apply. This calibration is exploratory, not from a paper.\n- When a pinned retrieval route fails, the library breaker is not counted, but the existing no-reranker / no-embeddings fallback can still run (labelled degraded), unlike the router's strict 503 for a pin.\n\n## Tests\n584 passed locally.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
+  "url": "https://github.com/polarizetech/retrieval-augmented-generation/pull/73",
+  "merged_at": "2026-11-25T14:10:05Z"
+ },
+ {
+  "repo": "paper-fetch",
+  "number": 17,
+  "title": "Choose where a retrieve call reranks and embeds",
+  "body": "## What\n`retrieve` takes two optional per-call arguments:\n- `rerank_route`: `modal` | `mac` | `droplet`\n- `embed_route`: `modal` | `mac` (no in-process embedding model, so no `droplet`)\n\n`modal` / `mac` send an `X-Models-Route` header to the models router; `droplet` runs an in-process ONNX cross-encoder set by `PAPER_FETCH_RERANK_LOCAL_MODEL` (refused when unset). New `PAPER_FETCH_RERANK_DEFAULT=off` keeps the reranker for calls that ask for it and skips it otherwise.\n\n## Why\nresearch-rag's `ask` gets a per-request `providers` map (embed / rerank choices). That PR (polarizetech/retrieval-augmented-generation, branch `claude/smart-routing-providers`) needs this one deployed first; the router side (`X-Models-Route`) lives in that repo's `deploy/models_router.py`.\n\n## Tests\n`tests/test_passages.py` covers the route header. Full suite locally: 386 passed, 4 failed in `test_http`, `test_library::test_verify_detects_tampering`, `test_scite` and `test_store` with PytestUnraisableException errors; `test_store.py` fails on its own too, so these look environmental, but they are not yet confirmed pre-existing.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
+  "url": "https://github.com/polarizetech/paper-fetch/pull/17",
+  "merged_at": "2026-11-25T14:03:56Z"
+ },
+ {
+  "repo": "polarize-ui",
+  "number": 18,
+  "title": "fix: knobs and faders follow a drag outside the control",
+  "body": "Dragging a knob (or fader) and moving the mouse outside it broke the drag, and releasing outside could leave the control following the mouse.\n\nNow `initControl` tracks a press on the whole page: `pointermove`/`pointerup`/`pointercancel` on `window`, added on press and removed on release (and in `destroy`), replacing the element-level listeners. While the button is held the value follows the pointer anywhere; releasing anywhere sets it and ends the drag. A mouse move with no button held ends the drag at its value; other pointers are ignored mid-drag.\n\nNot breaking: no export, class, attribute or option changed. Checks: `dev_check.py` 475/475, `tsc -p .` clean.\n\nOwner, 2026-11-25: \"if you click on the knob and you hold and drag outside of the knob, you can still adjust ... when you let go, it just sets to wherever it was pointing\".\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
+  "url": "https://github.com/polarizetech/polarize-ui/pull/18",
+  "merged_at": "2026-11-25T13:40:40Z"
+ },
+ {
+  "repo": "polarize-ui",
+  "number": 17,
+  "title": "feat: an on/off toggle in the controls layer",
+  "body": "Adds `.ui-toggle`: a real `<button>` with its state in `aria-pressed`, drawn as a track and thumb from existing tokens (on in `--ctl-signal`), keyboard and screen-reader support from the button itself.\n\n- `controls.js`: `initToggle(btn, { onChange })` flips it on a click and fires a bubbling `change`; `init()` wires `[data-ui-toggle]`.\n- `controls.d.ts`: `ToggleHandle`, `initToggle`; `init`'s return type includes it.\n- React: `Toggle` (`src/components/controls.tsx`). Story: General UI / Controls / Toggle.\n- Docs: INTEGRATION.md § 6 row, README controls row.\n\nNot breaking: additive only. Checks: `dev_check.py` 475/475, `tsc -p .` clean, `api_surface.py --removed v0.8.3` nothing removed.\n\nFirst user: polarize-thesis apps/noise-playground (Spikes and Mixer on/off). Owner, 2026-11-25: \"add a nice toggle feature, component to the polarize-ui repo\".\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
+  "url": "https://github.com/polarizetech/polarize-ui/pull/17",
+  "merged_at": "2026-11-25T12:51:27Z"
+ },
+ {
+  "repo": "polarize-ui",
+  "number": 16,
+  "title": "feat: speaker-high and speaker-slash icons",
+  "body": "Adds Phosphor duotone speaker-high and speaker-slash (from @phosphor-icons/core 2.1.1, MIT, like the rest of the sprite) to icons/polarize-icons.svg, and lists them in tokens.json icons.used (17 icons). For polarize-holo: an audio enable / mute toggle on .ui-playknob.\n\ndev_check.py: 475/475 passed.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
+  "url": "https://github.com/polarizetech/polarize-ui/pull/16",
+  "merged_at": "2026-11-25T11:51:11Z"
+ },
+ {
+  "repo": "polarize-ui",
+  "number": 15,
+  "title": "Play knob, mixer faders instead of sliders, geometric story fix",
+  "body": "## What changed\n- **PlayKnob** (new, exported): a round play/pause toggle the same size as `Knob` (sm/md/lg), with a thin outer ring, so they sit side by side. Story added under Controls.\n- **No more sliders in the stories**: Card with controls uses a Knob + PlayKnob; Mechanisms, Space and Trajectory playback use horizontal mixer `Fader`s. `ui/Slider` is still exported, marked `@deprecated`.\n- **Geometric stories fixed**: Geometric overlays and Trajectory playback crashed (`appendChild` of null) because the host element was null when the 3-D view mounted; they now wait for it via callback refs.\n- **Keyboard**: a thin border separates the black keys.\n\n## Why\nGeometric components were not rendering in Storybook; the play control and slider changes were requested for the controls set.\n\n## For reviewers\n- Additive only (new export and CSS class); nothing removed or renamed, so a patch release.\n- Demo values are synthetic (Rate/Depth knob ranges, readout formats in Space were chosen by the executor; presentation only).\n- Checked: `tsc`, `dev_check.py` (475/475), Storybook build, and the stories in the browser.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
+  "url": "https://github.com/polarizetech/polarize-ui/pull/15",
+  "merged_at": "2026-11-25T10:55:04Z"
+ },
+ {
+  "repo": "polarize-ui",
+  "number": 11,
+  "title": "fix(deps): update @storybook/addon-mcp to 10.6.7 (CVE-2026-114126)",
+  "body": "`@storybook/addon-mcp` is pinned at 10.6.0 at node_modules/@storybook/addon-mcp\nby the committed package-lock.json (the root manifest declares ^10.6.0 under\ndevDependencies), inside the affected range of **CVE-2026-114126** / **GHSA-px85-f4q5-jh77**.\n\nThe advisory names **10.6.2** as the first patched version; its fix points span several lines, so this build takes line 10's fix deliberately. line 10's fix 10.6.2 is the target: the lock resolves 10.6.0 below it; line 11's fix 11.0.0-alpha.6 applies to no resolved copy (the lock resolves none in that line), so taking it would force a cross-line jump without clearing anything. The fix commit is `5f00d7d0a78e` in storybookjs/storybook (rung `tag-ref`, confidence `release-tag`).\nThe root declared range ^10.6.0 admits 10.6.2\n(computed), so this is a **lockfile-only** update: package.json is not touched, and\npackage-lock.json moves @storybook/addon-mcp from\n**10.6.0** to **10.6.7**.\n\n### What changes\n\n- `@storybook/addon-mcp`: 10.6.0 -> 10.6.7 at every lockfile path (1).\n- No manifest is touched, and no source file is changed.\n\n### Verification\n\n- `npm ci --dry-run` on the patched lockfile with the unchanged manifest: pass (see the verification record).\n- Every lockfile path resolving @storybook/addon-mcp is at or above the advisory's first patched version **10.6.2** (node_modules/@storybook/addon-mcp at 10.6.7 is the built worst copy).\n- package.json is byte-identical to the base commit (sha256 ebf451b940254bd1…).\n- Applied to a fresh clone of polarizetech/polarize-ui at 935f751d4751fbc5a9bdf32c5c22563538819863, the change touches only package-lock.json.\n- Dependency churn: **17** lines outside @storybook/addon-mcp across 2 lockfile entries: the dependency entries npm ci requires to move with it. No source file is changed.\n- Lockfile shape: the entries that resolve the package and the 2 dependency entries npm ci requires to move with it are rewritten, and the npm ci --dry-run gate passed on that file; every other byte is the base commit's. npm: host npm 10.9.9 writes lockfileVersion 3, the repo's own.\n\n### Scope\n\n`@storybook/addon-mcp` is declared under devDependencies, and the affected range and the pinned version come from the security advisory.\nThis is a dependency update, not a code change.",
+  "url": "https://github.com/polarizetech/polarize-ui/pull/11",
+  "merged_at": "2026-11-25T00:54:10Z"
+ },
+ {
+  "repo": "polarize-ui",
+  "number": 14,
+  "title": "feat!: warm dark is the only theme; add DatePicker",
+  "body": "## Summary\n\n**1. `feat!:` Polarize warm dark is the only theme (BREAKING).** Operator request: \"use the warm dark theme only - no other themes.\"\n- `tokens.json` `color` keeps only `polarize`. `light`, `dark`, `instrument`, `instrument-dark`, `fieldguide` and `fieldguide-dark` are removed.\n- `design.css`: bare `:root` is warm dark. There is no light palette and no `prefers-color-scheme` switch. `data-theme=\"polarize\"` still matches, and any other stamp falls through to warm dark.\n- shadcn bridge: one block for `:root, .dark, :root[data-theme=\"polarize\"]`. In `src/theme.css`, `dark:` variants now always apply.\n- Docs-site theme toggle: hidden and inert. `isDark()` always returns true and `DocsThemeToggle` renders nothing. Both are kept with `@deprecated` so existing imports still compile.\n- Storybook: the theme toolbar is removed and the manager UI is warm dark.\n- The design-system artifact copy is regenerated. `dev_check.py` now fails if a second theme, `color-scheme: light` or `prefers-color-scheme` comes back.\n- The light steps inside `epistemic.families`, `series` and `diverging` are kept. They are validated palette data, not a theme.\n\n**2. `feat:` `DatePicker` and `Calendar`** (`src/components/ui/date-picker.tsx`)\n- It uses the Radix Popover that `radix-ui` already ships, so there is no new dependency.\n- The value is an ISO date string `YYYY-MM-DD`, not a JS `Date`, so a time zone can't shift the day.\n- Features: min/max, an `isDisabled` predicate, Monday or Sunday week start, ISO week numbers, a month-jump view, Today and clear buttons, and a hidden form input.\n- Full keyboard navigation.\n- Stories are under General UI/Components/Date picker.\n\n## Migration (also in the commit's BREAKING CHANGE footer)\n- Nothing is needed to get warm dark.\n- To keep a removed theme, pin v0.7.0.\n- For the old fieldguide landing card look, set `--landing-radius: var(--radius-base); --landing-fill: var(--card);`.\n- Read colours from `tokens.color.polarize`.\n- ⚠ polarize.tech's homepage used the fieldguide theme, so it will change look once it picks this up.\n\n## Testing\n- `python3 dev_check.py`: 475/475 pass. The count is lower than before because six themes' contrast checks went away.\n- `npx tsc -p .`: clean.\n- Storybook dev server plus Playwright: the date picker is verified by mouse, keyboard (arrow, Enter), clear, min/max and blocked days. The Landing story with a light OS setting renders warm dark.\n- `storybook build` could not run in the sandbox because the dataset host is unreachable. That is the environment, not this change.\n\n---\n_Generated by [Claude Code](https://claude.ai/code)_",
+  "url": "https://github.com/polarizetech/polarize-ui/pull/14",
+  "merged_at": "2026-11-24T20:23:29Z"
+ },
+ {
   "repo": "retrieval-augmented-generation",
   "number": 72,
   "title": "Remove personal deployment details; placeholder plugin URL with a setup script",
@@ -710,93 +798,5 @@
   "body": "The `test (ubuntu-latest, 3.9)` job fails at setup: `ubuntu-latest` is now Ubuntu 26.04, which has no Python 3.9 build for `actions/setup-python`, so the job stops before any test runs.\n\nPython 3.9 stays the supported minimum (the README promises 3.9+, and it is the `python3` macOS ships), so this pins only that job to `ubuntu-24.04`. The other jobs stay on `ubuntu-latest` and `macos-latest`.\n\nUnblocks the 3.9 job on polarizetech/adaptive-preregistration#3 and polarizetech/scientific-research-scaffold#7.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
   "url": "https://github.com/polarizetech/adaptive-preregistration/pull/4",
   "merged_at": "2026-10-27T18:10:18Z"
- },
- {
-  "repo": "polarize-ui",
-  "number": 6,
-  "title": "feat: controls layer (knob, faders, timeline, lane, panner) and a React Polarize theme",
-  "body": "Hardware-style controls for audio and instrument interfaces, in both forms (zero-build and React), plus a Polarize theme for the React side.\n\n## What's added\n\n- **`controls.css`**: a knob; a detented fader (horizontal, vertical, bipolar ribbon) with end-stops that are always drawn, a person's own mark, and printed limits; linked-value, delta and sync-state chips; a glide readout; an L/R meter; channel strips; a hazard surface with hold-to-confirm; a bottom sheet on `<dialog>`; a bottom tab bar; a night view.\n- **`controls.js`** (+ `controls.d.ts`): enhances native range inputs with fine adjust, detents, PageUp/PageDown, numeric entry, a log scale and `data-at-limit`. It also mounts three SVG views: a scene timeline (blocks for holds, wedges for transitions, curves, playhead, endings), an automation lane and a polar panner. Every crossed detent fires a bubbling `ui-detent` event, the hook for haptics in a native shell. There is no `requestAnimationFrame` or `setInterval`; the caller moves time.\n- **`src/components/controls.tsx`**: React wrappers that call `controls.js` rather than copying it.\n- **shadcn bridge**: a `:root[data-theme=\"polarize\"]` block (clay on `--primary`, 4.83:1 on the ground) and Polarize's audio inks in `system.css`. Storybook gains a \"polarize\" theme and a **General UI / Controls** page.\n- **`dev_check.py`**: `check_controls` covers the layer rules, inks with fallbacks, no tier colour, the exports, no rAF, `ui-detent`, the React wrapper reusing the module, and the React Polarize block with its contrast.\n\n## Design decisions worth a look\n\n- Under Polarize the controls use clay, ochre and lichen, one job each. Elsewhere they fall back to the brand colour and plain ink (see the *Fallback · instrument theme* story).\n- **No tier colour is used for limits or conflicts.** A hard limit is a foreground end-stop. The epistemic palette stays reserved for evidence.\n- Faders and knobs stay native range inputs underneath, so the keyboard and screen readers work without the script.\n- Not built yet: finger-drawing on a lane, a pulley that edits two lanes together, and drag-to-dismiss on the sheet. Each is listed in `CLAUDE.md`.\n\n## Checks\n\n- `dev_check.py` passes 579/579; `build_css.py --check`, `build_shadcn.py --check` and `tsc` are clean; `storybook build` succeeds.\n- The same checks pass on the branch merged with current `main` (v0.6.2), which merges without conflicts.\n- `api_surface.py --removed v0.6.2` is empty, so the change is additive and releases as a patch.\n- Exercised in a browser: drag with detent snapping, fine adjust (a 0.28× gain at 150 px off-axis, as computed), numeric entry clamping to the ceiling, PageUp/PageDown, timeline handle and selection, lane point drag, panner keyboard and 90° snap, the hold-to-confirm button, and the bottom sheet. The plain-HTML path (design.css + controls.css + controls.js) was checked on its own, with no console errors.\n\nAll story data is synthetic.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
-  "url": "https://github.com/polarizetech/polarize-ui/pull/6",
-  "merged_at": "2026-10-27T14:05:57Z"
- },
- {
-  "repo": "paper-fetch",
-  "number": 13,
-  "title": "Share one half-precision vector copy; allow hosted embeddings and reranking",
-  "body": "## Why\nEach process held its own float32 copy of every passage vector (665 MB at 164k passages). With one MCP server per Claude session, that exhausted memory and retrieval timed out.\n\n## What\n- **Shared vectors.** The vectors are written once as a float16 `.npy` beside the index (`<index>.vectors/`), memory-mapped read-only, and shared by every process through the page cache (336 MB). Scoring widens one 16k-row block at a time, so a query never holds a float32 copy.\n- **Fresh across processes.** The copy is named by (count, max id, sum of ids) of the vectors it holds and is checked when `pragma data_version` changes. A paper indexed by another process is now found by dense search without a restart, which was a bug before. Writes are atomic renames, and superseded copies are removed only when older.\n- **Hosted models, optional.**\n  - `PAPER_FETCH_EMBED_API=openai` (the default when the URL ends in `/v1`) uses an OpenAI-compatible `/embeddings` endpoint. `PAPER_FETCH_EMBED_MODEL` stays the index's model identity; `PAPER_FETCH_EMBED_API_MODEL` is the provider's name for it.\n  - `PAPER_FETCH_RERANK_URL` uses a Cohere/Jina-style `/rerank` endpoint.\n  - Keys come from `*_KEY` or `*_KEY_FILE`. Both stay off unless configured.\n\n## Tested\n- 385 tests pass, including new ones: the shared file is mapped by a second index, a writer's new passages are seen by a reader, float16 keeps the top-10 ranking, a read-only location falls back to an in-process copy, and the hosted embedder and reranker accept the common answer shapes.\n- Live on the 164k-passage index behind the shared gateway: retrieval 8–12 s warm. The process footprint is 1.6 GB, mostly the ONNX reranker; the vectors are a shared mapped file.\n- The hosted providers have not been tried against a real service yet.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
-  "url": "https://github.com/polarizetech/paper-fetch/pull/13",
-  "merged_at": "2026-10-27T12:07:50Z"
- },
- {
-  "repo": "retrieval-augmented-generation",
-  "number": 15,
-  "title": "Let local sessions share one gateway through a stdio bridge",
-  "body": "## Why\nEvery stdio gateway started its own paper library (passage vectors plus a reranker, about 1.7 GB). With a dozen Claude sessions open, the Mac swapped and `rag__retrieve_evidence` / `papers__retrieve` timed out (about 150 timeouts in one day).\n\n## What\n- `research-rag-gateway --connect http://127.0.0.1:8891/` serves stdio as a thin proxy to the always-on HTTP gateway. Tools, schemas and instructions pass through unchanged, so clients see the same tools. Requests are plain stateless POSTs, so a gateway restart fails only the calls made during it.\n- The OAuth gateway also accepts the local token (`config/.mcp-token`), but only on requests addressed to loopback that Tailscale Funnel has not marked. Through the public URL it is refused (checked live: 403).\n- `docs/mcp-clients.md`: \"Many sessions: share one gateway\".\n\n## Tested\n- New tests: `tests/test_bridge.py` (against a real uvicorn gateway) and `TestLocalToken` in `tests/test_oauth.py`. The full suite passes (306).\n- Live, through the bridge: all 73 tools listed; retrieval 8–17 s, down from 28–38 s (together with polarizetech/paper-fetch shared-vectors).\n\nStacked on #14 (`endpoint-price-sort`); merge that first.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
-  "url": "https://github.com/polarizetech/retrieval-augmented-generation/pull/15",
-  "merged_at": "2026-10-27T12:07:46Z"
- },
- {
-  "repo": "retrieval-augmented-generation",
-  "number": 14,
-  "title": "Endpoint providers: configured provider by default, cheapest zero-retention first, Near AI support",
-  "body": "## What\n\n**Cheapest zero-retention provider first (OpenRouter).** A new setting, `PIPELINE_ENDPOINT_SORT`, defaults to `price` and adds `provider.sort` next to `zdr`. For Qwen3.8 27B, OpenRouter then routes to Near AI, at about 1.3¢ per research question instead of about 2.2¢ with load balancing. It falls back to the next zero-retention provider on failure.\n\n**Near AI as a direct provider** (`https://cloud-api.near.ai/v1`, model `Qwen/Qwen3.8-27B`), for spending prepaid Near AI credits:\n- Each call's cost is computed from Near AI's public model list. `PIPELINE_ENDPOINT_PRICE` sets prices for any other host that doesn't report cost. An unknown cost is logged as unknown, not zero.\n- Run logs name the provider.\n- A 402 or credit/balance error says the host may be out of credits.\n\n**The configured provider is the default in the research tool too.** `PIPELINE_MCP_LLM` and `PIPELINE_LLM` now default to `auto`, meaning the configured endpoint when one is set, else the calling model (MCP) or Ollama (CLI). Nothing changes for anyone without an endpoint. `research_start(model=\"client\")` hands one run to the calling assistant when the user asks it to do the writing itself. Replies report `model_backend`, and the gateway's instructions to assistants were updated to match.\n\nLive check through the research tool's own `research_start`/`research_continue` with the real config: the run used the endpoint, handed no tasks to the caller, made 60 calls on zero-retention providers (mostly Near AI) with 0 reasoning tokens, cost 1.3¢ and finished in about 5 minutes.\n\n**`web__search` is listed only when SearXNG is configured.** Without it the tool could only fail, and clients kept calling it. If called anyway, it now explains the fallback: the client searches the web itself and passes the URLs to `papers__leads`. Across 265 runs the web fallback was wanted in 1.2% of searches, so no search engine is required.\n\n**Retries on dropped connections.** Dropped connections and failed TLS handshakes are retried with jittered backoff, up to `PIPELINE_ENDPOINT_RETRIES` (default 8).\n\n**No personal paths in code.** `github_mcp` and `patent_mcp` no longer hardcode a home directory. They check the environment variable, then PATH, then `~/.local/bin`.\n\nThe docs gain a providers table comparing OpenRouter with Near AI direct, and a cost comparison against renting or buying a GPU.\n\n## Near AI direct: not reliable today\n\nOn 2026-10-26, Near AI's API dropped 20–65% of connections during the TLS handshake. Failures rose with parallelism, and all of them came from its single address. Two real research runs failed, the second after one call failed 8 times in a row. Through OpenRouter, the same Near AI-hosted model answered every call. OpenRouter therefore stays the documented default, and Near AI direct is an option.\n\n## Privacy\n\nI scanned tracked files and history for API keys, tokens, emails, home paths and env/key files. Nothing secret was found. The plugin manifests intentionally name the author, with an info@ address, and the public MCP host URL.\n\n## Tests\n\n297 pass. New tests cover the provider default and per-run override, Near AI pricing, the provider label, configured prices, the out-of-credits message and connection retries. Pyright and ruff are clean.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
-  "url": "https://github.com/polarizetech/retrieval-augmented-generation/pull/14",
-  "merged_at": "2026-10-27T12:07:28Z"
- },
- {
-  "repo": "retrieval-augmented-generation",
-  "number": 13,
-  "title": "Add an OpenAI-compatible endpoint backend for the text model",
-  "body": "## What\n\nThe research pipeline's text model can now run on any OpenAI-compatible chat API (OpenRouter, Fireworks, vLLM, Ollama's `/v1`). It's for research runs that should stay off a hosted assistant. Only the text model moves. Embeddings, the reranker and a configured local verifier (MiniCheck) stay on this machine.\n\n- `Endpoint` in `research_pipeline/llm.py`:\n  - Reasoning is off by default (`reasoning: {effort: \"none\"}`). A model that rejects this is retried with reasoning on, and the run log says so.\n  - On OpenRouter, every request carries `provider: {zdr: true}`. Calls go only to zero-retention providers or fail.\n  - Answers are requested as `json_schema` and validated against the schema, with one corrected retry. The request falls back to `json_object` if a host rejects `json_schema`.\n  - Rate limits and upstream errors are retried with backoff.\n- Settings: `PIPELINE_ENDPOINT_URL`, `_MODEL`, `_KEY` / `_KEY_FILE`, `_REASONING`, `_ZDR`, `_CONCURRENCY`. Use `PIPELINE_LLM=endpoint` for the CLI and benchmarks; `PIPELINE_MCP_LLM` now also accepts `endpoint`. **The MCP default stays `client`.**\n- The run log records the served model version, the provider, tokens (including reasoning tokens) and cost.\n- `eval_pipeline.py` takes `--backend`, `--model` and `--label`, and shows a cost column.\n\n## Model choice\n\nDocs now recommend **`qwen/qwen3.8-27b` as the default** and **`moonshotai/kimi-k3` for important questions**, with `deepseek/deepseek-v4-pro` as a backup. These come from a comparison on the 4 regression cases: offline, reasoning off, all calls on zero-retention providers.\n\n| Model | Passed | Declined unanswerable | Cost per question |\n|---|---|---|---|\n| Qwen3.8 27B | 2/4 | yes | ~1.7¢ |\n| Kimi K3 | 2/4 | yes | ~14¢ |\n| DeepSeek V4 Pro | 2/4 | yes | ~3.4¢ |\n| GLM-5.2 | 1/4 | no | ~4¢ |\n| DeepSeek V4.1 Flash | 1/4 | no | ~1.2¢ |\n| Claude Opus 5.5 (reference) | 1/4 | no | ~55¢ |\n\n4 cases is a smoke test, not an accuracy estimate. The full notes are in `docs/research-pipeline.md`.\n\n## Fixes found while benchmarking\n\n- Two runs of one question started in the same second wrote to the same run folder, and one overwrote the other. Run folders are now claimed atomically with a numeric suffix.\n- Local verifier calls under the endpoint backend were missing from the run log's call list.\n- The `must_not_claim` pattern `\\bcauses?\\b` matched \"all-cause mortality\", so every model failed on wording. It now excludes `all-`.\n\n## Not covered\n\n- Tested through `eval_pipeline.py` (the pipeline directly). The MCP path with `PIPELINE_MCP_LLM=endpoint` uses the same code but was not run end to end.\n- Coding through an open model is a separate comparison and not part of this PR.\n\n## Tests\n\n285 pass. That includes 15 new ones covering the endpoint (field fallbacks, retries, schema retry, zero retention, local routing) and run folders. Pyright and ruff are clean.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
-  "url": "https://github.com/polarizetech/retrieval-augmented-generation/pull/13",
-  "merged_at": "2026-10-26T02:49:31Z"
- },
- {
-  "repo": "scientific-research-agents",
-  "number": 3,
-  "title": "Add configurable profile research workspaces",
-  "body": "Adds a machine-local research checkout setting and per-profile Markdown folders to the private specialist installer. Installed briefs point to their profile folder and existing notes are preserved. Updates documentation, tests, and release metadata to v0.9.0.\n\nValidation: python3 -m unittest discover -v tests (12 passing); installation check across all ten private profiles.",
-  "url": "https://github.com/polarizetech/scientific-research-agents/pull/3",
-  "merged_at": "2026-10-22T13:34:07Z"
- },
- {
-  "repo": "retrieval-augmented-generation",
-  "number": 12,
-  "title": "Route relative mapping questions to private specialist",
-  "body": "## Summary\n- Select the new private relative-mapping specialist for bearing, ruler, straightedge, triangulation, and layout questions.\n- Keep compass app and unrelated geometry proof questions on the general route.\n\n## Verification\n- 269 tests passed; Ruff format and lint checks passed.\n- Tested against the actual private brief for the user phrasing, bearings, constructions, and negative examples.",
-  "url": "https://github.com/polarizetech/retrieval-augmented-generation/pull/12",
-  "merged_at": "2026-10-21T19:43:42Z"
- },
- {
-  "repo": "retrieval-augmented-generation",
-  "number": 11,
-  "title": "Route plain bone conduction questions to private specialist",
-  "body": "## Summary\n- Match hyphenated specialist terms when a question uses spaces, including \"bone conduction\" and \"cross talk\".\n- Require the bone conduction phrase or mastoid anchor so unrelated bone questions stay on the general researcher route.\n\n## Verification\n- 268 tests passed (2 dependency deprecation warnings).\n- Ruff lint and format checks passed.\n- Local routing selected the private bone conduction specialist for a plain-language query and kept \"bone density\" general.",
-  "url": "https://github.com/polarizetech/retrieval-augmented-generation/pull/11",
-  "merged_at": "2026-10-21T16:03:07Z"
- },
- {
-  "repo": "retrieval-augmented-generation",
-  "number": 10,
-  "title": "Expand research MCP workbench and route private specialists",
-  "body": "## Summary\n- Bring the existing research MCP workbench changes on `concurrent-runs` into main, including gateway sessions, strictness controls, patent/GitHub tools, and the packaged plugin.\n- Load private specialist overlays from an optional local directory and route signal processing, honeybee communication, evoked potentials, and bone conduction questions to the matching profile.\n- Feed bounded specialist guidance into research planning and synthesis while preserving the evidence-first rules.\n- Use HTTPS for GitHub PR clone operations and document the local profile configuration.\n\n## Verification\n- 268 tests passed (2 warnings).\n- Targeted profile and pipeline tests: 17 passed; Ruff and `git diff --check` passed.\n- Live MCP gateway reported all six upstreams connected and selected private profiles with guidance and provenance.",
-  "url": "https://github.com/polarizetech/retrieval-augmented-generation/pull/10",
-  "merged_at": "2026-10-21T15:51:45Z"
- },
- {
-  "repo": "polarize-ui",
-  "number": 5,
-  "title": "Add reusable 3D node-link network view",
-  "body": "## Summary\n- add a dependency-free mountNetwork3D renderer with orbit, zoom, depth sorting, token colours, and accessible keyboard controls\n- ship public TypeScript declarations and integration documentation\n- add a synthetic Storybook example and API/design checks\n\n## Verification\n- python3 dev_check.py: 507/507 passed\n- TypeScript: passed\n- API surface removal check against v0.6.0: passed\n\nThis is an additive public API. It contains only a standard node-link visualization and synthetic story data; Neural Field Lab's model remains in world-seeding.",
-  "url": "https://github.com/polarizetech/polarize-ui/pull/5",
-  "merged_at": "2026-10-18T14:31:38Z"
- },
- {
-  "repo": "retrieval-augmented-generation",
-  "number": 1,
-  "title": "Gateway: a server section names an instance and can drop the built-in tools",
-  "body": "One gateway binary can now front a different set of upstreams under its own name. A second instance (the org-status MCP `scientific-research-news`) can then reuse the OAuth server instead of copying `oauth.py`.\n\n- **New optional `server` section** in the gateway config: `name`, `instructions`, and `builtin_tools`. With `builtin_tools: false` the instance drops `web__search` and the `rag__*` tools, so it lists only `gateway_status` and its upstreams.\n- **Omitting the section keeps today's behaviour exactly.**\n- **Tests:** one new test in `tests/test_gateway.py`; 9/9 pass. Ruff is clean. Documented in `docs/mcp-clients.md`.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
-  "url": "https://github.com/polarizetech/retrieval-augmented-generation/pull/1",
-  "merged_at": "2026-09-29T13:55:24Z"
  }
 ]
